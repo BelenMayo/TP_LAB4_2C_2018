@@ -1,5 +1,8 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+
+import { APP_ROUTING } from '../app/app.routes';
 
 import { AppComponent } from './app.component';
 import { PedidosComponent } from './components/pedidos/pedidos.component';
@@ -8,6 +11,9 @@ import { EmpleadosComponent } from './components/empleados/empleados.component';
 import { MesasComponent } from './components/mesas/mesas.component';
 import { ReservasComponent } from './components/reservas/reservas.component';
 import { MenuComponent } from './components/menu/menu.component';
+import { from } from 'rxjs';
+import { NavbarComponent } from './components/navbar/navbar.component';
+import { HomeComponent } from './components/home/home.component';
 
 @NgModule({
   declarations: [
@@ -17,10 +23,15 @@ import { MenuComponent } from './components/menu/menu.component';
     EmpleadosComponent,
     MesasComponent,
     ReservasComponent,
-    MenuComponent
+    MenuComponent,
+    NavbarComponent,
+    HomeComponent
   ],
   imports: [
-    BrowserModule
+    BrowserModule,
+    FormsModule,
+    ReactiveFormsModule,
+    APP_ROUTING
   ],
   providers: [],
   bootstrap: [AppComponent]
