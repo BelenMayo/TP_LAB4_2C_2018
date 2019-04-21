@@ -1,54 +1,66 @@
-<form class="needs-validation" novalidate>
-    <div class="form-row">
-      <div class="col-md-4 mb-3">
-        <label for="validationTooltip01">First name</label>
-        <input type="text" class="form-control" id="validationTooltip01" placeholder="First name" value="Mark" required>
-        <div class="valid-tooltip">
-          Looks good!
-        </div>
-      </div>
-      <div class="col-md-4 mb-3">
-        <label for="validationTooltip02">Last name</label>
-        <input type="text" class="form-control" id="validationTooltip02" placeholder="Last name" value="Otto" required>
-        <div class="valid-tooltip">
-          Looks good!
-        </div>
-      </div>
-      <div class="col-md-4 mb-3">
-        <label for="validationTooltipUsername">Username</label>
-        <div class="input-group">
-          <div class="input-group-prepend">
-            <span class="input-group-text" id="validationTooltipUsernamePrepend">@</span>
-          </div>
-          <input type="text" class="form-control" id="validationTooltipUsername" placeholder="Username" aria-describedby="validationTooltipUsernamePrepend" required>
-          <div class="invalid-tooltip">
-            Please choose a unique and valid username.
-          </div>
-        </div>
-      </div>
+<div class="container contenedor-clientes">
+<label class= "titulo">ALTA CLIENTE</label>
+<div class="row clientes">
+    <div class="col-md-4">
+        <input type="text" class="form-control" placeholder="Nombre..">
     </div>
-    <div class="form-row">
-      <div class="col-md-6 mb-3">
-        <label for="validationTooltip03">City</label>
-        <input type="text" class="form-control" id="validationTooltip03" placeholder="City" required>
-        <div class="invalid-tooltip">
-          Please provide a valid city.
-        </div>
-      </div>
-      <div class="col-md-3 mb-3">
-        <label for="validationTooltip04">State</label>
-        <input type="text" class="form-control" id="validationTooltip04" placeholder="State" required>
-        <div class="invalid-tooltip">
-          Please provide a valid state.
-        </div>
-      </div>
-      <div class="col-md-3 mb-3">
-        <label for="validationTooltip05">Zip</label>
-        <input type="text" class="form-control" id="validationTooltip05" placeholder="Zip" required>
-        <div class="invalid-tooltip">
-          Please provide a valid zip.
-        </div>
-      </div>
+    <div class="col-md-4">
+        <input type="text" class="form-control" placeholder="Apellido..">
     </div>
-    <button class="btn btn-primary" type="submit">Submit form</button>
-  </form>
+
+    <div class="col-md-4">
+        <div class="preview text-center">
+            <img class="preview-img" src="http://simpleicon.com/wp-content/uploads/account.png" alt="Preview Image" width="200" height="200"/>
+                <div class="browse-button">
+                    <i class="fa fa-pencil-alt"></i>
+                    <input class="browse-input" type="file" required name="UploadedFile" id="UploadedFile"/>
+                </div>
+                <span class="Error"></span>
+        </div>
+    </div>
+
+</div>
+<div class="row clientes">
+    <div class="col-md-4">
+        <select class="selectpicker form-control">
+            <option>Mesa 1</option>
+            <option>Mesa 2</option>
+            <option>Mesa 3</option>
+        </select>
+    </div>
+    <div class="col-md-4">
+            <div class="form-check">
+                <input type="radio" class="form-check-input" id="materialUnchecked" name="materialExampleRadios">
+                <label class="form-check-label" for="materialUnchecked">Femenino</label>
+            </div>
+            <div class="form-check">
+                <input type="radio" class="form-check-input" id="materialChecked" name="materialExampleRadios" checked>
+                <label class="form-check-label" for="materialChecked" font-color="white">Masculino</label>
+            </div>
+    </div>
+</div>
+<div class="row clientes">
+    <div class="col-md-4">
+        <input type="text" class="form-control" placeholder="DNI..">
+    </div>
+    <div class="col-md-4">
+        <input type="text" class="form-control" placeholder="Fecha de nacimiento..">
+    </div>
+</div>
+<div class="row clientes">
+    <div class="col-md-4">
+        <input type="text" class="form-control" placeholder="Mesa..">
+    </div>
+    <div class="col-md-4">
+        <input type="text" class="form-control" placeholder="Pedido..">
+    </div>
+</div>
+<div class="row clientes">
+    <div class="col-md-1">
+        <button type="button" class="btn btn-success">Guardar</button>
+    </div>
+    <div class="col-md-1">
+        <button type="button" class="btn btn-danger">Cancelar</button>
+    </div>
+</div>
+</div>
