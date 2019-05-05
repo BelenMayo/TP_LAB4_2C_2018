@@ -12,4 +12,8 @@ export class ClientesComponent implements OnInit {
   ngOnInit() {
   }
 
+  public nombre: string= "";
+  
+  string= document.getElementById('nombre').innerHTML;
+
 }
