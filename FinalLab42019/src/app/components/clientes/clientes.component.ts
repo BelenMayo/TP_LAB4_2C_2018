@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { FormControl, FormGroup, Validators } from '@angular/forms';
 
 @Component({
   selector: 'app-clientes',
@@ -7,13 +8,17 @@ import { Component, OnInit } from '@angular/core';
 })
 export class ClientesComponent implements OnInit {
 
+  form: FormGroup;
+
   constructor() { }
 
   ngOnInit() {
   }
 
-  public nombre: string= "";
-  
-  string= document.getElementById('nombre').innerHTML;
+  Guardar(){
+
+  }
+
+ 
 
 }
