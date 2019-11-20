@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
-import { FormControl, FormGroup, Validators } from '@angular/forms';
+import { FormControl, FormGroup, Validators, FormBuilder } from '@angular/forms';
+import { ClientesService } from '../../services/clientes/clientes.service';
 
 @Component({
   selector: 'app-clientes',
@@ -8,16 +9,38 @@ import { FormControl, FormGroup, Validators } from '@angular/forms';
 })
 export class ClientesComponent implements OnInit {
 
-  form: FormGroup;
+  formCliente: FormGroup;
+  submitted = false;
 
-  constructor() { }
-
-  ngOnInit() {
+  constructor(private formBuilder: FormBuilder, public clientesService: ClientesService) {
+  
   }
 
-  Guardar(){
+  ngOnInit() {  
+    this.formCliente = this.formBuilder.group({
+      nombre: ['', Validators.required],
+      apellido: ['', Validators.required],
+      // mesa: ['', Validators.required],
+      // sexo: ['', Validators.required],
+      dni: ['', Validators.required],   
+      fechaNac: ['', Validators.required],
+      otro: ['', Validators.required],      
+      pedido: ['', Validators.required]
+    })
+  } 
 
+  get f() { return this.formCliente.controls; }
+
+  guardarCliente(){
+        this.submitted = true;
+
+        if (this.formCliente.invalid) {
+            return;
+        }
+
+        alert('Formulario Ok!!\n\n' + JSON.stringify(this.formCliente.value))
   }
+
 
  
 

@@ -1,67 +1,55 @@
-
 <div class="container contenedor-clientes">
-    <label class= "titulo">CLIENTE</label>
-    <form [formGroup] ="form" (ngSubmit)= "Guardar()" >
-        <div class="row clientes">
-            <div class="col-md-4">
-                <input type="text" id="nombre" class="form-control" placeholder="Nombre..">
-            </div>
-            <div class="col-md-4">
-                <input type="text" class="form-control" placeholder="Apellido..">
-            </div>
-            <div class="col-md-4">
-                <div class="preview text-center">
-                    <img class="preview-img" src="http://simpleicon.com/wp-content/uploads/account.png" alt="Preview Image" width="200" height="200"/>
-                        <div class="browse-button">
-                            <i class="fa fa-pencil-alt"></i>
-                            <input class="browse-input" type="file" required name="UploadedFile" id="UploadedFile"/>
-                        </div>
-                    <span class="Error"></span>
+    <label class="titulo">CLIENTE</label>
+    <form [formGroup]="formCliente" (ngSubmit)="guardarCliente()">
+
+        <div class="row">
+            <div class="col-md-9 col-sm-8">
+                <div class="row clientes">
+                    <!-- Input Nombre -->
+                    <div class="col-md-6">
+                        <input type="text" id="nombre" class="form-control" formControlName='nombre'
+                            placeholder="Nombre..">
+                        <span style="color: red" *ngIf="formCliente.controls['nombre'].touched && formCliente.controls['nombre'].errors?.required">El nombre es requerido</span>   
+                    </div>
+                    <!-- Input Apellido -->
+                    <div class="col-md-6">
+                        <input type="text" id="apellido" class="form-control" formControlName='apellido'
+                            placeholder="Apellido..">
+                        <span style="color: red"  *ngIf="formCliente.controls['apellido'].touched && formCliente.controls['apellido'].errors?.required">El apellido es requerido</span>
+                    </div>
                 </div>
-            </div>
-        </div>
-        <div class="row clientes">
-            <div class="col-md-4">
-                <select class="selectpicker form-control">
-                    <option>Mesa 1</option>
-                    <option>Mesa 2</option>
-                    <option>Mesa 3</option>
-                </select>
-            </div>
-            <div class="col-md-4">
-                    <div class="form-check">
-                        <input type="radio" class="form-check-input" id="materialUnchecked" name="materialExampleRadios">
-                        <label class="form-check-label" for="materialUnchecked">Femenino</label>
+                <div class="row clientes">
+                    <!-- Input DNI -->
+                    <div class="col-md-6">
+                        <input type="text" id="dni" class="form-control" formControlName='dni' placeholder="DNI..">
                     </div>
-                    <div class="form-check">
-                        <input type="radio" class="form-check-input" id="materialChecked" name="materialExampleRadios" checked>
-                        <label class="form-check-label" for="materialChecked" font-color="white">Masculino</label>
+                    <div class="col-md-6">
+                        <input type="text" class="form-control" formControlName='fechaNac' placeholder="Fecha de nacimiento..">
                     </div>
-            </div>
+                </div>
+                <div class="row clientes">
+                    <!-- Input Otro -->
+                    <div class="col-md-6">
+                        <input type="text" class="form-control" formControlName='otro' placeholder="Mesa..">
+                    </div>
+                    <!-- Input Pedido -->
+                    <div class="col-md-6">
+                        <input type="text" class="form-control" formControlName='pedido' placeholder="Pedido..">
+                    </div>
+                </div>
+                <div class="row clientes">
+                    <!-- Guardar -->
+                    <div class="col-sm-2">
+                        <button type="submit" class="btn btn-success" (click)='guardarCliente()' [disabled]= 'formCliente.invalid'>Guardar</button>
+                    </div>
+                    <!-- Cancelar -->
+                    <div class="col-sm-2">
+                        <button type="button" class="btn btn-danger">Cancelar</button>
+                    </div>
+                </div>
         </div>
-        <div class="row clientes">
-            <div class="col-md-4">
-                <input type="text" class="form-control" placeholder="DNI..">
-            </div>
-            <div class="col-md-4">
-                <input type="text" class="form-control" placeholder="Fecha de nacimiento..">
-            </div>
-        </div>
-        <div class="row clientes">
-            <div class="col-md-4">
-                <input type="text" class="form-control" placeholder="Mesa..">
-            </div>
-            <div class="col-md-4">
-                <input type="text" class="form-control" placeholder="Pedido..">
-            </div>
-        </div>
-        <div class="row clientes">
-            <div class="col-md-1">
-                <button type="button" class="btn btn-success">Guardar</button>
-            </div>
-            <div class="col-md-1">
-                <button type="button" class="btn btn-danger">Cancelar</button>
-            </div>
-        </div>
+    </div>
     </form>
 </div>
+
+
