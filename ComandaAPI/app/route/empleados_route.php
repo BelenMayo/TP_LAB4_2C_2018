@@ -4,30 +4,30 @@ use App\Lib\Auth,
     App\Validation\TestValidation,
     App\Middleware\AuthMiddleware;
 
-$app->group('/test/', function () {
+$app->group('/empleado/', function () {
     $this->get('', function ($req, $res, $args) {
         return $res->withHeader('Content-type', 'text/html')
                    ->write('Soy una ruta de prueba');
     });
     
-    $this->get('empleados/listar/{l}/{p}', function ($req, $res, $args) {
+    $this->get('listar/{l}/{p}', function ($req, $res, $args) {
         return $res->withHeader('Content-type', 'application/json')
-                   ->write(json_encode($this->model->test->getAll($args['l'], $args['p'])));
+                   ->write(json_encode($this->model->empleado->getAll($args['l'], $args['p'])));
     });
     
-    $this->post('empleados/registrar', function ($req, $res, $args) {
+    $this->post('registrar', function ($req, $res, $args) {
         return $res->withHeader('Content-type', 'application/json')
-                   ->write(json_encode($this->model->test->insert($req->getParsedBody())));
+                   ->write(json_encode($this->model->empleado->insert($req->getParsedBody())));
     });
 
-    $this->put('empleados/modificar/{id}', function ($req, $res, $args) {
+    $this->put('modificar/{id}', function ($req, $res, $args) {
         return $res->withHeader('Content-type', 'application/json')
-                   ->write(json_encode($this->model->test->update($req->getParsedBody(),$args['id'])));
+                   ->write(json_encode($this->model->empleado->update($req->getParsedBody(),$args['id'])));
     });
 
-    $this->delete('empleados/eliminar/{id}', function ($req, $res, $args) {
+    $this->delete('eliminar/{id}', function ($req, $res, $args) {
         return $res->withHeader('Content-type', 'application/json')
-                   ->write(json_encode($this->model->test->delete($args['id'])));
+                   ->write(json_encode($this->model->empleado->delete($args['id'])));
     });
     
     $this->post('valida', function ($req, $res, $args) {

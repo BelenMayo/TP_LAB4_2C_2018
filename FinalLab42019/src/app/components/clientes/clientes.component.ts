@@ -25,7 +25,7 @@ export class ClientesComponent implements OnInit {
       dni: ['', Validators.required],   
       fechaNac: ['', Validators.required],
       otro: ['', Validators.required],      
-      pedido: ['', Validators.required]
+      //pedido: ['', Validators.required]
     })
   } 
 

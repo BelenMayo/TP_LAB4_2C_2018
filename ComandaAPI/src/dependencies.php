@@ -32,6 +32,7 @@ $container['db'] = function($c){
 // Models
 $container['model'] = function($c){
     return (object)[
-        'test' => new App\Model\TestModel($c->db)
+        // 'test' => new App\Model\TestModel($c->db),
+        'empleado' => new App\Model\EmpleadosModel($c->db)
     ];
 };

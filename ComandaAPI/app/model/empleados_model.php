@@ -3,7 +3,7 @@ namespace App\Model;
 
 use App\Lib\Response;
 
-class TestModel
+class EmpleadosModel
 {
     private $db;
     private $table = 'empleados';
