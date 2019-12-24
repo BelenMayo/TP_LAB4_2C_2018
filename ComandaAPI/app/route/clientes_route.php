@@ -4,7 +4,7 @@ use App\Lib\Auth,
     App\Validation\TestValidation,
     App\Middleware\AuthMiddleware;
 
-$app->group('/empleados/', function () {
+$app->group('/clientes/', function () {
     $this->get('', function ($req, $res, $args) {
         return $res->withHeader('Content-type', 'text/html')
                    ->write('Soy una ruta de prueba');
@@ -12,22 +12,22 @@ $app->group('/empleados/', function () {
     
     $this->get('listar/{l}/{p}', function ($req, $res, $args) {
         return $res->withHeader('Content-type', 'application/json')
-                   ->write(json_encode($this->model->empleado->getAll($args['l'], $args['p'])));
+                   ->write(json_encode($this->model->cliente->getAll($args['l'], $args['p'])));
     });
     
     $this->post('registrar', function ($req, $res, $args) {
         return $res->withHeader('Content-type', 'application/json')
-                   ->write(json_encode($this->model->empleado->insert($req->getParsedBody())));
+                   ->write(json_encode($this->model->cliente->insert($req->getParsedBody())));
     });
 
     $this->put('modificar/{id}', function ($req, $res, $args) {
         return $res->withHeader('Content-type', 'application/json')
-                   ->write(json_encode($this->model->empleado->update($req->getParsedBody(),$args['id'])));
+                   ->write(json_encode($this->model->cliente->update($req->getParsedBody(),$args['id'])));
     });
 
     $this->delete('eliminar/{id}', function ($req, $res, $args) {
         return $res->withHeader('Content-type', 'application/json')
-                   ->write(json_encode($this->model->empleado->delete($args['id'])));
+                   ->write(json_encode($this->model->cliente->delete($args['id'])));
     });
     
     $this->post('valida', function ($req, $res, $args) {

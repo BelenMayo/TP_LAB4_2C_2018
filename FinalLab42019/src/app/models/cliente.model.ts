@@ -7,6 +7,6 @@ export class ClienteModel {
     public usuario: string;
     public password: string;
 
-    constructor() {}    
+    constructor(cliente: any) {}    
 
 }

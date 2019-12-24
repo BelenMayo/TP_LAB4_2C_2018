@@ -15,44 +15,55 @@ export class ClientesComponent implements OnInit {
   formCliente: FormGroup;
   submitted = false;
 
-  // Listado de clientes
-  clientes : string [];
+  // Variables
+  clientes: string[];
+  cliente: ClienteModel;
 
   constructor(private formBuilder: FormBuilder, public clientesService: ClientesService, private httpClient: HttpClient) {
-  
+    this.traerClientes();
   }
 
-  ngOnInit() {  
+  ngOnInit() {
     this.formCliente = this.formBuilder.group({
       nombre: ['', Validators.required],
       apellido: ['', Validators.required],
       telefono: ['', Validators.required],
       mail: ['', Validators.required],
-      usuario: ['', Validators.required,],   
+      usuario: ['', Validators.required,],
       password: ['', Validators.required]
     })
+  }
 
-    console.log(this.clientesService);
-  } 
+  // Trae todos los clientes
+  traerClientes() {
+    this.clientesService.traerClientes()
+      .subscribe(resp => {
+        this.clientes = resp;
+        console.log(this.clientes);
+      },
+        error => {
+          text: 'Error al traer clientes';
+        });
+  }
 
-  // get f() { return this.formCliente.controls; }
+  // Guarda un cliente
+  guardarCliente() {
+    this.submitted = true;
 
-  guardarCliente(){
-  
-        this.submitted = true;
+    if (!this.formCliente.invalid) {
+      return;
+    }
 
-        // if (!this.formCliente.invalid) {
-        //     return;
-        // }
+    this.cliente = this.formCliente;
 
-       this.clientesService.traerClientes()
-                           .subscribe(resp => {
-                              this.clientes = resp;
-                              console.log(this.clientes);
-                           }, 
-                           error =>{
-                            text: 'Error al traer clientes';
-                           });
+    this.clientesService.guardarCliente(this.cliente)
+      .subscribe(resp => {
+        this.clientes = resp;
+        console.log(this.clientes);
+      },
+        error => {  
+          text: 'Error al guardar cliente';
+        });
   }
 
 }

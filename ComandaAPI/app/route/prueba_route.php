@@ -4,7 +4,7 @@ use App\Lib\Auth,
     App\Validation\TestValidation,
     App\Middleware\AuthMiddleware;
 
-$app->group('/empleados/', function () {
+$app->group('/prueba/', function () {
     $this->get('', function ($req, $res, $args) {
         return $res->withHeader('Content-type', 'text/html')
                    ->write('Soy una ruta de prueba');

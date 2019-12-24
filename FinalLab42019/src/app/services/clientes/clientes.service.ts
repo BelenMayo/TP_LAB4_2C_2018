@@ -11,13 +11,7 @@ export class ClientesService {
 
   constructor(private httpClient: HttpClient) { }
 
-  public clientes: ClienteModel[];
-
   traerClientes() {
-    // this.httpClient.get('http://localhost/ComandaAPI/public/clientes/listar/1/0').subscribe(data => {
-    //   this.clientes = data;  
-    // });
-
     return this.httpClient.get('http://localhost/ComandaAPI/public/clientes/listar/1/0')
       .pipe(
         map(resp => {
@@ -29,24 +23,48 @@ export class ClientesService {
           }
         })
       );
-
   }
 
-guardarCliente() {
-  this.httpClient.get('localhost/ComandaAPI/public/prueba/registrar').subscribe(data => {
-    console.log(data);
-  });
-}
-modificarCliente() {
-  this.httpClient.get('localhost/ComandaAPI/public/prueba/modificar/?').subscribe(data => {
-    console.log(data);
-  });
-}
+  guardarCliente(cliente: ClienteModel) {
+    return this.httpClient.post('http://localhost/ComandaAPI/public/clientes/registrar', cliente)
+      .pipe(
+        map(resp => {
+          debugger;
+          if (resp['data'].length > 0) {
+            return resp['data'];
+          } else {
+            return false;
+          }
+        })
+      );
+  }
 
-eliminarCliente() {
-  this.httpClient.get('localhost/ComandaAPI/public/prueba/eliminar/?').subscribe(data => {
-    console.log(data);
-  });
-}
+  modificarCliente(cliente: ClienteModel) {
+    return this.httpClient.put('http://localhost/ComandaAPI/public/clientes/modificar/?', cliente)
+    .pipe(
+      map(resp => {
+        debugger;
+        if (resp['data'].length > 0) {
+          return resp['data'];
+        } else {
+          return false;
+        }
+      })
+    );
+  }
+
+  eliminarCliente(id: number) {
+    return this.httpClient.delete('http://localhost/ComandaAPI/public/clientes/eliminar/${id}')
+    .pipe(
+      map(resp => {
+        debugger;
+        if (resp['data'].length > 0) {
+          return resp['data'];
+        } else {
+          return false;
+        }
+      })
+    );
+  }
 
 }
