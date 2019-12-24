@@ -1,3 +1,5 @@
+<link href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" rel="stylesheet">
+
 <div class="container contenedor-clientes">
     <label class="titulo">CLIENTE</label>
     <form [formGroup]="formCliente" (ngSubmit)="guardarCliente()">
@@ -8,33 +10,38 @@
                     <!-- Input Nombre -->
                     <div class="col-md-6">
                         <input type="text" id="nombre" class="form-control" formControlName='nombre'
-                            placeholder="Nombre..">
+                            placeholder="Nombre.." required>
                         <span style="color: red" *ngIf="formCliente.controls['nombre'].touched && formCliente.controls['nombre'].errors?.required">El nombre es requerido</span>   
                     </div>
                     <!-- Input Apellido -->
                     <div class="col-md-6">
                         <input type="text" id="apellido" class="form-control" formControlName='apellido'
-                            placeholder="Apellido..">
-                        <span style="color: red"  *ngIf="formCliente.controls['apellido'].touched && formCliente.controls['apellido'].errors?.required">El apellido es requerido</span>
+                            placeholder="Apellido.." required>
+                        <span style="color: red" *ngIf="formCliente.controls['apellido'].touched && formCliente.controls['apellido'].errors?.required">El apellido es requerido</span>
                     </div>
                 </div>
                 <div class="row clientes">
-                    <!-- Input DNI -->
+                    <!-- Input Telefono -->
                     <div class="col-md-6">
-                        <input type="text" id="dni" class="form-control" formControlName='dni' placeholder="DNI..">
+                        <input type="numeric" id="telefono" class="form-control" formControlName='telefono' placeholder="Telefono.." required>
+                        <span style="color: red" *ngIf="formCliente.controls['telefono'].touched && formCliente.controls['telefono'].errors?.required">El telefono es requerido</span>   
                     </div>
+                    <!-- Input Mail -->
                     <div class="col-md-6">
-                        <input type="text" class="form-control" formControlName='fechaNac' placeholder="Fecha de nacimiento..">
+                        <input type="email" id="mail" class="form-control" formControlName='mail' placeholder="Mail.." required>
+                        <span style="color: red" *ngIf="formCliente.controls['mail'].touched && formCliente.controls['mail'].errors?.required">El mail es requerido</span>           
                     </div>
                 </div>
                 <div class="row clientes">
-                    <!-- Input Otro -->
+                    <!-- Input Usuario -->
                     <div class="col-md-6">
-                        <input type="text" class="form-control" formControlName='otro' placeholder="Mesa..">
+                        <input type="text" id="usuario" class="form-control" formControlName='usuario' placeholder="Usuario.." required>
+                        <span style="color: red" *ngIf="formCliente.controls['usuario'].touched && formCliente.controls['usuario'].errors?.required">El usuario es requerido</span>   
                     </div>
-                    <!-- Input Pedido -->
+                    <!-- Input Password -->
                     <div class="col-md-6">
-                        <input type="text" class="form-control" formControlName='pedido' placeholder="Pedido..">
+                        <input type="text" id="password"  class="form-control" formControlName='password' placeholder="Contraseña.." required>
+                        <span style="color: red" *ngIf="formCliente.controls['password'].touched && formCliente.controls['password'].errors?.required">La contraseña es requerida</span>   
                     </div>
                 </div>
                 <div class="row clientes">
@@ -53,3 +60,27 @@
 </div>
 
 
+<div class="table-responsive" id="mydatatable-container" style= "background-color:white; font-color:white">
+    <table class="records_list table table-striped table-bordered table-hover" id="mydatatable">
+        <thead>
+            <tr>
+                <th>Apellido</th>
+                <th>Nombre</th>
+                <th>Telefono</th>
+                <th>Mail</th>
+                <th>Foto</th>
+            </tr>
+        </thead>
+        <tbody>
+           <tr *ngFor="let item of clientes">
+                <td>{{item.apellido}}</td>
+                <td>{{item.nombre}}</td>
+                <td>{{item.telefono}}</td>
+                <td>{{item.mail}}</td>
+                <td>{{item.foto}}</td>
+                <td><button type="button" class="btn btn-success">Aceptar</button></td>
+                <td><button type="button" class="btn btn-danger">Cancelar</button></td>
+            </tr>
+        </tbody>
+    </table>
+  </div>

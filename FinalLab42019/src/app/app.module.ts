@@ -2,9 +2,12 @@ import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 
+//Routes
 import { APP_ROUTING } from '../app/app.routes';
 
 //import { from } from 'rxjs';
+
+import {NgbModule} from '@ng-bootstrap/ng-bootstrap';
 
 //Componentes
 import { AppComponent } from './app.component';
@@ -18,7 +21,7 @@ import { NavbarComponent } from './components/navbar/navbar.component';
 import { HomeComponent } from './components/home/home.component';
 import { LoginComponent } from './components/login/login.component';
 
-//Módulos
+//HTTP
 import { HttpClientModule }    from '@angular/common/http';
 
 // Servicios
@@ -36,7 +39,7 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
     MenuComponent,
     NavbarComponent,
     HomeComponent,
-    LoginComponent
+    LoginComponent,
   ],
   imports: [
     BrowserModule,
@@ -45,9 +48,10 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
     APP_ROUTING,
     HttpClientModule,
     BrowserAnimationsModule,
+    NgbModule,
   ],
   providers: [
-    ClientesService
+    ClientesService,
   ],
   bootstrap: [AppComponent]
 })

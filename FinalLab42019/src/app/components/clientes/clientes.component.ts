@@ -1,6 +1,9 @@
 import { Component, OnInit } from '@angular/core';
 import { FormControl, FormGroup, Validators, FormBuilder } from '@angular/forms';
+import { ClienteModel } from '../../models/cliente.model';
 import { ClientesService } from '../../services/clientes/clientes.service';
+import { HttpClient } from '@angular/common/http';
+
 
 @Component({
   selector: 'app-clientes',
@@ -12,7 +15,10 @@ export class ClientesComponent implements OnInit {
   formCliente: FormGroup;
   submitted = false;
 
-  constructor(private formBuilder: FormBuilder, public clientesService: ClientesService) {
+  // Listado de clientes
+  clientes : string [];
+
+  constructor(private formBuilder: FormBuilder, public clientesService: ClientesService, private httpClient: HttpClient) {
   
   }
 
@@ -20,28 +26,33 @@ export class ClientesComponent implements OnInit {
     this.formCliente = this.formBuilder.group({
       nombre: ['', Validators.required],
       apellido: ['', Validators.required],
-      // mesa: ['', Validators.required],
-      // sexo: ['', Validators.required],
-      dni: ['', Validators.required],   
-      fechaNac: ['', Validators.required],
-      otro: ['', Validators.required],      
-      //pedido: ['', Validators.required]
+      telefono: ['', Validators.required],
+      mail: ['', Validators.required],
+      usuario: ['', Validators.required,],   
+      password: ['', Validators.required]
     })
+
+    console.log(this.clientesService);
   } 
 
-  get f() { return this.formCliente.controls; }
+  // get f() { return this.formCliente.controls; }
 
   guardarCliente(){
+  
         this.submitted = true;
 
-        if (this.formCliente.invalid) {
-            return;
-        }
+        // if (!this.formCliente.invalid) {
+        //     return;
+        // }
 
-        alert('Formulario Ok!!\n\n' + JSON.stringify(this.formCliente.value))
+       this.clientesService.traerClientes()
+                           .subscribe(resp => {
+                              this.clientes = resp;
+                              console.log(this.clientes);
+                           }, 
+                           error =>{
+                            text: 'Error al traer clientes';
+                           });
   }
-
-
- 
 
 }
