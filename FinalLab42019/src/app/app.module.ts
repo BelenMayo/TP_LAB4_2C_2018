@@ -20,6 +20,10 @@ import { MenuComponent } from './components/menu/menu.component';
 import { NavbarComponent } from './components/navbar/navbar.component';
 import { HomeComponent } from './components/home/home.component';
 import { LoginComponent } from './components/login/login.component';
+import { ClienteAltaComponent } from './components/clientes/cliente-alta.component';
+import { ClienteModificarComponent } from './components/clientes/cliente-modificar.component';
+import { ClienteListadoComponent } from './components/clientes/cliente-listado.component';
+import { ClienteDetalleComponent } from './components/clientes/cliente-detalle.component';
 
 //HTTP
 import { HttpClientModule }    from '@angular/common/http';
@@ -27,6 +31,7 @@ import { HttpClientModule }    from '@angular/common/http';
 // Servicios
 import {ClientesService} from './services/clientes/clientes.service';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+
 
 @NgModule({
   declarations: [
@@ -40,6 +45,10 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
     NavbarComponent,
     HomeComponent,
     LoginComponent,
+    ClienteAltaComponent,
+    ClienteModificarComponent,
+    ClienteListadoComponent,
+    ClienteDetalleComponent,
   ],
   imports: [
     BrowserModule,

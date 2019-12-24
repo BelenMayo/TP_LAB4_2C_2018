@@ -15,7 +15,6 @@ export class ClientesService {
     return this.httpClient.get('http://localhost/ComandaAPI/public/clientes/listar/1/0')
       .pipe(
         map(resp => {
-          debugger;
           if (resp['data'].length > 0) {
             return resp['data'];
           } else {
@@ -29,7 +28,6 @@ export class ClientesService {
     return this.httpClient.post('http://localhost/ComandaAPI/public/clientes/registrar', cliente)
       .pipe(
         map(resp => {
-          debugger;
           if (resp['data'].length > 0) {
             return resp['data'];
           } else {
@@ -43,7 +41,6 @@ export class ClientesService {
     return this.httpClient.put('http://localhost/ComandaAPI/public/clientes/modificar/?', cliente)
     .pipe(
       map(resp => {
-        debugger;
         if (resp['data'].length > 0) {
           return resp['data'];
         } else {
@@ -57,7 +54,6 @@ export class ClientesService {
     return this.httpClient.delete('http://localhost/ComandaAPI/public/clientes/eliminar/${id}')
     .pipe(
       map(resp => {
-        debugger;
         if (resp['data'].length > 0) {
           return resp['data'];
         } else {

@@ -1,0 +1,67 @@
+<link href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" rel="stylesheet">
+
+<div class="container contenedor-clientes">
+    <label class="titulo">CLIENTE</label>
+    <form [formGroup]="formCliente" (ngSubmit)="guardarCliente()">
+
+        <div class="row">
+            <div class="col-md-9 col-sm-8">
+                <div class="row clientes">
+                    <!-- Input Nombre -->
+                    <div class="col-md-6">
+                        <input type="text" id="nombre" class="form-control" formControlName='nombre'
+                            placeholder="Nombre.." required>
+                        <span style="color: red" *ngIf="formCliente.controls['nombre'].touched && formCliente.controls['nombre'].errors?.required">El nombre es requerido</span>   
+                    </div>
+                    <!-- Input Apellido -->
+                    <div class="col-md-6">
+                        <input type="text" id="apellido" class="form-control" formControlName='apellido'
+                            placeholder="Apellido.." required>
+                        <span style="color: red" *ngIf="formCliente.controls['apellido'].touched && formCliente.controls['apellido'].errors?.required">El apellido es requerido</span>
+                    </div>
+                </div>
+                <div class="row clientes">
+                    <!-- Input Telefono -->
+                    <div class="col-md-6">
+                        <input type="numeric" id="telefono" class="form-control" formControlName='telefono' placeholder="Telefono.." required>
+                        <span style="color: red" *ngIf="formCliente.controls['telefono'].touched && formCliente.controls['telefono'].errors?.required">El telefono es requerido</span>   
+                    </div>
+                    <!-- Input Mail -->
+                    <div class="col-md-6">
+                        <input type="email" id="mail" class="form-control" formControlName='mail' placeholder="Mail.." required>
+                        <span style="color: red" *ngIf="formCliente.controls['mail'].touched && formCliente.controls['mail'].errors?.required">El mail es requerido</span>           
+                    </div>
+                </div>
+                <div class="row clientes">
+                    <!-- Input Usuario -->
+                    <div class="col-md-6">
+                        <input type="text" id="foto" class="form-control" formControlName='foto' placeholder="Foto.." required>
+                        <span style="color: red" *ngIf="formCliente.controls['foto'].touched && formCliente.controls['foto'].errors?.required">La foto es requerida</span>   
+                    </div>
+                </div>
+                <div class="row clientes">
+                    <!-- Input Usuario -->
+                    <div class="col-md-6">
+                        <input type="text" id="usuario" class="form-control" formControlName='usuario' placeholder="Usuario.." required>
+                        <span style="color: red" *ngIf="formCliente.controls['usuario'].touched && formCliente.controls['usuario'].errors?.required">El usuario es requerido</span>   
+                    </div>
+                    <!-- Input Password -->
+                    <div class="col-md-6">
+                        <input type="text" id="password"  class="form-control" formControlName='password' placeholder="Contraseña.." required>
+                        <span style="color: red" *ngIf="formCliente.controls['password'].touched && formCliente.controls['password'].errors?.required">La contraseña es requerida</span>   
+                    </div>
+                </div>
+                <div class="row clientes">
+                    <!-- Guardar -->
+                    <div class="col-sm-2">
+                        <button type="submit" class="btn btn-success" [disabled]= 'formCliente.invalid'>Guardar</button>
+                    </div>
+                    <!-- Cancelar -->
+                    <div class="col-sm-2">
+                        <button type="button" class="btn btn-danger">Cancelar</button>
+                    </div>
+                </div>
+        </div>
+    </div>
+    </form>
+</div>
