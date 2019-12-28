@@ -5,9 +5,9 @@ import { ClienteModificarComponent } from './cliente-modificar.component';
 import { ClienteDetalleComponent } from './cliente-detalle.component';
 
 export const CLIENTE_ROUTES: Routes= [
-    {path: 'listado', component: ClienteListadoComponent},
-    {path: 'alta', component: ClienteAltaComponent},
-    {path: 'modificar', component: ClienteModificarComponent},
-    {path: 'detalle', component: ClienteDetalleComponent},
+    {path: 'listadoCliente', component: ClienteListadoComponent},
+    {path: 'altaCliente', component: ClienteAltaComponent},
+    {path: 'modificarCliente', component: ClienteModificarComponent},
+    {path: 'detalleCliente', component: ClienteDetalleComponent},
     {path: '**', pathMatch: 'full' , redirectTo:'home'}
 ];
