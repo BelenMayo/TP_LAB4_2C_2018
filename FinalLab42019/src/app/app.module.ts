@@ -31,6 +31,10 @@ import { HttpClientModule }    from '@angular/common/http';
 // Servicios
 import {ClientesService} from './services/clientes/clientes.service';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { EmpleadoAltaComponent } from './components/empleado-alta/empleado-alta.component';
+import { EmpleadoDetalleComponent } from './components/empleado-detalle/empleado-detalle.component';
+import { EmpleadoListadoComponent } from './components/empleado-listado/empleado-listado.component';
+import { EmpleadoModificarComponent } from './components/empleado-modificar/empleado-modificar.component';
 
 
 @NgModule({
@@ -49,6 +53,10 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
     ClienteModificarComponent,
     ClienteListadoComponent,
     ClienteDetalleComponent,
+    EmpleadoAltaComponent,
+    EmpleadoDetalleComponent,
+    EmpleadoListadoComponent,
+    EmpleadoModificarComponent,
   ],
   imports: [
     BrowserModule,

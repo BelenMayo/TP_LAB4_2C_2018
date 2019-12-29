@@ -2,6 +2,9 @@ import { Component, OnInit } from '@angular/core';
 import { ClientesService } from '../../services/clientes/clientes.service';
 import { HttpClient } from '@angular/common/http';
 
+import * as $ from "jquery";
+
+
 @Component({
   selector: 'app-cliente-listado',
   templateUrl: './cliente-listado.component.html',
@@ -17,6 +20,10 @@ export class ClienteListadoComponent implements OnInit {
   }
 
   ngOnInit() {
+    // $(document).ready(function () {
+    //   $('#tablaClientes').DataTable();
+    //   $('.dataTables_length').addClass('bs-select');
+    // });
   }
 
   // Trae todos los clientes
