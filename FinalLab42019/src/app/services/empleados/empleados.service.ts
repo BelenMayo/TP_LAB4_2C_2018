@@ -15,6 +15,7 @@ export class EmpleadosService {
     return this.httpClient.get('http://localhost/ComandaAPI/public/empleados/listar/1/0')
       .pipe(
         map(resp => {
+          console.log(resp);
           if (resp['data'].length > 0) {
             return resp['data'];
           } else {

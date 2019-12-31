@@ -1,3 +1,54 @@
-<p>
-  cliente-detalle works!
-</p>
+<link href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" rel="stylesheet">
+
+<div class="container contenedor-clientes">
+    <label class="titulo">Detalle Cliente</label>
+    <form [formGroup]="formCliente" (ngSubmit)="guardarCliente()">
+
+        <div class="row">
+            <div class="col-md-9 col-sm-8">
+                <div class="row clientes">
+                    <!-- Input Nombre -->
+                    <div class="col-md-6">
+                        <input type="text" id="nombre" class="form-control" formControlName='nombre' disabled> 
+                    </div>
+                    <!-- Input Apellido -->
+                    <div class="col-md-6">
+                        <input type="text" id="apellido" class="form-control" formControlName='apellido' disabled>
+                    </div>
+                </div>
+                <div class="row clientes">
+                    <!-- Input Telefono -->
+                    <div class="col-md-6">
+                        <input type="numeric" id="telefono" class="form-control" formControlName='telefono' disabled> 
+                    </div>
+                    <!-- Input Mail -->
+                    <div class="col-md-6">
+                        <input type="email" id="mail" class="form-control" formControlName='mail' disabled>           
+                    </div>
+                </div>
+                <div class="row clientes">
+                    <!-- Input Usuario -->
+                    <div class="col-md-6">
+                        <input type="text" id="foto" class="form-control" formControlName='foto' disabled>
+                    </div>
+                </div>
+                <div class="row clientes">
+                    <!-- Input Usuario -->
+                    <div class="col-md-6">
+                        <input type="text" id="usuario" class="form-control" formControlName='usuario' disabled>
+                    </div>
+                    <!-- Input Password -->
+                    <div class="col-md-6">
+                        <input type="text" id="password"  class="form-control" formControlName='password' disabled>  
+                    </div>
+                </div>
+                <div class="row clientes">
+                    <!-- Volver -->
+                    <div class="col-sm-2">
+                        <button type="button" class="btn btn-danger">Volver</button>
+                    </div>
+                </div>
+        </div>
+    </div>
+    </form>
+</div>

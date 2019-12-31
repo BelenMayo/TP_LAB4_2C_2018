@@ -10,18 +10,17 @@
                 <th>Acciones</th>
             </tr>
         </thead>
-            <tr *ngFor="let item of clientes">
-                <td>{{item.apellido}}</td>
-                <td>{{item.nombre}}</td>
-                <td>{{item.telefono}}</td>
-                <td>{{item.mail}}</td>
-                <td>{{item.foto}}</td>
-                <td><button type="button" class="btn btn-success"
-                        [routerLink]="['/cliente/modificarCliente']">Modificar</button></td>
-                <td><button type="button" class="btn btn-danger" data-toggle="modal"
-                        data-target="#exampleModal">Eliminar</button></td>
-                <!-- Modal -->
-                <!-- <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog"
+        <tr *ngFor="let item of clientes">
+            <td>{{item.apellido}}</td>
+            <td>{{item.nombre}}</td>
+            <td>{{item.telefono}}</td>
+            <td>{{item.mail}}</td>
+            <td>{{item.foto}}</td>
+            <td><button type="button" class="btn btn-info" [routerLink]="['/cliente/detalleCliente']">Ver</button></td>
+            <td><button type="button" class="btn btn-success" [routerLink]="['/cliente/modificarCliente']">Modificar</button></td>
+            <td><button type="button" class="btn btn-danger" data-toggle="modal" data-target="#exampleModal">Eliminar</button></td>
+            <!-- Modal -->
+            <!-- <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog"
                     aria-labelledby="exampleModalLabel" aria-hidden="true">
                     <div class="modal-dialog" role="document">r
                         <div class="modal-content">
@@ -41,7 +40,7 @@
                         </div>
                     </div>
                 </div> -->
-            </tr>
+        </tr>
     </table>
     <button type="button" [routerLink]="['/cliente/altaCliente']" class="btn btn-primary">Crear</button>
 </div>

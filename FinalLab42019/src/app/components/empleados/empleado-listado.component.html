@@ -1,26 +1,25 @@
 <div class="table-responsive" id="tablaEmpleados" style="background-color:white">
-  <table class="records_list table table-striped table-bordered table-hover" id="mydatatable">
-      <thead>
-          <tr>
-              <th>Apellido</th>
-              <th>Nombre</th>
-              <th>Telefono</th>
-              <th>Mail</th>
-              <th>Foto</th>
-              <th>Acciones</th>
-          </tr>
-      </thead>
-          <tr *ngFor="let item of empleados">
-              <td>{{item.apellido}}</td>
-              <td>{{item.nombre}}</td>
-              <td>{{item.telefono}}</td>
-              <td>{{item.mail}}</td>
-              <td>{{item.foto}}</td>
-              <td><button type="button" class="btn btn-success"
-                      [routerLink]="['/empleado/modificarEmpleado']">Modificar</button></td>
-              <td><button type="button" class="btn btn-danger" data-toggle="modal"
-                      data-target="#exampleModal">Eliminar</button></td>
-          </tr>
-  </table>
-  <button type="button" [routerLink]="['/empleado/altaEmpleado']" class="btn btn-primary">Crear</button>
+    <table class="records_list table table-striped table-bordered table-hover" id="mydatatable">
+        <thead>
+            <tr>
+                <th>Apellido</th>
+                <th>Nombre</th>
+                <th>Telefono</th>
+                <th>Mail</th>
+                <th>Foto</th>
+                <th>Acciones</th>
+            </tr>
+        </thead>
+        <tr *ngFor="let item of empleados">
+            <td>{{item.apellido}}</td>
+            <td>{{item.nombre}}</td>
+            <td>{{item.telefono}}</td>
+            <td>{{item.mail}}</td>
+            <td>{{item.foto}}</td>
+            <td><button type="button" class="btn btn-info" [routerLink]="['/empleado/detalleEmpleado']">Ver</button></td>
+            <td><button type="button" class="btn btn-success" [routerLink]="['/empleado/modificarEmpleado']">Modificar</button></td>
+            <td><button type="button" class="btn btn-danger" data-toggle="modal" data-target="#exampleModal">Eliminar</button></td>
+        </tr>
+    </table>
+    <button type="button" [routerLink]="['/empleado/altaEmpleado']" class="btn btn-primary">Crear</button>
 </div>

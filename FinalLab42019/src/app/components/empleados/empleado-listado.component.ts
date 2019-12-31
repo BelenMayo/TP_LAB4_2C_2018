@@ -4,8 +4,7 @@ import { HttpClient } from '@angular/common/http';
 
 @Component({
   selector: 'app-empleado-listado',
-  templateUrl: './empleados.component.html',
-  styleUrls: ['./empleados.component.css']
+  templateUrl: './empleado-listado.component.html'
 })
 export class EmpleadoListadoComponent implements OnInit {
   // Variables
