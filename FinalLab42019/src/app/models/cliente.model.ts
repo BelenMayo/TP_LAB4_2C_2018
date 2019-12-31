@@ -35,7 +35,6 @@ export class ClienteModel {
 
     // Modifica cliente
     modificarCliente(cliente: any) :ClienteModel{
-        debugger;
         let nuevoCliente = new ClienteModel();
         nuevoCliente.nombre = cliente['nombre'].value;
         nuevoCliente.apellido = cliente['apellido'].value;

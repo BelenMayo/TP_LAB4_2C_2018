@@ -24,17 +24,19 @@ import { ClienteAltaComponent } from './components/clientes/cliente-alta.compone
 import { ClienteModificarComponent } from './components/clientes/cliente-modificar.component';
 import { ClienteListadoComponent } from './components/clientes/cliente-listado.component';
 import { ClienteDetalleComponent } from './components/clientes/cliente-detalle.component';
+import { EmpleadoAltaComponent } from './components/empleados/empleado-alta.component';
+import { EmpleadoDetalleComponent } from './components/empleados/empleado-detalle.component';
+import { EmpleadoListadoComponent } from './components/empleados/empleado-listado.component';
+import { EmpleadoModificarComponent } from './components/empleados/empleado-modificar.component';
 
 //HTTP
 import { HttpClientModule }    from '@angular/common/http';
 
 // Servicios
 import {ClientesService} from './services/clientes/clientes.service';
+import {EmpleadosService} from './services/empleados/empleados.service';
+
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
-import { EmpleadoAltaComponent } from './components/empleado-alta/empleado-alta.component';
-import { EmpleadoDetalleComponent } from './components/empleado-detalle/empleado-detalle.component';
-import { EmpleadoListadoComponent } from './components/empleado-listado/empleado-listado.component';
-import { EmpleadoModificarComponent } from './components/empleado-modificar/empleado-modificar.component';
 
 
 @NgModule({
@@ -69,6 +71,7 @@ import { EmpleadoModificarComponent } from './components/empleado-modificar/empl
   ],
   providers: [
     ClientesService,
+    EmpleadosService
   ],
   bootstrap: [AppComponent]
 })
