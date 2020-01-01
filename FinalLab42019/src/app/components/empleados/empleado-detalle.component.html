@@ -5,7 +5,7 @@
     <form [formGroup]="formEmpleado" (ngSubmit)="guardarEmpleado()">
 
         <div class="row">
-            <div class="col-md-9 col-sm-8">
+            <div class="col-md-9 col-sm-8"> 
                 <div class="row empleados">
                     <!-- Input Nombre -->
                     <div class="col-md-6">
@@ -19,23 +19,23 @@
                 <div class="row empleados">
                     <!-- Input Telefono -->
                     <div class="col-md-6">
-                        <input type="numeric" id="telefono" class="form-control" formControlName='telefono' disabled>
+                        <input type="numeric" id="telefono" class="form-control" formControlName='telefono' disabled> 
                     </div>
                     <!-- Input Mail -->
                     <div class="col-md-6">
-                        <input type="email" id="mail" class="form-control" formControlName='mail' disabled>          
+                        <input type="email" id="mail" class="form-control" formControlName='mail' disabled>           
                     </div>
                 </div>
                 <div class="row empleados">
                     <!-- Input Usuario -->
                     <div class="col-md-6">
-                        <input type="text" id="foto" class="form-control" formControlName='foto' disabled>  
+                        <input type="text" id="foto" class="form-control" formControlName='foto' disabled>
                     </div>
                 </div>
                 <div class="row empleados">
                     <!-- Input Usuario -->
                     <div class="col-md-6">
-                        <input type="text" id="usuario" class="form-control" formControlName='usuario' disabled> 
+                        <input type="text" id="usuario" class="form-control" formControlName='usuario' disabled>
                     </div>
                     <!-- Input Password -->
                     <div class="col-md-6">
@@ -45,7 +45,7 @@
                 <div class="row empleados">
                     <!-- Volver -->
                     <div class="col-sm-2">
-                        <button type="button" class="btn btn-danger">Volver</button>
+                        <button type="button" class="btn btn-danger" [routerLink]="['/empleado/listadoEmpleado']">Volver</button>
                     </div>
                 </div>
         </div>
