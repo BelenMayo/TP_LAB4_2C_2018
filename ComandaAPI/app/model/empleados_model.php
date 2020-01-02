@@ -34,11 +34,18 @@ class EmpleadosModel
             'total' => $total
         ];
     }
+
+    public function get($id)
+    {
+        $data = $this->db->from($this->table)
+                     ->where('id_empleado = ' . $id)
+                     ->fetchAll();
+                     
+        return ['data'  => $data];
+    }
     
     public function insert($data)
-    {
-        //$data['Password'] = md5($data['Password']);
-           
+    {  
         $this->db->insertInto($this->table, $data)
                  ->execute();
         
@@ -49,7 +56,7 @@ class EmpleadosModel
     {
         $this->db
         ->update($this->table, $data)
-        ->where('id = ' . $id)
+        ->where('id_empleado = ' . $id)
         ->execute();
 
         return $this->response->SetResponse(true);
@@ -59,7 +66,7 @@ class EmpleadosModel
     {     
         $this->db
         ->deleteFrom($this->table)
-        ->where('id = '. $id)
+        ->where('id_empleado = '. $id)
         ->execute();
 
         return $this->response->SetResponse(true);

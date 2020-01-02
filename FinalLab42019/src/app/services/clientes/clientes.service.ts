@@ -24,6 +24,19 @@ export class ClientesService {
       );
   }
 
+  traerCliente(id: number) {
+    return this.httpClient.get('http://localhost/ComandaAPI/public/clientes/traer/${id}', )
+      .pipe(
+        map(resp => {
+          if (resp['data'].length > 0) {
+            return resp['data'];
+          } else {
+            return false;
+          }
+        })
+      );
+  }
+
   guardarCliente(cliente: ClienteModel) {
     return this.httpClient.post('http://localhost/ComandaAPI/public/clientes/registrar', cliente)
       .pipe(

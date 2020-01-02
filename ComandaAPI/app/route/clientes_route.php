@@ -5,14 +5,15 @@ use App\Lib\Auth,
     App\Middleware\AuthMiddleware;
 
 $app->group('/clientes/', function () {
-    $this->get('', function ($req, $res, $args) {
-        return $res->withHeader('Content-type', 'text/html')
-                   ->write('Soy una ruta de prueba');
-    });
-    
+
     $this->get('listar/{l}/{p}', function ($req, $res, $args) {
         return $res->withHeader('Content-type', 'application/json')
                    ->write(json_encode($this->model->cliente->getAll($args['l'], $args['p'])));
+    });
+
+    $this->get('traer/{id}', function ($req, $res, $args) {
+        return $res->withHeader('Content-type', 'application/json')
+                   ->write(json_encode($this->model->empleado->get($args['id'])));
     });
     
     $this->post('registrar', function ($req, $res, $args) {
