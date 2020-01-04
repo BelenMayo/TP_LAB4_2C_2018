@@ -1,32 +1,18 @@
 import { Injectable } from '@angular/core';
 import { HttpClient, HttpResponse } from '@angular/common/http';
 import { map } from 'rxjs/operators';
-import { EmpleadoModel } from '../../models/empleado.model';
+import { ClienteModel } from '../models/cliente.model';
 
 
 @Injectable({
   providedIn: 'root'
 })
-export class EmpleadosService {
+export class ClientesService {
 
   constructor(private httpClient: HttpClient) { }
 
-  traerEmpleados() {
-    return this.httpClient.get('http://localhost/ComandaAPI/public/empleados/listar/1/0')
-      .pipe(
-        map(resp => {
-          console.log(resp);
-          if (resp['data'].length > 0) {
-            return resp['data'];
-          } else {
-            return false;
-          }
-        })
-      );
-  }
-
-  guardarEmpleado(empleado: EmpleadoModel) {
-    return this.httpClient.post('http://localhost/ComandaAPI/public/empleados/registrar', empleado)
+  traerClientes() {
+    return this.httpClient.get('http://localhost/ComandaAPI/public/clientes/listar/1/0')
       .pipe(
         map(resp => {
           if (resp['data'].length > 0) {
@@ -38,8 +24,34 @@ export class EmpleadosService {
       );
   }
 
-  modificarEmpleado(empleado: EmpleadoModel) {
-    return this.httpClient.put('http://localhost/ComandaAPI/public/empleados/modificar/?', empleado)
+  traerCliente(id: number) {
+    return this.httpClient.get('http://localhost/ComandaAPI/public/clientes/traer/1')
+      .pipe(
+        map(resp => {
+          if (resp['data'].length > 0) {
+            return resp['data'];
+          } else {
+            return false;
+          }
+        })
+      );
+  }
+
+  guardarCliente(cliente: ClienteModel) {
+    return this.httpClient.post('http://localhost/ComandaAPI/public/clientes/registrar', cliente)
+      .pipe(
+        map(resp => {
+          if (resp['data'].length > 0) {
+            return resp['data'];
+          } else {
+            return false;
+          }
+        })
+      );
+  }
+
+  modificarCliente(cliente: ClienteModel) {
+    return this.httpClient.put('http://localhost/ComandaAPI/public/clientes/modificar/?', cliente)
     .pipe(
       map(resp => {
         if (resp['data'].length > 0) {
@@ -51,8 +63,8 @@ export class EmpleadosService {
     );
   }
 
-  eliminarEmpleado(id: number) {
-    return this.httpClient.delete('http://localhost/ComandaAPI/public/empleados/eliminar/${id}')
+  eliminarCliente(id: number) {
+    return this.httpClient.delete('http://localhost/ComandaAPI/public/clientes/eliminar/${id}')
     .pipe(
       map(resp => {
         if (resp['data'].length > 0) {
@@ -63,4 +75,5 @@ export class EmpleadosService {
       })
     );
   }
+
 }

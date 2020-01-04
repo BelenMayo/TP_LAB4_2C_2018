@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { ClientesService } from '../../services/clientes/clientes.service';
+import { ClientesService } from '../../services/clientes.service';
 import { HttpClient } from '@angular/common/http';
 
 import * as $ from "jquery";
@@ -12,28 +12,24 @@ import * as $ from "jquery";
 export class ClienteDetalleComponent implements OnInit {
 
   // Variables
-  clientes: string[];
+  cliente: string[];
 
-  constructor(public clientesService: ClientesService, private httpClient: HttpClient) { 
-    this.traerClientes();
+  constructor(public clientesService: ClientesService, private httpClient: HttpClient) {   
+    this.traerCliente();
   }
 
   ngOnInit() {
-    // $(document).ready(function () {
-    //   $('#tablaClientes').DataTable();
-    //   $('.dataTables_length').addClass('bs-select');
-    // });
   }
 
   // Trae todos los clientes
-  traerClientes() {
-    this.clientesService.traerClientes()
+  traerCliente() {
+    this.clientesService.traerCliente(1)
       .subscribe(resp => {
-        this.clientes = resp;
-        console.log(this.clientes);
+        this.cliente = resp;
+        console.log(this.cliente);
       },
         error => {
-          text: 'Error al traer clientes';
+          text: 'Error al traer cliente';
         });
   }
 

@@ -33,8 +33,8 @@ import { EmpleadoModificarComponent } from './components/empleados/empleado-modi
 import { HttpClientModule }    from '@angular/common/http';
 
 // Servicios
-import {ClientesService} from './services/clientes/clientes.service';
-import {EmpleadosService} from './services/empleados/empleados.service';
+import {ClientesService} from './services/clientes.service';
+import {EmpleadosService} from './services/empleados.service';
 
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 

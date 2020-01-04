@@ -1,18 +1,32 @@
 import { Injectable } from '@angular/core';
 import { HttpClient, HttpResponse } from '@angular/common/http';
 import { map } from 'rxjs/operators';
-import { ClienteModel } from '../../models/cliente.model';
+import { EmpleadoModel } from '../models/empleado.model';
 
 
 @Injectable({
   providedIn: 'root'
 })
-export class ClientesService {
+export class EmpleadosService {
 
   constructor(private httpClient: HttpClient) { }
 
-  traerClientes() {
-    return this.httpClient.get('http://localhost/ComandaAPI/public/clientes/listar/1/0')
+  traerEmpleados() {
+    return this.httpClient.get('http://localhost/ComandaAPI/public/empleados/listar/1/0')
+      .pipe(
+        map(resp => {
+          console.log(resp);
+          if (resp['data'].length > 0) {
+            return resp['data'];
+          } else {
+            return false;
+          }
+        })
+      );
+  }
+
+  traerEmpleado(id: number) {
+    return this.httpClient.get('http://localhost/ComandaAPI/public/empleados/traer/${id}', )
       .pipe(
         map(resp => {
           if (resp['data'].length > 0) {
@@ -24,8 +38,8 @@ export class ClientesService {
       );
   }
 
-  traerCliente(id: number) {
-    return this.httpClient.get('http://localhost/ComandaAPI/public/clientes/traer/${id}', )
+  guardarEmpleado(empleado: EmpleadoModel) {
+    return this.httpClient.post('http://localhost/ComandaAPI/public/empleados/registrar', empleado)
       .pipe(
         map(resp => {
           if (resp['data'].length > 0) {
@@ -37,21 +51,8 @@ export class ClientesService {
       );
   }
 
-  guardarCliente(cliente: ClienteModel) {
-    return this.httpClient.post('http://localhost/ComandaAPI/public/clientes/registrar', cliente)
-      .pipe(
-        map(resp => {
-          if (resp['data'].length > 0) {
-            return resp['data'];
-          } else {
-            return false;
-          }
-        })
-      );
-  }
-
-  modificarCliente(cliente: ClienteModel) {
-    return this.httpClient.put('http://localhost/ComandaAPI/public/clientes/modificar/?', cliente)
+  modificarEmpleado(empleado: EmpleadoModel) {
+    return this.httpClient.put('http://localhost/ComandaAPI/public/empleados/modificar/?', empleado)
     .pipe(
       map(resp => {
         if (resp['data'].length > 0) {
@@ -63,8 +64,8 @@ export class ClientesService {
     );
   }
 
-  eliminarCliente(id: number) {
-    return this.httpClient.delete('http://localhost/ComandaAPI/public/clientes/eliminar/${id}')
+  eliminarEmpleado(id: number) {
+    return this.httpClient.delete('http://localhost/ComandaAPI/public/empleados/eliminar/${id}')
     .pipe(
       map(resp => {
         if (resp['data'].length > 0) {
@@ -75,5 +76,4 @@ export class ClientesService {
       })
     );
   }
-
 }

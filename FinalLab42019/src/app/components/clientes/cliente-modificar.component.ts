@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { FormControl, FormGroup, Validators, FormBuilder } from '@angular/forms';
 import { ClienteModel } from '../../models/cliente.model';
-import { ClientesService } from '../../services/clientes/clientes.service';
+import { ClientesService } from '../../services/clientes.service';
 import { HttpClient } from '@angular/common/http';
 
 @Component({
