@@ -2,36 +2,35 @@
 
 <div class="container contenedor-clientes">
     <label class="titulo">Detalle Cliente</label>
-    <label *ngFor="let item of cliente">{{item.nombre}} {{item.apellido}}</label>
-        <!-- <div class="row">
+        <div class="row" *ngFor="let item of cliente">
             <div class="col-md-9 col-sm-8">
                 <div class="row clientes">
                     <div class="col-md-6">
-                        <input type="text" id="nombre" class="form-control" formControlName='nombre' value="{{item.nombre}}"> 
+                        <input type="text" id="nombre" class="form-control" value="{{item.nombre}}" disabled> 
                     </div>
                     <div class="col-md-6">
-                        <input type="text" id="apellido" class="form-control" formControlName='apellido'>
-                    </div>
-                </div>
-                <div class="row clientes">
-                    <div class="col-md-6">
-                        <input type="numeric" id="telefono" class="form-control" formControlName='telefono'> 
-                    </div>
-                    <div class="col-md-6">
-                        <input type="email" id="mail" class="form-control" formControlName='mail'>           
+                        <input type="text" id="apellido" class="form-control" value="{{item.apellido}}" disabled>
                     </div>
                 </div>
                 <div class="row clientes">
                     <div class="col-md-6">
-                        <input type="text" id="foto" class="form-control" formControlName='foto'>
+                        <input type="numeric" id="telefono" class="form-control" value="{{item.telefono}}" disabled> 
+                    </div>
+                    <div class="col-md-6">
+                        <input type="email" id="mail" class="form-control" value="{{item.mail}}" disabled>           
                     </div>
                 </div>
                 <div class="row clientes">
                     <div class="col-md-6">
-                        <input type="text" id="usuario" class="form-control" formControlName='usuario'>
+                        <input type="text" id="foto" class="form-control" value="{{item.foto}}" disabled>
+                    </div>
+                </div>
+                <div class="row clientes">
+                    <div class="col-md-6">
+                        <input type="text" id="usuario" class="form-control" value="{{item.usuario}}" disabled>
                     </div>
                     <div class="col-md-6">
-                        <input type="text" id="password"  class="form-control" formControlName='password'>  
+                        <input type="text" id="password"  class="form-control" value="{{item.password}}" disabled>  
                     </div>
                 </div>
                 <div class="row clientes">
@@ -40,5 +39,5 @@
                     </div>
                 </div>
         </div>
-    </div> -->
+    </div>
 </div>

@@ -25,7 +25,7 @@ export class ClientesService {
   }
 
   traerCliente(id: number) {
-    return this.httpClient.get('http://localhost/ComandaAPI/public/clientes/traer/1')
+    return this.httpClient.get(`http://localhost/ComandaAPI/public/clientes/traer/${id}`)
       .pipe(
         map(resp => {
           if (resp['data'].length > 0) {

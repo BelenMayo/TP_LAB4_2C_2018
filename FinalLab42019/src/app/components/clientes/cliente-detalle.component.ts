@@ -1,8 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { ClientesService } from '../../services/clientes.service';
 import { HttpClient } from '@angular/common/http';
+import { ActivatedRoute, Params } from '@angular/router';
 
-import * as $ from "jquery";
 
 @Component({
   selector: 'app-cliente-detalle',
@@ -13,17 +13,21 @@ export class ClienteDetalleComponent implements OnInit {
 
   // Variables
   cliente: string[];
+  id: string;
 
-  constructor(public clientesService: ClientesService, private httpClient: HttpClient) {   
-    this.traerCliente();
+  constructor(public clientesService: ClientesService, private httpClient: HttpClient, private rutaActiva: ActivatedRoute) {  
+    this.rutaActiva.params.subscribe(params=>
+      {
+        this.traerCliente(params.id);
+      });
   }
 
   ngOnInit() {
   }
 
   // Trae todos los clientes
-  traerCliente() {
-    this.clientesService.traerCliente(1)
+  traerCliente(id) {
+    this.clientesService.traerCliente(id)
       .subscribe(resp => {
         this.cliente = resp;
         console.log(this.cliente);

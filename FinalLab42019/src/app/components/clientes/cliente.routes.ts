@@ -7,7 +7,7 @@ import { ClienteDetalleComponent } from './cliente-detalle.component';
 export const CLIENTE_ROUTES: Routes= [
     {path: 'listadoCliente', component: ClienteListadoComponent},
     {path: 'altaCliente', component: ClienteAltaComponent},
-    {path: 'modificarCliente', component: ClienteModificarComponent},
-    {path: 'detalleCliente', component: ClienteDetalleComponent},
+    {path: 'modificarCliente/:id', component: ClienteModificarComponent},
+    {path: 'detalleCliente/:id', component: ClienteDetalleComponent},
     {path: '**', pathMatch: 'full' , redirectTo:'home'}
 ];

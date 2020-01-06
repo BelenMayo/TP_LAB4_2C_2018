@@ -13,7 +13,7 @@ $app->group('/clientes/', function () {
 
     $this->get('traer/{id}', function ($req, $res, $args) {
         return $res->withHeader('Content-type', 'application/json')
-                   ->write(json_encode($this->model->empleado->get($args['id'])));
+                   ->write(json_encode($this->model->cliente->get($args['id'])));
     });
     
     $this->post('registrar', function ($req, $res, $args) {
