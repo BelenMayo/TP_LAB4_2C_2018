@@ -1,18 +1,17 @@
 import { Injectable } from '@angular/core';
 import { HttpClient, HttpResponse } from '@angular/common/http';
 import { map } from 'rxjs/operators';
-import { ClienteModel } from '../models/cliente.model';
-
+import { MesaModel } from '../models/mesa.model';
 
 @Injectable({
   providedIn: 'root'
 })
-export class ClientesService {
+export class MesasService {
 
   constructor(private httpClient: HttpClient) { }
 
-  traerClientes() {
-    return this.httpClient.get('http://localhost/ComandaAPI/public/clientes/listar/1/0')
+  traerMesas() {
+    return this.httpClient.get('http://localhost/ComandaAPI/public/mesas/listar/1/0')
       .pipe(
         map(resp => {
           if (resp['data'].length > 0) {
@@ -24,8 +23,8 @@ export class ClientesService {
       );
   }
 
-  traerCliente(id: number) {
-    return this.httpClient.get(`http://localhost/ComandaAPI/public/clientes/traer/${id}`)
+  traerMesa(id: number) {
+    return this.httpClient.get(`http://localhost/ComandaAPI/public/mesas/traer/${id}`)
       .pipe(
         map(resp => {
           if (resp['data'].length > 0) {
@@ -37,8 +36,8 @@ export class ClientesService {
       );
   }
 
-  guardarCliente(id: number, cliente: ClienteModel) {
-    return this.httpClient.post('http://localhost/ComandaAPI/public/clientes/registrar/', cliente)
+  guardarMesa(id: number, mesa: MesaModel) {
+    return this.httpClient.post('http://localhost/ComandaAPI/public/mesas/registrar/', mesa)
       .pipe(
         map(resp => {
           if (resp['data'].length > 0) {
@@ -50,8 +49,8 @@ export class ClientesService {
       );
   }
 
-  modificarCliente(id: number, cliente: ClienteModel) {
-    return this.httpClient.put(`http://localhost/ComandaAPI/public/clientes/modificar/${id}`, cliente)
+  modificarMesa(id: number, mesa: MesaModel) {
+    return this.httpClient.put(`http://localhost/ComandaAPI/public/mesas/modificar/${id}`, mesa)
     .pipe(
       map(resp => {
         if (resp['data'].length > 0) {
@@ -63,8 +62,8 @@ export class ClientesService {
     );
   }
 
-  eliminarCliente(id: number) {
-    return this.httpClient.delete(`http://localhost/ComandaAPI/public/clientes/eliminar/${id}`)
+  eliminarMesa(id: number) {
+    return this.httpClient.delete(`http://localhost/ComandaAPI/public/mesas/eliminar/${id}`)
     .pipe(
       map(resp => {
         if (resp['data'].length > 0) {

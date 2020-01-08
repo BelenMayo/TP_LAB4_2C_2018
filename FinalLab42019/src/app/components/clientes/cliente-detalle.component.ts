@@ -25,7 +25,7 @@ export class ClienteDetalleComponent implements OnInit {
   ngOnInit() {
   }
 
-  // Trae todos los clientes
+  // Trae un cliente
   traerCliente(id) {
     this.clientesService.traerCliente(id)
       .subscribe(resp => {

@@ -6,11 +6,13 @@ import { CLIENTE_ROUTES } from './components/clientes/cliente.routes';
 import { ClientesComponent } from './components/clientes/clientes.component';
 import { EMPLEADO_ROUTES } from './components/empleados/empleados.routes';
 import { EmpleadosComponent } from './components/empleados/empleados.component';
+import { MesasComponent } from './components/mesas/mesas.component';
 
 const APP_ROUTES: Routes= [
     {path: 'home', component: HomeComponent},
     {path: 'cliente', component: ClientesComponent, children: CLIENTE_ROUTES},
     {path: 'empleado', component: EmpleadosComponent, children: EMPLEADO_ROUTES},
+    {path: 'mesa', component: MesasComponent},
     {path: 'reserva', component: ReservasComponent},
     {path: 'login', component: LoginComponent},
     {path: '**', pathMatch: 'full' , redirectTo:'home'}

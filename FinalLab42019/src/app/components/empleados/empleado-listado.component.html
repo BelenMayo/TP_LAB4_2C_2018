@@ -16,8 +16,8 @@
             <td>{{item.telefono}}</td>
             <td>{{item.mail}}</td>
             <td>{{item.foto}}</td>
-            <td><button type="button" class="btn btn-info" [routerLink]="['/empleado/detalleEmpleado']">Ver</button></td>
-            <td><button type="button" class="btn btn-success" [routerLink]="['/empleado/modificarEmpleado']">Modificar</button></td>
+            <td><button type="button" class="btn btn-info"  [routerLink]="['/empleado/detalleEmpleado', item.id_empleado]" >Ver</button></td>
+            <td><button type="button" class="btn btn-success" [routerLink]="['/empleado/detalleEmpleado', item.id_empleado]" >Modificar</button></td>
             <td><button type="button" class="btn btn-danger" data-toggle="modal" data-target="#exampleModal">Eliminar</button></td>
         </tr>
     </table>

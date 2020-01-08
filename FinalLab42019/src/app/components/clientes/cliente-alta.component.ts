@@ -17,6 +17,7 @@ export class ClienteAltaComponent implements OnInit {
   // Variables
   clientes: string[];
   cliente: ClienteModel;
+  id: number;
 
   constructor(private formBuilder: FormBuilder, public clientesService: ClientesService, private httpClient: HttpClient) {
   }
@@ -43,7 +44,7 @@ export class ClienteAltaComponent implements OnInit {
 
     this.cliente = new ClienteModel().guardarCliente(this.formCliente.controls);
     
-    this.clientesService.guardarCliente(this.cliente)
+    this.clientesService.guardarCliente(this.id, this.cliente)
       .subscribe(resp => {
         this.clientes = resp;
         console.log(this.clientes);

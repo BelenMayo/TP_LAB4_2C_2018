@@ -26,7 +26,7 @@ export class EmpleadosService {
   }
 
   traerEmpleado(id: number) {
-    return this.httpClient.get('http://localhost/ComandaAPI/public/empleados/traer/${id}', )
+    return this.httpClient.get(`http://localhost/ComandaAPI/public/empleados/traer/${id}`)
       .pipe(
         map(resp => {
           if (resp['data'].length > 0) {

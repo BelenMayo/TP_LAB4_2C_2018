@@ -7,7 +7,7 @@ import { EmpleadoDetalleComponent } from './empleado-detalle.component';
 export const EMPLEADO_ROUTES: Routes= [
     {path: 'listadoEmpleado', component: EmpleadoListadoComponent},
     {path: 'altaEmpleado', component: EmpleadoAltaComponent},
-    {path: 'modificarEmpleado', component: EmpleadoModificarComponent},
-    {path: 'detalleEmpleado', component: EmpleadoDetalleComponent},
+    {path: 'modificarEmpleado/:id', component: EmpleadoModificarComponent},
+    {path: 'detalleEmpleado/:id', component: EmpleadoDetalleComponent},
     {path: '**', pathMatch: 'full' , redirectTo:'home'}
 ];
