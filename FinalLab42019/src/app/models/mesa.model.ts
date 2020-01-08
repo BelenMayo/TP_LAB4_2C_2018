@@ -6,7 +6,7 @@ export class MesaModel {
     constructor() {
         this.nro_mesa = "";
         this.nombre = "";
-
+    }
 
     // Modifica mesa
     // modificarMesa(mesa: any) :MesaModel{
