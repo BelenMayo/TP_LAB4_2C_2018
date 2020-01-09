@@ -5,6 +5,7 @@ import { Component, OnInit } from '@angular/core';
   templateUrl: './mesas.component.html',
   styleUrls: ['./mesas.component.css']
 })
+
 export class MesasComponent implements OnInit {
 
   constructor() { }
