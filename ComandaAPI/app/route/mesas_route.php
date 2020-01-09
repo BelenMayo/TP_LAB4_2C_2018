@@ -4,30 +4,31 @@ use App\Lib\Auth,
     App\Validation\TestValidation,
     App\Middleware\AuthMiddleware;
 
-$app->group('/prueba/', function () {
-    $this->get('', function ($req, $res, $args) {
-        return $res->withHeader('Content-type', 'text/html')
-                   ->write('Soy una ruta de prueba');
-    });
-    
+$app->group('/mesas/', function () {
+
     $this->get('listar/{l}/{p}', function ($req, $res, $args) {
         return $res->withHeader('Content-type', 'application/json')
-                   ->write(json_encode($this->model->empleado->getAll($args['l'], $args['p'])));
+                   ->write(json_encode($this->model->mesa->getAll($args['l'], $args['p'])));
+    });
+
+    $this->get('traer/{id}', function ($req, $res, $args) {
+        return $res->withHeader('Content-type', 'application/json')
+                   ->write(json_encode($this->model->mesa->get($args['id'])));
     });
     
     $this->post('registrar', function ($req, $res, $args) {
         return $res->withHeader('Content-type', 'application/json')
-                   ->write(json_encode($this->model->empleado->insert($req->getParsedBody())));
+                   ->write(json_encode($this->model->mesa->insert($req->getParsedBody())));
     });
 
     $this->put('modificar/{id}', function ($req, $res, $args) {
         return $res->withHeader('Content-type', 'application/json')
-                   ->write(json_encode($this->model->empleado->update($req->getParsedBody(),$args['id'])));
+                   ->write(json_encode($this->model->mesa->update($req->getParsedBody(),$args['id'])));
     });
 
     $this->delete('eliminar/{id}', function ($req, $res, $args) {
         return $res->withHeader('Content-type', 'application/json')
-                   ->write(json_encode($this->model->empleado->delete($args['id'])));
+                   ->write(json_encode($this->model->mesa->delete($args['id'])));
     });
     
     $this->post('valida', function ($req, $res, $args) {

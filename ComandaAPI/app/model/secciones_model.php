@@ -3,10 +3,10 @@ namespace App\Model;
 
 use App\Lib\Response;
 
-class PruebaModel
+class SeccionesModel
 {
     private $db;
-    private $table = 'prueba';
+    private $table = 'secciones';
     private $response;
     
     public function __CONSTRUCT($db)
@@ -34,11 +34,18 @@ class PruebaModel
             'total' => $total
         ];
     }
+
+    public function get($id)
+    {
+        $data = $this->db->from($this->table)
+                     ->where('id_seccion = ' . $id)
+                     ->fetchAll();
+               
+        return ['data'  => $data];
+    }
     
     public function insert($data)
-    {
-        //$data['Password'] = md5($data['Password']);
-           
+    {   
         $this->db->insertInto($this->table, $data)
                  ->execute();
         
@@ -49,7 +56,7 @@ class PruebaModel
     {
         $this->db
         ->update($this->table, $data)
-        ->where('id = ' . $id)
+        ->where('id_seccion = ' . $id)
         ->execute();
 
         return $this->response->SetResponse(true);
@@ -59,7 +66,7 @@ class PruebaModel
     {     
         $this->db
         ->deleteFrom($this->table)
-        ->where('id = '. $id)
+        ->where('id_seccion = '. $id)
         ->execute();
 
         return $this->response->SetResponse(true);
