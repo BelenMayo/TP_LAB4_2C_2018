@@ -4,31 +4,31 @@ use App\Lib\Auth,
     App\Validation\TestValidation,
     App\Middleware\AuthMiddleware;
 
-$app->group('/categorias/', function () {
+$app->group('/estado_mesas/', function () {
 
     $this->get('listar/{l}/{p}', function ($req, $res, $args) {
         return $res->withHeader('Content-type', 'application/json')
-                   ->write(json_encode($this->model->categoria->getAll($args['l'], $args['p'])));
+                   ->write(json_encode($this->model->estado_mesa->getAll($args['l'], $args['p'])));
     });
 
     $this->get('traer/{id}', function ($req, $res, $args) {
         return $res->withHeader('Content-type', 'application/json')
-                   ->write(json_encode($this->model->categoria->get($args['id'])));
+                   ->write(json_encode($this->model->estado_mesa->get($args['id'])));
     });
     
     $this->post('registrar', function ($req, $res, $args) {
         return $res->withHeader('Content-type', 'application/json')
-                   ->write(json_encode($this->model->categoria->insert($req->getParsedBody())));
+                   ->write(json_encode($this->model->estado_mesa->insert($req->getParsedBody())));
     });
 
     $this->put('modificar/{id}', function ($req, $res, $args) {
         return $res->withHeader('Content-type', 'application/json')
-                   ->write(json_encode($this->model->categoria->update($req->getParsedBody(),$args['id'])));
+                   ->write(json_encode($this->model->estado_mesa->update($req->getParsedBody(),$args['id'])));
     });
 
     $this->delete('eliminar/{id}', function ($req, $res, $args) {
         return $res->withHeader('Content-type', 'application/json')
-                   ->write(json_encode($this->model->categoria->delete($args['id'])));
+                   ->write(json_encode($this->model->estado_mesa->delete($args['id'])));
     });
     
     $this->post('valida', function ($req, $res, $args) {

@@ -32,12 +32,19 @@ $container['db'] = function($c){
 // Models
 $container['model'] = function($c){
     return (object)[
-        'empleado' => new App\Model\EmpleadosModel($c->db),
-        'cliente' => new App\Model\ClientesModel($c->db),
-        'mesa' => new App\Model\MesasModel($c->db),
-        'menu' => new App\Model\MenuModel($c->db),
-        'pedido' => new App\Model\PedidosModel($c->db),
         'categoria' => new App\Model\CategoriasModel($c->db),
-        'seccion' => new App\Model\SeccionesModel($c->db)
+        'cliente' => new App\Model\ClientesModel($c->db),
+        'detalle_pedido' => new App\Model\DetallePedidosModel($c->db),
+        'empleado' => new App\Model\EmpleadosModel($c->db),
+        'encuesta' => new App\Model\EncuestasModel($c->db),
+        'estado_empleado' => new App\Model\EstadoEmpleadosModel($c->db),
+        'estado_mesa' => new App\Model\EstadoMesasModel($c->db),
+        'estado_pedido' => new App\Model\EstadoPedidosModel($c->db),
+        'menu' => new App\Model\MenusModel($c->db),
+        'mesa' => new App\Model\MesasModel($c->db),
+        'pedido' => new App\Model\PedidosModel($c->db),
+        'seccion' => new App\Model\SeccionesModel($c->db),
+        'sector_pedido' => new App\Model\SectorPedidosModel($c->db),
+        'tipo_empleado' => new App\Model\TipoEmpleadosModel($c->db)
     ];
 };

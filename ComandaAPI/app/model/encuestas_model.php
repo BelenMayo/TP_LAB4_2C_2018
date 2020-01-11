@@ -3,10 +3,10 @@ namespace App\Model;
 
 use App\Lib\Response;
 
-class MenuModel
+class EncuestasModel
 {
     private $db;
-    private $table = 'menu';
+    private $table = 'encuestas';
     private $response;
     
     public function __CONSTRUCT($db)
@@ -38,7 +38,7 @@ class MenuModel
     public function get($id)
     {
         $data = $this->db->from($this->table)
-                     ->where('id_menu = ' . $id)
+                     ->where('id_encuesta = ' . $id)
                      ->fetchAll();
                
         return ['data'  => $data];
@@ -56,7 +56,7 @@ class MenuModel
     {
         $this->db
         ->update($this->table, $data)
-        ->where('id_menu = ' . $id)
+        ->where('id_encuesta = ' . $id)
         ->execute();
 
         return $this->response->SetResponse(true);
@@ -66,7 +66,7 @@ class MenuModel
     {     
         $this->db
         ->deleteFrom($this->table)
-        ->where('id_menu = '. $id)
+        ->where('id_encuesta = '. $id)
         ->execute();
 
         return $this->response->SetResponse(true);
