@@ -1,108 +1,16 @@
 
 <div class="panel-tarjetas">
-  <div class="row">
+  <div *ngFor="let item of mesas" class="row">
     <div class="col-md-4 tarjetas">
         <div class="card text-black bg-light mb-3" style="max-width: 18rem;">
             <div class="card-header">
                 <i class="fas fa-table fa-3x"></i>
             </div>
             <div class="card-body">
-              <h5 class="card-title">Mesa 1</h5>
-              <p class="card-text">Bariloche</p>
+              <h5 class="card-title">{{item.nro_mesa}}</h5>
+              <p class="card-text">{{item.nombre}}</p>
             </div>
         </div>
     </div>
-    <div class="col-md-4 tarjetas">
-        <div class="card text-black bg-light mb-3" style="max-width: 18rem;">
-            <div class="card-header">
-                <i class="fas fa-table fa-3x"></i>
-            </div>
-            <div class="card-body">
-              <h5 class="card-title">Mesa 2</h5>
-              <p class="card-text">Tilcara</p>
-            </div>
-        </div>
-    </div>
-    <div class="col-md-4 tarjetas">
-        <div class="card text-black bg-light mb-3" style="max-width: 18rem;">
-            <div class="card-header">
-                <i class="fas fa-table fa-3x"></i>
-            </div>
-            <div class="card-body">
-              <h5 class="card-title">Mesa 3</h5>
-              <p class="card-text">Humahuaca</p>
-          </div>
-      </div>
-    </div>
-  </div>
-  
-  <div class="row">
-      <div class="col-md-4 tarjetas">
-          <div class="card text-black bg-light mb-3" style="max-width: 18rem;">
-              <div class="card-header">
-                  <i class="fas fa-table fa-3x"></i>
-              </div>
-              <div class="card-body">
-                <h5 class="card-title">Mesa 4</h5>
-                <p class="card-text">Chapadmalal</p>
-              </div>
-          </div>
-      </div>
-      <div class="col-md-4 tarjetas">
-          <div class="card text-black bg-light mb-3" style="max-width: 18rem;">
-              <div class="card-header">
-                  <i class="fas fa-table fa-3x"></i>
-              </div>
-              <div class="card-body">
-                <h5 class="card-title">Mesa 5</h5>
-                <p class="card-text">Iguazu</p>
-              </div>
-          </div>
-      </div>
-      <div class="col-md-4 tarjetas">
-          <div class="card text-black bg-light mb-3" style="max-width: 18rem;">
-              <div class="card-header">
-                  <i class="fas fa-table fa-3x"></i>
-              </div>
-              <div class="card-body">
-                <h5 class="card-title">Mesa 6</h5>
-                <p class="card-text">Chascomus</p>
-            </div>
-        </div>
-      </div>
-      <div class="col-md-4 tarjetas">
-        <div class="card text-black bg-light mb-3" style="max-width: 18rem;">
-            <div class="card-header">
-                <i class="fas fa-table fa-3x"></i>
-            </div>
-            <div class="card-body">
-              <h5 class="card-title">Mesa 7</h5>
-              <p class="card-text">Tandil</p>
-          </div>
-      </div>
-    </div>
-    <div class="col-md-4 tarjetas">
-      <div class="card text-black bg-light mb-3" style="max-width: 18rem;">
-          <div class="card-header">
-              <i class="fas fa-table fa-3x"></i>
-          </div>
-          <div class="card-body">
-            <h5 class="card-title">Mesa 8</h5>
-            <p class="card-text">Miramar</p>
-        </div>
-    </div>
-  </div>
-  <div class="col-md-4 tarjetas">
-    <div class="card text-black bg-light mb-3" style="max-width: 18rem;">
-        <div class="card-header">
-            <i class="fas fa-table fa-3x"></i>
-        </div>
-        <div class="card-body">
-          <h5 class="card-title">Mesa 9</h5>
-          <p class="card-text">Bernal</p>
-      </div>
   </div>
 </div>
-  
-    </div>
-  </div>

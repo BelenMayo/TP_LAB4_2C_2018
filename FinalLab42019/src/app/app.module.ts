@@ -27,6 +27,8 @@ import { EmpleadoAltaComponent } from './components/empleados/empleado-alta.comp
 import { EmpleadoDetalleComponent } from './components/empleados/empleado-detalle.component';
 import { EmpleadoListadoComponent } from './components/empleados/empleado-listado.component';
 import { EmpleadoModificarComponent } from './components/empleados/empleado-modificar.component';
+import { ImagenesComponent } from './components/imagenes/imagenes.component';
+
 
 //HTTP
 import { HttpClientModule }    from '@angular/common/http';
@@ -35,6 +37,10 @@ import { HttpClientModule }    from '@angular/common/http';
 import {ClientesService} from './services/clientes.service';
 import {EmpleadosService} from './services/empleados.service';
 
+// Imagenes
+import { ImageUploadModule } from 'angular2-image-upload';
+
+// Otros
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
 
@@ -57,6 +63,7 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
     EmpleadoDetalleComponent,
     EmpleadoListadoComponent,
     EmpleadoModificarComponent,
+    ImagenesComponent,
   ],
   imports: [
     BrowserModule,
@@ -66,6 +73,7 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
     HttpClientModule,
     BrowserAnimationsModule,
     NgbModule,
+    ImageUploadModule.forRoot()
   ],
   providers: [
     ClientesService,

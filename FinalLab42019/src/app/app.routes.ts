@@ -15,7 +15,7 @@ const APP_ROUTES: Routes= [
     {path: 'empleado', component: EmpleadosComponent, children: EMPLEADO_ROUTES},
     {path: 'mesa', component: MesasComponent},
     {path: 'menu', component: MenuComponent},
-    {path: 'pedidos', component: PedidosComponent},
+    {path: 'pedido', component: PedidosComponent},
     {path: 'login', component: LoginComponent},
     {path: '**', pathMatch: 'full' , redirectTo:'home'}
 ];
