@@ -16,9 +16,13 @@
             <td>{{item.telefono}}</td>
             <td>{{item.mail}}</td>
             <td>{{item.foto}}</td>
-            <td><button type="button" class="btn btn-info" [routerLink]="['/cliente/detalleCliente', item.id_cliente]" style="margin: 10px">Ver</button>
-            <button type="button" class="btn btn-success" [routerLink]="['/cliente/modificarCliente', item.id_cliente]" style="margin: 10px">Modificar</button>
-            <button type="button" class="btn btn-danger" data-toggle="modal" data-target="#exampleModal" style="margin: 10px">Eliminar</button></td>
+            <td><button type="button" class="btn btn-info" [routerLink]="['/cliente/detalleCliente', item.id_cliente]"
+                    style="margin: 10px">Ver</button>
+                <button type="button" class="btn btn-success"
+                    [routerLink]="['/cliente/modificarCliente', item.id_cliente]"
+                    style="margin: 10px">Modificar</button>
+                <button type="button" class="btn btn-danger" data-toggle="modal" data-target="#exampleModal"
+                    style="margin: 10px">Eliminar</button></td>
             <!-- Modal -->
             <!-- <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog"
                     aria-labelledby="exampleModalLabel" aria-hidden="true">
@@ -42,5 +46,8 @@
                 </div> -->
         </tr>
     </table>
+
+    <pagination [totalItems]="totalRegistros" [(ngModel)]="clientes" [maxSize]="maxSize" previousText="Anterior" nextText="Siguiente"></pagination>
+
     <button type="button" [routerLink]="['/cliente/altaCliente']" class="btn btn-primary">Crear</button>
 </div>

@@ -1,4 +1,5 @@
 <div class="table-responsive" id="tablaMenus" style="background-color:white">
+    <a>Vinos y Tragos</a>
     <table class="records_list table table-striped table-bordered table-hover" id="mydatatable">
         <thead>
             <tr>
@@ -12,14 +13,15 @@
         <tr *ngFor="let item of menus">
             <td>{{item.nombre}}</td>
             <td>{{item.foto}}</td>
-            <td></td>
-            <td>{{item.precio}}</td>
+            <td><input type="number" id="cantidad"></td>
+            <td>$ {{item.precio}}</td>
             <td></td>
         </tr>
     </table>
 </div>
 
 <div class="table-responsive" id="tablaMenus" style="background-color:white">
+    <a>Cervezas</a>
     <table class="records_list table table-striped table-bordered table-hover" id="mydatatable">
         <thead>
             <tr>
@@ -33,14 +35,15 @@
         <tr *ngFor="let item of menus">
             <td>{{item.nombre}}</td>
             <td>{{item.foto}}</td>
-            <td></td>
-            <td>{{item.precio}}</td>
+            <td><input type="number" id="cantidad"></td>
+            <td>$ {{item.precio}}</td>
             <td></td>
        </tr>
     </table>
 </div>
 
 <div class="table-responsive" id="tablaMenus" style="background-color:white">
+    <a>Platos</a>
     <table class="records_list table table-striped table-bordered table-hover" id="mydatatable">
         <thead>
             <tr>
@@ -54,14 +57,15 @@
         <tr *ngFor="let item of menus">
             <td>{{item.nombre}}</td>
             <td>{{item.foto}}</td>
-            <td></td>
-            <td>{{item.precio}}</td>
+            <td><input type="number" id="cantidad"></td>
+            <td>$ {{item.precio}}</td>
             <td></td>
         </tr>
     </table>
 </div>
 
 <div class="table-responsive" id="tablaMenus" style="background-color:white">
+    <a>Candy Bar</a>
     <table class="records_list table table-striped table-bordered table-hover" id="mydatatable">
         <thead>
             <tr>
@@ -75,11 +79,11 @@
         <tr *ngFor="let item of menus">
             <td>{{item.nombre}}</td>
             <td>{{item.foto}}</td>
-            <td></td>
-            <td>{{item.precio}}</td>
+            <td><input type="number" id="cantidad"></td>
+            <td>$   {{item.precio}}</td>
             <td></td>
         </tr>
     </table>
 </div>
 
-<button type="button" [routerLink]="['/cliente/altaCliente']" class="btn btn-primary">Crear</button>
+<button type="button" [routerLink]="['/cliente/altaCliente']" class="btn btn-primary">Hacer Pedido</button>

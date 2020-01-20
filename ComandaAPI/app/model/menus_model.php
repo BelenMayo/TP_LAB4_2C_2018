@@ -6,7 +6,7 @@ use App\Lib\Response;
 class MenusModel
 {
     private $db;
-    private $table = 'menu';
+    private $table = 'menus';
     private $response;
     
     public function __CONSTRUCT($db)
@@ -17,7 +17,7 @@ class MenusModel
     
     public function getAll($l, $p)
     {
-        $l = $l * 5;
+        $l = $l * 10;
 
         $data = $this->db->from($this->table)
                          ->limit($l)

@@ -17,7 +17,7 @@ class ClientesModel
     
     public function getAll($l, $p)
     {
-        $l = $l * 5;
+        $l = $l * 10;
 
         $data = $this->db->from($this->table)
                          ->limit($l)
