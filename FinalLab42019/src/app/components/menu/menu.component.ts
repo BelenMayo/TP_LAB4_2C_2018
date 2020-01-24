@@ -13,24 +13,63 @@ import * as $ from "jquery";
 export class MenuComponent implements OnInit {
 
   // Variables
-  menus: string[];
+  tragos: string[];
+  cervezas: string[];
+  cocina: string[];
+  candy: string[];
 
   constructor(public menuService: MenuService, private httpClient: HttpClient) { 
-    this.traerMenus();
+    this.traerTragos();
+    this.traerCervezas();
+    this.traerCocina();
+    this.traerCandyBar();
   }
 
   ngOnInit() {
   }
 
   // Trae todos los menu
-  traerMenus() {
-    this.menuService.traerMenus()
+  traerTragos() {
+    this.menuService.traerMenuPorCategoria(1)
       .subscribe(resp => {
-        this.menus = resp;
-        console.log(this.menus);
+        this.tragos = resp;
+        console.log(this.tragos);
       },
         error => {
-          text: 'Error al traer menus';
+          text: 'Error al traer tragos';
+        });
+  }
+
+  traerCervezas() {
+    this.menuService.traerMenuPorCategoria(2)
+      .subscribe(resp => {
+        this.cervezas = resp;
+        console.log(this.cervezas);
+      },
+        error => {
+          text: 'Error al traer cervezas';
+        });
+  }
+
+  traerCocina() {
+    this.menuService.traerMenuPorCategoria(3)
+      .subscribe(resp => {
+        this.cocina = resp;
+        console.log(this.cocina);
+      },
+        error => {
+          text: 'Error al traer cocina';
+        });
+  }
+
+  traerCandyBar() {
+    this.menuService.traerMenuPorCategoria(4)
+      .subscribe(resp => {
+        this.candy = resp;
+        console.log(this.candy);
+      },
+        error => {
+          text: 'Error al traer candy';
         });
   }
 

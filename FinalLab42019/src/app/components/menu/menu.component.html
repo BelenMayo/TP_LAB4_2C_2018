@@ -3,16 +3,16 @@
     <table class="records_list table table-striped table-bordered table-hover" id="mydatatable">
         <thead>
             <tr>
-                <th>Plato</th>
+                <th>Detalle</th>
                 <th>Foto</th>
                 <th>Cantidad</th>
                 <th>Precio</th>
                 <th>Subtotal</th>
             </tr>
         </thead>
-        <tr *ngFor="let item of menus">
+        <tr *ngFor="let item of tragos">
             <td>{{item.nombre}}</td>
-            <td>{{item.foto}}</td>
+            <td><img class="img-responsive" src="assets/images/{{item.foto}}"></td>
             <td><input type="number" id="cantidad"></td>
             <td>$ {{item.precio}}</td>
             <td></td>
@@ -25,16 +25,16 @@
     <table class="records_list table table-striped table-bordered table-hover" id="mydatatable">
         <thead>
             <tr>
-                <th>Plato</th>
+                <th>Detalle</th>
                 <th>Foto</th>
                 <th>Cantidad</th>
                 <th>Precio</th>
                 <th>Subtotal</th>
             </tr>
         </thead>
-        <tr *ngFor="let item of menus">
+        <tr *ngFor="let item of cervezas">
             <td>{{item.nombre}}</td>
-            <td>{{item.foto}}</td>
+            <td><img class="img-responsive" src="assets/images/{{item.foto}}"></td>
             <td><input type="number" id="cantidad"></td>
             <td>$ {{item.precio}}</td>
             <td></td>
@@ -47,16 +47,16 @@
     <table class="records_list table table-striped table-bordered table-hover" id="mydatatable">
         <thead>
             <tr>
-                <th>Plato</th>
+                <th>Detalle</th>
                 <th>Foto</th>
                 <th>Cantidad</th>
                 <th>Precio</th>
                 <th>Subtotal</th>
             </tr>
         </thead>
-        <tr *ngFor="let item of menus">
+        <tr *ngFor="let item of cocina">
             <td>{{item.nombre}}</td>
-            <td>{{item.foto}}</td>
+            <td><img class="img-responsive" src="assets/images/{{item.foto}}"></td>
             <td><input type="number" id="cantidad"></td>
             <td>$ {{item.precio}}</td>
             <td></td>
@@ -69,16 +69,16 @@
     <table class="records_list table table-striped table-bordered table-hover" id="mydatatable">
         <thead>
             <tr>
-                <th>Plato</th>
+                <th>Detalle</th>
                 <th>Foto</th>
                 <th>Cantidad</th>
                 <th>Precio</th>
                 <th>Subtotal</th>
             </tr>
         </thead>
-        <tr *ngFor="let item of menus">
+        <tr *ngFor="let item of candy">
             <td>{{item.nombre}}</td>
-            <td>{{item.foto}}</td>
+            <td><img class="img-responsive" src="assets/images/{{item.foto}}"></td>
             <td><input type="number" id="cantidad"></td>
             <td>$   {{item.precio}}</td>
             <td></td>
