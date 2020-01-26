@@ -13,6 +13,7 @@ export class ClienteListadoComponent implements OnInit {
   // Variables
   clientes: string[];
   totalRegistros: number;
+  pageActual: number = 1;
 
   constructor(public clientesService: ClientesService, private httpClient: HttpClient) { 
     setTheme('bs4');
