@@ -51,8 +51,8 @@ export class EmpleadosService {
       );
   }
 
-  modificarEmpleado(empleado: EmpleadoModel) {
-    return this.httpClient.put('http://localhost/ComandaAPI/public/empleados/modificar/?', empleado)
+  modificarEmpleado(id: number, empleado: EmpleadoModel) {
+    return this.httpClient.put(`http://localhost/ComandaAPI/public/empleados/modificar/${id}`, empleado)
     .pipe(
       map(resp => {
         if (resp['data'].length > 0) {
@@ -65,7 +65,7 @@ export class EmpleadosService {
   }
 
   eliminarEmpleado(id: number) {
-    return this.httpClient.delete('http://localhost/ComandaAPI/public/empleados/eliminar/${id}')
+    return this.httpClient.delete(`http://localhost/ComandaAPI/public/empleados/eliminar/${id}`)
     .pipe(
       map(resp => {
         if (resp['data'].length > 0) {

@@ -37,7 +37,7 @@ export class ClientesService {
       );
   }
 
-  guardarCliente(id: number, cliente: ClienteModel) {
+  guardarCliente(cliente: ClienteModel) {
     return this.httpClient.post('http://localhost/ComandaAPI/public/clientes/registrar/', cliente)
       .pipe(
         map(resp => {

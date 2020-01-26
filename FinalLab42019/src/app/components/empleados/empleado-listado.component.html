@@ -17,7 +17,7 @@
             <td>{{item.mail}}</td>
             <td>{{item.foto}}</td>
             <td><button type="button" class="btn btn-info" [routerLink]="['/empleado/detalleEmpleado', item.id_empleado]" style="margin: 10px">Ver</button>
-                <button type="button" class="btn btn-success" [routerLink]="['/empleado/detalleEmpleado', item.id_empleado]" style="margin: 10px">Modificar</button>
+                <button type="button" class="btn btn-success" [routerLink]="['/empleado/modificarEmpleado', item.id_empleado]" style="margin: 10px">Modificar</button>
                 <button type="button" class="btn btn-danger" data-toggle="modal" data-target="#exampleModal" style="margin: 10px" (click)="openModal(template)">Eliminar</button></td>
             <ng-template #template>
                 <div class="modal-header">
