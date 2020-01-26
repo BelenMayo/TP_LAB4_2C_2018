@@ -43,6 +43,7 @@ import { ImageUploadModule } from 'angular2-image-upload';
 // Otros
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { NgxPaginationModule } from 'ngx-pagination';
+import { ModalModule } from 'ngx-bootstrap/modal';
 
 @NgModule({
   declarations: [
@@ -74,7 +75,8 @@ import { NgxPaginationModule } from 'ngx-pagination';
     BrowserAnimationsModule,
     NgbModule,
     ImageUploadModule.forRoot(),
-    NgxPaginationModule
+    NgxPaginationModule,
+    ModalModule.forRoot()
   ],
   providers: [
     ClientesService,

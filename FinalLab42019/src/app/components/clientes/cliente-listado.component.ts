@@ -1,6 +1,7 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, TemplateRef } from '@angular/core';
 import { ClientesService } from '../../services/clientes.service';
 import { HttpClient } from '@angular/common/http';
+import { BsModalService, BsModalRef } from 'ngx-bootstrap/modal';
 
 
 @Component({
@@ -12,9 +13,11 @@ export class ClienteListadoComponent implements OnInit {
 
   // Variables
   clientes: string[];
+  totalRegistros: number;
   pageActual: number = 1;
+  modalRef: BsModalRef;
 
-  constructor(public clientesService: ClientesService, private httpClient: HttpClient) { 
+  constructor(public clientesService: ClientesService, private httpClient: HttpClient, private modalService: BsModalService) { 
     this.traerClientes();
   }
 
@@ -32,6 +35,10 @@ export class ClienteListadoComponent implements OnInit {
         error => {
           text: 'Error al traer clientes';
         });
+  }
+
+  openModal(template: TemplateRef<any>) {
+    this.modalRef = this.modalService.show(template);
   }
 
 }
