@@ -17,7 +17,7 @@ class MenusModel
     
     public function getAll($l, $p)
     {
-        $l = $l * 10;
+        $l = $l * 100;
 
         $data = $this->db->from($this->table)
                          ->limit($l)
@@ -39,6 +39,15 @@ class MenusModel
     {
         $data = $this->db->from($this->table)
                      ->where('id_menu = ' . $id)
+                     ->fetchAll();
+               
+        return ['data'  => $data];
+    }
+
+    public function getPorCategoria($id)
+    {
+        $data = $this->db->from($this->table)
+                     ->where('id_categoria = ' . $id)
                      ->fetchAll();
                
         return ['data'  => $data];

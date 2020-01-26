@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { ClientesService } from '../../services/clientes.service';
 import { HttpClient } from '@angular/common/http';
-import { setTheme } from 'ngx-bootstrap/utils';
+
 
 @Component({
   selector: 'app-cliente-listado',
@@ -12,11 +12,9 @@ export class ClienteListadoComponent implements OnInit {
 
   // Variables
   clientes: string[];
-  totalRegistros: number;
   pageActual: number = 1;
 
   constructor(public clientesService: ClientesService, private httpClient: HttpClient) { 
-    setTheme('bs4');
     this.traerClientes();
   }
 
@@ -36,10 +34,4 @@ export class ClienteListadoComponent implements OnInit {
         });
   }
 
-}
-
-export class DemoPaginationLimitComponent {
-  maxSize = 5;
-  bigTotalItems = 175;
-  bigCurrentPage = 1;
 }

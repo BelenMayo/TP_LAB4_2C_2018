@@ -17,6 +17,7 @@ export class MenuComponent implements OnInit {
   cervezas: string[];
   cocina: string[];
   candy: string[];
+  pageActual: number = 1;
 
   constructor(public menuService: MenuService, private httpClient: HttpClient) { 
     this.traerTragos();

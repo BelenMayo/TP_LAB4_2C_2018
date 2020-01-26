@@ -10,7 +10,7 @@
                 <th>Acciones</th>
             </tr>
         </thead>
-        <tr *ngFor="let item of empleados">
+        <tr *ngFor="let item of empleados | paginate: { itemsPerPage: 5, currentPage: pageActual }">
             <td>{{item.apellido}}</td>
             <td>{{item.nombre}}</td>
             <td>{{item.telefono}}</td>
@@ -21,5 +21,6 @@
             <td><button type="button" class="btn btn-danger" data-toggle="modal" data-target="#exampleModal">Eliminar</button></td>
         </tr>
     </table>
+    <pagination-controls (pageChange)="pageActual = $event" previousLabel="Anterior" nextLabel="Siguiente"></pagination-controls>
     <button type="button" [routerLink]="['/empleado/altaEmpleado']" class="btn btn-primary">Crear</button>
 </div>

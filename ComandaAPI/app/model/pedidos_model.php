@@ -17,7 +17,7 @@ class PedidosModel
     
     public function getAll($l, $p)
     {
-        $l = $l * 10;
+        $l = $l * 100;
 
         $data = $this->db->from($this->table)
                          ->limit($l)

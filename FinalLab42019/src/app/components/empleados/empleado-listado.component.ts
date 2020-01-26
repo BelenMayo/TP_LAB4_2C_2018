@@ -10,6 +10,7 @@ import { HttpClient } from '@angular/common/http';
 export class EmpleadoListadoComponent implements OnInit {
   // Variables
   empleados: string[];
+  pageActual: number = 1;
 
   constructor(public empleadosService: EmpleadosService, private httpClient: HttpClient) { 
     this.traerEmpleados();
