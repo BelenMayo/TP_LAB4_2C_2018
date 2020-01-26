@@ -1,6 +1,7 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, TemplateRef } from '@angular/core';
 import { EmpleadosService } from '../../services/empleados.service';
 import { HttpClient } from '@angular/common/http';
+import { BsModalService, BsModalRef } from 'ngx-bootstrap/modal';
 
 @Component({
   selector: 'app-empleado-listado',
@@ -8,19 +9,16 @@ import { HttpClient } from '@angular/common/http';
   styleUrls: ['./empleados.component.css']
 })
 export class EmpleadoListadoComponent implements OnInit {
-  // Variables
+  
   empleados: string[];
   pageActual: number = 1;
+  modalRef: BsModalRef;
 
-  constructor(public empleadosService: EmpleadosService, private httpClient: HttpClient) { 
+  constructor(public empleadosService: EmpleadosService, private httpClient: HttpClient, private modalService: BsModalService) { 
     this.traerEmpleados();
   }
 
   ngOnInit() {
-    // $(document).ready(function () {
-    //   $('#tablaClientes').DataTable();
-    //   $('.dataTables_length').addClass('bs-select');
-    // });
   }
 
   // Trae todos los clientes
@@ -33,6 +31,22 @@ export class EmpleadoListadoComponent implements OnInit {
         error => {
           text: 'Error al traer empleados';
         });
+  }
+
+  // Elimina empleado
+  eliminarEmpleado(id: number) {
+    this.empleadosService.eliminarEmpleado(id)
+      .subscribe(resp => {
+        console.log("Se elimino el empleado");
+      },
+        error => {
+          text: 'Error al eliminar cliente';
+        });
+  }
+
+  // Abre Modal
+  openModal(template: TemplateRef<any>) {
+    this.modalRef = this.modalService.show(template);
   }
 
 }

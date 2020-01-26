@@ -13,7 +13,6 @@ export class ClienteListadoComponent implements OnInit {
 
   // Variables
   clientes: string[];
-  totalRegistros: number;
   pageActual: number = 1;
   modalRef: BsModalRef;
 
@@ -30,13 +29,24 @@ export class ClienteListadoComponent implements OnInit {
       .subscribe(resp => {
         this.clientes = resp;
         console.log(this.clientes);
-        this.totalRegistros = 6;
       },
         error => {
           text: 'Error al traer clientes';
         });
   }
 
+  // Elimina cliente
+  eliminarCliente(id: number) {
+    this.clientesService.eliminarCliente(id)
+      .subscribe(resp => {
+        console.log("Se elimino el cliente");
+      },
+        error => {
+          text: 'Error al eliminar cliente';
+        });
+  }
+
+  // Abre Modal
   openModal(template: TemplateRef<any>) {
     this.modalRef = this.modalService.show(template);
   }

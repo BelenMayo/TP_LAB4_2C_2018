@@ -7,7 +7,7 @@
                 <th>Telefono</th>
                 <th>Mail</th>
                 <th>Foto</th>
-                <th>Acciones</th>
+                <th style="text-align: center">Acciones</th>
             </tr>
         </thead>
         <tr *ngFor="let item of empleados | paginate: { itemsPerPage: 5, currentPage: pageActual }">
@@ -16,10 +16,24 @@
             <td>{{item.telefono}}</td>
             <td>{{item.mail}}</td>
             <td>{{item.foto}}</td>
-            <td><button type="button" class="btn btn-info"  [routerLink]="['/empleado/detalleEmpleado', item.id_empleado]" >Ver</button></td>
-            <td><button type="button" class="btn btn-success" [routerLink]="['/empleado/detalleEmpleado', item.id_empleado]" >Modificar</button></td>
-            <td><button type="button" class="btn btn-danger" data-toggle="modal" data-target="#exampleModal">Eliminar</button></td>
-        </tr>
+            <td><button type="button" class="btn btn-info" [routerLink]="['/empleado/detalleEmpleado', item.id_empleado]" style="margin: 10px">Ver</button>
+                <button type="button" class="btn btn-success" [routerLink]="['/empleado/detalleEmpleado', item.id_empleado]" style="margin: 10px">Modificar</button>
+                <button type="button" class="btn btn-danger" data-toggle="modal" data-target="#exampleModal" style="margin: 10px" (click)="openModal(template)">Eliminar</button></td>
+            <ng-template #template>
+                <div class="modal-header">
+                  <h4 class="modal-title pull-left">Eliminar empleado</h4>
+                  <button type="button" class="close pull-right" aria-label="Close" (click)="modalRef.hide()">
+                    <span aria-hidden="true">&times;</span>
+                  </button>
+                </div>
+                <div class="modal-body">
+                    ¿Desea eliminar al empleado: <strong>{{item.nombre}} {{item.apellido}}</strong>?
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-success" (click)="eliminarEmpleado(item.id_empleado)">Aceptar</button>
+                    <button type="button" class="btn btn-danger" data-dismiss="modal" (click)="modalRef.hide()">Cancelar</button>
+                </div>
+            </ng-template>        </tr>
     </table>
     <pagination-controls (pageChange)="pageActual = $event" previousLabel="Anterior" nextLabel="Siguiente"></pagination-controls>
     <button type="button" [routerLink]="['/empleado/altaEmpleado']" class="btn btn-primary">Crear</button>
