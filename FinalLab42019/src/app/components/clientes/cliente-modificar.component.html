@@ -6,43 +6,43 @@
             <div class="col-md-9 col-sm-8">
                 <div class="row clientes">
                     <!-- Input Nombre -->
-                    <div class="col-md-6">
+                    <div class="col-md-6"><strong><label>Nombre</label></strong>
                         <input type="text" id="nombre" class="form-control" formControlName='nombre' required>
                         <span style="color: red" *ngIf="formCliente.controls['nombre'].touched && formCliente.controls['nombre'].errors?.required">El nombre es requerido</span>   
                     </div>
                     <!-- Input Apellido -->
-                    <div class="col-md-6">
+                    <div class="col-md-6"><strong><label>Apellido</label></strong>
                         <input type="text" id="apellido" class="form-control" formControlName='apellido' required>
                         <span style="color: red" *ngIf="formCliente.controls['apellido'].touched && formCliente.controls['apellido'].errors?.required">El apellido es requerido</span>
                     </div>
                 </div>
                 <div class="row clientes">
                     <!-- Input Telefono -->
-                    <div class="col-md-6">
+                    <div class="col-md-6"><strong><label>Telefono</label></strong>
                         <input type="numeric" id="telefono" class="form-control" formControlName='telefono' required>
                         <span style="color: red" *ngIf="formCliente.controls['telefono'].touched && formCliente.controls['telefono'].errors?.required">El telefono es requerido</span>   
                     </div>
                     <!-- Input Mail -->
-                    <div class="col-md-6">
+                    <div class="col-md-6"><strong><label>Mail</label></strong>
                         <input type="email" id="mail" class="form-control" formControlName='mail' required>
                         <span style="color: red" *ngIf="formCliente.controls['mail'].touched && formCliente.controls['mail'].errors?.required">El mail es requerido</span>           
                     </div>
                 </div>
                 <div class="row clientes">
                     <!-- Input Usuario -->
-                    <div class="col-md-6">
+                    <div class="col-md-6"><strong><label>Foto</label></strong>
                         <input type="text" id="foto" class="form-control" formControlName='foto' required>
                         <span style="color: red" *ngIf="formCliente.controls['foto'].touched && formCliente.controls['foto'].errors?.required">La foto es requerida</span>   
                     </div>
                 </div>
                 <div class="row clientes">
                     <!-- Input Usuario -->
-                    <div class="col-md-6">
+                    <div class="col-md-6"><strong><label>Usuario</label></strong>
                         <input type="text" id="usuario" class="form-control" formControlName='usuario' required>
                         <span style="color: red" *ngIf="formCliente.controls['usuario'].touched && formCliente.controls['usuario'].errors?.required">El usuario es requerido</span>   
                     </div>
                     <!-- Input Password -->
-                    <div class="col-md-6">
+                    <div class="col-md-6"><strong><label>Password</label></strong>
                         <input type="text" id="password"  class="form-control" formControlName='password' required>
                         <span style="color: red" *ngIf="formCliente.controls['password'].touched && formCliente.controls['password'].errors?.required">La contraseña es requerida</span>   
                     </div>

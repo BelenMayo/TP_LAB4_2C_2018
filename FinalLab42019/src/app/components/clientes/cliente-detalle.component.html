@@ -3,36 +3,36 @@
         <div class="row" *ngFor="let item of cliente">
             <div class="col-md-9 col-sm-8">
                 <div class="row clientes">
-                    <div class="col-md-6">
+                    <div class="col-md-6"><strong><label>Nombre</label></strong>
                         <input type="text" id="nombre" class="form-control" value="{{item.nombre}}" disabled> 
                     </div>
-                    <div class="col-md-6">
+                    <div class="col-md-6"><strong><label>Apellido</label></strong>
                         <input type="text" id="apellido" class="form-control" value="{{item.apellido}}" disabled>
                     </div>
                 </div>
                 <div class="row clientes">
-                    <div class="col-md-6">
+                    <div class="col-md-6"><strong><label>Telefono</label></strong>
                         <input type="numeric" id="telefono" class="form-control" value="{{item.telefono}}" disabled> 
                     </div>
-                    <div class="col-md-6">
+                    <div class="col-md-6"><strong><label>Mail</label></strong>
                         <input type="email" id="mail" class="form-control" value="{{item.mail}}" disabled>           
                     </div>
                 </div>
                 <div class="row clientes">
-                    <div class="col-md-6">
+                    <div class="col-md-6"><strong><label>Foto</label></strong>
                         <input type="text" id="foto" class="form-control" value="{{item.foto}}" disabled>
                     </div>
                 </div>
                 <div class="row clientes">
-                    <div class="col-md-6">
+                    <div class="col-md-6"><strong><label>Usuario</label></strong>
                         <input type="text" id="usuario" class="form-control" value="{{item.usuario}}" disabled>
                     </div>
-                    <div class="col-md-6">
+                    <div class="col-md-6"><strong><label>Password</label></strong>
                         <input type="text" id="password"  class="form-control" value="{{item.password}}" disabled>  
                     </div>
                 </div>
                 <div class="row clientes">
-                    <div class="col-sm-2">
+                    <div class="col-sm-2"><strong><label>Nombre</label></strong>
                         <button type="button" class="btn btn-danger" [routerLink]="['/cliente/listadoCliente']">Volver</button>
                     </div>
                 </div>
