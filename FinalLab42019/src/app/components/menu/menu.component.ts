@@ -1,8 +1,8 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, TemplateRef } from '@angular/core';
 import { MenuService } from '../../services/menu.service';
 import { HttpClient } from '@angular/common/http';
+import { BsModalService, BsModalRef } from 'ngx-bootstrap/modal';
 
-import * as $ from "jquery";
 
 @Component({
   selector: 'app-menu',
@@ -18,8 +18,9 @@ export class MenuComponent implements OnInit {
   cocina: string[];
   candy: string[];
   pageActual: number = 1;
+  modalRef: BsModalRef;
 
-  constructor(public menuService: MenuService, private httpClient: HttpClient) { 
+  constructor(public menuService: MenuService, private httpClient: HttpClient, private modalService: BsModalService) { 
     this.traerTragos();
     this.traerCervezas();
     this.traerCocina();
@@ -74,4 +75,9 @@ export class MenuComponent implements OnInit {
         });
   }
 
+  // Abre Modal
+  openModal(template: TemplateRef<any>) {
+    this.modalRef = this.modalService.show(template);
+  }
+  
 }

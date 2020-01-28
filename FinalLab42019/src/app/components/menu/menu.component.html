@@ -1,5 +1,62 @@
+<div class="btn-group" dropdown>
+    <button id="button-basic" dropdownToggle type="button" class="btn btn-primary dropdown-toggle"
+            aria-controls="dropdown-basic">
+      Button dropdown <span class="caret"></span>
+    </button>
+    <ul id="dropdown-basic" *dropdownMenu class="dropdown-menu"
+        role="menu" aria-labelledby="button-basic">
+      <li role="menuitem"><a class="dropdown-item" href="#">Action</a></li>
+      <li role="menuitem"><a class="dropdown-item" href="#">Another action</a></li>
+      <li role="menuitem"><a class="dropdown-item" href="#">Something else here</a></li>
+      <li class="divider dropdown-divider"></li>
+      <li role="menuitem"><a class="dropdown-item" href="#">Separated link</a>
+      </li>
+    </ul>
+  </div>
+<button type="button" class="btn btn-danger" data-toggle="modal" data-target="#exampleModal" style="margin: 10px"
+    (click)="openModal(template)">Ver Menu</button>
+
+<ng-template #template>
+    <div class="modal-header">
+        <h4 class="modal-title pull-left">Agregar Vinos y Tragos</h4>
+        <button type="button" class="close pull-right" aria-label="Close" (click)="modalRef.hide()">
+            <span aria-hidden="true">&times;</span>
+        </button>
+    </div>
+    <div class="modal-body">
+        <strong><a style="font-size: 20px; color: white;">Vinos y Tragos</a></strong>
+        <div class="table-responsive" id="tablaMenus" style="background-color:white">
+            <table class="records_list table table-striped table-bordered table-hover" id="mydatatable">
+                <thead>
+                    <tr>
+                        <th>Detalle</th>
+                        <th>Foto</th>
+                        <th>Cantidad</th>
+                        <th>Precio</th>
+                        <th>Subtotal</th>
+                    </tr>
+                </thead>
+                <tr *ngFor="let item of tragos | paginate: { itemsPerPage: 5, currentPage: pageActual }">
+                    <td>{{item.nombre}}</td>
+                    <td><img class="img-responsive" src="assets/images/{{item.foto}}"></td>
+                    <td><input type="number" id="cantidad"></td>
+                    <td>$ {{item.precio}}</td>
+                    <td></td>
+                </tr>
+            </table>
+            <pagination-controls (pageChange)="pageActual = $event" previousLabel="Anterior" nextLabel="Siguiente">
+            </pagination-controls>
+        </div>
+    </div>
+    <div class="modal-footer">
+        <button type="button" class="btn btn-success" (click)="eliminarCliente(item.id_cliente)">Agregar</button>
+        <button type="button" class="btn btn-danger" data-dismiss="modal" (click)="modalRef.hide()">Cancelar</button>
+    </div>
+</ng-template>
+
+
+<strong><a style="font-size: 20px; color: white;">Vinos y Tragos</a></strong>
 <div class="table-responsive" id="tablaMenus" style="background-color:white">
-    <strong><a style="font-size: 20px; text-align: center;">Vinos y Tragos</a></strong>
     <table class="records_list table table-striped table-bordered table-hover" id="mydatatable">
         <thead>
             <tr>
@@ -18,11 +75,12 @@
             <td></td>
         </tr>
     </table>
-    <pagination-controls (pageChange)="pageActual = $event" previousLabel="Anterior" nextLabel="Siguiente"></pagination-controls>
+    <pagination-controls (pageChange)="pageActual = $event" previousLabel="Anterior" nextLabel="Siguiente">
+    </pagination-controls>
 </div>
 
+<strong><a style="font-size: 20px; color: white;">Cervezas</a></strong>
 <div class="table-responsive" id="tablaMenus" style="background-color:white">
-    <strong><a style="font-size: 20px;">Cervezas</a></strong>
     <table class="records_list table table-striped table-bordered table-hover" id="mydatatable">
         <thead>
             <tr>
@@ -39,13 +97,14 @@
             <td><input type="number" id="cantidad"></td>
             <td>$ {{item.precio}}</td>
             <td></td>
-       </tr>
+        </tr>
     </table>
-    <pagination-controls (pageChange)="pageActual = $event" previousLabel="Anterior" nextLabel="Siguiente"></pagination-controls>
+    <pagination-controls (pageChange)="pageActual = $event" previousLabel="Anterior" nextLabel="Siguiente">
+    </pagination-controls>
 </div>
 
+<strong><a style="font-size: 20px; color: white;">Platos</a></strong>
 <div class="table-responsive" id="tablaMenus" style="background-color:white">
-    <strong><a style="font-size: 20px;">Platos</a></strong>
     <table class="records_list table table-striped table-bordered table-hover" id="mydatatable">
         <thead>
             <tr>
@@ -64,11 +123,12 @@
             <td></td>
         </tr>
     </table>
-    <pagination-controls (pageChange)="pageActual = $event" previousLabel="Anterior" nextLabel="Siguiente"></pagination-controls>
+    <pagination-controls (pageChange)="pageActual = $event" previousLabel="Anterior" nextLabel="Siguiente">
+    </pagination-controls>
 </div>
 
+<strong><a style="font-size: 20px; color: white;">Candy Bar</a></strong>
 <div class="table-responsive" id="tablaMenus" style="background-color:white">
-    <strong><a style="font-size: 20px;">Candy Bar</a></strong>
     <table class="records_list table table-striped table-bordered table-hover" id="mydatatable">
         <thead>
             <tr>
@@ -83,11 +143,12 @@
             <td>{{item.nombre}}</td>
             <td><img class="img-responsive" src="assets/images/{{item.foto}}"></td>
             <td><input type="number" id="cantidad"></td>
-            <td>$   {{item.precio}}</td>
+            <td>${{item.precio}}</td>
             <td></td>
         </tr>
     </table>
-    <pagination-controls (pageChange)="pageActual = $event" previousLabel="Anterior" nextLabel="Siguiente"></pagination-controls>
+    <pagination-controls (pageChange)="pageActual = $event" previousLabel="Anterior" nextLabel="Siguiente">
+    </pagination-controls>
 </div>
 
 <button type="button" [routerLink]="['/cliente/altaCliente']" class="btn btn-primary">Hacer Pedido</button>

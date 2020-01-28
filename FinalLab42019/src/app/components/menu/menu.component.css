@@ -1,6 +1,9 @@
 .img-responsive {
-    /* max-width: 100%;
-    height: auto; */
     width: 75px; 
     height: 75px;
+};
+
+.categorias {
+    font-size: 20px; 
+    color: white;
 }
