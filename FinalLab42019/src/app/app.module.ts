@@ -28,7 +28,10 @@ import { EmpleadoDetalleComponent } from './components/empleados/empleado-detall
 import { EmpleadoListadoComponent } from './components/empleados/empleado-listado.component';
 import { EmpleadoModificarComponent } from './components/empleados/empleado-modificar.component';
 import { ImagenesComponent } from './components/imagenes/imagenes.component';
-
+import { PedidoListadoComponent } from './components/pedidos/pedido-listado.component';
+import { PedidoDetalleComponent } from './components/pedidos/pedido-detalle.component';
+import { PedidoAltaComponent } from './components/pedidos/pedido-alta.component';
+import { PedidoModificarComponent } from './components/pedidos/pedido-modificar.component';
 
 //HTTP
 import { HttpClientModule }    from '@angular/common/http';
@@ -45,6 +48,7 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { NgxPaginationModule } from 'ngx-pagination';
 import { ModalModule } from 'ngx-bootstrap/modal';
 import { BsDropdownModule } from 'ngx-bootstrap/dropdown';
+
 
 @NgModule({
   declarations: [
@@ -66,6 +70,10 @@ import { BsDropdownModule } from 'ngx-bootstrap/dropdown';
     EmpleadoListadoComponent,
     EmpleadoModificarComponent,
     ImagenesComponent,
+    PedidoListadoComponent,
+    PedidoDetalleComponent,
+    PedidoAltaComponent,
+    PedidoModificarComponent,
   ],
   imports: [
     BrowserModule,
