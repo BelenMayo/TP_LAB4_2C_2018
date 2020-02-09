@@ -10,7 +10,9 @@
                         aria-controls="dropdown-basic"> Mesa <span class="caret"></span></button>
                     <ul id="dropdown-basic" *dropdownMenu class="dropdown-menu" role="menu"
                         aria-labelledby="button-basic">
-                        <li role="menuitem"><a class="dropdown-item" href="#">Mesa1</a></li>
+                        <div *ngFor="let item of mesas">
+                            <li role="menuitem"><a class="dropdown-item" href="#">{{item.nro_mesa}}</a></li>
+                        </div>
                     </ul>
                 </div>
             </div>
@@ -23,7 +25,9 @@
                         aria-controls="dropdown-basic"> Comensal <span class="caret"></span></button>
                     <ul id="dropdown-basic" *dropdownMenu class="dropdown-menu" role="menu"
                         aria-labelledby="button-basic">
-                        <li role="menuitem"><a class="dropdown-item" href="#">Comensal1</a></li>
+                        <div *ngFor="let item of clientes">
+                            <li role="menuitem"><a class="dropdown-item" href="#">{{item.nombre}} {{item.apellido}}</a></li>
+                    </div>
                     </ul>
                 </div>
             </div>
@@ -63,18 +67,18 @@
                                     <td><input type="number" id="cantidad"></td>
                                     <td>$ {{item.precio}}</td>
                                     <td></td>
-                                </tr>
-                            </table>
-                            <pagination-controls (pageChange)="pageActual = $event" previousLabel="Anterior"
-                                nextLabel="Siguiente"></pagination-controls>
+                                    </tr>
+                                    </table>
+                                    <pagination-controls (pageChange)="pageActual = $event" previousLabel="Anterior"
+                                        nextLabel="Siguiente"></pagination-controls>
                         </div>
-                    </div>
-                    <div class="modal-footer">
-                        <button type="button" class="btn btn-success"
-                            (click)="eliminarCliente(item.id_cliente)">Agregar</button>
-                        <button type="button" class="btn btn-danger" data-dismiss="modal"
-                            (click)="modalRef.hide()">Cancelar</button>
-                    </div>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-success"
+                        (click)="eliminarCliente(item.id_cliente)">Agregar</button>
+                    <button type="button" class="btn btn-danger" data-dismiss="modal"
+                        (click)="modalRef.hide()">Cancelar</button>
+                </div>
                 </ng-template>
             </div>
 

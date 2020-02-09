@@ -8,27 +8,32 @@ $app->group('/detalle_pedidos/', function () {
 
     $this->get('listar/{l}/{p}', function ($req, $res, $args) {
         return $res->withHeader('Content-type', 'application/json')
-                   ->write(json_encode($this->model->detalle_pedidos->getAll($args['l'], $args['p'])));
+                   ->write(json_encode($this->model->detalle_pedido->getAll($args['l'], $args['p'])));
+    });
+
+    $this->get('listarDetallePedido/{l}/{p}', function ($req, $res, $args) {
+        return $res->withHeader('Content-type', 'application/json')
+                   ->write(json_encode($this->model->detalle_pedido->getAllDetallePedido($args['l'], $args['p'])));
     });
 
     $this->get('traer/{id}', function ($req, $res, $args) {
         return $res->withHeader('Content-type', 'application/json')
-                   ->write(json_encode($this->model->detalle_pedidos->get($args['id'])));
+                   ->write(json_encode($this->model->detalle_pedido->get($args['id'])));
     });
     
     $this->post('registrar', function ($req, $res, $args) {
         return $res->withHeader('Content-type', 'application/json')
-                   ->write(json_encode($this->model->detalle_pedidos->insert($req->getParsedBody())));
+                   ->write(json_encode($this->model->detalle_pedido->insert($req->getParsedBody())));
     });
 
     $this->put('modificar/{id}', function ($req, $res, $args) {
         return $res->withHeader('Content-type', 'application/json')
-                   ->write(json_encode($this->model->detalle_pedidos->update($req->getParsedBody(),$args['id'])));
+                   ->write(json_encode($this->model->detalle_pedido->update($req->getParsedBody(),$args['id'])));
     });
 
     $this->delete('eliminar/{id}', function ($req, $res, $args) {
         return $res->withHeader('Content-type', 'application/json')
-                   ->write(json_encode($this->model->detalle_pedidos->delete($args['id'])));
+                   ->write(json_encode($this->model->detalle_pedido->delete($args['id'])));
     });
     
     $this->post('valida', function ($req, $res, $args) {

@@ -35,6 +35,30 @@ class DetallePedidosModel
         ];
     }
 
+    public function getAllDetallePedido($l, $p)
+    {
+        $l = $l * 100;
+
+        $data = $this->db->from($this->table)
+                         ->leftJoin("pedidos on pedidos.id_pedido = detalle_pedidos.id_pedido")
+                         ->leftJoin("menus on menus.id_menu = detalle_pedidos.id_menu")
+                         ->leftJoin("secciones on secciones.id_seccion = detalle_pedidos.id_seccion")
+                         ->leftJoin("categorias on categorias.id_categoria = detalle_pedidos.id_categoria")
+                         ->limit($l)
+                         ->offset($p)
+                         ->fetchAll();
+        
+        $total = $this->db->from($this->table)
+                          ->select('COUNT(*) Total')
+                          ->fetch()
+                          ->Total;
+        
+        return [
+            'data'  => $data,
+            'total' => $total
+        ];
+    }
+
     public function get($id)
     {
         $data = $this->db->from($this->table)

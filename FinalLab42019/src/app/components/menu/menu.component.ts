@@ -1,6 +1,8 @@
 import { Component, OnInit, TemplateRef } from '@angular/core';
 import { MenuService } from '../../services/menu.service';
 import { MesasService } from '../../services/mesas.service';
+import { ClientesService } from '../../services/clientes.service';
+import { DetallePedidoService } from '../../services/detalle-pedido.service';
 import { HttpClient } from '@angular/common/http';
 import { BsModalService, BsModalRef } from 'ngx-bootstrap/modal';
 
@@ -18,17 +20,19 @@ export class MenuComponent implements OnInit {
   cervezas: string[];
   cocina: string[];
   candy: string[];
-  mesas: string[];
+  mesas: string[];  
+  clientes: string[];
   pageActual: number = 1;
   modalRef: BsModalRef;
 
-  constructor(public menuService: MenuService, public mesasService: MesasService,private httpClient: HttpClient, private modalService: BsModalService) { 
+  constructor(public menuService: MenuService, public mesasService: MesasService, public clientesService: ClientesService,
+               public detallePedidoService: DetallePedidoService, private httpClient: HttpClient, private modalService: BsModalService) { 
     this.traerTragos();
     this.traerCervezas();
     this.traerCocina();
     this.traerCandyBar();
-
-    this.traerMesas()
+    this.traerMesas();
+    this.traerClientes();
   }
 
   ngOnInit() {
@@ -90,6 +94,17 @@ export class MenuComponent implements OnInit {
       },
         error => {
           text: 'Error al traer mesas';
+        });
+  }
+
+  traerClientes() {
+    this.clientesService.traerClientes()
+      .subscribe(resp => {
+        this.clientes = resp;
+        console.log(this.clientes);
+      },
+        error => {
+          text: 'Error al traer clientes';
         });
   }
 
