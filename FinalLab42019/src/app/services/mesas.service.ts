@@ -23,6 +23,19 @@ export class MesasService {
       );
   }
 
+  traerMesasConEstado() {
+    return this.httpClient.get('http://localhost/ComandaAPI/public/mesas/listarEstadoMesa/1/0')
+      .pipe(
+        map(resp => {
+          if (resp['data'].length > 0) {
+            return resp['data'];
+          } else {
+            return false;
+          }
+        })
+      );
+  }
+
   traerMesa(id: number) {
     return this.httpClient.get(`http://localhost/ComandaAPI/public/mesas/traer/${id}`)
       .pipe(

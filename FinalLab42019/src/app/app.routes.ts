@@ -9,6 +9,8 @@ import { MesasComponent } from './components/mesas/mesas.component';
 import { MenuComponent } from './components/menu/menu.component';
 import { PEDIDO_ROUTES } from './components/pedidos/pedidos.routes';
 import { PedidosComponent } from './components/pedidos/pedidos.component';
+import { EncuestasComponent } from './components/encuestas/encuestas.component';
+import { EstadisticasComponent } from './components/estadisticas/estadisticas.component';
 
 const APP_ROUTES: Routes= [
     {path: 'home', component: HomeComponent},
@@ -17,6 +19,8 @@ const APP_ROUTES: Routes= [
     {path: 'mesa', component: MesasComponent},
     {path: 'menu', component: MenuComponent},
     {path: 'pedido', component: PedidosComponent, children: PEDIDO_ROUTES},
+    {path: 'encuesta', component: EncuestasComponent},
+    {path: 'estadistica', component: EstadisticasComponent},
     {path: 'login', component: LoginComponent},
     {path: '**', pathMatch: 'full' , redirectTo:'home'}
 ];

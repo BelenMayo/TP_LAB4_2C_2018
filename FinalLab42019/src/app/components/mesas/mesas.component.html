@@ -2,15 +2,37 @@
 <div class="panel-tarjetas">
   <div  class="row">
     <div *ngFor="let item of mesas" class="col-md-4 tarjetas">
-        <div class="card text-black bg-light mb-3" style="max-width: 18rem;" type= "button">
+        <div class="card text-black bg-light mb-3" style="max-width: 18rem;" type= "button"
+        data-toggle="modal" data-target="#exampleModal" style="margin: 10px" (click)="openModal(template)">
             <div class="card-header">
-                <i class="fas fa-table fa-3x"></i>
+                <i class="fas fa-table fa-3x"> {{item.nro_mesa}}</i>
             </div>
             <div class="card-body">
-              <h5 class="card-title">{{item.nro_mesa}}</h5>
-              <p class="card-text">{{item.nombre}}</p>
+              <h5 class="card-title">{{item.nombre}}</h5>
+              <p class="card-text">Estado Mesa: <strong style="color:#F46B13">{{item.detalle}}</strong></p>
             </div>
         </div>
+
+        <ng-template #template>
+          <div class="modal-header">
+            <h4 class="modal-title pull-left">Cambiar estado de la Mesa</h4>
+            <button type="button" class="close pull-right" aria-label="Close" (click)="modalRef.hide()">
+              <span aria-hidden="true">&times;</span>
+            </button>
+          </div>
+          <div class="modal-body">
+              ¿A que estado desea cambiar la mesa: <strong>{{item.nro_mesa}} ({{item.nombre}})</strong>?
+              <div style= "padding-bottom: 15px;"></div>
+              <button type="button" class="btn btn-primary btn-block" data-dismiss="modal" (click)="modalRef.hide()">Con cliente esperando pedido</button>
+              <button type="button" class="btn btn-success btn-block" data-dismiss="modal" (click)="modalRef.hide()">Con cliente comiendo</button>
+              <button type="button" class="btn btn-warning btn-block" data-dismiss="modal" (click)="modalRef.hide()">Con cliente pagando</button>
+              <button type="button" class="btn btn-secondary btn-block" data-dismiss="modal" (click)="modalRef.hide()">Cerrada</button>
+          </div>
+          <div class="modal-footer">
+              <button type="button" class="btn btn-danger" data-dismiss="modal" (click)="modalRef.hide()">Cancelar</button>
+          </div>
+      </ng-template>
+
     </div>
   </div>
 </div>

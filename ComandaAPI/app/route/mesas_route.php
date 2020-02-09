@@ -11,6 +11,11 @@ $app->group('/mesas/', function () {
                    ->write(json_encode($this->model->mesa->getAll($args['l'], $args['p'])));
     });
 
+    $this->get('listarEstadoMesa/{l}/{p}', function ($req, $res, $args) {
+        return $res->withHeader('Content-type', 'application/json')
+                   ->write(json_encode($this->model->mesa->getAllEstadoMesa($args['l'], $args['p'])));
+    });
+
     $this->get('traer/{id}', function ($req, $res, $args) {
         return $res->withHeader('Content-type', 'application/json')
                    ->write(json_encode($this->model->mesa->get($args['id'])));

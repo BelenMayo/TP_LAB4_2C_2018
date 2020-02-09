@@ -7,6 +7,7 @@ class MesasModel
 {
     private $db;
     private $table = 'mesas';
+    private $table2 = 'estado_mesas';
     private $response;
     
     public function __CONSTRUCT($db)
@@ -20,6 +21,28 @@ class MesasModel
         $l = $l * 100;
 
         $data = $this->db->from($this->table)
+                         ->limit($l)
+                         ->offset($p)
+                         ->fetchAll();
+        
+        $total = $this->db->from($this->table)
+                          ->select('COUNT(*) Total')
+                          ->fetch()
+                          ->Total;
+        
+        return [
+            'data'  => $data,
+            'total' => $total
+        ];
+    }
+
+    public function getAllEstadoMesa($l, $p)
+    {
+        $l = $l * 100;
+
+        $data = $this->db ->from($this->table)
+                         ->innerJoin("estado_mesas on estado_mesas.id_estado_mesa = mesas.id_estado_mesa")
+                         ->select("mesas.*, estado_mesas.detalle")
                          ->limit($l)
                          ->offset($p)
                          ->fetchAll();

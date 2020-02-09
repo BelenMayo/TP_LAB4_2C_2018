@@ -1,6 +1,7 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, TemplateRef } from '@angular/core';
 import { MesasService } from '../../services/mesas.service';
 import { HttpClient } from '@angular/common/http';
+import { BsModalService, BsModalRef } from 'ngx-bootstrap/modal';
 
 @Component({
   selector: 'app-mesas',
@@ -12,8 +13,9 @@ export class MesasComponent implements OnInit {
 
   // Variables
   mesas: string[];
+  modalRef: BsModalRef;
 
-  constructor(public mesasService: MesasService, private httpClient: HttpClient) { }
+  constructor(public mesasService: MesasService, private httpClient: HttpClient, private modalService: BsModalService) { }
 
   ngOnInit() {
     this.traerMesas();
@@ -21,7 +23,7 @@ export class MesasComponent implements OnInit {
 
     // Trae todas las mesas
     traerMesas() {
-      this.mesasService.traerMesas()
+      this.mesasService.traerMesasConEstado()
         .subscribe(resp => {
           this.mesas = resp;
           console.log(this.mesas);
@@ -30,5 +32,10 @@ export class MesasComponent implements OnInit {
             text: 'Error al traer clientes';
           });
     }
+
+  // Abre Modal
+  openModal(template: TemplateRef<any>) {
+    this.modalRef = this.modalService.show(template);
+  }
 
 }

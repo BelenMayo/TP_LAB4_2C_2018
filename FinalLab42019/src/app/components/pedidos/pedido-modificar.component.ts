@@ -37,13 +37,13 @@ export class PedidoModificarComponent implements OnInit {
     this.pedidosService.traerPedido(id)
       .subscribe(resp => {
         this.formPedido = this.formBuilder.group({
-          nombre: [resp[0].nombre, Validators.required],
-          apellido: [resp[0].apellido, Validators.required],
-          telefono: [resp[0].telefono, Validators.required],
-          mail: [resp[0].mail, Validators.required],
-          foto: [resp[0].foto, Validators.required],
-          usuario: [resp[0].usuario, Validators.required,],
-          password: [resp[0].password, Validators.required]
+          cliente: [resp[0].cliente, Validators.required],
+          mesa: [resp[0].mesa, Validators.required],
+          codigo_mesa: [resp[0].codigo_mesa, Validators.required],
+          foto_mesa: [resp[0].foto_mesa, Validators.required],
+          estado_pedido: [resp[0].estado_pedido, Validators.required],
+          tiempo_espera: [resp[0].tiempo_espera, Validators.required,],
+          importe: [resp[0].importe, Validators.required]
         })
       },
         error => {

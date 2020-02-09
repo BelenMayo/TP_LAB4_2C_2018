@@ -48,6 +48,8 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { NgxPaginationModule } from 'ngx-pagination';
 import { ModalModule } from 'ngx-bootstrap/modal';
 import { BsDropdownModule } from 'ngx-bootstrap/dropdown';
+import { EncuestasComponent } from './components/encuestas/encuestas.component';
+import { EstadisticasComponent } from './components/estadisticas/estadisticas.component';
 
 
 @NgModule({
@@ -74,6 +76,8 @@ import { BsDropdownModule } from 'ngx-bootstrap/dropdown';
     PedidoDetalleComponent,
     PedidoAltaComponent,
     PedidoModificarComponent,
+    EncuestasComponent,
+    EstadisticasComponent,
   ],
   imports: [
     BrowserModule,
