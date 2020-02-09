@@ -1,4 +1,7 @@
 import { Component, OnInit } from '@angular/core';
+import { PedidosService } from '../../services/pedidos.service';
+import { HttpClient } from '@angular/common/http';
+import { ActivatedRoute, Params } from '@angular/router';
 
 @Component({
   selector: 'app-pedido-detalle',
@@ -8,9 +11,30 @@ import { Component, OnInit } from '@angular/core';
 
 export class PedidoDetalleComponent implements OnInit {
 
-  constructor() { }
+  // Variables
+  pedido: string[];
+  id: string;
+
+  constructor(public pedidosService: PedidosService, private httpClient: HttpClient, private rutaActiva: ActivatedRoute) { 
+    this.rutaActiva.params.subscribe(params=>
+      {
+        this.traerPedido(params.id);
+      });
+  }
 
   ngOnInit() {
+  }
+
+  // Trae un pedido
+  traerPedido(id) {
+    this.pedidosService.traerPedido(id)
+      .subscribe(resp => {
+        this.pedido = resp;
+        console.log(this.pedido);
+      },
+        error => {
+          text: 'Error al traer pedido';
+        });
   }
 
 }

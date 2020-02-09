@@ -1,3 +1,39 @@
-<p>
-  pedido-detalle works!
-</p>
+<div class="container contenedor-pedidos">
+    <label class="titulo">Detalle Pedido</label>
+    <div class="row" *ngFor="let item of pedido">
+        <div class="col-md-9 col-sm-8">
+            <div class="row pedidos">
+                <div class="col-md-6"><strong><label>Cliente</label></strong>
+                    <input type="text" id="nombre" class="form-control" value="{{item.id_cliente}}" disabled>
+                </div>
+                <div class="col-md-6"><strong><label>Mesa</label></strong>
+                    <input type="text" id="apellido" class="form-control" value="{{item.id_mesa}}" disabled>
+                </div>
+            </div>
+            <div class="row pedidos">
+                <div class="col-md-6"><strong><label>Codigo de la mesa</label></strong>
+                    <input type="numeric" id="telefono" class="form-control" value="{{item.codigo_mesa}}" disabled>
+                </div>
+                <div class="col-md-6"><strong><label>Foto de la mesa</label></strong>
+                    <input type="email" id="mail" class="form-control" value="{{item.foto_mesa}}" disabled>
+                </div>
+            </div>
+            <div class="row pedidos">
+                <div class="col-md-6"><strong><label>Estado del pedido</label></strong>
+                    <input type="text" id="foto" class="form-control" value="{{item.id_estado_pedido}}" disabled>
+                </div>
+            </div>
+            <div class="row pedidos">
+                <div class="col-md-6"><strong><label>Tiempo de espera</label></strong>
+                    <input type="text" id="usuario" class="form-control" value="{{item.tiempo_espera}}" disabled>
+                </div>
+                <div class="col-md-6"><strong><label>Importe</label></strong>
+                    <input type="text" id="password" class="form-control" value="{{item.total}}" disabled>
+                </div>
+            </div>
+            <div class="row pedidos">
+                <button type="button" class="btn btn-danger" [routerLink]="['/pedido/listadoPedido']">Volver</button>
+            </div>
+        </div>
+    </div>
+</div>
