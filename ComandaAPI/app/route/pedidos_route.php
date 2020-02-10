@@ -11,6 +11,11 @@ $app->group('/pedidos/', function () {
                    ->write(json_encode($this->model->pedido->getAll($args['l'], $args['p'])));
     });
 
+    $this->get('listarPedidos/{l}/{p}', function ($req, $res, $args) {
+        return $res->withHeader('Content-type', 'application/json')
+                   ->write(json_encode($this->model->pedido->getAllPedidos($args['l'], $args['p'])));
+    });
+
     $this->get('traer/{id}', function ($req, $res, $args) {
         return $res->withHeader('Content-type', 'application/json')
                    ->write(json_encode($this->model->pedido->get($args['id'])));

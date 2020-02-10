@@ -35,6 +35,29 @@ class PedidosModel
         ];
     }
 
+    public function getAllPedidos($l, $p)
+    {
+        $l = $l * 100;
+
+        $data = $this->db->from($this->table)
+                         ->leftJoin("estado_pedidos on estado_pedidos.id_estado_pedido = pedidos.id_pedido")
+                         ->leftJoin("clientes on clientes.id_cliente = pedidos.id_cliente")
+                         ->select("pedidos.*, estado_pedidos.detalle as detalleEstadoPedido, clientes.nombre as nombreCliente, clientes.apellido as apellidoCliente")
+                         ->limit($l)
+                         ->offset($p)
+                         ->fetchAll();
+        
+        $total = $this->db->from($this->table)
+                          ->select('COUNT(*) Total')
+                          ->fetch()
+                          ->Total;
+        
+        return [
+            'data'  => $data,
+            'total' => $total
+        ];
+    }
+
     public function get($id)
     {
         $data = $this->db->from($this->table)

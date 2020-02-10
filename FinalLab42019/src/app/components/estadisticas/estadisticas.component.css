@@ -1,0 +1,74 @@
+.estadisticas{
+    padding-left: 5px;
+    padding-top: 5px;
+}
+
+.panel-estadisticas{
+    padding-left: 650px;
+    padding-top: 50px;
+}
+
+.contenedor-estadisticas{
+    padding-top: 20px;
+    padding-bottom: 20px; 
+    border-radius: 15px;
+    background-color: #F4F3F3;
+}
+
+.titulo{
+    color: black;
+    font-weight: bold;
+    font-size: larger;
+}
+
+.browse-input
+{
+    width: 200px;
+    height: 200px;
+    border-radius: 100%;
+    transform: translate(-1px,-26px);
+    opacity: 0;
+}
+
+.browse-button
+{
+    width: 200px;
+    height: 200px;
+    border-radius: 100%;
+    position: absolute; /* Tweak the position property if the element seems to be unfit */
+    top: 10px;
+    left: 39px;
+    background: linear-gradient(180deg, transparent, black);
+    opacity: 0;
+    transition: 0.3s ease;
+}
+
+.browse-button:hover
+{
+    opacity: 1;
+}
+
+.preview-img
+{
+    border-radius: 100%;
+    box-shadow: 0px 0px 5px 2px rgba(0,0,0,0.7);
+}
+
+.preview
+{
+    padding: 10px;
+    position: relative;
+}
+
+.preview i
+{
+    color: white;
+    font-size: 35px;
+    transform: translate(50px,130px);
+}
+
+.preview-img
+{
+    border-radius: 100%;
+    box-shadow: 0px 0px 5px 2px rgba(0,0,0,0.7);
+}

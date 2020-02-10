@@ -13,16 +13,16 @@
           </tr>
       </thead>
       <tr *ngFor="let item of pedidos | paginate: { itemsPerPage: 5, currentPage: pageActual }">
-          <td>{{item.id_cliente}}</td>
+          <td>{{item.nombreCliente}} {{item.apellidoCliente}}</td>
           <td>{{item.id_mesa}}</td>
           <td>{{item.codigo_mesa}}</td>
           <td>{{item.foto_mesa}}</td>
-          <td>{{item.id_estado_pedido}}</td>
+          <td>{{item.detalleEstadoPedido}}</td>
           <td>{{item.tiempo_espera}}</td>
           <td>$ {{item.total}}</td>
           <td><button type="button" class="btn btn-info" [routerLink]="['/pedido/detallePedido', item.id_pedido]" style="margin: 10px">Ver</button>
               <button type="button" class="btn btn-success" [routerLink]="['/pedido/modificarPedido', item.id_pedido]" style="margin: 10px">Modificar Estado</button>
-              <button type="button" class="btn btn-danger" data-toggle="modal" data-target="#exampleModal" style="margin: 10px" (click)="openModal(template)">Entregar</button></td>
+              <!-- <button type="button" class="btn btn-danger" data-toggle="modal" data-target="#exampleModal" style="margin: 10px" (click)="openModal(template)">Entregar</button></td> -->
           <ng-template #template>
               <div class="modal-header">
                 <h4 class="modal-title pull-left">Confirmar entrega de pedido</h4>

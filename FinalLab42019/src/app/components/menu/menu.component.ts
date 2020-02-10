@@ -22,6 +22,7 @@ export class MenuComponent implements OnInit {
   candy: string[];
   mesas: string[];  
   clientes: string[];
+  detallePedido: string[];
   pageActual: number = 1;
   modalRef: BsModalRef;
 
@@ -33,6 +34,7 @@ export class MenuComponent implements OnInit {
     this.traerCandyBar();
     this.traerMesas();
     this.traerClientes();
+    this.traerDetallePedido();
   }
 
   ngOnInit() {
@@ -105,6 +107,17 @@ export class MenuComponent implements OnInit {
       },
         error => {
           text: 'Error al traer clientes';
+        });
+  }
+
+  traerDetallePedido() {
+    this.menuService.traerDetallePedido()
+      .subscribe(resp => {
+        this.detallePedido = resp;
+        console.log(this.detallePedido);
+      },
+        error => {
+          text: 'Error al traer detalle del pedido';
         });
   }
 

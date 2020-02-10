@@ -17,7 +17,8 @@ export class PedidoListadoComponent implements OnInit {
   modalRef: BsModalRef;
 
   constructor(public pedidosService: PedidosService, private httpClient: HttpClient, private modalService: BsModalService) {
-    this.traerPedidos();
+    //this.traerPedidos();
+    this.traerPedidosDetalle();
    }
 
   ngOnInit() {
@@ -26,6 +27,18 @@ export class PedidoListadoComponent implements OnInit {
   // Trae todos los pedidos
   traerPedidos() {
     this.pedidosService.traerPedidos()
+      .subscribe(resp => {
+        this.pedidos = resp;
+        console.log(this.pedidos);
+      },
+        error => {
+          text: 'Error al traer pedidos';
+        });
+  }
+
+  // Trae todos los pedidos
+  traerPedidosDetalle() {
+    this.pedidosService.traerPedidosDetalle()
       .subscribe(resp => {
         this.pedidos = resp;
         console.log(this.pedidos);

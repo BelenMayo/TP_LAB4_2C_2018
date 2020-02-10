@@ -255,14 +255,14 @@
                                 <th>Precio</th>
                                 <th>Cantidad</th>
                                 <th>Subtotal</th>
-                                <th style="text-align: center">Eliminar</th>
+                                <th style="text-align: center">Acciones</th>
                             </tr>
                         </thead>
-                        <tr *ngFor="let item of detallePedidos">
-                            <td>{{item.apellido}}</td>
-                            <td>{{item.nombre}}</td>
-                            <td>{{item.telefono}}</td>
-                            <td>{{item.mail}}</td>
+                        <tr *ngFor="let item of detallePedido">
+                            <td>{{item.nombreMenu}}</td>
+                            <td>$ {{item.precio}}</td>
+                            <td>{{item.cantidad}}</td>
+                            <td>$ {{item.subtotal}}</td>
                             <td><button type="button" class="btn btn-danger" style="margin: 10px">Eliminar</button></td>
                         </tr>
                     </table>

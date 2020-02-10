@@ -24,6 +24,19 @@ export class PedidosService {
       );
   }
 
+  traerPedidosDetalle() {
+    return this.httpClient.get('http://localhost/ComandaAPI/public/pedidos/listarPedidos/1/0')
+      .pipe(
+        map(resp => {
+          if (resp['data'].length > 0) {
+            return resp['data'];
+          } else {
+            return false;
+          }
+        })
+      );
+  }
+
   traerPedido(id: number) {
     return this.httpClient.get(`http://localhost/ComandaAPI/public/pedidos/traer/${id}`)
       .pipe(
