@@ -1,0 +1,27 @@
+<div class="table-responsive" id="tablaClientes" style="background-color:white">
+  <table class="records_list table table-striped table-bordered table-hover" id="mydatatable">
+    <thead>
+      <tr>
+        <th>Empleado</th>
+        <th>Menu</th>
+        <th>Categoria</th>
+        <th>Seccion</th>
+        <th>Hora inicio</th>
+        <th>Hora finalizacion</th>
+        <th style="text-align: center">Acciones</th>
+      </tr>
+    </thead>
+    <tr *ngFor="let item of sector_pedido | paginate: { itemsPerPage: 5, currentPage: pageActual }">
+      <td>{{item.nombreEmpleado}} {{item.apellidoEmpleado}}</td>
+      <td>{{item.nombreMenu}}</td>
+      <td>{{item.detalleCategoria}}</td>
+      <td>{{item.detalleSeccion}}</td>
+      <td>{{item.hora_inicio}}</td>
+      <td>{{item.tiempo_finalizacion}}</td>
+      <td><button type="button" class="btn btn-info" [routerLink]="['/pedido/detallePedido', item.id_pedido]"
+          style="margin: 10px">Entregar <i class="fas fa-search-plus"></i></button>
+    </tr>
+  </table>
+  <pagination-controls (pageChange)="pageActual = $event" previousLabel="Anterior" nextLabel="Siguiente">
+  </pagination-controls>
+</div>

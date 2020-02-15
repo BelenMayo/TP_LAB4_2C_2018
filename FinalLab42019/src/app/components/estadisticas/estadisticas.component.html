@@ -1,10 +1,24 @@
-<script src="node_modules/chart.js/Chart.min.js"></script>
-<script src="node_modules/angular-chart.js/dist/angular-chart.min.js"></script>
-
 <div class= "container contenedor-estadisticas">
   <p>
     Estadisticas
   </p>
+
+  <div>
+    <div style="display: block">
+      <canvas baseChart
+        [datasets]="barChartData"
+        [labels]="barChartLabels"
+        [options]="barChartOptions"
+        [legend]="barChartLegend"
+        [plugins]="barChartPlugins"
+        [chartType]="barChartType"
+        (chartHover)="chartOvered($event)"
+        (chartCick)="chartClicked($event)"></canvas>
+    </div>
+    <button class="btn btn-primary btn-block" (click)="randomize()">Actualizar</button>
+</div>
+
+
 </div>
 
 

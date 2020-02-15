@@ -50,6 +50,10 @@ import { ModalModule } from 'ngx-bootstrap/modal';
 import { BsDropdownModule } from 'ngx-bootstrap/dropdown';
 import { EncuestasComponent } from './components/encuestas/encuestas.component';
 import { EstadisticasComponent } from './components/estadisticas/estadisticas.component';
+import { PanelComponent } from './components/panel/panel.component';
+
+// Graficos
+import { ChartsModule } from 'ng2-charts';
 
 
 @NgModule({
@@ -78,6 +82,7 @@ import { EstadisticasComponent } from './components/estadisticas/estadisticas.co
     PedidoModificarComponent,
     EncuestasComponent,
     EstadisticasComponent,
+    PanelComponent,
   ],
   imports: [
     BrowserModule,
@@ -91,7 +96,8 @@ import { EstadisticasComponent } from './components/estadisticas/estadisticas.co
     NgxPaginationModule,
     ModalModule.forRoot(),
     BrowserAnimationsModule,
-    BsDropdownModule.forRoot()
+    BsDropdownModule.forRoot(),
+    ChartsModule
   ],
   providers: [
     ClientesService,
