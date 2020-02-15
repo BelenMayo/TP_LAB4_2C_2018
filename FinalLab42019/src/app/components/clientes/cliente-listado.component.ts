@@ -3,6 +3,9 @@ import { ClientesService } from '../../services/clientes.service';
 import { HttpClient } from '@angular/common/http';
 import { BsModalService, BsModalRef } from 'ngx-bootstrap/modal';
 
+import * as jsPDF from 'jspdf';
+import * as html2canvas from 'html2canvas';
+
 
 @Component({
   selector: 'app-cliente-listado',
@@ -16,7 +19,7 @@ export class ClienteListadoComponent implements OnInit {
   pageActual: number = 1;
   modalRef: BsModalRef;
 
-  constructor(public clientesService: ClientesService, private httpClient: HttpClient, private modalService: BsModalService) { 
+  constructor(public clientesService: ClientesService, private httpClient: HttpClient, private modalService: BsModalService) {
     this.traerClientes();
   }
 
@@ -49,6 +52,22 @@ export class ClienteListadoComponent implements OnInit {
   // Abre Modal
   openModal(template: TemplateRef<any>) {
     this.modalRef = this.modalService.show(template);
+  }
+
+  // PDF
+  generarPDF() {
+    html2canvas(document.getElementById('tablaClientes'), {
+      // Opciones
+      allowTaint: true,
+      useCORS: false,
+      // Calidad del PDF
+      scale: 1
+    }).then(function (canvas) {
+      var img = canvas.toDataURL("image/png");
+      var doc = new jsPDF();
+      doc.addImage(img, 'PNG', 7, 20, 195, 105);
+      doc.save('Listado de Clientes.pdf');
+    });
   }
 
 }
