@@ -27,8 +27,10 @@ export class EstadisticasComponent {
   public barChartPlugins = [pluginDataLabels];
 
   public barChartData: ChartDataSets[] = [
-    { data: [65, 59, 80, 81, 56, 55, 40], label: 'Mozos' },
-    { data: [28, 48, 40, 19, 86, 27, 90], label: 'Cocina' }
+    { data: [5, 14, 2, 25, 3, 34, 29], label: 'Mesa' },
+    { data: [23, 18, 45, 24, 53, 22, 9], label: 'Restaurante' }
+    // { data: [23, 18, 45, 24, 53, 22, 9], label: 'Mozo' }
+    // { data: [23, 18, 45, 24, 53, 22, 9], label: 'Cocina' }
   ];
 
   constructor() { }

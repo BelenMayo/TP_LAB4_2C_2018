@@ -12,6 +12,7 @@ import { PedidosComponent } from './components/pedidos/pedidos.component';
 import { EncuestasComponent } from './components/encuestas/encuestas.component';
 import { EstadisticasComponent } from './components/estadisticas/estadisticas.component';
 import { PanelComponent } from './components/panel/panel.component';
+import { MapaComponent } from './components/mapa/mapa.component';
 
 const APP_ROUTES: Routes= [
     {path: 'home', component: HomeComponent},
@@ -23,6 +24,7 @@ const APP_ROUTES: Routes= [
     {path: 'encuesta', component: EncuestasComponent},
     {path: 'estadistica', component: EstadisticasComponent},
     {path: 'panel', component: PanelComponent},
+    {path: 'mapa', component: MapaComponent},
     {path: 'login', component: LoginComponent},
     {path: '**', pathMatch: 'full' , redirectTo:'home'}
 ];

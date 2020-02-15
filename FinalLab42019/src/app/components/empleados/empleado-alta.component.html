@@ -33,10 +33,10 @@
                     </div>
                 </div>
                 <div class="row empleados">
-                    <!-- Input Usuario -->
+                    <!-- Input Foto -->
                     <div class="col-md-6">
-                        <input type="text" id="foto" class="form-control" formControlName='foto' placeholder="Foto.." required>
-                        <span style="color: red" *ngIf="formEmpleado.controls['foto'].touched && formEmpleado.controls['foto'].errors?.required">La foto es requerida</span>   
+                        <input type="File" class="btn btn-secondary" placeholder="Subir..">
+                        <span style="color: red" *ngIf="formCliente.controls['foto'].touched && formCliente.controls['foto'].errors?.required">La foto es requerida</span>   
                     </div>
                 </div>
                 <div class="row empleados">

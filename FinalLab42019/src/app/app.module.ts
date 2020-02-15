@@ -54,6 +54,10 @@ import { PanelComponent } from './components/panel/panel.component';
 
 // Graficos
 import { ChartsModule } from 'ng2-charts';
+import { MapaComponent } from './components/mapa/mapa.component';
+
+// Maps
+import { AgmCoreModule } from '@agm/core';
 
 
 @NgModule({
@@ -83,6 +87,7 @@ import { ChartsModule } from 'ng2-charts';
     EncuestasComponent,
     EstadisticasComponent,
     PanelComponent,
+    MapaComponent,
   ],
   imports: [
     BrowserModule,
@@ -97,7 +102,10 @@ import { ChartsModule } from 'ng2-charts';
     ModalModule.forRoot(),
     BrowserAnimationsModule,
     BsDropdownModule.forRoot(),
-    ChartsModule
+    ChartsModule,
+    // AgmCoreModule.forRoot({
+    //   apiKey: 'AIzaSyCt4ypL9y1DT_iq4m6dNaLYyIle0jX9QBg'
+    // })
   ],
   providers: [
     ClientesService,
