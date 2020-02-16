@@ -59,6 +59,8 @@ import { MapaComponent } from './components/mapa/mapa.component';
 
 // Maps
 import { AgmCoreModule } from '@agm/core';
+import { RegistroComponent } from './components/registro/registro.component';
+import { GraficosComponent } from './components/estadisticas/graficos.component';
 
 
 @NgModule({
@@ -89,6 +91,8 @@ import { AgmCoreModule } from '@agm/core';
     EstadisticasComponent,
     PanelComponent,
     MapaComponent,
+    RegistroComponent,
+    GraficosComponent,
   ],
   imports: [
     BrowserModule,

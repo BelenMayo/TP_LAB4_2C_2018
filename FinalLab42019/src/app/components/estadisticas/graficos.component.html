@@ -1,0 +1,22 @@
+<div class="container contenedor-estadisticas">
+
+  <div>
+    <div style="display: block">
+      <canvas baseChart [datasets]="barChartData" [labels]="barChartLabels" [options]="barChartOptions"
+        [legend]="barChartLegend" [plugins]="barChartPlugins" [chartType]="barChartType"
+        (chartHover)="chartOvered($event)" (chartCick)="chartClicked($event)"></canvas>
+    </div>
+    <div class="row">
+      <div class="col-md-6">
+        <button class="btn btn-primary btn-block" (click)="randomize()">Actualizar <i
+            class="fas fa-sync-alt"></i></button>
+
+      </div>
+      <div class="col-md-6">
+        <button class="btn btn-danger btn-block" [routerLink]="['/estadistica']">Volver <i
+            class="fas fa-undo-alt"></i></button>
+      </div>
+    </div>
+  </div>
+
+</div>

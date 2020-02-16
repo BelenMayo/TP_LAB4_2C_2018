@@ -1,24 +1,52 @@
-<div class= "container contenedor-estadisticas">
+<div class="container contenedor-estadisticas">
+
   <p>
-    Estadisticas
+    Pedidos
   </p>
 
-  <div>
-    <div style="display: block">
-      <canvas baseChart
-        [datasets]="barChartData"
-        [labels]="barChartLabels"
-        [options]="barChartOptions"
-        [legend]="barChartLegend"
-        [plugins]="barChartPlugins"
-        [chartType]="barChartType"
-        (chartHover)="chartOvered($event)"
-        (chartCick)="chartClicked($event)"></canvas>
+  <div class="row">
+    <div class="col-md-4">
+      <div class="col-md-6"></div><button class="btn btn-info btn-block">Lo mas vendido</button>
+      <button class="btn btn-info btn-block">Lo menos vendido</button>
     </div>
-    <button class="btn btn-primary btn-block" (click)="randomize()">Actualizar</button>
+    <div class="col-md-4">
+      <button class="btn btn-info btn-block">Los que no se entregaron en tiempo</button>
+      <button class="btn btn-info btn-block">Los cancelados</button>
+    </div>
+    <div class="col-md-4">
+      <input type="text" class="form-control" disabled>
+    </div>
+  </div>
+
+  <p>
+    Mesas
+  </p>
+
+  <div class="row">
+    <div class="col-md-4">
+      <button class="btn btn-success btn-block">La mas usada</button>
+      <button class="btn btn-success btn-block">La menos usada</button>
+    </div>
+    <div class="col-md-4">
+      <button class="btn btn-success btn-block">La que mas facturo</button>
+      <button class="btn btn-success btn-block">La que menos facturo</button>
+    </div>
+    <div class="col-md-4">
+      <input type="text" class="form-control" disabled>
+    </div>
+  </div>
+
+  <div class="row" style="margin-top: 7px;">
+    <div class="col-md-4">
+      <button class="btn btn-success btn-block">La que tuvo compra de mayor importe</button>
+      <button class="btn btn-success btn-block">La que tuvo compra de menor importe</button>
+    </div>
+    <div class="col-md-4">
+      <button class="btn btn-success btn-block">Mejores comentario</button>
+      <button class="btn btn-success btn-block">Peores comentarios</button> <br /><br />
+    </div>
+  </div>
+
+  <button class="btn btn-warning btn-block" [routerLink]="['/grafico']">Ver Graficos <i class="fas fa-chart-bar"></i></button>
+
 </div>
-
-
-</div>
-
-
