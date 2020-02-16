@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { ChartOptions, ChartType, ChartDataSets } from 'chart.js';
 import * as pluginDataLabels from 'chartjs-plugin-datalabels';
-import { Label } from 'ng2-charts';
+import { Label, Color } from 'ng2-charts';
 
 
 @Component({
@@ -30,8 +30,6 @@ export class GraficosComponent implements OnInit {
   public barChartData: ChartDataSets[] = [
     { data: [5, 14, 2, 25, 3, 34, 29], label: 'Mesa' },
     { data: [23, 18, 45, 24, 53, 22, 9], label: 'Restaurante' }
-    // { data: [23, 18, 45, 24, 53, 22, 9], label: 'Mozo' }
-    // { data: [23, 18, 45, 24, 53, 22, 9], label: 'Cocina' }
   ];
 
   constructor() { }
@@ -60,4 +58,11 @@ export class GraficosComponent implements OnInit {
       40];
     this.barChartData[0].data = data;
   }
+
+  public barChartColors: Color[] = [
+    { backgroundColor: '#2585E8' },
+    { backgroundColor: '#D03C21' },
+  ]
+
+
 }

@@ -3,7 +3,7 @@
   <div>
     <div style="display: block">
       <canvas baseChart [datasets]="barChartData" [labels]="barChartLabels" [options]="barChartOptions"
-        [legend]="barChartLegend" [plugins]="barChartPlugins" [chartType]="barChartType"
+        [legend]="barChartLegend" [plugins]="barChartPlugins" [chartType]="barChartType" [colors]="barChartColors"
         (chartHover)="chartOvered($event)" (chartCick)="chartClicked($event)"></canvas>
     </div>
     <div class="row">
