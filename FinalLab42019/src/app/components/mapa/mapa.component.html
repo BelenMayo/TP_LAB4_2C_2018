@@ -1,7 +1,32 @@
-<div class="container contenedor-mapa">
-  <div class="col-md-12">
-    <h5 class="text-center"> Sobre Nosotros</h5>
+<div class="row">
+  <div class="container contenedor-mapa">
+    <h4 class="text-center"> Quienes somos </h4>
+    <hr>
+
+    <div class="row">
+      <div class="col-md-9">
+        Cocina rica, hecha con mucha ilusión, para gente que le gusta comer y disfrutar cada bocado de la
+        vida. Un sitio íntimo para poder saborear con gusto y conversar de forma relajada.<br /><br />
+
+        Tenemos una bonita barra para tomar tapas recién hechas, chopera de cerveza srtesanal y un salón con nueve mesas
+        en el que puedes sentarte a
+        comer
+        tranquilamente.<br />
+      </div>
+
+      <div class="col-md-3">
+        <img class="img-responsive" src="assets/images/Barra.jpg" style="max-width: 125px;">
+      </div>
+    </div>
+
+    <br />
+    <h4 class="text-center"> Donde estamos </h4>
+    <hr>
+
+    <agm-map [latitude]="lat" [zoom]="zoom" [longitude]="lng">
+      <agm-marker [latitude]="lat" [longitude]="lng"></agm-marker>
+    </agm-map>
+
   </div>
 
-  
 </div>

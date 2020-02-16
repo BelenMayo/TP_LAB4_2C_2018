@@ -104,9 +104,11 @@ import { AgmCoreModule } from '@agm/core';
     BrowserAnimationsModule,
     BsDropdownModule.forRoot(),
     ChartsModule,
-    // AgmCoreModule.forRoot({
-    //   apiKey: 'AIzaSyCt4ypL9y1DT_iq4m6dNaLYyIle0jX9QBg'
-    // })
+    AgmCoreModule.forRoot({
+      apiKey: 'AIzaSyCMZH8ZfJ8SBwnQ_SnfmtbI8hDlByezbts',
+      libraries: ['places'] 
+    }),
+
   ],
   providers: [
     ClientesService,

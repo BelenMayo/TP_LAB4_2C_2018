@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 
+
 @Component({
   selector: 'app-mapa',
   templateUrl: './mapa.component.html',
@@ -7,9 +8,16 @@ import { Component, OnInit } from '@angular/core';
 })
 export class MapaComponent implements OnInit {
 
-  constructor() { }
+  constructor() { 
+    
+  }
 
   ngOnInit() {
   }
 
+  texto : string = 'La Comanda';
+  lat: number = -23.8779431;
+  lng: number = -49.8046873;
+  zoom: number = 15;
+  
 }
