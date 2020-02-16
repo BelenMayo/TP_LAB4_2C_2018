@@ -39,6 +39,7 @@ import { HttpClientModule }    from '@angular/common/http';
 // Servicios
 import {ClientesService} from './services/clientes.service';
 import {EmpleadosService} from './services/empleados.service';
+import {ExcelService} from './services/excel.service';
 
 // Imagenes
 import { ImageUploadModule } from 'angular2-image-upload';
@@ -109,7 +110,8 @@ import { AgmCoreModule } from '@agm/core';
   ],
   providers: [
     ClientesService,
-    EmpleadosService
+    EmpleadosService,
+    ExcelService
   ],
   bootstrap: [AppComponent]
 })

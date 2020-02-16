@@ -35,6 +35,32 @@ class SectorPedidosModel
         ];
     }
 
+    public function getAllSectorPedidos($l, $p)
+    {
+        $l = $l * 100;
+
+        $data = $this->db->from($this->table)
+                         ->leftJoin("pedidos on pedidos.id_pedido = sector_pedidos.id_pedido")
+                         ->leftJoin("empleados on empleados.id_empleado = sector_pedidos.id_empleado")
+                         ->leftJoin("menus on menus.id_menu = sector_pedidos.id_menu")
+                         ->leftJoin("categorias on categorias.id_categoria = sector_pedidos.id_categoria")
+                         ->leftJoin("secciones on secciones.id_seccion = sector_pedidos.id_seccion")
+                         ->select("sector_pedidos.*, empleados.nombre as nombreEmpleado, empleados.apellido as apellidoEmpleado,menus.nombre as nombreMenu, secciones.nombre as detalleSeccion, categorias.nombre as detalleCategoria")
+                         ->limit($l)
+                         ->offset($p)
+                         ->fetchAll();
+        
+        $total = $this->db->from($this->table)
+                          ->select('COUNT(*) Total')
+                          ->fetch()
+                          ->Total;
+        
+        return [
+            'data'  => $data,
+            'total' => $total
+        ];
+    }
+
     public function get($id)
     {
         $data = $this->db->from($this->table)

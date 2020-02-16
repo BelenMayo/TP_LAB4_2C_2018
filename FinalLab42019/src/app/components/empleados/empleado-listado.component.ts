@@ -2,9 +2,14 @@ import { Component, OnInit, TemplateRef } from '@angular/core';
 import { EmpleadosService } from '../../services/empleados.service';
 import { HttpClient } from '@angular/common/http';
 import { BsModalService, BsModalRef } from 'ngx-bootstrap/modal';
+import { ExcelService } from '../../services/excel.service';
 
 import * as jsPDF from 'jspdf';
 import * as html2canvas from 'html2canvas';
+
+//Excel
+import * as FileSaver from 'file-saver';
+import * as XLSX from 'xlsx';
 
 @Component({
   selector: 'app-empleado-listado',
@@ -17,7 +22,7 @@ export class EmpleadoListadoComponent implements OnInit {
   pageActual: number = 1;
   modalRef: BsModalRef;
 
-  constructor(public empleadosService: EmpleadosService, private httpClient: HttpClient, private modalService: BsModalService) {
+  constructor(public empleadosService: EmpleadosService, private httpClient: HttpClient, private modalService: BsModalService, private excelService: ExcelService) {
     this.traerEmpleados();
   }
 
@@ -54,7 +59,7 @@ export class EmpleadoListadoComponent implements OnInit {
 
   // PDF
   generarPDF() {
-    html2canvas(document.getElementById('tablaEmpleados'), {
+    html2canvas(document.getElementById('mydatatable'), {
       // Opciones
       allowTaint: true,
       useCORS: false,
@@ -66,6 +71,11 @@ export class EmpleadoListadoComponent implements OnInit {
       doc.addImage(img, 'PNG', 7, 20, 195, 105);
       doc.save('Listado de Empleados.pdf');
     });
+  }
+
+  // Excel
+  exportAsXLSX(): void {
+    this.excelService.exportAsExcelFile(this.empleados, 'Empleados');
   }
 
 }
