@@ -16,8 +16,8 @@ export class MapaComponent implements OnInit {
   }
 
   texto : string = 'La Comanda';
-  lat: number = -23.8779431;
-  lng: number = -49.8046873;
+  lat: number = -34.716511;
+  lng: number = -58.291985;
   zoom: number = 15;
   
 }

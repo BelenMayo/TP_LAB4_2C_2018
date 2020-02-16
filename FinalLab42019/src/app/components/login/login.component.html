@@ -1,86 +1,28 @@
-<div class="limiter animated fadeInRight">
+<link href="//maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
+<script src="//maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"></script>
+<script src="//cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+<!------ Include the above in your HEAD tag ---------->
 
-    <div class="container-login100">
-      
-      <span class="login100-form-title">Login</span>
-      <hr class="title-line">
-      <form [formGroup]='model' (ngSubmit)="login()" class="animated fadeIn fast">
-        
-        <div class="col-md-12">
-        
-            <div class="form-row">
-              <!-- Input Correo -->
-              <div class="col-md-12 mb-3">
-                <label><h5>Email</h5></label>
-                <input class="form-control form-login" 
-                      [ngClass]="{'is-invalid': (submitted && model.get('correo').errors) 
-                                                || model.get('correo').invalid 
-                                                && model.controls['correo'].touched, 
-                                  'is-valid': model.get('correo').valid && model.get('correo').value != ''}" 
-                      type="email"
-                      [(ngModel)]="usuario.correo"
-                      formControlName="correo">
-                <div *ngIf="model.controls['correo'].errors?.pattern" 
-                    class="invalid-feedback animated fadeIn">
-                    No es un correo valido.
-                </div>
-                <div *ngIf="model.controls['correo'].errors?.required" 
-                    class="invalid-feedback animated fadeIn">
-                    Debe ingresar un correo.
-                </div>
-              </div>
-            </div>
-  
-            <div class="form-row">
-              <!-- Input Contraseña -->
-              <div class="col-md-12 mb-3">
-                <label><h5>Password</h5></label>
-                <input class="form-control form-login"
-                      [ngClass]="{'is-invalid': (submitted && model.get('correo').errors) 
-                                                || !model.get('password').valid && model.get('password').touched, 
-                                  'is-valid': model.get('password').valid}"  
-                      type="password" 
-                      [(ngModel)]="usuario.password"
-                      formControlName="password">
-                <div *ngIf="model.controls['password'].errors?.required" 
-                  class="invalid-feedback animated fadeIn">
-                  Debe ingresar una contraseña.
-                </div>
-                <div *ngIf="model.controls['password'].errors?.minlength" 
-                  class="invalid-feedback animated fadeIn">
-                  La clave debe tener 6 o mas carácteres.
-                </div>
-            </div>
-          </div>
-  
-          <div class="form-row">
-            <div class="contact100-form-checkbox col-md-6 mb-3">
-                <input 
-                       [(ngModel)]="rememberme" [ngModelOptions]="{standalone: true}"
-                       class="input-checkbox100" id="ckb1" type="checkbox" name="remember-me">
-                <label class="label-checkbox100" for="ckb1">
-                    Recordar mi cuenta
-                </label>
-            </div>
-    
-            <div class="col-md-6 mb-3" align="right">
-                <a routerLink="/register" class="txt1">
-                    ¿No tienes cuenta?
-                </a>
-            </div>
-          </div>
-  
-          
-          
-  
-        </div>
-        <div class="container-login100-form-btn m-t-17">
-            <button class="login100-form-btn" type="submit">
-                Ingresar
-            </button>
-          </div>
-      </form>
-  
+<div class="wrapper fadeInDown">
+  <div id="formContent">
+    <!-- Tabs Titles -->
+
+    <!-- Icon -->
+    <div class="fadeIn first" style="margin-top: 25px;margin-bottom: 10px;">
+      <img src="assets/images/perfil.png" style="max-width: 200px;" id="icon" alt="User Icon" />
     </div>
-  
+
+    <!-- Login Form -->
+    <form>
+      <input type="text" id="login" class="fadeIn second" name="login" placeholder="Usuario">
+      <input type="text" id="password" class="fadeIn third" name="login" placeholder="Clave">
+      <input type="submit" class="fadeIn fourth" value="Log In">
+    </form>
+
+    <!-- Remind Passowrd -->
+    <div id="formFooter">
+      <a class="underlineHover" href="#">¿Primera vez que ingresas? Registrate</a>
+    </div>
+
   </div>
+</div>
