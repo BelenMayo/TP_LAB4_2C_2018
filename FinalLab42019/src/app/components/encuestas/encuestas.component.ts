@@ -1,4 +1,9 @@
 import { Component, OnInit } from '@angular/core';
+import { FormControl, FormGroup, Validators, FormBuilder } from '@angular/forms';
+import { EncuestaModel } from '../../models/encuesta.model';
+import { EncuestasService } from '../../services/encuestas.service';
+import { HttpClient } from '@angular/common/http';
+
 
 @Component({
   selector: 'app-encuestas',
@@ -7,9 +12,40 @@ import { Component, OnInit } from '@angular/core';
 })
 export class EncuestasComponent implements OnInit {
 
-  constructor() { }
+  formEncuesta: FormGroup;
+  submitted = false;
+
+  // Variables
+  encuestas: string[];
+  encuesta: EncuestaModel;
+  id: number;
+
+  constructor(private formBuilder: FormBuilder, public encuestasService: EncuestasService, private httpClient: HttpClient) { }
 
   ngOnInit() {
+    this.formEncuesta = this.formBuilder.group({
+      puntaje_mesa: ['', Validators.required],
+      puntaje_restaurante: ['', Validators.required],
+      puntaje_mozo: ['', Validators.required],
+      puntaje_cocinero: ['', Validators.required],
+      comentarios: ['', Validators.required]
+    })
+  }
+
+  // Guarda una encuesta
+  guardarEncuesta() {
+    this.submitted = true;
+
+    this.encuesta = new EncuestaModel().guardarEncuesta(this.formEncuesta.controls);
+
+    this.encuestasService.guardarEncuesta(this.encuesta)
+      .subscribe(resp => {
+        this.encuestas = resp;
+        console.log(this.encuestas);
+      },
+        error => {
+          text: 'Error al guardar encuesta';
+        });
   }
 
 }

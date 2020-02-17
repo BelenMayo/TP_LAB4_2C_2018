@@ -5,8 +5,6 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 //Routes
 import { APP_ROUTING } from '../app/app.routes';
 
-//import { from } from 'rxjs';
-
 import {NgbModule} from '@ng-bootstrap/ng-bootstrap';
 
 //Componentes

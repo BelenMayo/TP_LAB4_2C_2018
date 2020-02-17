@@ -1,75 +1,90 @@
+<link href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" rel="stylesheet">
+
 <div class="container contenedor-encuestas">
-  <section class="row">
-    <div class="col-md-12">
-      <h1 class="text-center">Encuesta de Satisfacción: LA COMANDA </h1>
-      <hr>
-    </div>
-  </section>
+  <form [formGroup]="formCliente" (ngSubmit)="guardarEncuesta()">
 
-  <!--  Durante la Atención  -->
-  <section class="row">
-    <div class="col-md-12">
-      <h3>Calidad la Atención</h3>
-      <h6>(califique del 1 al 10 la atencion recibida)</h6>
-    </div>
-  </section>
-  <br />
-
-  <!--  PREGUNTA 1  -->
-  <section class="row">
-    <div class="col-md-12">
-      1- ¿Que tan satisfecho con la Mesa?
-      <input type="number" min= 1 max= 10 name="pregunta1" id="pregunta1a" value="1" style="margin-left: 50px;">
-    </div>
-  </section>
-  <br />
-
-  <!--  PREGUNTA 2  -->
-  <section class="row">
-    <div class="col-md-12">
-      2- ¿Que tan satisfecho con el Restaurante?
-      <input type="number" min= 1 max= 10 name="pregunta1" id="pregunta1a" value="1" style="margin-left: 5px;">
-    </div>
-  </section>
-  <br />
-
-  <!--  PREGUNTA 3  -->
-  <section class="row">
-    <div class="col-md-12">
-      3- ¿Que tan satisfecho con el Mozo?
-      <input type="number" min= 1 max= 10 name="pregunta1" id="pregunta1a" value="1" style="margin-left: 48px;">
-    </div>
-  </section>
-  <br />
-
-  <!--  PREGUNTA 4  -->
-  <section class="row">
-    <div class="col-md-12">
-      4- ¿Que tan satisfecho con el Cocinero?
-      <input type="number" min= 1 max= 10 name="pregunta1" id="pregunta1a" value="1" style="margin-left: 25px;">
-    </div>
-  </section>
-  <br />
-
-  <hr>
-  <!--  Comentarios  -->
-  <section class="row">
-    <div class="col-md-12">
-      <h3>Comentarios</h3>
-      <p></p>
-    </div>
-  </section>
-  <section class="row">
-    <div class="col-md-12">
-      <div class="form-group">
-        <label for="comment">Deje sus comentarios (maximo 66 caracteres):</label>
-        <textarea class="form-control" rows="1" id="comentarios" maxlength="66"></textarea>
+    <section class="row">
+      <div class="col-md-12">
+        <h1 class="text-center">Encuesta de Satisfacción: LA COMANDA </h1>
+        <hr>
       </div>
-    </div>
-  </section>
-  <section class="row">
-    <div class="col-md-12">
-      <button type="button" class="btn btn-info" id="saveForm" onclick="saveForm">Guardar Encuesta <i class="fas fa-save"></i></button>
-    </div>
-  </section>
+    </section>
+
+    <!--  Durante la Atención  -->
+    <section class="row">
+      <div class="col-md-12">
+        <h3>Calidad la Atención</h3>
+        <h6>(califique del 1 al 10 la atencion recibida)</h6>
+      </div>
+    </section>
+    <br />
+
+    <!--  PREGUNTA 1  -->
+    <section class="row">
+      <div class="form-group row">
+        1- ¿Que tan satisfecho esta con la Mesa?
+        <div class="col-xs-3">
+          <input class="form-control" formControlName='puntaje_mesa' type="number" min=1 max=10
+            style="margin-left: 75px; width: 75px;">
+        </div>
+      </div>
+    </section>
+
+    <!--  PREGUNTA 2  -->
+    <section class="row">
+      <div class="form-group row">
+        1- ¿Que tan satisfecho esta con el Restaurante?
+        <div class="col-xs-3">
+          <input class="form-control" formControlName='puntaje_restaurante' type="number" min=1 max=10
+            style="margin-left: 28px; width: 75px;">
+        </div>
+      </div>
+    </section>
+
+    <!--  PREGUNTA 3  -->
+    <section class="row">
+      <div class="form-group row">
+        3- ¿Que tan satisfecho esta con el Mozo?
+        <div class="col-xs-3">
+          <input class="form-control" formControlName='puntaje_mozo' type="number" min=1 max=10
+            style="margin-left: 72px; width: 75px;">
+        </div>
+      </div>
+    </section>
+
+    <!--  PREGUNTA 4  -->
+    <section class="row">
+      <div class="form-group row">
+        4- ¿Que tan satisfecho esta con el Cocinero?
+        <div class="col-xs-3">
+          <input class="form-control" formControlName='puntaje_cocinero' type="number" min=1 max=10
+            style="margin-left: 50px; width: 75px;">
+        </div>
+      </div>
+    </section>
+
+    <hr>
+    <!--  Comentarios  -->
+    <section class="row">
+      <div class="col-md-12">
+        <h3>Comentarios</h3>
+        <p></p>
+      </div>
+    </section>
+    <section class="row">
+      <div class="col-md-12">
+        <div class="form-group">
+          <label for="comment">Deje sus comentarios (maximo 66 caracteres):</label>
+          <textarea class="form-control" formControlName='comentarios' rows="1" id="comentarios"
+            maxlength="66"></textarea>
+        </div>
+      </div>
+    </section>
+    <section class="row">
+      <div class="col-md-12">
+        <button type="submit" class="btn btn-info" id="saveForm">Guardar Encuesta <i class="fas fa-save"></i></button>
+      </div>
+    </section>
+
+  </form>
 </div>
