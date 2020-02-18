@@ -33,7 +33,7 @@ export class EncuestasComponent implements OnInit {
   }
 
   // Guarda una encuesta
-  guardarEncuesta() {
+  guardarEncuesta () {
     this.submitted = true;
 
     this.encuesta = new EncuestaModel().guardarEncuesta(this.formEncuesta.controls);

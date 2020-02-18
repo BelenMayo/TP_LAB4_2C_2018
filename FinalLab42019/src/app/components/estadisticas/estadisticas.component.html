@@ -6,15 +6,16 @@
 
   <div class="row">
     <div class="col-md-4">
-      <div class="col-md-6"></div><button class="btn btn-info btn-block">Lo mas vendido</button>
-      <button class="btn btn-info btn-block">Lo menos vendido</button>
+      <div class="col-md-6"></div><button class="btn btn-info btn-block" (click)="traerValor('1')">Lo mas
+        vendido</button>
+      <button class="btn btn-info btn-block" (click)="traerValor('2')">Lo menos vendido</button>
     </div>
     <div class="col-md-4">
-      <button class="btn btn-info btn-block">Los que no se entregaron en tiempo</button>
-      <button class="btn btn-info btn-block">Los cancelados</button>
+      <button class="btn btn-info btn-block" (click)="traerValor('3')">Los que no se entregaron en tiempo</button>
+      <button class="btn btn-info btn-block" (click)="traerValor('4')">Los cancelados</button>
     </div>
     <div class="col-md-4">
-      <input type="text" class="form-control" disabled>
+      <input type="text" class="form-control" value="{{valorEstadistica1}}" style="font-weight: bold;" disabled>
     </div>
   </div><br />
 
@@ -25,26 +26,26 @@
 
   <div class="row">
     <div class="col-md-4">
-      <button class="btn btn-success btn-block">La mas usada</button>
-      <button class="btn btn-success btn-block">La menos usada</button>
+      <button class="btn btn-success btn-block" (click)="traerValor('5')">La mas usada</button>
+      <button class="btn btn-success btn-block" (click)="traerValor('6')">La menos usada</button>
     </div>
     <div class="col-md-4">
-      <button class="btn btn-success btn-block">La que mas facturo</button>
-      <button class="btn btn-success btn-block">La que menos facturo</button>
+      <button class="btn btn-success btn-block" (click)="traerValor('7')">La que mas facturo</button>
+      <button class="btn btn-success btn-block" (click)="traerValor('8')">La que menos facturo</button>
     </div>
     <div class="col-md-4">
-      <input type="text" class="form-control" disabled>
+      <input type="text" class="form-control" value="{{valorEstadistica2}}" style="font-weight: bold;" disabled>
     </div>
   </div>
 
   <div class="row" style="margin-top: 7px;">
     <div class="col-md-4">
-      <button class="btn btn-success btn-block">La que tuvo compra de mayor importe</button>
-      <button class="btn btn-success btn-block">La que tuvo compra de menor importe</button>
+      <button class="btn btn-success btn-block" (click)="traerValor('9')">La que tuvo compra de mayor importe</button>
+      <button class="btn btn-success btn-block" (click)="traerValor('10')">La que tuvo compra de menor importe</button>
     </div>
     <div class="col-md-4">
-      <button class="btn btn-success btn-block">Mejores comentario</button>
-      <button class="btn btn-success btn-block">Peores comentarios</button>
+      <button class="btn btn-success btn-block" (click)="traerValor('10')">Mejores comentarios</button>
+      <button class="btn btn-success btn-block" (click)="traerValor('12')">Peores comentarios</button>
     </div>
   </div><br />
 

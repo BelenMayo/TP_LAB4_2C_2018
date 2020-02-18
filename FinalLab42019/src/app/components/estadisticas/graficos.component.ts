@@ -28,8 +28,8 @@ export class GraficosComponent implements OnInit {
   public barChartPlugins = [pluginDataLabels];
 
   public barChartData: ChartDataSets[] = [
-    { data: [5, 14, 2, 25, 3, 34, 29], label: 'Mesa' },
-    { data: [23, 18, 45, 24, 53, 22, 9], label: 'Restaurante' }
+    { data: [5, 14, 2, 25, 3, 34, 29], label: 'Pedidos' },
+    { data: [23, 18, 45, 24, 53, 22, 9], label: 'Mesas' }
   ];
 
   constructor() { }
