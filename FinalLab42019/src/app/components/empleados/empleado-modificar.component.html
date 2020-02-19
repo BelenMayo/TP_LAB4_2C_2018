@@ -6,58 +6,68 @@
             <div class="col-md-9 col-sm-8">
                 <div class="row empleados">
                     <!-- Input Nombre -->
-                    <div class="col-md-6"><strong><label>Nombre</label></strong>
-                        <input type="text" id="nombre" class="form-control" formControlName='nombre' required>
-                        <span style="color: red" *ngIf="formEmpleado.controls['nombre'].touched && formEmpleado.controls['nombre'].errors?.required">El nombre es requerido</span>   
+                    <div class="col-md-6" style="font-style: italic;"><strong><label>Nombre</label></strong>
+                        <input style="font-style: italic;" type="text" id="nombre" class="form-control"
+                            formControlName='nombre' [ngClass]="{'is-invalid': formEmpleado.get('nombre').value == '', 'is-valid': !(formEmpleado.get('nombre').value == '')}"
+                            required>
                     </div>
                     <!-- Input Apellido -->
-                    <div class="col-md-6"><strong><label>Apellido</label></strong>
-                        <input type="text" id="apellido" class="form-control" formControlName='apellido' required>
-                        <span style="color: red" *ngIf="formEmpleado.controls['apellido'].touched && formEmpleado.controls['apellido'].errors?.required">El apellido es requerido</span>
+                    <div class="col-md-6" style="font-style: italic;"><strong><label>Apellido</label></strong>
+                        <input style="font-style: italic;" type="text" id="apellido" class="form-control"
+                            formControlName='apellido' [ngClass]="{'is-invalid': formEmpleado.get('apellido').value == '', 'is-valid': !(formEmpleado.get('apellido').value == '')}"
+                            required>
                     </div>
                 </div>
                 <div class="row empleados">
                     <!-- Input Telefono -->
-                    <div class="col-md-6"><strong><label>Telefono</label></strong>
-                        <input type="numeric" id="telefono" class="form-control" formControlName='telefono' required>
-                        <span style="color: red" *ngIf="formEmpleado.controls['telefono'].touched && formEmpleado.controls['telefono'].errors?.required">El telefono es requerido</span>   
+                    <div class="col-md-6" style="font-style: italic;"><strong><label>Telefono</label></strong>
+                        <input style="font-style: italic;" type="numeric" id="telefono" class="form-control"
+                            formControlName='telefono' [ngClass]="{'is-invalid': formEmpleado.get('telefono').value == '', 'is-valid': !(formEmpleado.get('telefono').value == '')}"
+                            required>
                     </div>
                     <!-- Input Mail -->
-                    <div class="col-md-6"><strong><label>Mail</label></strong>
-                        <input type="email" id="mail" class="form-control" formControlName='mail' required>
-                        <span style="color: red" *ngIf="formEmpleado.controls['mail'].touched && formEmpleado.controls['mail'].errors?.required">El mail es requerido</span>           
+                    <div class="col-md-6" style="font-style: italic;"><strong><label>Mail</label></strong>
+                        <input style="font-style: italic;" type="email" id="mail" class="form-control"
+                            formControlName='mail' [ngClass]="{'is-invalid': formEmpleado.get('mail').value == '', 'is-valid': !(formEmpleado.get('mail').value == '')}"
+                            required>
                     </div>
                 </div>
                 <div class="row empleados">
                     <!-- Input Usuario -->
-                    <div class="col-md-6"><strong><label>Foto</label></strong>
-                        <input type="text" id="foto" class="form-control" formControlName='foto' required>
-                        <span style="color: red" *ngIf="formEmpleado.controls['foto'].touched && formEmpleado.controls['foto'].errors?.required">La foto es requerida</span>   
+                    <div class="col-md-6" style="font-style: italic;"><strong><label>Foto</label></strong>
+                        <input style="font-style: italic;" type="text" id="foto" class="form-control"
+                            formControlName='foto' [ngClass]="{'is-invalid': formEmpleado.get('foto').value == '', 'is-valid': !(formEmpleado.get('foto').value == '')}"
+                            required>
                     </div>
                 </div>
                 <div class="row empleados">
                     <!-- Input Usuario -->
-                    <div class="col-md-6"><strong><label>Usuario</label></strong>
-                        <input type="text" id="usuario" class="form-control" formControlName='usuario' required>
-                        <span style="color: red" *ngIf="formEmpleado.controls['usuario'].touched && formEmpleado.controls['usuario'].errors?.required">El usuario es requerido</span>   
+                    <div class="col-md-6" style="font-style: italic;"><strong><label>Usuario</label></strong>
+                        <input style="font-style: italic;" type="text" id="usuario" class="form-control"
+                            formControlName='usuario' [ngClass]="{'is-invalid': formEmpleado.get('usuario').value == '', 'is-valid': !(formEmpleado.get('usuario').value == '')}"
+                            required>
                     </div>
                     <!-- Input Password -->
-                    <div class="col-md-6"><strong><label>Password</label></strong>
-                        <input type="text" id="password"  class="form-control" formControlName='password' required>
-                        <span style="color: red" *ngIf="formEmpleado.controls['password'].touched && formEmpleado.controls['password'].errors?.required">La contraseña es requerida</span>   
+                    <div class="col-md-6" style="font-style: italic;"><strong><label>Password</label></strong>
+                        <input style="font-style: italic;" type="text" id="password" class="form-control"
+                            formControlName='password' [ngClass]="{'is-invalid': formEmpleado.get('password').value == '', 'is-valid': !(formEmpleado.get('password').value == '')}"
+                            required>
                     </div>
                 </div>
                 <div class="row empleados">
                     <!-- Guardar -->
                     <div class="col-sm-2">
-                        <button type="submit" class="btn btn-success" [disabled]= 'formEmpleado.invalid'>Guardar <i class="fas fa-save"></i></button>
+                        <button type="submit" class="btn btn-success" [disabled]='formEmpleado.invalid'>Guardar <i
+                                class="fas fa-save"></i></button>
                     </div>
                     <!-- Cancelar -->
                     <div class="col-sm-2">
-                        <button type="button" class="btn btn-danger" [routerLink]="['/empleado/listadoEmpleado']">Cancelar <i class="fas fa-undo-alt"></i></button>
+                        <button type="button" class="btn btn-danger"
+                            [routerLink]="['/empleado/listadoEmpleado']">Cancelar <i
+                                class="fas fa-undo-alt"></i></button>
                     </div>
                 </div>
+            </div>
         </div>
-    </div>
     </form>
 </div>
