@@ -5,7 +5,6 @@ import { EmpleadosService } from '../../services/empleados.service';
 import { HttpClient } from '@angular/common/http';
 import { ActivatedRoute, Params } from '@angular/router';
 import { Router } from '@angular/router'
-import { URL_REF } from 'src/globales/variables_globales';
 
 
 @Component({
@@ -68,7 +67,7 @@ export class EmpleadoModificarComponent implements OnInit {
           text: 'Error al modificar empleado';
         });
         
-    this.router.navigateByUrl(URL_REF + '/empleado/listadoEmpleado');
+    this.router.navigateByUrl('/empleado/listadoEmpleado');
   }
 
 }

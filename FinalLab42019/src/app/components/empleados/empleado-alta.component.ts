@@ -4,7 +4,6 @@ import { EmpleadoModel } from '../../models/empleado.model';
 import { EmpleadosService } from '../../services/empleados.service';
 import { HttpClient } from '@angular/common/http';
 import { Router } from '@angular/router';
-import { URL_REF } from 'src/globales/variables_globales';
 
 
 @Component({
@@ -56,6 +55,6 @@ export class EmpleadoAltaComponent implements OnInit {
           text: 'Error al guardar empleado';
         });
 
-    this.router.navigateByUrl(URL_REF + '/empleado/listadoEmpleado');
+    this.router.navigateByUrl('/empleado/listadoEmpleado');
   }
 }

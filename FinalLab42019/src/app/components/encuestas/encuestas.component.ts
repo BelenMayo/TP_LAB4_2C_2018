@@ -4,7 +4,6 @@ import { EncuestaModel } from '../../models/encuesta.model';
 import { EncuestasService } from '../../services/encuestas.service';
 import { HttpClient } from '@angular/common/http';
 import { Router } from '@angular/router';
-import { URL_REF } from 'src/globales/variables_globales';
 
 
 @Component({
@@ -50,7 +49,7 @@ export class EncuestasComponent implements OnInit {
           text: 'Error al guardar encuesta';
         });
 
-    this.router.navigateByUrl(URL_REF + '/cliente/listadoCliente');
+    this.router.navigateByUrl('/home');
   }
 
 }

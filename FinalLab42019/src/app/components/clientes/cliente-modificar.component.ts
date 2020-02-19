@@ -4,7 +4,6 @@ import { ClienteModel } from '../../models/cliente.model';
 import { ClientesService } from '../../services/clientes.service';
 import { HttpClient } from '@angular/common/http';
 import { ActivatedRoute, Params } from '@angular/router';
-import { URL_REF } from 'src/globales/variables_globales';
 import { Router } from '@angular/router'
 
 
@@ -68,7 +67,7 @@ export class ClienteModificarComponent implements OnInit {
           text: 'Error al modificar cliente';
         });
 
-    this.router.navigateByUrl(URL_REF + '/cliente/listadoCliente');
+    this.router.navigateByUrl('/cliente/listadoCliente');
   }
 
 }

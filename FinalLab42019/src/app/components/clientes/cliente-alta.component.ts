@@ -4,7 +4,6 @@ import { ClienteModel } from '../../models/cliente.model';
 import { ClientesService } from '../../services/clientes.service';
 import { HttpClient } from '@angular/common/http';
 import { Router } from '@angular/router';
-import { URL_REF } from 'src/globales/variables_globales';
 
 
 @Component({
@@ -21,8 +20,8 @@ export class ClienteAltaComponent implements OnInit {
   cliente: ClienteModel;
   id: number;
 
-  constructor(private formBuilder: FormBuilder, public clientesService: ClientesService, private httpClient: HttpClient,
-    private router: Router) {
+  constructor(private formBuilder: FormBuilder, public clientesService: ClientesService, private httpClient: HttpClient
+    , private router: Router) {
   }
 
   ngOnInit() {
@@ -58,6 +57,6 @@ export class ClienteAltaComponent implements OnInit {
           text: 'Error al guardar cliente';
         });
 
-    this.router.navigateByUrl(URL_REF + '/cliente/listadoCliente');
+    this.router.navigateByUrl('/cliente/listadoCliente');
   }
 }

@@ -3,6 +3,7 @@ import { ClientesService } from '../../services/clientes.service';
 import { HttpClient } from '@angular/common/http';
 import { BsModalService, BsModalRef } from 'ngx-bootstrap/modal';
 import { ExcelService } from '../../services/excel.service';
+import { Router } from '@angular/router';
 
 // PDF
 import * as jsPDF from 'jspdf';
@@ -25,7 +26,8 @@ export class ClienteListadoComponent implements OnInit {
   pageActual: number = 1;
   modalRef: BsModalRef;
 
-  constructor(public clientesService: ClientesService, private httpClient: HttpClient, private modalService: BsModalService, private excelService: ExcelService) {
+  constructor(public clientesService: ClientesService, private httpClient: HttpClient, private modalService: BsModalService
+    , private excelService: ExcelService, private router: Router) {
     this.traerClientes();
   }
 
@@ -53,6 +55,9 @@ export class ClienteListadoComponent implements OnInit {
         error => {
           text: 'Error al eliminar cliente';
         });
+
+    this.modalRef.hide()
+    this.router.navigateByUrl('/cliente/listadoCliente');   
   }
 
   // Abre Modal

@@ -51,34 +51,8 @@ export class MesasService {
       );
   }
 
-  guardarMesa(id: number, mesa: MesaModel) {
-    return this.httpClient.post(API_REF + '/ComandaAPI/public/mesas/registrar/', mesa)
-      .pipe(
-        map(resp => {
-          if (resp['data'].length > 0) {
-            return resp['data'];
-          } else {
-            return false;
-          }
-        })
-      );
-  }
-
   modificarMesa(id: number, mesa: MesaModel) {
     return this.httpClient.put(API_REF + `/ComandaAPI/public/mesas/modificar/${id}`, mesa)
-    .pipe(
-      map(resp => {
-        if (resp['data'].length > 0) {
-          return resp['data'];
-        } else {
-          return false;
-        }
-      })
-    );
-  }
-
-  eliminarMesa(id: number) {
-    return this.httpClient.delete(API_REF + `/ComandaAPI/public/mesas/eliminar/${id}`)
     .pipe(
       map(resp => {
         if (resp['data'].length > 0) {
