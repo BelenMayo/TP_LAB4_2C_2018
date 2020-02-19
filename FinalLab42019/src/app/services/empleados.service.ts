@@ -2,6 +2,7 @@ import { Injectable } from '@angular/core';
 import { HttpClient, HttpResponse } from '@angular/common/http';
 import { map } from 'rxjs/operators';
 import { EmpleadoModel } from '../models/empleado.model';
+import { API_REF } from 'src/globales/variables_globales';
 
 
 @Injectable({
@@ -12,7 +13,7 @@ export class EmpleadosService {
   constructor(private httpClient: HttpClient) { }
 
   traerEmpleados() {
-    return this.httpClient.get('http://localhost/ComandaAPI/public/empleados/listar/1/0')
+    return this.httpClient.get(API_REF + '/ComandaAPI/public/empleados/listar/1/0')
       .pipe(
         map(resp => {
           console.log(resp);
@@ -26,7 +27,7 @@ export class EmpleadosService {
   }
 
   traerEmpleado(id: number) {
-    return this.httpClient.get(`http://localhost/ComandaAPI/public/empleados/traer/${id}`)
+    return this.httpClient.get(API_REF + `/ComandaAPI/public/empleados/traer/${id}`)
       .pipe(
         map(resp => {
           if (resp['data'].length > 0) {
@@ -39,7 +40,7 @@ export class EmpleadosService {
   }
 
   guardarEmpleado(empleado: EmpleadoModel) {
-    return this.httpClient.post('http://localhost/ComandaAPI/public/empleados/registrar', empleado)
+    return this.httpClient.post(API_REF + '/ComandaAPI/public/empleados/registrar', empleado)
       .pipe(
         map(resp => {
           if (resp['data'].length > 0) {
@@ -52,7 +53,7 @@ export class EmpleadosService {
   }
 
   modificarEmpleado(id: number, empleado: EmpleadoModel) {
-    return this.httpClient.put(`http://localhost/ComandaAPI/public/empleados/modificar/${id}`, empleado)
+    return this.httpClient.put(API_REF + `/ComandaAPI/public/empleados/modificar/${id}`, empleado)
     .pipe(
       map(resp => {
         if (resp['data'].length > 0) {

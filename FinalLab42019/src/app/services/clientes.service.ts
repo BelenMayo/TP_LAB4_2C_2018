@@ -2,6 +2,7 @@ import { Injectable } from '@angular/core';
 import { HttpClient, HttpResponse } from '@angular/common/http';
 import { map } from 'rxjs/operators';
 import { ClienteModel } from '../models/cliente.model';
+import { API_REF } from 'src/globales/variables_globales';
 
 
 @Injectable({
@@ -12,7 +13,7 @@ export class ClientesService {
   constructor(private httpClient: HttpClient) { }
 
   traerClientes() {
-    return this.httpClient.get('http://localhost/ComandaAPI/public/clientes/listar/1/0')
+    return this.httpClient.get(API_REF + '/ComandaAPI/public/clientes/listar/1/0')
       .pipe(
         map(resp => {
           if (resp['data'].length > 0) {
@@ -25,7 +26,7 @@ export class ClientesService {
   }
 
   traerCliente(id: number) {
-    return this.httpClient.get(`http://localhost/ComandaAPI/public/clientes/traer/${id}`)
+    return this.httpClient.get(API_REF + `/ComandaAPI/public/clientes/traer/${id}`)
       .pipe(
         map(resp => {
           if (resp['data'].length > 0) {
@@ -38,7 +39,7 @@ export class ClientesService {
   }
 
   guardarCliente(cliente: ClienteModel) {
-    return this.httpClient.post('http://localhost/ComandaAPI/public/clientes/registrar/', cliente)
+    return this.httpClient.post(API_REF + '/ComandaAPI/public/clientes/registrar/', cliente)
       .pipe(
         map(resp => {
           if (resp['data'].length > 0) {
@@ -51,7 +52,7 @@ export class ClientesService {
   }
 
   modificarCliente(id: number, cliente: ClienteModel) {
-    return this.httpClient.put(`http://localhost/ComandaAPI/public/clientes/modificar/${id}`, cliente)
+    return this.httpClient.put(API_REF + `/ComandaAPI/public/clientes/modificar/${id}`, cliente)
     .pipe(
       map(resp => {
         if (resp['data'].length > 0) {
@@ -64,7 +65,7 @@ export class ClientesService {
   }
 
   eliminarCliente(id: number) {
-    return this.httpClient.delete(`http://localhost/ComandaAPI/public/clientes/eliminar/${id}`)
+    return this.httpClient.delete(API_REF + `/ComandaAPI/public/clientes/eliminar/${id}`)
     .pipe(
       map(resp => {
         if (resp['data'].length > 0) {
