@@ -39,7 +39,7 @@ export class ClientesService {
   }
 
   guardarCliente(cliente: ClienteModel) {
-    return this.httpClient.post(API_REF + '/ComandaAPI/public/clientes/registrar/', cliente)
+    return this.httpClient.post(API_REF + '/ComandaAPI/public/clientes/registrar', cliente)
       .pipe(
         map(resp => {
           if (resp['data'].length > 0) {

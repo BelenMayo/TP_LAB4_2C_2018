@@ -25,7 +25,7 @@ export class EncuestasService {
   }
 
   guardarEncuesta(encuesta: EncuestaModel) {
-    return this.httpClient.post(API_REF + '/ComandaAPI/public/encuestas/registrar/', encuesta)
+    return this.httpClient.post(API_REF + '/ComandaAPI/public/encuestas/registrar', encuesta)
       .pipe(
         map(resp => {
           if (resp['data'].length > 0) {

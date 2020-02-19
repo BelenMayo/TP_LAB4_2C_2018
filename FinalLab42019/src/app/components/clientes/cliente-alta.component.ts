@@ -43,6 +43,8 @@ export class ClienteAltaComponent implements OnInit {
     // }
 
     this.cliente = new ClienteModel().guardarCliente(this.formCliente.controls);
+
+    console.log(this.cliente);
     
     this.clientesService.guardarCliente(this.cliente)
       .subscribe(resp => {

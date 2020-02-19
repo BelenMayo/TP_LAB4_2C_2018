@@ -52,7 +52,7 @@ export class PedidosService {
   }
 
   guardarPedido(pedido: PedidoModel) {
-    return this.httpClient.post(API_REF + '/ComandaAPI/public/pedidos/registrar/', pedido)
+    return this.httpClient.post(API_REF + '/ComandaAPI/public/pedidos/registrar', pedido)
       .pipe(
         map(resp => {
           if (resp['data'].length > 0) {
