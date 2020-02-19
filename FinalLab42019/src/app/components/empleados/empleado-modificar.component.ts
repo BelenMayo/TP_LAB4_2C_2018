@@ -4,6 +4,9 @@ import { EmpleadoModel } from '../../models/empleado.model';
 import { EmpleadosService } from '../../services/empleados.service';
 import { HttpClient } from '@angular/common/http';
 import { ActivatedRoute, Params } from '@angular/router';
+import { Router } from '@angular/router'
+import { URL_REF } from 'src/globales/variables_globales';
+
 
 @Component({
   selector: 'app-empleado-modificar',
@@ -19,7 +22,8 @@ export class EmpleadoModificarComponent implements OnInit {
   empleado: EmpleadoModel;
   id: number;
 
-  constructor(private formBuilder: FormBuilder, public empleadosService: EmpleadosService, private httpClient: HttpClient, private rutaActiva: ActivatedRoute) {
+  constructor(private formBuilder: FormBuilder, public empleadosService: EmpleadosService, private httpClient: HttpClient, 
+    private rutaActiva: ActivatedRoute, private router: Router) {
     this.rutaActiva.params.subscribe(params=>
       {
         this.traerEmpleado(params.id);
@@ -63,6 +67,8 @@ export class EmpleadoModificarComponent implements OnInit {
         error => {  
           text: 'Error al modificar empleado';
         });
+        
+    this.router.navigateByUrl(URL_REF + '/empleado/listadoEmpleado');
   }
 
 }

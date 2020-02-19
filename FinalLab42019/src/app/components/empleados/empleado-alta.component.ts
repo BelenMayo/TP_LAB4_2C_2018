@@ -3,6 +3,8 @@ import { FormControl, FormGroup, Validators, FormBuilder } from '@angular/forms'
 import { EmpleadoModel } from '../../models/empleado.model';
 import { EmpleadosService } from '../../services/empleados.service';
 import { HttpClient } from '@angular/common/http';
+import { Router } from '@angular/router';
+import { URL_REF } from 'src/globales/variables_globales';
 
 
 @Component({
@@ -20,7 +22,8 @@ export class EmpleadoAltaComponent implements OnInit {
   empleado: EmpleadoModel;
   id: number;
 
-  constructor(private formBuilder: FormBuilder, public empleadosService: EmpleadosService, private httpClient: HttpClient) { }
+  constructor(private formBuilder: FormBuilder, public empleadosService: EmpleadosService, private httpClient: HttpClient
+    , private router: Router) { }
 
   ngOnInit() {
     this.formEmpleado = this.formBuilder.group({
@@ -43,14 +46,16 @@ export class EmpleadoAltaComponent implements OnInit {
     // }
 
     this.empleado = new EmpleadoModel().guardarEmpleado(this.formEmpleado.controls);
-    
+
     this.empleadosService.guardarEmpleado(this.empleado)
       .subscribe(resp => {
         this.empleados = resp;
         console.log(this.empleados);
       },
-        error => {  
+        error => {
           text: 'Error al guardar empleado';
         });
+
+    this.router.navigateByUrl(URL_REF + '/empleado/listadoEmpleado');
   }
 }

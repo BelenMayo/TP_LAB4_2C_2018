@@ -4,6 +4,9 @@ import { ClienteModel } from '../../models/cliente.model';
 import { ClientesService } from '../../services/clientes.service';
 import { HttpClient } from '@angular/common/http';
 import { ActivatedRoute, Params } from '@angular/router';
+import { URL_REF } from 'src/globales/variables_globales';
+import { Router } from '@angular/router'
+
 
 @Component({
   selector: 'app-cliente-modificar',
@@ -20,7 +23,7 @@ export class ClienteModificarComponent implements OnInit {
   id: number;
 
   constructor(private formBuilder: FormBuilder, public clientesService: ClientesService, private httpClient: HttpClient
-                , private rutaActiva: ActivatedRoute) {
+                , private rutaActiva: ActivatedRoute, private router: Router) {
      this.rutaActiva.params.subscribe(params=>
       {
         this.traerCliente(params.id);
@@ -64,6 +67,8 @@ export class ClienteModificarComponent implements OnInit {
         error => {  
           text: 'Error al modificar cliente';
         });
+
+    this.router.navigateByUrl(URL_REF + '/cliente/listadoCliente');
   }
 
 }

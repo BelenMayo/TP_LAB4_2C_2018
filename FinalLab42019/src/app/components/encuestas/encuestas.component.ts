@@ -3,6 +3,8 @@ import { FormControl, FormGroup, Validators, FormBuilder } from '@angular/forms'
 import { EncuestaModel } from '../../models/encuesta.model';
 import { EncuestasService } from '../../services/encuestas.service';
 import { HttpClient } from '@angular/common/http';
+import { Router } from '@angular/router';
+import { URL_REF } from 'src/globales/variables_globales';
 
 
 @Component({
@@ -20,7 +22,8 @@ export class EncuestasComponent implements OnInit {
   encuesta: EncuestaModel;
   id: number;
 
-  constructor(private formBuilder: FormBuilder, public encuestasService: EncuestasService, private httpClient: HttpClient) { }
+  constructor(private formBuilder: FormBuilder, public encuestasService: EncuestasService, private httpClient: HttpClient
+    , private router: Router) { }
 
   ngOnInit() {
     this.formEncuesta = this.formBuilder.group({
@@ -33,7 +36,7 @@ export class EncuestasComponent implements OnInit {
   }
 
   // Guarda una encuesta
-  guardarEncuesta () {
+  guardarEncuesta() {
     this.submitted = true;
 
     this.encuesta = new EncuestaModel().guardarEncuesta(this.formEncuesta.controls);
@@ -46,6 +49,8 @@ export class EncuestasComponent implements OnInit {
         error => {
           text: 'Error al guardar encuesta';
         });
+
+    this.router.navigateByUrl(URL_REF + '/cliente/listadoCliente');
   }
 
 }
