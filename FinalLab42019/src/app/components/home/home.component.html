@@ -1,77 +1,83 @@
+<h2 class="card-title" style="color: white; text-align: center;">Bienvenidos a LA COMANDA</h2>
 
-<h2 class="card-title" style= "color: white; text-align: center;">Bienvenidos a LA COMANDA</h2>
-
-<div class="panel-tarjetas" style= "padding-top: 50px;">
-<div class="row">
-  <div class="col-md-4 tarjetas">
-      <div class="card text-black bg-light mb-3" style="max-width: 18rem;" type= "button" [routerLink]="['/cliente/listadoCliente']">
-          <div class="card-header">
-              <i class="fas fa-glass-martini fa-3x"></i>
-          </div>
-          <div class="card-body">
-            <h5 class="card-title">Clientes</h5>
-            <p class="card-text">Manejo de Clientes</p>
-          </div>
-      </div>
-  </div>
-  <div class="col-md-4 tarjetas">
-      <div class="card text-black bg-light mb-3" style="max-width: 18rem;" type= "button" [routerLink]="['/empleado/listadoEmpleado']">
-          <div class="card-header">
-              <i class="fas fa-address-card fa-3x"></i>
-          </div>
-          <div class="card-body">
-            <h5 class="card-title">Empleados</h5>
-            <p class="card-text">Manejo de Empleados</p>
-          </div>
-      </div>
-  </div>
-  <div class="col-md-4 tarjetas">
-      <div class="card text-black bg-light mb-3" style="max-width: 18rem;" type= "button" [routerLink]="['/menu']">
-          <div class="card-header">
-              <i class="fas fa-utensils fa-3x"></i>
-          </div>
-          <div class="card-body">
-            <h5 class="card-title">Menú</h5>
-            <p class="card-text">Ver Menú</p>
-        </div>
-    </div>
-  </div>
-</div>
-
-<div class="row">
-    <div class="col-md-4 tarjetas">
-        <div class="card text-black bg-light mb-3" style="max-width: 18rem;" type= "button" [routerLink]="['/mesa']">
-            <div class="card-header">
-                <i class="fas fa-table fa-3x"></i>
+<div class="panel-tarjetas" style="padding-top: 50px;">
+    <div class="row">
+        <div class="col-md-4 tarjetas">
+            <div class="card text-black bg-light mb-3" style="max-width: 18rem;" type="button"
+                [routerLink]="['/cliente/listadoCliente']">
+                <div class="card-header">
+                    <i class="fas fa-glass-martini fa-3x"></i>
+                </div>
+                <div class="card-body">
+                    <h5 class="card-title">Clientes</h5>
+                    <p class="card-text">Manejo de Clientes</p>
+                </div>
             </div>
-            <div class="card-body">
-              <h5 class="card-title">Mesas</h5>
-              <p class="card-text">Ver Mesas</p>
+        </div>
+        <div class="col-md-4 tarjetas">
+            <div class="card text-black bg-light mb-3" style="max-width: 18rem;" type="button"
+                [routerLink]="['/empleado/listadoEmpleado']">
+                <div class="card-header">
+                    <i class="fas fa-address-card fa-3x"></i>
+                </div>
+                <div class="card-body">
+                    <h5 class="card-title">Empleados</h5>
+                    <p class="card-text">Manejo de Empleados</p>
+                </div>
+            </div>
+        </div>
+        <div class="col-md-4 tarjetas">
+            <div class="card text-black bg-light mb-3" style="max-width: 18rem;" type="button" [routerLink]="['/menu']">
+                <div class="card-header">
+                    <i class="fas fa-utensils fa-3x"></i>
+                </div>
+                <div class="card-body">
+                    <h5 class="card-title">Realizar Pedido</h5>
+                    <p class="card-text">Ver Menú</p>
+                </div>
             </div>
         </div>
     </div>
-    <div class="col-md-4 tarjetas">
-        <div class="card text-black bg-light mb-3" style="max-width: 18rem;" type= "button" [routerLink]="['/encuesta']">
-            <div class="card-header">
-                <i class="fas fa-clipboard-list fa-3x"></i>
-            </div>
-            <div class="card-body">
-              <h5 class="card-title">Encuesta</h5>
-              <p class="card-text">Ver Encuesta</p>
+
+    <div class="row">
+        <div class="col-md-4 tarjetas">
+            <div class="card text-black bg-light mb-3" style="max-width: 18rem;" type="button" [routerLink]="['/mesa']">
+                <div class="card-header">
+                    <i class="fas fa-table fa-3x"></i>
+                </div>
+                <div class="card-body">
+                    <h5 class="card-title">Mesas</h5>
+                    <p class="card-text">Ver Mesas</p>
+                </div>
             </div>
         </div>
-    </div>
-    <div class="col-md-4 tarjetas">
-        <div class="card text-black bg-light mb-3" style="max-width: 18rem;" type= "button" [routerLink]="['/estadistica']">
-            <div class="card-header">
-                <i class="fas fa-chart-bar fa-3x"></i>
+
+        <div class="col-md-4 tarjetas">
+            <div class="card text-black bg-light mb-3" style="max-width: 18rem;" type="button"
+                [routerLink]="['/estadistica']">
+                <div class="card-header">
+                    <i class="fas fa-chart-bar fa-3x"></i>
+                </div>
+                <div class="card-body">
+                    <h5 class="card-title">Estadísticas</h5>
+                    <p class="card-text">Ver Estadísticas</p>
+                </div>
             </div>
-            <div class="card-body">
-              <h5 class="card-title">Estadísticas</h5>
-              <p class="card-text">Ver Estadísticas</p>
-          </div>
-      </div>
+        </div>
+
+        <div class="col-md-4 tarjetas">
+            <div class="card text-black bg-light mb-3" style="max-width: 18rem;" type="button"
+                [routerLink]="['/estadistica']">
+                <div class="card-header">
+                    <i class="fas fa-search fa-3x"></i>
+                </div>
+                <div class="card-body">
+                    <h5 class="card-title">Estado MI PEDIDO</h5>
+                    <p class="card-text">Codigo Mesa / Codigo Pedido</p>
+                </div>
+            </div>
+        </div>
+
     </div>
 
-  </div>
 </div>

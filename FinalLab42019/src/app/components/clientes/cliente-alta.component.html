@@ -1,5 +1,6 @@
 <link href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" rel="stylesheet">
 
+
 <div class="container contenedor-clientes">
     <label class="titulo">Crear Cliente</label>
     <form [formGroup]="formCliente" (ngSubmit)="guardarCliente()">
@@ -9,59 +10,66 @@
                 <div class="row clientes">
                     <!-- Input Nombre -->
                     <div class="col-md-6">
-                        <input type="text" id="nombre" class="form-control" formControlName='nombre'
-                            placeholder="Nombre.." required>
-                        <span style="color: red" *ngIf="formCliente.controls['nombre'].touched && formCliente.controls['nombre'].errors?.required">El nombre es requerido</span>   
+                        <span style="font-weight: bold;font-style: italic;">Nombre</span>
+                        <input style="font-style: italic;" type="text" id="nombre" class="form-control" formControlName='nombre' placeholder="Nombre.." [ngClass]="{'is-invalid': formCliente.get('nombre').value == '', 'is-valid': !(formCliente.get('nombre').value == '')}">
                     </div>
                     <!-- Input Apellido -->
                     <div class="col-md-6">
-                        <input type="text" id="apellido" class="form-control" formControlName='apellido'
-                            placeholder="Apellido.." required>
-                        <span style="color: red" *ngIf="formCliente.controls['apellido'].touched && formCliente.controls['apellido'].errors?.required">El apellido es requerido</span>
+                        <span style="font-weight: bold;font-style: italic;">Apellido</span>
+                        <input style="font-style: italic;" type="text" id="apellido" class="form-control is-invalid" formControlName='apellido' placeholder="Apellido.." [ngClass]="{'is-invalid': formCliente.get('apellido').value == '', 'is-valid': !(formCliente.get('apellido').value == '')}"> 
                     </div>
                 </div>
                 <div class="row clientes">
                     <!-- Input Telefono -->
                     <div class="col-md-6">
-                        <input type="numeric" id="telefono" class="form-control" formControlName='telefono' placeholder="Telefono.." required>
-                        <span style="color: red" *ngIf="formCliente.controls['telefono'].touched && formCliente.controls['telefono'].errors?.required">El telefono es requerido</span>   
+                        <span style="font-weight: bold;font-style: italic;">Telefono</span>
+                        <input style="font-style: italic;" type="text" id="telefono" class="form-control is-invalid" formControlName='telefono'
+                            placeholder="Telefono.." [ngClass]="{'is-invalid': formCliente.get('telefono').value == '', 'is-valid': !(formCliente.get('telefono').value == '')}">
                     </div>
                     <!-- Input Mail -->
                     <div class="col-md-6">
-                        <input type="email" id="mail" class="form-control" formControlName='mail' placeholder="Mail.." required>
-                        <span style="color: red" *ngIf="formCliente.controls['mail'].touched && formCliente.controls['mail'].errors?.required">El mail es requerido</span>           
+                        <span style="font-weight: bold;font-style: italic;">Mail</span>
+                        <input style="font-style: italic;" type="mail" id="mail" class="form-control is-mail" formControlName='mail'
+                            placeholder="Mail.."  [ngClass]="{'is-invalid': formCliente.get('mail').value == '', 'is-valid': !(formCliente.get('mail').value == '')}">
                     </div>
                 </div>
                 <div class="row clientes">
                     <!-- Input Foto -->
                     <div class="col-md-6">
-                        <input type="File" class="btn btn-secondary" placeholder="Subir..">
-                        <span style="color: red" *ngIf="formCliente.controls['foto'].touched && formCliente.controls['foto'].errors?.required">La foto es requerida</span>   
+                        <span style="font-weight: bold;font-style: italic;">Foto</span><br/>
+                        <input style="font-style: italic;" type="File" class="btn btn-secondary" placeholder="Subir.." required>
+                        <span style="color: red"
+                            *ngIf="formCliente.controls['foto'].touched && formCliente.controls['foto'].errors?.required">La
+                            foto es requerida</span>
                     </div>
                 </div>
                 <div class="row clientes">
                     <!-- Input Usuario -->
                     <div class="col-md-6">
-                        <input type="text" id="usuario" class="form-control" formControlName='usuario' placeholder="Usuario.." required>
-                        <span style="color: red" *ngIf="formCliente.controls['usuario'].touched && formCliente.controls['usuario'].errors?.required">El usuario es requerido</span>   
+                        <span style="font-weight: bold;font-style: italic;">Usuario</span>
+                        <input style="font-style: italic;" type="text" id="usuario" class="form-control is-invalid" formControlName='usuario'
+                            placeholder="Usuario.."  [ngClass]="{'is-invalid': formCliente.get('usuario').value == '', 'is-valid': !(formCliente.get('usuario').value == '')}">
                     </div>
                     <!-- Input Password -->
                     <div class="col-md-6">
-                        <input type="text" id="password"  class="form-control" formControlName='password' placeholder="Contraseña.." required>
-                        <span style="color: red" *ngIf="formCliente.controls['password'].touched && formCliente.controls['password'].errors?.required">La contraseña es requerida</span>   
+                        <span style="font-weight: boldfont-style: italic;;">Password</span>
+                        <input style="font-style: italic;" type="text" id="password" class="form-control is-invalid" formControlName='password'
+                            placeholder="Password.." [ngClass]="{'is-invalid': formCliente.get('password').value == '', 'is-valid': !(formCliente.get('password').value == '')}">
                     </div>
-                </div>
+                </div><br/>
                 <div class="row clientes">
                     <!-- Guardar -->
                     <div class="col-sm-2">
-                        <button type="submit" class="btn btn-success" [disabled]= 'formCliente.invalid'>Guardar <i class="fas fa-save"></i></button>
+                        <button type="submit" class="btn btn-success" [disabled]='formCliente.invalid'>Guardar <i
+                                class="fas fa-save"></i></button>
                     </div>
                     <!-- Cancelar -->
                     <div class="col-sm-2">
-                        <button type="button" class="btn btn-danger" [routerLink]="['/cliente/listadoCliente']">Cancelar <i class="fas fa-undo-alt"></i></button>
+                        <button type="button" class="btn btn-danger" [routerLink]="['/cliente/listadoCliente']">Cancelar
+                            <i class="fas fa-undo-alt"></i></button>
                     </div>
                 </div>
+            </div>
         </div>
-    </div>
     </form>
 </div>

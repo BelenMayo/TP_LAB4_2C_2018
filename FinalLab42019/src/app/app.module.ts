@@ -60,6 +60,9 @@ import { AgmCoreModule } from '@agm/core';
 import { RegistroComponent } from './components/registro/registro.component';
 import { GraficosComponent } from './components/estadisticas/graficos.component';
 
+// Captcha
+import { BotDetectCaptchaModule } from 'angular-captcha'; 
+
 
 @NgModule({
   declarations: [
@@ -110,7 +113,7 @@ import { GraficosComponent } from './components/estadisticas/graficos.component'
       apiKey: 'AIzaSyCMZH8ZfJ8SBwnQ_SnfmtbI8hDlByezbts',
       libraries: ['places'] 
     }),
-
+    BotDetectCaptchaModule
   ],
   providers: [
     ClientesService,
