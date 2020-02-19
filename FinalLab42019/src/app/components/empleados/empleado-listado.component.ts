@@ -3,6 +3,8 @@ import { EmpleadosService } from '../../services/empleados.service';
 import { HttpClient } from '@angular/common/http';
 import { BsModalService, BsModalRef } from 'ngx-bootstrap/modal';
 import { ExcelService } from '../../services/excel.service';
+import { Router } from '@angular/router';
+
 
 import * as jsPDF from 'jspdf';
 import * as html2canvas from 'html2canvas';
@@ -22,7 +24,8 @@ export class EmpleadoListadoComponent implements OnInit {
   pageActual: number = 1;
   modalRef: BsModalRef;
 
-  constructor(public empleadosService: EmpleadosService, private httpClient: HttpClient, private modalService: BsModalService, private excelService: ExcelService) {
+  constructor(public empleadosService: EmpleadosService, private httpClient: HttpClient, private modalService: BsModalService
+    , private excelService: ExcelService, private router: Router) {
     this.traerEmpleados();
   }
 
@@ -48,8 +51,10 @@ export class EmpleadoListadoComponent implements OnInit {
         console.log("Se elimino el empleado");
       },
         error => {
-          text: 'Error al eliminar cliente';
+          text: 'Error al eliminar empleado';
         });
+    this.modalRef.hide()
+    this.router.navigateByUrl('/empleado/listadoEmpleado');
   }
 
   // Abre Modal

@@ -35,7 +35,7 @@ export class ClienteListadoComponent implements OnInit {
   }
 
   // Trae todos los clientes
-  traerClientes() {
+  public traerClientes() {
     this.clientesService.traerClientes()
       .subscribe(resp => {
         this.clientes = resp;

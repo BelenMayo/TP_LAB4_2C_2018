@@ -1,7 +1,7 @@
 <link href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" rel="stylesheet">
 
 <div class="container contenedor-encuestas">
-  <form [formGroup]="formEncuesta" (ngSubmit)="guardarEncuesta()">
+  <form [formGroup]="formEncuesta" (ngSubmit)="guardarEncuesta(template)">
 
     <section class="row">
       <div class="col-md-12">
@@ -88,3 +88,14 @@
 
   </form>
 </div>
+
+<ng-template #template>
+  <div class="modal-body">
+    <h4 class="modal-title pull-left">Encuesta cargada exitosamente</h4>
+    <button type="button" class="close pull-right" aria-label="Close" (click)="modalRef.hide()">
+    </button>
+  </div>
+  <div class="modal-footer">
+    <button type="button" class="btn btn-success" (click)="modalRef.hide()">Aceptar</button>
+  </div>
+</ng-template>

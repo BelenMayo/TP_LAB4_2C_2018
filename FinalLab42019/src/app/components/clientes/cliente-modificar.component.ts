@@ -1,10 +1,11 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, TemplateRef } from '@angular/core';
 import { FormControl, FormGroup, Validators, FormBuilder } from '@angular/forms';
 import { ClienteModel } from '../../models/cliente.model';
 import { ClientesService } from '../../services/clientes.service';
 import { HttpClient } from '@angular/common/http';
 import { ActivatedRoute, Params } from '@angular/router';
 import { Router } from '@angular/router'
+import { BsModalService, BsModalRef } from 'ngx-bootstrap/modal';
 
 
 @Component({
@@ -21,12 +22,13 @@ export class ClienteModificarComponent implements OnInit {
   cliente: ClienteModel;
   id: number;
 
+  modalRef: BsModalRef;
+
   constructor(private formBuilder: FormBuilder, public clientesService: ClientesService, private httpClient: HttpClient
-                , private rutaActiva: ActivatedRoute, private router: Router) {
-     this.rutaActiva.params.subscribe(params=>
-      {
-        this.traerCliente(params.id);
-      });
+    , private rutaActiva: ActivatedRoute, private router: Router, private modalService: BsModalService) {
+    this.rutaActiva.params.subscribe(params => {
+      this.traerCliente(params.id);
+    });
   }
 
   ngOnInit() {
@@ -34,7 +36,7 @@ export class ClienteModificarComponent implements OnInit {
 
   // Trae un cliente
   traerCliente(id) {
-    this.id= id;
+    this.id = id;
     this.clientesService.traerCliente(id)
       .subscribe(resp => {
         this.formCliente = this.formBuilder.group({
@@ -53,21 +55,28 @@ export class ClienteModificarComponent implements OnInit {
   }
 
   // Modifica un cliente
-  modificarCliente() {
+  modificarCliente(modal) {
     this.submitted = true;
 
     this.cliente = new ClienteModel().modificarCliente(this.formCliente.controls);
-    
+
     this.clientesService.modificarCliente(this.id, this.cliente)
       .subscribe(resp => {
         this.clientes = resp;
         console.log(this.clientes);
       },
-        error => {  
+        error => {
           text: 'Error al modificar cliente';
         });
 
-    this.router.navigateByUrl('/cliente/listadoCliente');
+    this.openModal(modal);
+    // this.router.navigateByUrl('/cliente/listadoCliente');
+  }
+
+  // Abre Modal
+  openModal(template: TemplateRef<any>) {
+    this.modalRef = this.modalService.show(template);
+
   }
 
 }

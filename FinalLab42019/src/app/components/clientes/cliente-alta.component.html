@@ -3,7 +3,7 @@
 
 <div class="container contenedor-clientes">
     <label class="titulo">Crear Cliente</label>
-    <form [formGroup]="formCliente" (ngSubmit)="guardarCliente()">
+    <form [formGroup]="formCliente" (ngSubmit)="guardarCliente(template)">
 
         <div class="row">
             <div class="col-md-9 col-sm-8">
@@ -87,3 +87,14 @@
         </div>
     </form>
 </div>
+
+<ng-template #template>
+    <div class="modal-body">
+      <h4 class="modal-title pull-left">Cliente dado de alta exitosamente</h4>
+      <button type="button" class="close pull-right" aria-label="Close" (click)="modalRef.hide()">
+      </button>
+    </div>
+    <div class="modal-footer">
+      <button type="button" class="btn btn-success" (click)="modalRef.hide()">Aceptar</button>
+    </div>
+  </ng-template>

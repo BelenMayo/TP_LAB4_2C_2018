@@ -1,9 +1,10 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, TemplateRef } from '@angular/core';
 import { FormControl, FormGroup, Validators, FormBuilder } from '@angular/forms';
 import { ClienteModel } from '../../models/cliente.model';
 import { ClientesService } from '../../services/clientes.service';
 import { HttpClient } from '@angular/common/http';
 import { Router } from '@angular/router';
+import { BsModalService, BsModalRef } from 'ngx-bootstrap/modal';
 
 
 @Component({
@@ -20,8 +21,10 @@ export class ClienteAltaComponent implements OnInit {
   cliente: ClienteModel;
   id: number;
 
+  modalRef: BsModalRef;
+
   constructor(private formBuilder: FormBuilder, public clientesService: ClientesService, private httpClient: HttpClient
-    , private router: Router) {
+    , private router: Router, private modalService: BsModalService) {
   }
 
   ngOnInit() {
@@ -37,7 +40,7 @@ export class ClienteAltaComponent implements OnInit {
   }
 
   // Guarda un cliente
-  guardarCliente() {
+  guardarCliente(modal) {
     this.submitted = true;
 
     // if (!this.formCliente.invalid) {
@@ -47,16 +50,23 @@ export class ClienteAltaComponent implements OnInit {
     this.cliente = new ClienteModel().guardarCliente(this.formCliente.controls);
 
     console.log(this.cliente);
-    
+
     this.clientesService.guardarCliente(this.cliente)
       .subscribe(resp => {
         this.clientes = resp;
         console.log(this.clientes);
       },
-        error => {  
+        error => {
           text: 'Error al guardar cliente';
         });
 
-    this.router.navigateByUrl('/cliente/listadoCliente');
+    this.openModal(modal);
+    // this.router.navigateByUrl('/cliente/listadoCliente');
+  }
+
+  // Abre Modal
+  openModal(template: TemplateRef<any>) {
+    this.modalRef = this.modalService.show(template);
+
   }
 }

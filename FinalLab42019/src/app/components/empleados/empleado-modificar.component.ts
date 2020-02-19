@@ -1,10 +1,11 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, TemplateRef } from '@angular/core';
 import { FormControl, FormGroup, Validators, FormBuilder } from '@angular/forms';
 import { EmpleadoModel } from '../../models/empleado.model';
 import { EmpleadosService } from '../../services/empleados.service';
 import { HttpClient } from '@angular/common/http';
 import { ActivatedRoute, Params } from '@angular/router';
 import { Router } from '@angular/router'
+import { BsModalService, BsModalRef } from 'ngx-bootstrap/modal';
 
 
 @Component({
@@ -21,12 +22,13 @@ export class EmpleadoModificarComponent implements OnInit {
   empleado: EmpleadoModel;
   id: number;
 
-  constructor(private formBuilder: FormBuilder, public empleadosService: EmpleadosService, private httpClient: HttpClient, 
-    private rutaActiva: ActivatedRoute, private router: Router) {
-    this.rutaActiva.params.subscribe(params=>
-      {
-        this.traerEmpleado(params.id);
-      });
+  modalRef: BsModalRef;
+
+  constructor(private formBuilder: FormBuilder, public empleadosService: EmpleadosService, private httpClient: HttpClient,
+    private rutaActiva: ActivatedRoute, private router: Router, private modalService: BsModalService) {
+    this.rutaActiva.params.subscribe(params => {
+      this.traerEmpleado(params.id);
+    });
   }
 
   ngOnInit() {
@@ -34,7 +36,7 @@ export class EmpleadoModificarComponent implements OnInit {
 
   // Trae un empleado
   traerEmpleado(id) {
-    this.id= id;
+    this.id = id;
     this.empleadosService.traerEmpleado(id)
       .subscribe(resp => {
         this.formEmpleado = this.formBuilder.group({
@@ -53,21 +55,27 @@ export class EmpleadoModificarComponent implements OnInit {
   }
 
   // Modifica un empleado
-  modificarEmpleado() {
+  modificarEmpleado(modal) {
     this.submitted = true;
 
     this.empleado = new EmpleadoModel().modificarEmpleado(this.formEmpleado.controls);
-    
+
     this.empleadosService.modificarEmpleado(this.id, this.empleado)
       .subscribe(resp => {
         this.empleados = resp;
         console.log(this.empleados);
       },
-        error => {  
+        error => {
           text: 'Error al modificar empleado';
         });
-        
-    this.router.navigateByUrl('/empleado/listadoEmpleado');
+
+    this.openModal(modal);
+    // this.router.navigateByUrl('/empleado/listadoEmpleado');
+  }
+
+  // Abre Modal
+  openModal(template: TemplateRef<any>) {
+    this.modalRef = this.modalService.show(template);
   }
 
 }
