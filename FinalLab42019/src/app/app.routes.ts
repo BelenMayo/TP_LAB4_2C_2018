@@ -30,7 +30,7 @@ const APP_ROUTES: Routes= [
     {path: 'mapa', component: MapaComponent},
     {path: 'login', component: LoginComponent},
     {path: 'registro', component: RegistroComponent},
-    {path: '**', pathMatch: 'full' , redirectTo:'home'}
+    {path: '**', pathMatch: 'full' , redirectTo:'login'}
 ];
 
 export const APP_ROUTING = RouterModule.forRoot(APP_ROUTES);    
