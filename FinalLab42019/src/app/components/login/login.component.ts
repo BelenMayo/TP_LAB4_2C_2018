@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { CaptchaComponent } from 'angular-captcha'; 
 import { Router } from '@angular/router'
+import { NavbarService } from 'src/app/services/navbar.service';
 
 
 @Component({
@@ -16,7 +17,12 @@ export class LoginComponent implements OnInit {
   usuario: string;
   password: string;
 
-  constructor(private router: Router) { 
+  valorSocio: string = "Socio"
+  valorMozo: string = "Mozo"
+  valorCocinero: string = "Cocinero"
+  valorBartender: string = "Bartender"
+
+  constructor(private router: Router, private navbarService: NavbarService) { 
     this.usuario = 'Prueba';
     this.password = '123456';
   }
@@ -35,7 +41,13 @@ export class LoginComponent implements OnInit {
     this.usuario = usuario;
     this.password = password;
 
-    // this.router.navigateByUrl('/home');
+    this.router.navigateByUrl('/home');
+  }
+
+  Cliente() {
+    this.navbarService.canVisible = true;
+
+    this.router.navigateByUrl('/home');
   }
 
 }

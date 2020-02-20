@@ -15,6 +15,7 @@ import { PanelComponent } from './components/panel/panel.component';
 import { MapaComponent } from './components/mapa/mapa.component';
 import { RegistroComponent } from './components/registro/registro.component';
 import { GraficosComponent } from './components/estadisticas/graficos.component';
+import { NavbarComponent } from './components/navbar/navbar.component';
 
 const APP_ROUTES: Routes= [
     {path: 'home', component: HomeComponent},
@@ -30,6 +31,7 @@ const APP_ROUTES: Routes= [
     {path: 'mapa', component: MapaComponent},
     {path: 'login', component: LoginComponent},
     {path: 'registro', component: RegistroComponent},
+    {path: 'navbar', component: NavbarComponent},
     {path: '**', pathMatch: 'full' , redirectTo:'login'}
 ];
 

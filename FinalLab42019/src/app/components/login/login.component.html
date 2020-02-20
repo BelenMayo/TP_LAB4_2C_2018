@@ -27,7 +27,12 @@
   </div>
 </div>
 
-<input type="button" (click)="loguearse('Socio', '123456')" class="fadeIn fourth" value="Socio">
+<input type="hidden" value="{{valorSocio}}">
+<input type="hidden" value="{{valorMozo}}">
+<input type="hidden" value="{{valorCocinero}}">
+<input type="hidden" value="{{valorBartender}}">
+
+<input type="button" (click)="Cliente()" class="fadeIn fourth" value="Socio">
 <input type="button" (click)="loguearse('Mozo', 123456)" class="fadeIn fourth" value="Mozo">
 <input type="button" (click)="loguearse('Cocinero', '123456')" class="fadeIn fourth" value="Cocinero">
 <input type="button" (click)="loguearse('Bartender', '123456')" class="fadeIn fourth" value="Bartender">
