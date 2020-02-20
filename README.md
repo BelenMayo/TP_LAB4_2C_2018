@@ -6,8 +6,8 @@ http://finallab4bm.rivmay.net/
 
 La comanda es una aplicacion que aplica la operatoria del Restaurante.
 
-📋 Pre-requisitos:
-El cliente puede loguearse a la aplicacion o no para consultar el estado de su pedido (con numero de mesa y numero de pedido).
+📋 Requisitos:
+Estra registrado como socio, cliente, mozo, cocinero, bartender.
 
 📖 Api:
 Se utilizo una Api Rest para los servicios de la aplicacion
