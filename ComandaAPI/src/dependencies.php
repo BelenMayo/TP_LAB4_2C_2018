@@ -46,6 +46,8 @@ $container['model'] = function($c){
         'pedido' => new App\Model\PedidosModel($c->db),
         'seccion' => new App\Model\SeccionesModel($c->db),
         'sector_pedido' => new App\Model\SectorPedidosModel($c->db),
-        'tipo_empleado' => new App\Model\TipoEmpleadosModel($c->db)
+        'tipo_empleado' => new App\Model\TipoEmpleadosModel($c->db),
+        'registro' => new App\Model\RegistroModel($c->db),
+        'login' => new App\Model\LoginModel($c->db)
     ];
 };
