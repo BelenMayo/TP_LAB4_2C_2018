@@ -5,7 +5,11 @@ import { Injectable } from '@angular/core';
 })
 export class NavbarService {
 
-    canVisible: boolean = false;
+    socio: boolean = false;
+    cliente: boolean = false;
+    mozo: boolean = false;
+    cocinero: boolean = false;
+    bartender: boolean = false;
 
   constructor() { }
 }

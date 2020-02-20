@@ -1,6 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Params } from '@angular/router';
 import { HttpClient } from '@angular/common/http';
+import { NavbarService } from 'src/app/services/navbar.service';
+
 
 @Component({
   selector: 'app-home',
@@ -13,7 +15,7 @@ export class HomeComponent implements OnInit {
   // Variables
   usuario: string;
 
-  constructor(private rutaActiva: ActivatedRoute, private httpClient: HttpClient) {
+  constructor(private rutaActiva: ActivatedRoute, private httpClient: HttpClient, public navbarService : NavbarService) {
     this.rutaActiva.params.subscribe(params => {
       console.log(params)
       this.verificarUsuario(params);

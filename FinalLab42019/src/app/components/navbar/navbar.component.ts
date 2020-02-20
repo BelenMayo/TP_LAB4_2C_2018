@@ -14,7 +14,6 @@ export class NavbarComponent implements OnInit {
   usuarioV: boolean = true;
 
   constructor(private rutaActiva: ActivatedRoute, public navbarService : NavbarService) {
-    debugger;
     this.rutaActiva.params.subscribe(params => {
       console.log(params)
       this.verificarUsuario(params);

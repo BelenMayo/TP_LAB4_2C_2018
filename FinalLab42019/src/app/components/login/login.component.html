@@ -16,7 +16,7 @@
     <form>
       <input type="text" id="login" class="fadeIn second" name="login" value="{{usuario}}" placeholder="Usuario">
       <input type="text" id="password" class="fadeIn third" name="login" value="{{password}}" placeholder="Clave">
-      <input type="button" (click)="entrarLogin()" class="fadeIn fourth" value="Log In">
+      <input type="button" (click)="entrarLogin()" class="fadeIn fourth" value="Log In" disabled>
     </form>
 
     <!-- Remind Passowrd -->
@@ -27,13 +27,8 @@
   </div>
 </div>
 
-<input type="hidden" value="{{valorSocio}}">
-<input type="hidden" value="{{valorMozo}}">
-<input type="hidden" value="{{valorCocinero}}">
-<input type="hidden" value="{{valorBartender}}">
-
-<input type="button" (click)="Cliente()" class="fadeIn fourth" value="Socio">
-<input type="button" (click)="loguearse('Mozo', 123456)" class="fadeIn fourth" value="Mozo">
-<input type="button" (click)="loguearse('Cocinero', '123456')" class="fadeIn fourth" value="Cocinero">
-<input type="button" (click)="loguearse('Bartender', '123456')" class="fadeIn fourth" value="Bartender">
+<input type="button" (click)="Socio()" class="fadeIn fourth" value="Socio">
+<input type="button" (click)="Cliente()" class="fadeIn fourth" value="Cliente">
+<input type="button" (click)="Mozo()" class="fadeIn fourth" value="Mozo">
+<input type="button" (click)="Cocinero()" class="fadeIn fourth" value="Cocinero">
 

@@ -1,8 +1,8 @@
 <h2 class="card-title" style="color: white; text-align: center;">Bienvenidos a LA COMANDA</h2>
 
-<div class="panel-tarjetas" style="padding-top: 50px;">
+<div class="panel-tarjetas" style="padding-top: 50px;" >
     <div class="row">
-        <div class="col-md-4 tarjetas">
+        <div class="col-md-4 tarjetas" *ngIf = "navbarService.socio">
             <div class="card text-black bg-light mb-3" style="max-width: 18rem;" type="button"
                 [routerLink]="['/cliente/listadoCliente']">
                 <div class="card-header">
@@ -14,7 +14,7 @@
                 </div>
             </div>
         </div>
-        <div class="col-md-4 tarjetas">
+        <div class="col-md-4 tarjetas" *ngIf = "navbarService.socio">
             <div class="card text-black bg-light mb-3" style="max-width: 18rem;" type="button"
                 [routerLink]="['/empleado/listadoEmpleado']">
                 <div class="card-header">
@@ -26,7 +26,7 @@
                 </div>
             </div>
         </div>
-        <div class="col-md-4 tarjetas">
+        <div class="col-md-4 tarjetas" *ngIf = "navbarService.socio || navbarService.mozo">
             <div class="card text-black bg-light mb-3" style="max-width: 18rem;" type="button" [routerLink]="['/menu']">
                 <div class="card-header">
                     <i class="fas fa-utensils fa-3x"></i>
@@ -40,7 +40,7 @@
     </div>
 
     <div class="row">
-        <div class="col-md-4 tarjetas">
+        <div class="col-md-4 tarjetas" *ngIf = "navbarService.socio || navbarService.mozo">
             <div class="card text-black bg-light mb-3" style="max-width: 18rem;" type="button" [routerLink]="['/mesa']">
                 <div class="card-header">
                     <i class="fas fa-table fa-3x"></i>
@@ -52,7 +52,7 @@
             </div>
         </div>
 
-        <div class="col-md-4 tarjetas">
+        <div class="col-md-4 tarjetas" *ngIf = "navbarService.socio">
             <div class="card text-black bg-light mb-3" style="max-width: 18rem;" type="button"
                 [routerLink]="['/estadistica']">
                 <div class="card-header">
@@ -65,7 +65,7 @@
             </div>
         </div>
 
-        <div class="col-md-4 tarjetas">
+        <div class="col-md-4 tarjetas" *ngIf = "navbarService.socio || navbarService.cliente">
             <div class="card text-black bg-light mb-3" style="max-width: 18rem;" type="button"
                 [routerLink]="['/estadistica']">
                 <div class="card-header">
