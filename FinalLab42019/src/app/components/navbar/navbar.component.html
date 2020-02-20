@@ -1,45 +1,47 @@
 <nav class="navbar navbar-expand-lg navbar-light bg-light">
-    <a class="navbar-brand" routerLink='home'>La Comanda</a>
-    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarTogglerDemo02" aria-controls="navbarTogglerDemo02" aria-expanded="false" aria-label="Toggle navigation">
-      <span class="navbar-toggler-icon"></span>
-    </button>
-  
-    <div class="collapse navbar-collapse" id="navbarTogglerDemo02">
-      <ul class="navbar-nav mr-auto mt-2 mt-lg-0" >
-        <li class="nav-item active" *ngIf = "navbarService.socio || navbarService.mozo">
-          <a class="nav-link" routerLink="mesa"> Mesas <span class="sr-only">(current)</span></a>
-        </li>
-        <li class="nav-item" *ngIf = "navbarService.socio">
-          <a class="nav-link" routerLink="empleado/listadoEmpleado"> Empleados </a>
-        </li>
-        <li class="nav-item" *ngIf = "navbarService.socio">
-          <a class="nav-link" routerLink="cliente/listadoCliente"> Clientes </a>
-        </li>
-        <li class="nav-item" *ngIf = "navbarService.socio || navbarService.mozo">
-          <a class="nav-link" routerLink="menu"> Menu </a>
-        </li>
-        <li class="nav-item" *ngIf = "navbarService.socio || navbarService.mozo || navbarService.cocinero">
-          <a class="nav-link" routerLink="pedido/listadoPedido"> Comandas </a>
-        </li>
-        <li class="nav-item" *ngIf = "navbarService.socio || navbarService.mozo || navbarService.cocinero">
-          <a class="nav-link" routerLink="panel"> Panel </a>
-        </li>
-        <li class="nav-item" *ngIf = "navbarService.socio || navbarService.cliente">
-          <a class="nav-link" routerLink="encuesta"> Encuesta </a>
-        </li>
-        <li class="nav-item" *ngIf = "navbarService.socio">
-          <a class="nav-link" routerLink="estadistica"> Estadisticas </a>
-        </li>
-        <li class="nav-item" *ngIf = "navbarService.socio || navbarService.cliente">
-          <a class="nav-link" routerLink="mapa"> Nosotros </a>
-        </li>
-      </ul>
-        <a *ngIf = "!navbarService.socio" class="nav-link" routerLink="login" style="color: #56baed"> <strong>Login</strong> </a>
-        <a *ngIf = "navbarService.socio" class="nav-link" routerLink="login" style="color: red"> <strong>Logout</strong> </a>
-    </div>
-  </nav>
+  <a class="navbar-brand" routerLink='home'>La Comanda</a>
+  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarTogglerDemo02"
+    aria-controls="navbarTogglerDemo02" aria-expanded="false" aria-label="Toggle navigation">
+    <span class="navbar-toggler-icon"></span>
+  </button>
 
-  <div class="container containerFondo">
+  <div class="collapse navbar-collapse" id="navbarTogglerDemo02">
+    <ul class="navbar-nav mr-auto mt-2 mt-lg-0">
+      <li class="nav-item active" *ngIf="navbarService.socio || navbarService.mozo">
+        <a class="nav-link" routerLink="mesa"> Mesas <span class="sr-only">(current)</span></a>
+      </li>
+      <li class="nav-item" *ngIf="navbarService.socio">
+        <a class="nav-link" routerLink="empleado/listadoEmpleado"> Empleados </a>
+      </li>
+      <li class="nav-item" *ngIf="navbarService.socio">
+        <a class="nav-link" routerLink="cliente/listadoCliente"> Clientes </a>
+      </li>
+      <li class="nav-item" *ngIf="navbarService.socio || navbarService.mozo">
+        <a class="nav-link" routerLink="menu"> Menu </a>
+      </li>
+      <li class="nav-item" *ngIf="navbarService.socio || navbarService.mozo || navbarService.cocinero">
+        <a class="nav-link" routerLink="pedido/listadoPedido"> Comandas </a>
+      </li>
+      <li class="nav-item" *ngIf="navbarService.socio || navbarService.mozo || navbarService.cocinero">
+        <a class="nav-link" routerLink="panel"> Panel </a>
+      </li>
+      <li class="nav-item" *ngIf="navbarService.socio || navbarService.cliente">
+        <a class="nav-link" routerLink="encuesta"> Encuesta </a>
+      </li>
+      <li class="nav-item" *ngIf="navbarService.socio">
+        <a class="nav-link" routerLink="estadistica"> Estadisticas </a>
+      </li>
+      <li class="nav-item" *ngIf="navbarService.socio || navbarService.cliente">
+        <a class="nav-link" routerLink="mapa"> Nosotros </a>
+      </li>
+    </ul>
+    <a *ngIf="navbarService.socio || navbarService.cliente || navbarService.mozo || navbarService.cocinero || navbarService.bartender" class="nav-link" routerLink="login" style="color: red"> <strong>Logout</strong> </a>
+    <a *ngIf="!navbarService.socio && !navbarService.cliente && !navbarService.mozo && !navbarService.cocinero && !navbarService.bartender" class="nav-link" routerLink="login" style="color: #56baed"> <strong>Login</strong> </a>
 
-    <router-outlet></router-outlet>
   </div>
+</nav>
+
+<div class="container containerFondo">
+
+  <router-outlet></router-outlet>
+</div>

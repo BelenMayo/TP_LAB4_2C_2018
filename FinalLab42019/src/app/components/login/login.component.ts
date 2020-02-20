@@ -25,6 +25,12 @@ export class LoginComponent implements OnInit {
   constructor(private router: Router, private navbarService: NavbarService) {
     this.usuario = 'Prueba';
     this.password = '123456';
+
+    this.navbarService.socio = false
+    this.navbarService.cliente = false
+    this.navbarService.mozo = false
+    this.navbarService.cocinero = false
+    this.navbarService.bartender = false
   }
 
   ngOnInit() {

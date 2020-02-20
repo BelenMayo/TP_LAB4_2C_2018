@@ -16,6 +16,7 @@ import { MapaComponent } from './components/mapa/mapa.component';
 import { RegistroComponent } from './components/registro/registro.component';
 import { GraficosComponent } from './components/estadisticas/graficos.component';
 import { NavbarComponent } from './components/navbar/navbar.component';
+import { ConsultaComponent } from './components/consulta/consulta.component';
 
 const APP_ROUTES: Routes= [
     {path: 'home', component: HomeComponent},
@@ -32,6 +33,7 @@ const APP_ROUTES: Routes= [
     {path: 'login', component: LoginComponent},
     {path: 'registro', component: RegistroComponent},
     {path: 'navbar', component: NavbarComponent},
+    {path: 'consulta', component: ConsultaComponent},
     {path: '**', pathMatch: 'full' , redirectTo:'login'}
 ];
 

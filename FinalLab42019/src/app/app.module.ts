@@ -61,7 +61,8 @@ import { RegistroComponent } from './components/registro/registro.component';
 import { GraficosComponent } from './components/estadisticas/graficos.component';
 
 // Captcha
-import { BotDetectCaptchaModule } from 'angular-captcha'; 
+import { BotDetectCaptchaModule } from 'angular-captcha';
+import { ConsultaComponent } from './components/consulta/consulta.component'; 
 
 
 @NgModule({
@@ -94,6 +95,7 @@ import { BotDetectCaptchaModule } from 'angular-captcha';
     MapaComponent,
     RegistroComponent,
     GraficosComponent,
+    ConsultaComponent,
   ],
   imports: [
     BrowserModule,
