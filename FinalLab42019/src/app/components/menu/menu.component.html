@@ -2,12 +2,20 @@
     <div class="col-md-6 container container-menu">
         <div class="container" style="background-color: #EDE8E8">
             <div class="row">
-                <label style="font-weight: bold;font-size: 18px;">Mesa</label>
+                <p style="font-weight: bold;font-size: 20px; margin-left: 15px; margin-top: 15px;text-align: center;">
+                    Realizar
+                    Comanda</p>
             </div>
+            <hr />
+
+            <label style="font-size: 18px; margin-top: 5px; font-style: italic;text-decoration: underline;">Seleccione
+                Mesa y Comensal</label>
+
             <div class="row">
                 <div class="btn-group" dropdown>
-                    <button id="button-basic" dropdownToggle type="button" class="btn btn-primary dropdown-toggle"
-                        aria-controls="dropdown-basic"> Mesa <span class="caret"></span></button>
+                    <button style="margin-left: 15px; margin-top: 10px;" id="button-basic" dropdownToggle type="button"
+                        class="btn btn-primary dropdown-toggle" aria-controls="dropdown-basic"> Mesa <span
+                            class="caret"></span></button>
                     <ul id="dropdown-basic" *dropdownMenu class="dropdown-menu" role="menu"
                         aria-labelledby="button-basic">
                         <div *ngFor="let item of mesas">
@@ -16,25 +24,28 @@
                     </ul>
                 </div>
                 <label style="font-weight: bold;font-size: 15x;font-style: italic;margin-left: 75px;">1</label>
-            </div>
-            <div class="row">
-                <label style="font-weight: bold;font-size: 18px;">Mesa</label>
-            </div>
+            </div><br />
             <div class="row">
                 <div class="btn-group" dropdown>
-                    <button id="button-basic" dropdownToggle type="button" class="btn btn-primary dropdown-toggle"
-                        aria-controls="dropdown-basic"> Comensal <span class="caret"></span></button>
+                    <button style="margin-left: 15px;" id="button-basic" dropdownToggle type="button"
+                        class="btn btn-primary dropdown-toggle" aria-controls="dropdown-basic"> Comensal <span
+                            class="caret"></span></button>
                     <ul id="dropdown-basic" *dropdownMenu class="dropdown-menu" role="menu"
                         aria-labelledby="button-basic">
                         <div *ngFor="let item of clientes">
-                            <li role="menuitem"><a class="dropdown-item" href="#">{{item.nombre}} {{item.apellido}}</a></li>
-                    </div>
+                            <li role="menuitem"><a class="dropdown-item" href="#">{{item.nombre}} {{item.apellido}}</a>
+                            </li>
+                        </div>
                     </ul>
                 </div>
-                <label style="font-weight: bold;font-size: 15x;font-style: italic;;margin-left: 40px;">Luca Proda</label>
+                <label style="font-weight: bold;font-size: 15x;font-style: italic;;margin-left: 40px;">Luca
+                    Proda</label>
             </div>
+
+            <label style="font-size: 20px; margin-top: 25px; font-style: italic;text-decoration: underline;">Seleccione
+                items</label>
+
             <div class="row">
-                <label style="font-weight: bold;font-size: 18px;">Vinos y Tragos</label>
             </div>
             <div class="row">
                 <button type="button" class="btn btn-light" data-toggle="modal" data-target="#exampleModal"
@@ -69,23 +80,22 @@
                                     <td><input type="number" id="cantidad"></td>
                                     <td>$ {{item.precio}}</td>
                                     <td></td>
-                                    </tr>
-                                    </table>
-                                    <pagination-controls (pageChange)="pageActual = $event" previousLabel="Anterior"
-                                        nextLabel="Siguiente"></pagination-controls>
+                                </tr>
+                            </table>
+                            <pagination-controls (pageChange)="pageActual = $event" previousLabel="Anterior"
+                                nextLabel="Siguiente"></pagination-controls>
                         </div>
-                </div>
-                <div class="modal-footer">
-                    <button type="button" class="btn btn-success"
-                        (click)="eliminarCliente(item.id_cliente)">Agregar</button>
-                    <button type="button" class="btn btn-danger" data-dismiss="modal"
-                        (click)="modalRef.hide()">Cancelar</button>
-                </div>
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-success"
+                            (click)="eliminarCliente(item.id_cliente)">Agregar</button>
+                        <button type="button" class="btn btn-danger" data-dismiss="modal"
+                            (click)="modalRef.hide()">Cancelar</button>
+                    </div>
                 </ng-template>
             </div>
 
             <div class="row">
-                <label style="font-weight: bold;font-size: 18px;">Cervezas Artesanales</label>
             </div>
             <div class="row">
                 <button type="button" class="btn btn-light" data-toggle="modal" data-target="#exampleModal"
@@ -133,10 +143,6 @@
                             (click)="modalRef.hide()">Cancelar</button>
                     </div>
                 </ng-template>
-            </div>
-
-            <div class="row">
-                <label style="font-weight: bold;font-size: 18px;">Platos</label>
             </div>
             <div class="row">
                 <button type="button" class="btn btn-light" data-toggle="modal" data-target="#exampleModal"
@@ -188,7 +194,6 @@
             </div>
 
             <div class="row">
-                <label style="font-weight: bold;font-size: 18px;">Candy Bar</label>
             </div>
             <div class="row">
                 <button type="button" class="btn btn-light" data-toggle="modal" data-target="#exampleModal"
@@ -243,7 +248,8 @@
     <div class="col-md-6 container container-menu">
         <div class="container" style="background-color: #EDE8E8">
             <div class="row">
-                <label style="font-weight: bold;font-size: 18px;">Ver Comanda</label>
+                <p style="font-weight: bold;font-size: 20px; margin-left: 15px; margin-top: 15px;text-align: center;">
+                    Comanda</p>
                 <div class="table-responsive" id="tablaClientes" style="background-color:white">
                     <table class="records_list table table-striped table-bordered table-hover" id="mydatatable">
                         <thead>
@@ -260,12 +266,29 @@
                             <td>$ {{item.precio}}</td>
                             <td>{{item.cantidad}}</td>
                             <td>$ {{item.subtotal}}</td>
-                            <td><button type="button" class="btn btn-danger" style="margin: 10px"><i class="fas fa-trash-alt"></i></button></td>
+                            <td><button type="button" class="btn btn-danger" style="margin: 10px"><i
+                                        class="fas fa-trash-alt"></i></button></td>
                         </tr>
                     </table>
-                    <button type="button" [routerLink]="" class="btn btn-primary">Enviar Comanda <i class="fas fa-plus"></i></button>
+
+                    <label style="font-weight: bold; margin-left: 440px;font-size: 20px;">$ 450</label><br/><br/>
+
+                    <button type="button" (click)="enviarComanda(template5)"
+                        style="margin-left: 15px; margin-bottom: 15px;" class="btn btn-primary">Enviar Comanda <i
+                            class="fas fa-share"></i></button>
                 </div>
             </div>
         </div>
     </div>
 </div>
+
+<ng-template #template5>
+    <div class="modal-body">
+        <h4 class="modal-title pull-left">Comanda enviada exitosamente</h4>
+        <button type="button" class="close pull-right" aria-label="Close" (click)="modalRef.hide()">
+        </button>
+    </div>
+    <div class="modal-footer">
+        <button type="button" class="btn btn-success" (click)="modalRef.hide()">Aceptar</button>
+    </div>
+</ng-template>

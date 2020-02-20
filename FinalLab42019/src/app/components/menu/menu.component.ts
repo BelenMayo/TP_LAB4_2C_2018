@@ -5,7 +5,7 @@ import { ClientesService } from '../../services/clientes.service';
 import { DetallePedidoService } from '../../services/detalle-pedido.service';
 import { HttpClient } from '@angular/common/http';
 import { BsModalService, BsModalRef } from 'ngx-bootstrap/modal';
-
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-menu',
@@ -27,7 +27,8 @@ export class MenuComponent implements OnInit {
   modalRef: BsModalRef;
 
   constructor(public menuService: MenuService, public mesasService: MesasService, public clientesService: ClientesService,
-               public detallePedidoService: DetallePedidoService, private httpClient: HttpClient, private modalService: BsModalService) { 
+               public detallePedidoService: DetallePedidoService, private httpClient: HttpClient, 
+               private modalService: BsModalService, private router: Router) { 
     this.traerTragos();
     this.traerCervezas();
     this.traerCocina();
@@ -120,6 +121,27 @@ export class MenuComponent implements OnInit {
           text: 'Error al traer detalle del pedido';
         });
   }
+
+  eliminarDetallePedido(id) {
+    this.menuService.eliminarDetallePedido(id)
+      .subscribe(resp => {
+        console.log("Se elimino el cliente");
+      },
+        error => {
+          text: 'Error al eliminar cliente';
+        });
+
+    this.modalRef.hide()
+    this.router.navigateByUrl('/menu'); 
+  }
+
+  enviarComanda(modal) {
+
+    this.openModal(modal);
+    this.router.navigateByUrl('pedido/listadoPedido');
+  }
+
+
 
   // Abre Modal
   openModal(template: TemplateRef<any>) {
