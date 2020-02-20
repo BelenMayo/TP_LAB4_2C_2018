@@ -67,19 +67,16 @@
                                         <th>Detalle</th>
                                         <th>Foto</th>
                                         <th>Cantidad</th>
-                                        <th>Precio</th>
-                                        <th>Subtotal</th>
                                     </tr>
                                 </thead>
                                 <tr
-                                    *ngFor="let item of tragos | paginate: { itemsPerPage: 5, currentPage: pageActual }">
-                                    <td style="padding-left: 75px;"><input type="checkbox" class="form-check-input"
-                                            id="exampleCheck1"></td>
+                                    *ngFor="let item of tragos | paginate: { itemsPerPage: 3, currentPage: pageActual }">
+                                    <td style="padding-left: 15px;"><input style="margin-left: 25px;max-width: 20px;"
+                                            type="checkbox" class="form-control" id="exampleCheck1"></td>
                                     <td>{{item.nombre}}</td>
                                     <td><img class="img-responsive" src="assets/images/{{item.foto}}"></td>
-                                    <td><input type="number" id="cantidad"></td>
-                                    <td>$ {{item.precio}}</td>
-                                    <td></td>
+                                    <td><input style="width: 75px;" class="form-control" type="number" id="cantidad">
+                                    </td>
                                 </tr>
                             </table>
                             <pagination-controls (pageChange)="pageActual = $event" previousLabel="Anterior"
@@ -117,19 +114,16 @@
                                         <th>Detalle</th>
                                         <th>Foto</th>
                                         <th>Cantidad</th>
-                                        <th>Precio</th>
-                                        <th>Subtotal</th>
                                     </tr>
                                 </thead>
                                 <tr
-                                    *ngFor="let item of cervezas | paginate: { itemsPerPage: 5, currentPage: pageActual }">
-                                    <td style="padding-left: 75px;"><input type="checkbox" class="form-check-input"
+                                    *ngFor="let item of cervezas | paginate: { itemsPerPage: 3, currentPage: pageActual }">
+                                    <td style="padding-left: 15px;"><input style="margin-left: 25px;max-width: 20px;" type="checkbox" class="form-control"
                                             id="exampleCheck1"></td>
                                     <td>{{item.nombre}}</td>
                                     <td><img class="img-responsive" src="assets/images/{{item.foto}}"></td>
-                                    <td><input type="number" id="cantidad"></td>
-                                    <td>$ {{item.precio}}</td>
-                                    <td></td>
+                                    <td><input style="width: 75px;" class="form-control" type="number" id="cantidad">
+                                    </td>
                                 </tr>
                             </table>
                             <pagination-controls (pageChange)="pageActual = $event" previousLabel="Anterior"
@@ -164,19 +158,16 @@
                                         <th>Detalle</th>
                                         <th>Foto</th>
                                         <th>Cantidad</th>
-                                        <th>Precio</th>
-                                        <th>Subtotal</th>
                                     </tr>
                                 </thead>
                                 <tr
-                                    *ngFor="let item of cocina | paginate: { itemsPerPage: 5, currentPage: pageActual }">
-                                    <td style="padding-left: 75px;"><input type="checkbox" class="form-check-input"
+                                    *ngFor="let item of cocina | paginate: { itemsPerPage: 3, currentPage: pageActual }">
+                                    <td style="padding-left: 15px;"><input style="margin-left: 25px;max-width: 20px;" type="checkbox" class="form-control"
                                             id="exampleCheck1"></td>
                                     <td>{{item.nombre}}</td>
                                     <td><img class="img-responsive" src="assets/images/{{item.foto}}"></td>
-                                    <td><input type="number" id="cantidad"></td>
-                                    <td>$ {{item.precio}}</td>
-                                    <td></td>
+                                    <td><input style="width: 75px;" class="form-control" type="number" id="cantidad">
+                                    </td>
                                 </tr>
                             </table>
                             <pagination-controls (pageChange)="pageActual = $event" previousLabel="Anterior"
@@ -215,18 +206,15 @@
                                         <th>Detalle</th>
                                         <th>Foto</th>
                                         <th>Cantidad</th>
-                                        <th>Precio</th>
-                                        <th>Subtotal</th>
                                     </tr>
                                 </thead>
-                                <tr *ngFor="let item of candy | paginate: { itemsPerPage: 5, currentPage: pageActual }">
-                                    <td style="padding-left: 75px;"><input type="checkbox" class="form-check-input"
+                                <tr *ngFor="let item of candy | paginate: { itemsPerPage: 3, currentPage: pageActual }">
+                                    <td style="padding-left: 15px;"><input style="margin-left: 25px;max-width: 20px;" type="checkbox" class="form-control"
                                             id="exampleCheck1"></td>
                                     <td>{{item.nombre}}</td>
                                     <td><img class="img-responsive" src="assets/images/{{item.foto}}"></td>
-                                    <td><input type="number" id="cantidad"></td>
-                                    <td>${{item.precio}}</td>
-                                    <td></td>
+                                    <td><input style="width: 75px;" class="form-control" type="number" id="cantidad">
+                                    </td>
                                 </tr>
                             </table>
                             <pagination-controls (pageChange)="pageActual = $event" previousLabel="Anterior"
@@ -257,7 +245,6 @@
                                 <th>Item</th>
                                 <th>Precio</th>
                                 <th>Cantidad</th>
-                                <th>Subtotal</th>
                                 <th style="text-align: center">Acciones</th>
                             </tr>
                         </thead>
@@ -265,13 +252,13 @@
                             <td>{{item.nombreMenu}}</td>
                             <td>$ {{item.precio}}</td>
                             <td>{{item.cantidad}}</td>
-                            <td>$ {{item.subtotal}}</td>
-                            <td><button type="button" class="btn btn-danger" style="margin: 10px"><i
+                            <td><button type="button" class="btn btn-danger"
+                                    (click)="eliminarDetallePedido(item.id_detalle_pedido)" style="margin: 10px"><i
                                         class="fas fa-trash-alt"></i></button></td>
                         </tr>
                     </table>
 
-                    <label style="font-weight: bold; margin-left: 440px;font-size: 20px;">$ 450</label><br/><br/>
+                    <label style="font-weight: bold; margin-left: 440px;font-size: 20px;">$ 450</label><br /><br />
 
                     <button type="button" (click)="enviarComanda(template5)"
                         style="margin-left: 15px; margin-bottom: 15px;" class="btn btn-primary">Enviar Comanda <i

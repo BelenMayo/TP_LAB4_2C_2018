@@ -51,13 +51,14 @@ export class ClienteListadoComponent implements OnInit {
     this.clientesService.eliminarCliente(id)
       .subscribe(resp => {
         console.log("Se elimino el cliente");
+        this.traerClientes();
       },
         error => {
           text: 'Error al eliminar cliente';
         });
 
     this.modalRef.hide()
-    this.router.navigateByUrl('/cliente/listadoCliente');   
+    // this.router.navigateByUrl('/cliente/listadoCliente');   
   }
 
   // Abre Modal

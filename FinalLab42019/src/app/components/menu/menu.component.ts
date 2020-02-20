@@ -1,11 +1,15 @@
 import { Component, OnInit, TemplateRef } from '@angular/core';
 import { MenuService } from '../../services/menu.service';
 import { MesasService } from '../../services/mesas.service';
+import { FormControl, FormGroup, Validators, FormBuilder } from '@angular/forms';
 import { ClientesService } from '../../services/clientes.service';
 import { DetallePedidoService } from '../../services/detalle-pedido.service';
+import { PedidosService } from '../../services/pedidos.service';
 import { HttpClient } from '@angular/common/http';
 import { BsModalService, BsModalRef } from 'ngx-bootstrap/modal';
 import { Router } from '@angular/router';
+import { PedidoModel } from '../../models/pedido.model';
+
 
 @Component({
   selector: 'app-menu',
@@ -25,10 +29,14 @@ export class MenuComponent implements OnInit {
   detallePedido: string[];
   pageActual: number = 1;
   modalRef: BsModalRef;
+  pedido: PedidoModel;
+
+  formPedido: FormGroup;
 
   constructor(public menuService: MenuService, public mesasService: MesasService, public clientesService: ClientesService,
                public detallePedidoService: DetallePedidoService, private httpClient: HttpClient, 
-               private modalService: BsModalService, private router: Router) { 
+               private modalService: BsModalService, private router: Router, private formBuilder: FormBuilder
+               , public PedidosService: PedidosService) { 
     this.traerTragos();
     this.traerCervezas();
     this.traerCocina();
@@ -39,6 +47,15 @@ export class MenuComponent implements OnInit {
   }
 
   ngOnInit() {
+      this.formPedido = this.formBuilder.group({
+        nombre: ['', Validators.required],
+        apellido: ['', Validators.required],
+        telefono: ['', Validators.required],
+        mail: ['', Validators.required],
+        foto: ['', Validators.required],
+        usuario: ['', Validators.required,],
+        password: ['', Validators.required]
+      })
   }
 
   // Trae todos los tragos
@@ -131,11 +148,24 @@ export class MenuComponent implements OnInit {
           text: 'Error al eliminar cliente';
         });
 
-    this.modalRef.hide()
+    // this.modalRef.hide()
     this.router.navigateByUrl('/menu'); 
   }
 
   enviarComanda(modal) {
+
+    this.pedido = new PedidoModel().guardarPedido(this.formPedido.controls);
+
+    console.log(this.pedido);
+
+    this.PedidosService.guardarPedido(this.pedido)
+      .subscribe(resp => {
+        this.clientes = resp;
+        console.log(this.clientes);
+      },
+        error => {
+          text: 'Error al guardar pedido';
+        });
 
     this.openModal(modal);
     this.router.navigateByUrl('pedido/listadoPedido');

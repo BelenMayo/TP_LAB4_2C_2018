@@ -2,6 +2,7 @@ import { Injectable } from '@angular/core';
 import { HttpClient, HttpResponse } from '@angular/common/http';
 import { map } from 'rxjs/operators';
 import { API_REF } from 'src/globales/variables_globales';
+import { PedidoModel } from '../models/pedido.model';
 
 
 @Injectable({
@@ -65,6 +66,19 @@ export class MenuService {
 
     traerMenuPorCategoria(id: number) {
       return this.httpClient.get(API_REF + `/ComandaAPI/public/menus/traerPorCategoria/${id}`)
+        .pipe(
+          map(resp => {
+            if (resp['data'].length > 0) {
+              return resp['data'];
+            } else {
+              return false;
+            }
+          })
+        );
+    }
+
+    guardarComanda(pedido: PedidoModel) {
+      return this.httpClient.post(API_REF + '/ComandaAPI/public/pedidos/registrar', pedido)
         .pipe(
           map(resp => {
             if (resp['data'].length > 0) {
