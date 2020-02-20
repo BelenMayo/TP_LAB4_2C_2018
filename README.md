@@ -6,14 +6,14 @@ http://finallab4bm.rivmay.net/
 
 La comanda es una aplicacion que aplica la operatoria del Restaurante.
 
-Pre-requisitos 📋
+📋 Pre-requisitos:
 El cliente puede loguearse a la aplicacion o no para consultar el estado de su pedido (con numero de mesa y numero de pedido).
 
-Api 📖
+📖 Api:
 Se utilizo una Api Rest para los servicios de la aplicacion
 
-Versionado 📌
+📌 Versionado:
 Git
 
-Autor ✒️
+✒️ Autor:
 Maria Belen Mayo
