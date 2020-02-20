@@ -25,7 +25,12 @@
           <div class="modal-header">
             <h4 class="modal-title pull-left">¿Seguro desea entregar el pedido?</h4>
             <button type="button" class="close pull-right" aria-label="Close" (click)="modalRef.hide()">
+              <span aria-hidden="true">&times;</span>
             </button>
+          </div>
+          <div class="modal-body">
+            Una vez entregado, no podra volver atras
+            <div style="padding-bottom: 15px;"></div>
           </div>
           <div class="modal-footer">
             <button type="button" class="btn btn-success" data-dismiss="modal"
