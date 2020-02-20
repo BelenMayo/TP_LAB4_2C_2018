@@ -40,6 +40,7 @@ $container['model'] = function($c){
         'estado_empleado' => new App\Model\EstadoEmpleadosModel($c->db),
         'estado_mesa' => new App\Model\EstadoMesasModel($c->db),
         'estado_pedido' => new App\Model\EstadoPedidosModel($c->db),
+        'estadistica' => new App\Model\EstadisticasModel($c->db),
         'menu' => new App\Model\MenusModel($c->db),
         'mesa' => new App\Model\MesasModel($c->db),
         'pedido' => new App\Model\PedidosModel($c->db),

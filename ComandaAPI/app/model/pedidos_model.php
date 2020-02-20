@@ -40,7 +40,7 @@ class PedidosModel
         $l = $l * 100;
 
         $data = $this->db->from($this->table)
-                         ->leftJoin("estado_pedidos on estado_pedidos.id_estado_pedido = pedidos.id_pedido")
+                         ->leftJoin("estado_pedidos on estado_pedidos.id_estado_pedido = pedidos.id_estado_pedido")
                          ->leftJoin("clientes on clientes.id_cliente = pedidos.id_cliente")
                          ->select("pedidos.*, estado_pedidos.detalle as detalleEstadoPedido, clientes.nombre as nombreCliente, clientes.apellido as apellidoCliente")
                          ->limit($l)
