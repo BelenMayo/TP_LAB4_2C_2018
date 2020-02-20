@@ -72,7 +72,7 @@ export class PedidoListadoComponent implements OnInit {
     this.pedido.id_cliente = id_cliente;
     this.pedido.id_mesa = id_mesa;
     this.pedido.codigo_mesa = codigo_mesa;
-    this.pedido.foto_mesa = foto_mesa;
+    this.pedido.codigo_mesa = foto_mesa;
     this.pedido.hora_pedido = new Date();
     this.pedido.tiempo_espera = new Date();
     this.pedido.total = total;

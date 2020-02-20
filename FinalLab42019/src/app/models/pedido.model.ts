@@ -45,7 +45,7 @@ export class PedidoModel {
         let nuevoPedido = new PedidoModel();
         nuevoPedido.id_mesa = pedido['id_mesa'].value;
         nuevoPedido.codigo_mesa = pedido['codigo_mesa'].value;
-        nuevoPedido.foto_mesa = pedido['foto_mesa'].value;
+        nuevoPedido.codigo_pedido = pedido['codigo_pedido'].value;
         nuevoPedido.id_estado_pedido = pedido['id_estado_pedido'].value;
         nuevoPedido.hora_pedido = pedido['hora_pedido'].value;
         nuevoPedido.tiempo_espera = pedido['tiempo_espera'].value;
