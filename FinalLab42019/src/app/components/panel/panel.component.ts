@@ -10,20 +10,20 @@ import { BsModalService, BsModalRef } from 'ngx-bootstrap/modal';
   styleUrls: ['./panel.component.css']
 })
 export class PanelComponent implements OnInit {
-  
+
   // Variables
   sector_pedido: string[];
   pageActual: number = 1;
   modalRef: BsModalRef;
 
-  constructor(public sectorPedidoService: SectorPedidoService, private httpClient: HttpClient, private modalService: BsModalService) { 
+  constructor(public sectorPedidoService: SectorPedidoService, private httpClient: HttpClient, private modalService: BsModalService) {
     this.traerDetallePedidoTotal();
   }
 
   ngOnInit() {
   }
 
-  
+
   // Trae todos los sector pedido
   traerDetallePedidoTotal() {
     this.sectorPedidoService.traerDetallePedidoTotal()
@@ -36,7 +36,18 @@ export class PanelComponent implements OnInit {
         });
   }
 
-  
+  // Eliminar del panel
+  entregarPedido(id: number) {
+    this.sectorPedidoService.eliminarSectorPedido(id)
+      .subscribe(resp => {
+        console.log("Se elimino el pedido");
+      },
+        error => {
+          text: 'Error al eliminar pedido';
+        });
+  }
+
+
   // Abre Modal
   openModal(template: TemplateRef<any>) {
     this.modalRef = this.modalService.show(template);

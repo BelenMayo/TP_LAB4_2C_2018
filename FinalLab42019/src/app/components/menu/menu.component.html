@@ -15,6 +15,7 @@
                         </div>
                     </ul>
                 </div>
+                <label style="font-weight: bold;font-size: 15x;font-style: italic;margin-left: 75px;">1</label>
             </div>
             <div class="row">
                 <label style="font-weight: bold;font-size: 18px;">Mesa</label>
@@ -30,6 +31,7 @@
                     </div>
                     </ul>
                 </div>
+                <label style="font-weight: bold;font-size: 15x;font-style: italic;;margin-left: 40px;">Luca Proda</label>
             </div>
             <div class="row">
                 <label style="font-weight: bold;font-size: 18px;">Vinos y Tragos</label>
@@ -235,18 +237,13 @@
                     </div>
                 </ng-template>
             </div>
-
-            <div class="row">
-                <button type="button" [routerLink]="['/cliente/altaCliente']" class="btn btn-primary">Nueva
-                    Comanda  <i class="fas fa-plus"></i></button>
-            </div>
         </div>
     </div>
 
     <div class="col-md-6 container container-menu">
         <div class="container" style="background-color: #EDE8E8">
             <div class="row">
-                <label style="font-weight: bold;font-size: 18px;">Ver Pedido</label>
+                <label style="font-weight: bold;font-size: 18px;">Ver Comanda</label>
                 <div class="table-responsive" id="tablaClientes" style="background-color:white">
                     <table class="records_list table table-striped table-bordered table-hover" id="mydatatable">
                         <thead>
@@ -266,7 +263,7 @@
                             <td><button type="button" class="btn btn-danger" style="margin: 10px"><i class="fas fa-trash-alt"></i></button></td>
                         </tr>
                     </table>
-                    <button type="button" [routerLink]="" class="btn btn-primary">Entregar Pedido</button>
+                    <button type="button" [routerLink]="" class="btn btn-primary">Enviar Comanda <i class="fas fa-plus"></i></button>
                 </div>
             </div>
         </div>

@@ -37,17 +37,17 @@ export class SectorPedidoService {
       );
   }
 
-  // guardarDetallePedido(pedido: PedidoModel) {
-  //   return this.httpClient.post('http://localhost/ComandaAPI/public/pedidos/registrar/', pedido)
-  //     .pipe(
-  //       map(resp => {
-  //         if (resp['data'].length > 0) {
-  //           return resp['data'];
-  //         } else {
-  //           return false;
-  //         }
-  //       })
-  //     );
-  // }
+  eliminarSectorPedido(id: number) {
+    return this.httpClient.delete(API_REF + `/ComandaAPI/public/sector_pedidos/eliminar/${id}`)
+    .pipe(
+      map(resp => {
+        if (resp['data'].length > 0) {
+          return resp['data'];
+        } else {
+          return false;
+        }
+      })
+    );
+  }
 
 }

@@ -20,32 +20,33 @@
             <td>{{item.detalleEstadoPedido}}</td>
             <td>{{item.tiempo_espera}}</td>
             <td>$ {{item.total}}</td>
-            <td><button type="button" class="btn btn-info" [routerLink]="['/pedido/detallePedido', item.id_pedido]"
-                    style="margin: 10px">Ver <i class="fas fa-search-plus"></i></button>
-                <button type="button" class="btn btn-success" [routerLink]="['/pedido/modificarPedido', item.id_pedido]"
-                    style="margin: 10px">Modificar Estado <i class="fas fa-edit"></i></button>
-                <!-- <button type="button" class="btn btn-danger" data-toggle="modal" data-target="#exampleModal" style="margin: 10px" (click)="openModal(template)">Entregar</button></td> -->
-                <ng-template #template>
-                    <div class="modal-header">
-                        <h4 class="modal-title pull-left">Confirmar entrega de pedido</h4>
-                        <button type="button" class="close pull-right" aria-label="Close" (click)="modalRef.hide()">
-                            <span aria-hidden="true">&times;</span>
-                        </button>
-                    </div>
-                    <div class="modal-body">
-                        ¿Desea confirmar la entrega del pedido: <strong>{{item.codigo_mesa}}</strong>?
-                    </div>
-                    <div class="modal-footer">
-                        <button type="button" class="btn btn-success"
-                            (click)="eliminarCliente(item.id_cliente)">Si</button>
-                        <button type="button" class="btn btn-danger" data-dismiss="modal"
-                            (click)="modalRef.hide()">No</button>
-                    </div>
-                </ng-template>
+            <td><button type="button" class="btn btn-info" (click)="openModal(template)" style="margin: 10px">Modificar
+                    Estado <i class="fas fa-edit"></i></button>
         </tr>
     </table>
     <pagination-controls (pageChange)="pageActual = $event" previousLabel="Anterior" nextLabel="Siguiente">
     </pagination-controls>
-    <button type="button" [routerLink]="['/cliente/altaCliente']" class="btn btn-primary" style="margin: 25px"> Nuevo Pedido <i class="fas fa-plus"></i></button>
 
 </div>
+
+<ng-template #template>
+    <div class="modal-header">
+        <h4 class="modal-title pull-left">Cambiar estado del pedido</h4>
+        <button type="button" class="close pull-right" aria-label="Close" (click)="modalRef.hide()">
+            <span aria-hidden="true">&times;</span>
+        </button>
+    </div>
+    <div class="modal-body">
+        ¿A que estado desea cambiar el pedido: <strong>{{item.codigo_pedido}}</strong>?
+        <div style="padding-bottom: 15px;"></div>
+        <button type="button" class="btn btn-primary btn-block" data-dismiss="modal"
+            (click)="modificarEstadoMesa(item.id_mesa, item.nro_mesa, item.nombre, item.codigo_mesa, 1)">En
+            preparacion</button>
+        <button type="button" class="btn btn-success btn-block" data-dismiss="modal"
+            (click)="modificarEstadoMesa(item.id_mesa, item.nro_mesa, item.nombre, item.codigo_mesa, 2)">Listo para
+            servir</button>
+    </div>
+    <div class="modal-footer">
+        <button type="button" class="btn btn-danger" data-dismiss="modal" (click)="modalRef.hide()">Cancelar</button>
+    </div>
+</ng-template>

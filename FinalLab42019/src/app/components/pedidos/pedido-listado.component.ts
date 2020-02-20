@@ -19,11 +19,11 @@ export class PedidoListadoComponent implements OnInit {
   constructor(public pedidosService: PedidosService, private httpClient: HttpClient, private modalService: BsModalService) {
     //this.traerPedidos();
     this.traerPedidosDetalle();
-   }
+  }
 
   ngOnInit() {
   }
-  
+
   // Trae todos los pedidos
   traerPedidos() {
     this.pedidosService.traerPedidos()
@@ -50,6 +50,17 @@ export class PedidoListadoComponent implements OnInit {
 
   // Elimina pedido
   eliminarPedido(id: number) {
+    this.pedidosService.eliminarPedido(id)
+      .subscribe(resp => {
+        console.log("Se elimino el pedido");
+      },
+        error => {
+          text: 'Error al eliminar pedido';
+        });
+  }
+
+  // Cambia estado del pedido
+  cambiarEstadoPedido(id: number) {
     this.pedidosService.eliminarPedido(id)
       .subscribe(resp => {
         console.log("Se elimino el pedido");

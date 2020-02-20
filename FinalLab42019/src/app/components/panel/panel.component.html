@@ -18,8 +18,22 @@
       <td>{{item.detalleSeccion}}</td>
       <td>{{item.hora_inicio}}</td>
       <td>{{item.tiempo_finalizacion}}</td>
-      <td><button type="button" class="btn btn-info" [routerLink]="['/pedido/detallePedido', item.id_pedido]"
-          style="margin: 10px">Entregar <i class="fas fa-search-plus"></i></button>
+      <td><button type="button" class="btn btn-success" (click)="openModal(template)" style="margin: 10px">Entregar <i
+            class="fas fa-check"></i></button>
+
+        <ng-template #template>
+          <div class="modal-header">
+            <h4 class="modal-title pull-left">¿Seguro desea entregar el pedido?</h4>
+            <button type="button" class="close pull-right" aria-label="Close" (click)="modalRef.hide()">
+            </button>
+          </div>
+          <div class="modal-footer">
+            <button type="button" class="btn btn-success" data-dismiss="modal"
+              (click)="entregarPedido(item.id_sector_pedido)">Aceptar</button>
+            <button type="button" class="btn btn-danger" data-dismiss="modal"
+              (click)="modalRef.hide()">Cancelar</button>
+          </div>
+        </ng-template>
     </tr>
   </table>
   <pagination-controls (pageChange)="pageActual = $event" previousLabel="Anterior" nextLabel="Siguiente">
