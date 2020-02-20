@@ -61,7 +61,7 @@ export class ClienteAltaComponent implements OnInit {
         });
 
     this.openModal(modal);
-    // this.router.navigateByUrl('/cliente/listadoCliente');
+    this.router.navigateByUrl('/home');
   }
 
   // Abre Modal

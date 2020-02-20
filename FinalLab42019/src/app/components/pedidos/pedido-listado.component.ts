@@ -4,6 +4,7 @@ import { HttpClient } from '@angular/common/http';
 import { BsModalService, BsModalRef } from 'ngx-bootstrap/modal';
 import { PedidoModel } from '../../models/pedido.model';
 import { getLocaleDateFormat } from '@angular/common';
+import { Router } from '@angular/router'
 
 
 @Component({
@@ -20,7 +21,8 @@ export class PedidoListadoComponent implements OnInit {
 
   pedido: PedidoModel;
 
-  constructor(public pedidosService: PedidosService, private httpClient: HttpClient, private modalService: BsModalService) {
+  constructor(public pedidosService: PedidosService, private httpClient: HttpClient, private modalService: BsModalService
+    , private router: Router) {
     //this.traerPedidos();
     this.traerPedidosDetalle();
   }
@@ -89,6 +91,7 @@ export class PedidoListadoComponent implements OnInit {
         });
 
     this.modalRef.hide()
+    this.router.navigateByUrl('/home');
   }
 
   // Abre Modal

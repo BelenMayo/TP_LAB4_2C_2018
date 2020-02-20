@@ -59,7 +59,7 @@ export class EmpleadoAltaComponent implements OnInit {
         });
 
     this.openModal(modal);
-    this.router.navigateByUrl('/empleado/listadoEmpleado');
+    this.router.navigateByUrl('/home');
   }
 
   // Abre Modal

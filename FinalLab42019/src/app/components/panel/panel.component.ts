@@ -2,6 +2,7 @@ import { Component, OnInit, TemplateRef } from '@angular/core';
 import { SectorPedidoService } from '../../services/sector-pedido.service';
 import { HttpClient } from '@angular/common/http';
 import { BsModalService, BsModalRef } from 'ngx-bootstrap/modal';
+import { Router } from '@angular/router'
 
 
 @Component({
@@ -16,7 +17,8 @@ export class PanelComponent implements OnInit {
   pageActual: number = 1;
   modalRef: BsModalRef;
 
-  constructor(public sectorPedidoService: SectorPedidoService, private httpClient: HttpClient, private modalService: BsModalService) {
+  constructor(public sectorPedidoService: SectorPedidoService, private httpClient: HttpClient
+    , private modalService: BsModalService, private router: Router) {
     this.traerDetallePedidoTotal();
   }
 
@@ -45,6 +47,9 @@ export class PanelComponent implements OnInit {
         error => {
           text: 'Error al eliminar pedido';
         });
+
+    this.modalRef.hide()
+    this.router.navigateByUrl('/home');
   }
 
 

@@ -65,7 +65,7 @@ export class MesasComponent implements OnInit {
         });
 
     this.modalRef.hide()
-    this.router.navigateByUrl('/mesa');
+    this.router.navigateByUrl('/home');
   }
 
   // Abre Modal

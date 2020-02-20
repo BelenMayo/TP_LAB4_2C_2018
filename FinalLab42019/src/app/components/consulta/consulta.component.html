@@ -1,9 +1,23 @@
 <div class="container contenedor-consultas">
-  <h4>Tiempo de espera</h4>
-<hr/>
-  <h6><label><i class="far fa-clock"></i></label> 20 minutos</h6>
-  <br/>
+  <h4 style="text-align: center;">Tiempo de espera</h4>
+  <hr />
 
-  <button type="button" class="btn btn-danger" [routerLink]="['/home']">Volver
-    <i class="fas fa-undo-alt"></i></button>
+  <div class="col-md-6"><strong><label>Codigo Mesa</label></strong></div>
+  <input type="text" class="form-control" style="max-width: 150px;"><br />
+
+  <div class="col-md-6"><strong><label>Codigo Pedido</label></strong></div>
+  <input tipe="text" class="form-control" style="max-width: 150px;"><br />
+
+  <h6><label><i class="far fa-clock"></i></label> 20 minutos</h6>
+  <br />
+
+  <section class="row">
+    <div class="col-md-2">
+      <button type="submit" class="btn btn-success" id="saveForm">Consultar <i class="fas fa-search"></i></button>
+    </div>
+    <div class="col-md-2">
+      <button type="submit" class="btn btn-danger" [routerLink]="['/home']" id="saveForm">Volver <i
+          class="fas fa-undo"></i></button>
+    </div>
+  </section>
 </div>

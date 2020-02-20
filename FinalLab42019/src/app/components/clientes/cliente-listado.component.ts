@@ -58,7 +58,7 @@ export class ClienteListadoComponent implements OnInit {
         });
 
     this.modalRef.hide()
-    // this.router.navigateByUrl('/cliente/listadoCliente');   
+    this.router.navigateByUrl('/home');   
   }
 
   // Abre Modal
