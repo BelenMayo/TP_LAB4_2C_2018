@@ -5,6 +5,7 @@ import { EncuestasService } from '../../services/encuestas.service';
 import { HttpClient } from '@angular/common/http';
 import { Router } from '@angular/router';
 import { BsModalService, BsModalRef } from 'ngx-bootstrap/modal';
+import Swal from 'sweetalert2'
 
 
 @Component({
@@ -50,7 +51,16 @@ export class EncuestasComponent implements OnInit {
           text: 'Error al guardar encuesta';
         });
 
-    this.openModal(modal);
+    // this.openModal(modal);
+
+    Swal.fire({
+      title: 'Encuesta cargada exitosamente!',
+      text: 'Muchas gracias',
+      icon: 'success',
+      showConfirmButton: false,
+      timer: 1500
+    })
+
     this.router.navigateByUrl('/home');
   }
 

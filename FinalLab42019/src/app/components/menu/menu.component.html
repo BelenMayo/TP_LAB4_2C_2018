@@ -60,7 +60,7 @@
                     <div class="modal-body">
                         <strong><a style="font-size: 20px; color: white;">Vinos y Tragos</a></strong>
                         <div class="table-responsive" id="tablaMenus" style="background-color:white">
-                            <table class="records_list table table-striped table-bordered table-hover" id="mydatatable">
+                            <table class="table" id="mydatatable">
                                 <thead>
                                     <tr>
                                         <th>Seleccionar</th>
@@ -107,7 +107,7 @@
                     <div class="modal-body">
                         <strong><a style="font-size: 20px; color: white;">Cervezas Artesanales</a></strong>
                         <div class="table-responsive" id="tablaMenus" style="background-color:white">
-                            <table class="records_list table table-striped table-bordered table-hover" id="mydatatable">
+                            <table class="table" id="mydatatable">
                                 <thead>
                                     <tr>
                                         <th>Seleccionar</th>
@@ -151,7 +151,7 @@
                     <div class="modal-body">
                         <strong><a style="font-size: 20px; color: white;">Platos</a></strong>
                         <div class="table-responsive" id="tablaMenus" style="background-color:white">
-                            <table class="records_list table table-striped table-bordered table-hover" id="mydatatable">
+                            <table class="table" id="mydatatable">
                                 <thead>
                                     <tr>
                                         <th>Seleccionar</th>
@@ -199,7 +199,7 @@
                     <div class="modal-body">
                         <strong><a style="font-size: 20px; color: white;">Candy Bar</a></strong>
                         <div class="table-responsive" id="tablaMenus" style="background-color:white">
-                            <table class="records_list table table-striped table-bordered table-hover" id="mydatatable">
+                            <table class="table" id="mydatatable">
                                 <thead>
                                     <tr>
                                         <th>Seleccionar</th>
@@ -239,7 +239,7 @@
                 <p style="font-weight: bold;font-size: 20px; margin-left: 15px; margin-top: 15px;text-align: center;">
                     Comanda</p>
                 <div class="table-responsive" id="tablaClientes" style="background-color:white">
-                    <table class="records_list table table-striped table-bordered table-hover" id="mydatatable">
+                    <table class="table" id="mydatatable">
                         <thead>
                             <tr>
                                 <th>Item</th>
@@ -250,7 +250,7 @@
                         </thead>
                         <tr *ngFor="let item of detallePedido">
                             <td>{{item.nombreMenu}}</td>
-                            <td>$ {{item.precio}}</td>
+                            <td>{{item.precio | currency:'ARS'}}</td>
                             <td>{{item.cantidad}}</td>
                             <td><button type="button" class="btn btn-danger"
                                     (click)="eliminarDetallePedido(item.id_detalle_pedido)" style="margin: 10px"><i
