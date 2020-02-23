@@ -21,23 +21,14 @@
                     </div>
                 </div>
                 <div class="row clientes">
-                    <!-- Input Telefono -->
-                    <div class="col-md-6" style="font-style: italic;"><strong><label>Telefono</label></strong>
-                        <input style="font-style: italic;" type="numeric" id="telefono" class="form-control"
-                            formControlName='telefono'
-                            [ngClass]="{'is-invalid': formCliente.get('telefono').value == '', 'is-valid': !(formCliente.get('telefono').value == '')}"
-                            required>
-                    </div>
                     <!-- Input Mail -->
                     <div class="col-md-6" style="font-style: italic;"><strong><label>Mail</label></strong>
                         <input style="font-style: italic;" type="email" id="mail" class="form-control"
-                            formControlName='mail'
-                            [ngClass]="{'is-invalid': formCliente.get('mail').value == '', 'is-valid': !(formCliente.get('mail').value == '')}"
+                            formControlName='usuario'
+                            [ngClass]="{'is-invalid': formCliente.get('usuario').value == '', 'is-valid': !(formCliente.get('usuario').value == '')}"
                             required>
                     </div>
-                </div>
-                <div class="row clientes">
-                    <!-- Input Usuario -->
+                    <!-- Input Foto -->
                     <div class="col-md-6" style="font-style: italic;"><strong><label>Foto</label></strong>
                         <input style="font-style: italic;" type="text" id="foto" class="form-control"
                             formControlName='foto'
@@ -55,13 +46,13 @@
                     </div>
                     <!-- Input Password -->
                     <div class="col-md-6" style="font-style: italic;"><strong><label>Password</label></strong>
-                        <input style="font-style: italic;" type="text" id="password" class="form-control"
+                        <input style="font-style: italic;" type="password" id="password" class="form-control"
                             formControlName='password'
                             [ngClass]="{'is-invalid': formCliente.get('password').value == '', 'is-valid': !(formCliente.get('password').value == '')}"
                             required>
                     </div>
                 </div>
-                <div class="row clientes">
+                <div class="row clientes" style="margin-top: 20px;">
                     <!-- Guardar -->
                     <div class="col-sm-2">
                         <button type="submit" class="btn btn-success" [disabled]='formCliente.invalid'>Guardar <i

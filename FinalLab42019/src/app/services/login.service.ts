@@ -12,7 +12,7 @@ export class LoginService {
 
   constructor(private httpClient: HttpClient) { }
 
-  traerEncuesta(id: number) {
+  traerUsuarios(id: number) {
     return this.httpClient.get(API_REF + `/ComandaAPI/public/encuestas/traer/${id}`)
       .pipe(
         map(resp => {
@@ -38,8 +38,8 @@ export class LoginService {
       );
   }
 
-  guardarRegistro(encuesta: LoginModel) {
-    return this.httpClient.post(API_REF + '/ComandaAPI/public/registro/registrar', encuesta)
+  guardarRegistro(usuario: LoginModel) {
+    return this.httpClient.post(API_REF + '/ComandaAPI/public/registro/registrar', usuario)
       .pipe(
         map(resp => {
           if (resp['data'].length > 0) {

@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import { LoginService } from 'src/app/services/login.service';
+import { LoginModel } from 'src/app/models/login.model';
 
 @Component({
   selector: 'app-registro',
@@ -7,9 +9,29 @@ import { Component, OnInit } from '@angular/core';
 })
 export class RegistroComponent implements OnInit {
 
-  constructor() { }
+  usuario: LoginModel;
+
+  constructor(public loginService: LoginService) { 
+
+  }
 
   ngOnInit() {
+  }
+
+  registrarUsuario() {
+
+    this.usuario
+
+    this.loginService.guardarRegistro(this.usuario)
+      .subscribe(resp => {
+        this.usuario = resp;
+        console.log(this.usuario);
+      },
+        error => {
+          text: 'Error al registrar usuario';
+        });
+
+
   }
 
 }

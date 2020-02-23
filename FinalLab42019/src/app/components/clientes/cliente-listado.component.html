@@ -1,10 +1,9 @@
 <div class="table-responsive" id="tablaClientes" style="background-color:white">
-    <table class="table" id="mydatatable">
+    <table class="table table-striped" id="mydatatable">
         <thead>
             <tr>
                 <th>Apellido</th>
                 <th>Nombre</th>
-                <th>Telefono</th>
                 <th>Mail</th>
                 <th>Foto</th>
                 <th style="text-align: center">Acciones</th>
@@ -13,8 +12,7 @@
         <tr *ngFor="let item of clientes | paginate: { itemsPerPage: 5, currentPage: pageActual }">
             <td>{{item.apellido}}</td>
             <td>{{item.nombre}}</td>
-            <td>{{item.telefono}}</td>
-            <td>{{item.mail}}</td>
+            <td>{{item.usuario}}</td>
             <td>{{item.foto}}</td>
             <td><button type="button" class="btn btn-info" [routerLink]="['/cliente/detalleCliente', item.id_cliente]"
                     style="margin: 10px">Ver <i class="fas fa-search-plus"></i></button>

@@ -10,14 +10,23 @@
     <label style="font-size: 30px; margin-top: 25px;color: #56baed;font-weight: bold;">Registro</label>
 
     <!-- Icon -->
-    <div class="fadeIn first" style="margin-top: 15px; margin-bottom: 10px;">
-      <img src="assets/images/perfil.png" style="max-width: 200px;" id="icon" alt="User Icon" />
+    <div class="fadeIn first" style="margin-top: 10px; margin-bottom: 10px;">
+      <img src="assets/images/perfil.png" style="max-width: 125px;" id="icon" alt="User Icon" />
     </div>
 
     <!-- Login Form -->
     <form>
-      <input type="text" id="registro" class="fadeIn second" name="registro" placeholder="Ingrese un usuario">
-      <input type="text" id="password" class="fadeIn third" name="login" placeholder="Ingrese una clave">
+      <span style="font-weight: bold;font-style: italic;">Nombre</span>
+      <input type="text" id="nombre" class="form-control" name="nombre" placeholder="Nombre...">
+
+      <span style="font-weight: bold;font-style: italic;">Apellido</span>
+      <input type="text" id="apellido" class="form-control" name="apellido" placeholder="Apellido..."><br/>
+
+      <span style="font-weight: bold;font-style: italic;">Mail</span><br/>
+      <input type="text" id="mail" class="form-control" name="mail" placeholder="Mail..."><br/>
+
+      <span style="font-weight: bold;font-style: italic;">Clave</span><br/>
+      <input type="text" id="clave" class="form-control" name="calve" placeholder="Clave..."><br/>
       <input type="submit" class="fadeIn fourth" value="Registrar">
     </form>
 

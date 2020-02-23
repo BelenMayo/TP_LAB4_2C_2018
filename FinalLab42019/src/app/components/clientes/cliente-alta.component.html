@@ -26,24 +26,14 @@
                     </div>
                 </div>
                 <div class="row clientes">
-                    <!-- Input Telefono -->
-                    <div class="col-md-6">
-                        <span style="font-weight: bold;font-style: italic;">Telefono</span>
-                        <input style="font-style: italic;" type="text" id="telefono" class="form-control is-invalid"
-                            formControlName='telefono' placeholder="Telefono.."
-                            [ngClass]="{'is-invalid': formCliente.get('telefono').value == '', 'is-valid': !(formCliente.get('telefono').value == '')}"
-                            required>
-                    </div>
                     <!-- Input Mail -->
                     <div class="col-md-6">
                         <span style="font-weight: bold;font-style: italic;">Mail</span>
                         <input style="font-style: italic;" type="mail" id="mail" class="form-control is-mail"
-                            formControlName='mail' placeholder="Mail.."
-                            [ngClass]="{'is-invalid': formCliente.get('mail').value == '', 'is-valid': !(formCliente.get('mail').value == '')}"
+                            formControlName='usuario' placeholder="Mail.."
+                            [ngClass]="{'is-invalid': formCliente.get('usuario').value == '', 'is-valid': !(formCliente.get('usuario').value == '')}"
                             required>
                     </div>
-                </div>
-                <div class="row clientes">
                     <!-- Input Foto -->
                     <div class="col-md-6">
                         <span style="font-weight: bold;font-style: italic;">Foto</span><br />

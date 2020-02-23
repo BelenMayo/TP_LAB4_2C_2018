@@ -12,16 +12,10 @@
                 </div>
             </div>
             <div class="row clientes" style="font-style: italic;">
-                <div class="col-md-6"><strong><label>Telefono</label></strong>
-                    <input style="font-style: italic;" type="numeric" id="telefono" class="form-control"
-                        value="{{item.telefono}}" disabled>
-                </div>
                 <div class="col-md-6" style="font-style: italic;"><strong><label>Mail</label></strong>
-                    <input style="font-style: italic;" type="email" id="mail" class="form-control" value="{{item.mail}}"
+                    <input style="font-style: italic;" type="email" id="mail" class="form-control" value="{{item.usuario}}"
                         disabled>
                 </div>
-            </div>
-            <div class="row clientes" style="font-style: italic;">
                 <div class="col-md-6"><strong><label>Foto</label></strong>
                     <input style="font-style: italic;" type="text" id="foto" class="form-control" value="{{item.foto}}"
                         disabled>
@@ -32,11 +26,11 @@
                     <input type="text" id="usuario" class="form-control" value="{{item.usuario}}" disabled>
                 </div>
                 <div class="col-md-6" style="font-style: italic;"><strong><label>Password</label></strong>
-                    <input style="font-style: italic;" type="text" id="password" class="form-control"
+                    <input style="font-style: italic;" type="password" id="password" class="form-control"
                         value="{{item.password}}" disabled>
                 </div>
             </div>
-            <div class="row clientes">
+            <div class="row clientes" style="margin-top: 20px; margin-left: 1px;">
                 <button type="button" class="btn btn-danger" [routerLink]="['/cliente/listadoCliente']">Volver <i
                         class="fas fa-undo-alt"></i></button>
             </div>
