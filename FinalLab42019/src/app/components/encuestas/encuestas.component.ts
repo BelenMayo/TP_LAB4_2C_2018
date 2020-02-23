@@ -38,7 +38,7 @@ export class EncuestasComponent implements OnInit {
   }
 
   // Guarda una encuesta
-  guardarEncuesta(modal) {
+  guardarEncuesta() {
 
     this.encuesta = new EncuestaModel().guardarEncuesta(this.formEncuesta.controls);
 
@@ -51,8 +51,6 @@ export class EncuestasComponent implements OnInit {
           text: 'Error al guardar encuesta';
         });
 
-    // this.openModal(modal);
-
     Swal.fire({
       title: 'Encuesta cargada exitosamente!',
       text: 'Muchas gracias',
@@ -64,9 +62,5 @@ export class EncuestasComponent implements OnInit {
     this.router.navigateByUrl('/home');
   }
 
-  // Abre Modal
-  openModal(template: TemplateRef<any>) {
-    this.modalRef = this.modalService.show(template);
-  }
 
 }

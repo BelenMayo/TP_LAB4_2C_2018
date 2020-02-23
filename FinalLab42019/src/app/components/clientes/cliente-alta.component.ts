@@ -5,6 +5,7 @@ import { ClientesService } from '../../services/clientes.service';
 import { HttpClient } from '@angular/common/http';
 import { Router } from '@angular/router';
 import { BsModalService, BsModalRef } from 'ngx-bootstrap/modal';
+import Swal from 'sweetalert2'
 
 
 @Component({
@@ -31,8 +32,6 @@ export class ClienteAltaComponent implements OnInit {
     this.formCliente = this.formBuilder.group({
       nombre: ['', Validators.required],
       apellido: ['', Validators.required],
-      telefono: ['', Validators.required],
-      mail: ['', Validators.required],
       foto: ['', Validators.required],
       usuario: ['', Validators.required,],
       password: ['', Validators.required]
@@ -40,7 +39,7 @@ export class ClienteAltaComponent implements OnInit {
   }
 
   // Guarda un cliente
-  guardarCliente(modal) {
+  guardarCliente() {
     this.submitted = true;
 
     // if (!this.formCliente.invalid) {
@@ -60,7 +59,14 @@ export class ClienteAltaComponent implements OnInit {
           text: 'Error al guardar cliente';
         });
 
-    this.openModal(modal);
+    Swal.fire({
+      title: 'Cliente cargado exitosamente!',
+      text: 'Muchas gracias',
+      icon: 'success',
+      showConfirmButton: false,
+      timer: 1500
+    })
+
     this.router.navigateByUrl('/home');
   }
 

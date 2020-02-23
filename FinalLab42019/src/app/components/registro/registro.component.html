@@ -15,18 +15,18 @@
     </div>
 
     <!-- Login Form -->
-    <form>
+    <form [formGroup]="formUsuario" (ngSubmit)="guardarUsuario()">
       <span style="font-weight: bold;font-style: italic;">Nombre</span>
-      <input type="text" id="nombre" class="form-control" name="nombre" placeholder="Nombre...">
+      <input type="text" id="nombre" class="form-control" formControlName="nombre" placeholder="Nombre...">
 
       <span style="font-weight: bold;font-style: italic;">Apellido</span>
-      <input type="text" id="apellido" class="form-control" name="apellido" placeholder="Apellido..."><br/>
+      <input type="text" id="apellido" class="form-control" formControlName="apellido" placeholder="Apellido..."><br/>
 
       <span style="font-weight: bold;font-style: italic;">Mail</span><br/>
-      <input type="text" id="mail" class="form-control" name="mail" placeholder="Mail..."><br/>
+      <input type="text" id="usuario" class="form-control" formControlName="usuario" placeholder="Mail..."><br/>
 
       <span style="font-weight: bold;font-style: italic;">Clave</span><br/>
-      <input type="text" id="clave" class="form-control" name="calve" placeholder="Clave..."><br/>
+      <input type="text" id="clave" class="form-control" formControlName="password" placeholder="Clave..."><br/>
       <input type="submit" class="fadeIn fourth" value="Registrar">
     </form>
 

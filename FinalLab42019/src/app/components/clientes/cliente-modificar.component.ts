@@ -6,6 +6,7 @@ import { HttpClient } from '@angular/common/http';
 import { ActivatedRoute, Params } from '@angular/router';
 import { Router } from '@angular/router'
 import { BsModalService, BsModalRef } from 'ngx-bootstrap/modal';
+import Swal from 'sweetalert2'
 
 
 @Component({
@@ -42,8 +43,6 @@ export class ClienteModificarComponent implements OnInit {
         this.formCliente = this.formBuilder.group({
           nombre: [resp[0].nombre, Validators.required],
           apellido: [resp[0].apellido, Validators.required],
-          telefono: [resp[0].telefono, Validators.required],
-          mail: [resp[0].mail, Validators.required],
           foto: [resp[0].foto, Validators.required],
           usuario: [resp[0].usuario, Validators.required,],
           password: [resp[0].password, Validators.required]
@@ -69,14 +68,15 @@ export class ClienteModificarComponent implements OnInit {
           text: 'Error al modificar cliente';
         });
 
-    this.openModal(modal);
+    Swal.fire({
+      title: 'Cliente modificado exitosamente!',
+      text: 'Muchas gracias',
+      icon: 'success',
+      showConfirmButton: false,
+      timer: 1500
+    })
+
     this.router.navigateByUrl('/home');
-  }
-
-  // Abre Modal
-  openModal(template: TemplateRef<any>) {
-    this.modalRef = this.modalService.show(template);
-
   }
 
 }

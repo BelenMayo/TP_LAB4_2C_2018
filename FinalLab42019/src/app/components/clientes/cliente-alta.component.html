@@ -3,7 +3,7 @@
 
 <div class="container contenedor-clientes">
     <label class="titulo">Crear Cliente</label>
-    <form [formGroup]="formCliente" (ngSubmit)="guardarCliente(template)">
+    <form [formGroup]="formCliente" (ngSubmit)="guardarCliente()">
 
         <div class="row">
             <div class="col-md-9 col-sm-8">
@@ -26,14 +26,6 @@
                     </div>
                 </div>
                 <div class="row clientes">
-                    <!-- Input Mail -->
-                    <div class="col-md-6">
-                        <span style="font-weight: bold;font-style: italic;">Mail</span>
-                        <input style="font-style: italic;" type="mail" id="mail" class="form-control is-mail"
-                            formControlName='usuario' placeholder="Mail.."
-                            [ngClass]="{'is-invalid': formCliente.get('usuario').value == '', 'is-valid': !(formCliente.get('usuario').value == '')}"
-                            required>
-                    </div>
                     <!-- Input Foto -->
                     <div class="col-md-6">
                         <span style="font-weight: bold;font-style: italic;">Foto</span><br />
@@ -77,14 +69,3 @@
         </div>
     </form>
 </div>
-
-<ng-template #template>
-    <div class="modal-body">
-      <h4 class="modal-title pull-left">Cliente dado de alta exitosamente</h4>
-      <button type="button" class="close pull-right" aria-label="Close" (click)="modalRef.hide()">
-      </button>
-    </div>
-    <div class="modal-footer">
-      <button type="button" class="btn btn-success" (click)="modalRef.hide()">Aceptar</button>
-    </div>
-  </ng-template>
