@@ -1,18 +1,18 @@
 
 export class ChequeaLoginModel {
     public usuario: string;
-    // public password: string;
+    public password: string;
 
     constructor() {
         this.usuario = "";
-        // this.password = "";
+        this.password = "";
     }
     
-    // Crea usuario
+    // Chequea usuario
     chequearUsuario(login: any) :ChequeaLoginModel{
         let chequeaUsuario = new ChequeaLoginModel();
         chequeaUsuario.usuario = login['usuario'].value;
-        // chequeaUsuario.password = login['password'].value;
+        chequeaUsuario.password = login['password'].value;
 
         return chequeaUsuario;
     }

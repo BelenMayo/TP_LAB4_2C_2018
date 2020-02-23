@@ -4,6 +4,7 @@ import { HttpClient } from '@angular/common/http';
 import { LoginService } from 'src/app/services/login.service';
 import { LoginModel } from 'src/app/models/login.model';
 import { Router } from '@angular/router';
+import { NavbarService } from 'src/app/services/navbar.service';
 import Swal from 'sweetalert2'
 
 
@@ -18,7 +19,7 @@ export class RegistroComponent implements OnInit {
   formUsuario: FormGroup;
 
   constructor(private formBuilder: FormBuilder, public loginService: LoginService, private router: Router
-    , private httpClient: HttpClient) {
+    , private httpClient: HttpClient, private navbarService: NavbarService) {
 
   }
 
@@ -53,6 +54,8 @@ export class RegistroComponent implements OnInit {
       showConfirmButton: false,
       timer: 1500
     })
+
+    this.navbarService.cliente = true
 
     this.router.navigateByUrl('/home');
 

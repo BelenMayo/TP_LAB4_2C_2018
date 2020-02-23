@@ -6,7 +6,7 @@ use App\Lib\Response;
 class LoginModel
 {
     private $db;
-    private $table = 'login';
+    private $table = 'clientes';
     private $response;
     
     public function __CONSTRUCT($db)
@@ -42,6 +42,19 @@ class LoginModel
                      ->fetchAll();
                
         return ['data'  => $data];
+    }
+
+    public function getLogin($data)
+    {
+        $usuario = $data["usuario"];
+        $password = $data["password"];
+
+        $data2 = $this->db->from($this->table)
+                     ->where('usuario', $usuario)
+                     ->where('password', $password)
+                     ->fetchAll();
+               
+        return ['data'  => $data2];
     }
     
     public function insert($data)

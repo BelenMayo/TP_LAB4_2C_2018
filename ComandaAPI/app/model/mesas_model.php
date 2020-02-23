@@ -41,7 +41,7 @@ class MesasModel
         $l = $l * 100;
 
         $data = $this->db ->from($this->table)
-                         ->innerJoin("estado_mesas on estado_mesas.id_estado_mesa = mesas.id_estado_mesa")
+                         ->innerJoin("estado_mesas on mesas.id_estado_mesa = estado_mesas.id_estado_mesa")
                          ->select("mesas.*, estado_mesas.detalle")
                          ->limit($l)
                          ->offset($p)

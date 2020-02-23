@@ -6,7 +6,7 @@ import { FormControl, FormGroup, Validators, FormBuilder } from '@angular/forms'
 import { Router } from '@angular/router'
 import { NavbarService } from 'src/app/services/navbar.service';
 import Swal from 'sweetalert2'
-import { ChequeaLoginModel } from 'src/app/models/chequea_login';
+import { ChequeaLoginModel } from 'src/app/models/chequeaLogin';
 
 
 @Component({
@@ -26,7 +26,7 @@ export class LoginComponent implements OnInit {
   formLogin: FormGroup;
 
   constructor(private router: Router, private navbarService: NavbarService, private httpClient: HttpClient
-    , public loginService: LoginService,private formBuilder: FormBuilder) {
+    , public loginService: LoginService, private formBuilder: FormBuilder) {
     this.usuario = "";
     this.password = "";
 
@@ -51,28 +51,43 @@ export class LoginComponent implements OnInit {
     this.router.navigateByUrl('/home');
   }
 
-  loguearse() {
-
+  loginUsuario() {
     this.login = new ChequeaLoginModel().chequearUsuario(this.formLogin.controls);
 
-    this.loginService.login(this.login)
+    console.log(this.login);
+
+    this.loginService.loguearse(this.login)
       .subscribe(resp => {
-        this.usuario = resp;
-        console.log(this.usuario);
+        this.login = resp;
+        console.log(this.login);
+
+        if (this.login) {
+          Swal.fire({
+            title: 'Usuario logueado correctamente!',
+            text: 'Bienvenido',
+            icon: 'success',
+            showConfirmButton: false,
+            timer: 1500
+          })
+
+          this.navbarService.cliente = true
+          this.router.navigateByUrl('/home');
+
+        } else {
+
+          Swal.fire({
+            title: 'Usuario invalido!',
+            text: 'Vuelva a ingresar su usuario',
+            icon: 'error',
+            showConfirmButton: false,
+            timer: 1500
+          })
+        }
+
       },
         error => {
           text: 'Error al registrar usuario';
         });
-
-    Swal.fire({
-      title: 'Usuario logueado exitosamente!',
-      text: 'Bienvenido',
-      icon: 'success',
-      showConfirmButton: false,
-      timer: 1500
-    })
-
-    this.router.navigateByUrl('/home');
   }
 
   Socio() {

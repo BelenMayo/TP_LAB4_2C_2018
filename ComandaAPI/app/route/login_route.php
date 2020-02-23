@@ -15,6 +15,11 @@ $app->group('/login/', function () {
         return $res->withHeader('Content-type', 'application/json')
                    ->write(json_encode($this->model->login->get($args['id'])));
     });
+
+    $this->post('traerLogin', function ($req, $res, $args) {
+        return $res->withHeader('Content-type', 'application/json')
+                   ->write(json_encode($this->model->login->getLogin($req->getParsedBody())));
+    });
     
     $this->post('registrar', function ($req, $res, $args) {
         return $res->withHeader('Content-type', 'application/json')
