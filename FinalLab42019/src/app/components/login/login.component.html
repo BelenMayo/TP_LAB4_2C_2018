@@ -13,10 +13,10 @@
     </div>
 
     <!-- Login Form -->
-    <form>
-      <input type="text" id="login" class="fadeIn second" name="login" value="{{usuario}}" placeholder="Usuario">
-      <input type="text" id="password" class="fadeIn third" name="login" value="{{password}}" placeholder="Clave">
-      <input type="button" (click)="entrarLogin()" class="fadeIn fourth" value="Log In" disabled>
+    <form [formGroup]="formLogin" (ngSubmit)="comprobarUsuario()">
+      <input type="text" id="login" class="fadeIn second" formControlName="usuario" value="{{usuario}}" placeholder="Ingrese usuario...">
+      <input type="text" id="password" class="fadeIn third" formControlName="password" value="{{password}}" placeholder="Ingrese clave...">
+      <input type="button" (click)="entrarLogin()" class="fadeIn fourth" value="Log In">
     </form>
 
     <!-- Remind Passowrd -->

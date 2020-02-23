@@ -1,6 +1,6 @@
 <div class="container contenedor-empleados">
     <label class="titulo">Modificar Empleado</label>
-    <form [formGroup]="formEmpleado" (ngSubmit)="modificarEmpleado(template)">
+    <form [formGroup]="formEmpleado" (ngSubmit)="modificarEmpleado()">
 
         <div class="row">
             <div class="col-md-9 col-sm-8">
@@ -71,14 +71,3 @@
         </div>
     </form>
 </div>
-
-<ng-template #template>
-    <div class="modal-body">
-      <h4 class="modal-title pull-left">Empleado modificado exitosamente</h4>
-      <button type="button" class="close pull-right" aria-label="Close" (click)="modalRef.hide()">
-      </button>
-    </div>
-    <div class="modal-footer">
-      <button type="button" class="btn btn-success" (click)="modalRef.hide()">Aceptar</button>
-    </div>
-  </ng-template>

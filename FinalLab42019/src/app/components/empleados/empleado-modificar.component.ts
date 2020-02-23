@@ -6,7 +6,7 @@ import { HttpClient } from '@angular/common/http';
 import { ActivatedRoute, Params } from '@angular/router';
 import { Router } from '@angular/router'
 import { BsModalService, BsModalRef } from 'ngx-bootstrap/modal';
-
+import Swal from 'sweetalert2'
 
 @Component({
   selector: 'app-empleado-modificar',
@@ -69,7 +69,14 @@ export class EmpleadoModificarComponent implements OnInit {
           text: 'Error al modificar empleado';
         });
 
-    this.openModal(modal);
+    Swal.fire({
+      title: 'Empleado modificado exitosamente!',
+      text: 'Muchas gracias',
+      icon: 'success',
+      showConfirmButton: false,
+      timer: 1500
+    })
+
     this.router.navigateByUrl('/home');
   }
 

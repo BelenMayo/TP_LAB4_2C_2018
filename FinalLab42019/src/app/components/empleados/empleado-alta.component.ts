@@ -5,6 +5,7 @@ import { EmpleadosService } from '../../services/empleados.service';
 import { HttpClient } from '@angular/common/http';
 import { Router } from '@angular/router';
 import { BsModalService, BsModalRef } from 'ngx-bootstrap/modal';
+import Swal from 'sweetalert2'
 
 
 @Component({
@@ -40,7 +41,7 @@ export class EmpleadoAltaComponent implements OnInit {
   }
 
   // Guarda un empleado
-  guardarEmpleado(modal) {
+  guardarEmpleado() {
     this.submitted = true;
 
     // if (!this.formCliente.invalid) {
@@ -58,13 +59,20 @@ export class EmpleadoAltaComponent implements OnInit {
           text: 'Error al guardar empleado';
         });
 
-    this.openModal(modal);
+    Swal.fire({
+      title: 'Empleado modificado exitosamente!',
+      text: 'Muchas gracias',
+      icon: 'success',
+      showConfirmButton: false,
+      timer: 1500
+    })
+      
     this.router.navigateByUrl('/home');
   }
 
-  // Abre Modal
-  openModal(template: TemplateRef<any>) {
-    this.modalRef = this.modalService.show(template);
-  }
+// Abre Modal
+openModal(template: TemplateRef<any>) {
+  this.modalRef = this.modalService.show(template);
+}
 
 }

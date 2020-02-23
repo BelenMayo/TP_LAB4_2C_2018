@@ -3,6 +3,7 @@ import { HttpClient, HttpResponse } from '@angular/common/http';
 import { map } from 'rxjs/operators';
 import { LoginModel } from '../models/login.model';
 import { API_REF } from 'src/globales/variables_globales';
+import { ChequeaLoginModel } from 'src/app/models/chequea_login';
 
 
 @Injectable({
@@ -25,7 +26,7 @@ export class LoginService {
       );
   }
 
-  login(usuario: LoginModel) {
+  login(usuario: ChequeaLoginModel) {
     return this.httpClient.post(API_REF + '/ComandaAPI/public/login/registrar', usuario)
       .pipe(
         map(resp => {
