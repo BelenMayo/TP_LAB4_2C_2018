@@ -70,7 +70,8 @@ export class LoginComponent implements OnInit {
             timer: 1500
           })
 
-          this.navbarService.cliente = true
+          this.navbarService.cliente = true;
+          this.navbarService.valorUsuario = "Cliente";
           this.router.navigateByUrl('/home');
 
         } else {

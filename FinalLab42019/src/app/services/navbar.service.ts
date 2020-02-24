@@ -11,5 +11,7 @@ export class NavbarService {
     cocinero: boolean = false;
     bartender: boolean = false;
 
+    valorUsuario: string = "";
+
   constructor() { }
 }

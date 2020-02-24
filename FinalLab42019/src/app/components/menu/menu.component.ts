@@ -11,6 +11,7 @@ import { Router } from '@angular/router';
 import { PedidoModel } from '../../models/pedido.model';
 import { DetallePedidoModel } from '../../models/detalle_pedido.model';
 import { PanelModel } from '../../models/panel.model';
+import { stringify } from 'querystring';
 
 
 @Component({
@@ -27,13 +28,20 @@ export class MenuComponent implements OnInit {
   cocina: string[];
   candy: string[];
   mesas: string[];  
+
   clientes: string[];
+
   detallePedido: string[];
+
   pageActual: number = 1;
   modalRef: BsModalRef;
   pedido: PedidoModel;
   detallePedidoModel: DetallePedidoModel;
   panel: PanelModel;
+  
+
+  detallePedidoString: String[];
+  valor: string;
 
   //formPedido: FormGroup;
 
@@ -63,74 +71,14 @@ export class MenuComponent implements OnInit {
       // })
   }
 
-  // Trae todos los tragos
-  traerTragos() {
-    this.menuService.traerMenuPorCategoria(1)
-      .subscribe(resp => {
-        this.tragos = resp;
-        console.log(this.tragos);
-      },
-        error => {
-          text: 'Error al traer tragos';
-        });
-  }
+  agregarDetalle(){
 
-  // Trae todas las cervezas
-  traerCervezas() {
-    this.menuService.traerMenuPorCategoria(2)
-      .subscribe(resp => {
-        this.cervezas = resp;
-        console.log(this.cervezas);
-      },
-        error => {
-          text: 'Error al traer cervezas';
-        });
-  }
+    this.valor= "1"
+    // this.detallePedidoString= new String()[];
 
-  // Trae toda la cocina
-  traerCocina() {
-    this.menuService.traerMenuPorCategoria(3)
-      .subscribe(resp => {
-        this.cocina = resp;
-        console.log(this.cocina);
-      },
-        error => {
-          text: 'Error al traer cocina';
-        });
-  }
+    this.detallePedidoString.push(this.valor);
 
-  // Trae todo el candy bar
-  traerCandyBar() {
-    this.menuService.traerMenuPorCategoria(4)
-      .subscribe(resp => {
-        this.candy = resp;
-        console.log(this.candy);
-      },
-        error => {
-          text: 'Error al traer candy';
-        });
-  }
-
-  traerMesas() {
-    this.mesasService.traerMesas()
-      .subscribe(resp => {
-        this.mesas = resp;
-        console.log(this.mesas);
-      },
-        error => {
-          text: 'Error al traer mesas';
-        });
-  }
-
-  traerClientes() {
-    this.clientesService.traerClientes()
-      .subscribe(resp => {
-        this.clientes = resp;
-        console.log(this.clientes);
-      },
-        error => {
-          text: 'Error al traer clientes';
-        });
+    console.log(this.detallePedidoString);
   }
 
   traerDetallePedido() {
@@ -211,6 +159,77 @@ export class MenuComponent implements OnInit {
     this.router.navigateByUrl('home');
   }
 
+
+  
+  // Trae todos los tragos
+  traerTragos() {
+    this.menuService.traerMenuPorCategoria(1)
+      .subscribe(resp => {
+        this.tragos = resp;
+        console.log(this.tragos);
+      },
+        error => {
+          text: 'Error al traer tragos';
+        });
+  }
+
+  // Trae todas las cervezas
+  traerCervezas() {
+    this.menuService.traerMenuPorCategoria(2)
+      .subscribe(resp => {
+        this.cervezas = resp;
+        console.log(this.cervezas);
+      },
+        error => {
+          text: 'Error al traer cervezas';
+        });
+  }
+
+  // Trae toda la cocina
+  traerCocina() {
+    this.menuService.traerMenuPorCategoria(3)
+      .subscribe(resp => {
+        this.cocina = resp;
+        console.log(this.cocina);
+      },
+        error => {
+          text: 'Error al traer cocina';
+        });
+  }
+
+  // Trae todo el candy bar
+  traerCandyBar() {
+    this.menuService.traerMenuPorCategoria(4)
+      .subscribe(resp => {
+        this.candy = resp;
+        console.log(this.candy);
+      },
+        error => {
+          text: 'Error al traer candy';
+        });
+  }
+
+  traerMesas() {
+    this.mesasService.traerMesas()
+      .subscribe(resp => {
+        this.mesas = resp;
+        console.log(this.mesas);
+      },
+        error => {
+          text: 'Error al traer mesas';
+        });
+  }
+
+  traerClientes() {
+    this.clientesService.traerClientes()
+      .subscribe(resp => {
+        this.clientes = resp;
+        console.log(this.clientes);
+      },
+        error => {
+          text: 'Error al traer clientes';
+        });
+  }
 
 
   // Abre Modal
