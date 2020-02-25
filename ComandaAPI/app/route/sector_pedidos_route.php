@@ -16,6 +16,10 @@ $app->group('/sector_pedidos/', function () {
                    ->write(json_encode($this->model->sector_pedido->getAllSectorPedidos($args['l'], $args['p'])));
     });
 
+    $this->get('consultar/{codigoPedido}', function ($req, $res, $args) {
+        return $res->withHeader('Content-type', 'application/json')
+                   ->write(json_encode($this->model->sector_pedido->consultarEstados($args['codigoPedido'])));
+    });
 
     $this->get('traer/{id}', function ($req, $res, $args) {
         return $res->withHeader('Content-type', 'application/json')

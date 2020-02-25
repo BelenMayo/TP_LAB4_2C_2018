@@ -1,17 +1,13 @@
 <div class="container contenedor-consultas col-md-9">
-  <form [formGroup]="formConsulta" (ngSubmit)="realizarConsulta()">
     <h4 style="text-align: center;">Consulte el estado y tiempo de espera de su pedido</h4>
     <hr /><br />
 
     <div class="row">
-      <div class="col-md-3"><strong><label>Codigo Mesa</label></strong>
-      <input type="text" maxlength="5" class="form-control" formControlName="codigoMesa" style="margin-left: 15px; max-width: 75px;"></div>
-
       <div class="col-md-3"><strong><label>Codigo Pedido</label></strong>
-      <input tipe="text" maxlength="5" class="form-control" formControlName="codigoPedido" style="margin-left: 15px; max-width: 75px;"></div>
+      <input tipe="text" maxlength="5" class="form-control" [(ngModel)]="codigoPedido" style="margin-left: 15px; max-width: 75px;"></div>
 
       <div class="col-md-3">
-        <button type="submit" style="margin-left: 50px;" class="btn btn-success" id="saveForm">Consultar <i class="fas fa-search"></i></button>
+        <button type="button" (click)="consultarEstadoPedido()" style="margin-left: 50px;" class="btn btn-success" id="saveForm">Consultar <i class="fas fa-search"></i></button>
       </div>
     </div><br />
 
@@ -19,17 +15,17 @@
       <table class="table table-striped" id="mydatatable">
         <thead>
           <tr>
+            <th>Nombre</th>
             <th>Item</th>
-            <th>Foto</th>
             <th>Estado</th>
             <th>Tiempo de espera</th>
           </tr>
         </thead>
-        <tr *ngFor="let item of clientes | paginate: { itemsPerPage: 5, currentPage: pageActual }">
-          <td>{{item.item}}</td>
-          <td>{{item.foto}}</td>
-          <td>{{item.estado}}</td>
-          <td>{{item.tiempoespera}}</td>
+        <tr *ngFor="let item of estados | paginate: { itemsPerPage: 5, currentPage: pageActual }">
+          <td>{{item.nombreCliente}} {{item.apellidoCliente}}</td>
+          <td>{{item.detalleMenu}}</td>
+          <td>{{item.detalleEstadoPedido}}</td>
+          <td>{{item.tiempoEspera}}</td>
         </tr>
       </table>
     </div><br />
@@ -44,5 +40,4 @@
             class="fas fa-align-justify"></i></button>
       </div>
     </section>
-  </form>
 </div>

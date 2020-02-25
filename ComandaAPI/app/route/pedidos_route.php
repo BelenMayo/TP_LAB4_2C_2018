@@ -11,9 +11,14 @@ $app->group('/pedidos/', function () {
                    ->write(json_encode($this->model->pedido->getAll($args['l'], $args['p'])));
     });
 
-    $this->get('listarPedidos/{l}/{p}', function ($req, $res, $args) {
+    $this->get('listarPedidos/{l}/{p}/{tipoEmpleado}', function ($req, $res, $args) {
         return $res->withHeader('Content-type', 'application/json')
-                   ->write(json_encode($this->model->pedido->getAllPedidos($args['l'], $args['p'])));
+                   ->write(json_encode($this->model->pedido->getAllEmpleados($args['l'], $args['p'], $args['tipoEmpleado'])));
+    });
+
+    $this->get('listarSectorPedidos/{l}/{p}', function ($req, $res, $args) {
+        return $res->withHeader('Content-type', 'application/json')
+                   ->write(json_encode($this->model->pedido->getAllMozo($args['l'], $args['p'])));
     });
 
     $this->get('traer/{id}', function ($req, $res, $args) {

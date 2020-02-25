@@ -40,12 +40,14 @@ class SectorPedidosModel
         $l = $l * 100;
 
         $data = $this->db->from($this->table)
-                         ->leftJoin("pedidos on pedidos.id_pedido = sector_pedidos.id_pedido")
+                         ->leftJoin("estado_pedidos on estado_pedidos.id_estado_pedido = pedidos.id_estado_pedido")
+                         ->leftJoin("clientes on clientes.id_cliente = pedidos.id_cliente")
+                         ->leftJoin("pedidos on sector_pedidos.id_pedido = pedidos.id_pedido")
                          ->leftJoin("empleados on empleados.id_empleado = sector_pedidos.id_empleado")
+                         ->leftJoin("tipo_empleados on tipo_empleados.id_tipo_empleado = empleados.id_tipo_empleado")
                          ->leftJoin("menus on menus.id_menu = sector_pedidos.id_menu")
-                         ->leftJoin("categorias on categorias.id_categoria = sector_pedidos.id_categoria")
-                         ->leftJoin("secciones on secciones.id_seccion = sector_pedidos.id_seccion")
-                         ->select("sector_pedidos.*, empleados.nombre as nombreEmpleado, empleados.apellido as apellidoEmpleado,menus.nombre as nombreMenu, secciones.nombre as detalleSeccion, categorias.nombre as detalleCategoria")
+                         ->select("sector_pedidos.*, estado_pedidos.detalle as detalleEstadoPedido, clientes.nombre as nombreCliente, clientes.apellido as apellidoCliente, menus.nombre as detalleMenu")
+                         ->where("sector_pedidos.id_estado_pedido = 3")
                          ->limit($l)
                          ->offset($p)
                          ->fetchAll();
@@ -60,6 +62,24 @@ class SectorPedidosModel
             'total' => $total
         ];
     }
+
+    public function consultarEstados($codigoPedido)
+    {
+        $data = $this->db->from($this->table)
+                         ->leftJoin("pedidos on sector_pedidos.id_pedido = pedidos.id_pedido")
+                         ->leftJoin("estado_pedidos on estado_pedidos.id_estado_pedido = sector_pedidos.id_estado_pedido")
+                         ->leftJoin("clientes on clientes.id_cliente = pedidos.id_cliente")
+                         ->leftJoin("menus on menus.id_menu = sector_pedidos.id_menu")
+                         ->select("sector_pedidos.*, estado_pedidos.detalle as detalleEstadoPedido, clientes.nombre as nombreCliente, clientes.apellido as apellidoCliente, 
+                                    menus.nombre as detalleMenu, sector_pedidos.tiempo_finalizacion as tiempoEspera")
+                         ->where('pedidos.codigo_pedido', $codigoPedido)
+                         ->fetchAll();
+        
+        return [
+            'data'  => $data
+        ];
+    }
+
 
     public function get($id)
     {
