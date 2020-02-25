@@ -2,43 +2,24 @@
   <table class="table table-striped" id="mydatatable">
     <thead>
       <tr>
-        <th>Empleado</th>
-        <th>Menu</th>
-        <th>Categoria</th>
-        <th>Seccion</th>
-        <th>Hora inicio</th>
-        <th>Hora finalizacion</th>
+        <th>Cliente</th>
+        <th>Mesa</th>
+        <th>Codigo Pedido</th>
+        <th>Detalle</th>
+        <th>Estado Pedido</th>
+        <th>Tiempo Espera</th>
         <th style="text-align: center">Acciones</th>
       </tr>
     </thead>
     <tr *ngFor="let item of sector_pedido | paginate: { itemsPerPage: 5, currentPage: pageActual }">
-      <td>{{item.nombreEmpleado}} {{item.apellidoEmpleado}}</td>
-      <td>{{item.nombreMenu}}</td>
-      <td>{{item.detalleCategoria}}</td>
-      <td>{{item.detalleSeccion}}</td>
-      <td>{{item.hora_inicio}}</td>
-      <td>{{item.tiempo_finalizacion}}</td>
-      <td><button type="button" class="btn btn-success" (click)="openModal(template)" style="margin: 10px">Servido <i
-            class="fas fa-check"></i></button>
-
-        <ng-template #template>
-          <div class="modal-header">
-            <h4 class="modal-title pull-left">¿Seguro desea entregar el pedido?</h4>
-            <button type="button" class="close pull-right" aria-label="Close" (click)="modalRef.hide()">
-              <span aria-hidden="true">&times;</span>
-            </button>
-          </div>
-          <div class="modal-body">
-            Una vez entregado, no podra volver atras
-            <div style="padding-bottom: 15px;"></div>
-          </div>
-          <div class="modal-footer">
-            <button type="button" class="btn btn-success" data-dismiss="modal"
-              (click)="entregarPedido(item.id_sector_pedido)">Aceptar</button>
-            <button type="button" class="btn btn-danger" data-dismiss="modal"
-              (click)="modalRef.hide()">Cancelar</button>
-          </div>
-        </ng-template>
+      <td>{{item.nombreCliente}} {{item.apellidoCliente}}</td>
+      <td>{{item.id_mesa}}</td>
+      <td>{{item.codigo_pedido}}</td>
+      <td>{{item.detalleMenu}}</td>
+      <td>{{item.detalleEstadoPedido}}</td>
+      <td>{{item.tiempo_espera}}</td>
+      <td><button type="button" class="btn btn-success" (click)="cambiarEstadoPedido(4)"
+          style="margin: 10px">Servido <i class="fas fa-check"></i></button></td>
     </tr>
   </table>
   <pagination-controls (pageChange)="pageActual = $event" previousLabel="Anterior" nextLabel="Siguiente">

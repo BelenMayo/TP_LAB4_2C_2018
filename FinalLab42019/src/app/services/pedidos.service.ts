@@ -5,6 +5,7 @@ import { PedidoModel } from '../models/pedido.model';
 import { DetallePedidoModel } from '../models/detalle_pedido.model';
 import { API_REF } from 'src/globales/variables_globales';
 import { PanelModel } from '../models/panel.model';
+import { SectorPedidoModel } from '../models/sector_pedido.model';
 
 
 @Injectable({
@@ -92,8 +93,8 @@ export class PedidosService {
       );
   }
 
-  modificarPedido(id: number, pedido: PedidoModel) {
-    return this.httpClient.put(API_REF + `/ComandaAPI/public/pedidos/modificar/${id}`, pedido)
+  modificarPedido(id: number, pedido: SectorPedidoModel) {
+    return this.httpClient.put(API_REF + `/ComandaAPI/public/sector_pedidos/modificar/${id}`, pedido)
     .pipe(
       map(resp => {
         if (resp['data'].length > 0) {

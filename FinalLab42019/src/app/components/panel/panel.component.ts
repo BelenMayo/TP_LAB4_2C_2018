@@ -3,6 +3,10 @@ import { SectorPedidoService } from '../../services/sector-pedido.service';
 import { HttpClient } from '@angular/common/http';
 import { BsModalService, BsModalRef } from 'ngx-bootstrap/modal';
 import { Router } from '@angular/router'
+import { PedidoModel } from '../../models/pedido.model';
+import { SectorPedidoModel } from '../../models/sector_pedido.model';
+import { PedidosService } from '../../services/pedidos.service';
+import Swal from 'sweetalert2'
 
 
 @Component({
@@ -17,14 +21,15 @@ export class PanelComponent implements OnInit {
   pageActual: number = 1;
   modalRef: BsModalRef;
 
+  sirvePedido: SectorPedidoModel;
+
   constructor(public sectorPedidoService: SectorPedidoService, private httpClient: HttpClient
-    , private modalService: BsModalService, private router: Router) {
+    , private modalService: BsModalService, private router: Router, public pedidosService: PedidosService) {
     this.traerDetallePedidoTotal();
   }
 
   ngOnInit() {
   }
-
 
   // Trae todos los sector pedido
   traerDetallePedidoTotal() {
@@ -48,15 +53,50 @@ export class PanelComponent implements OnInit {
           text: 'Error al eliminar pedido';
         });
 
-    this.modalRef.hide()
+    Swal.fire({
+      title: 'El item ha sido servido!',
+      text: 'Muchas gracias',
+      icon: 'success',
+      showConfirmButton: false,
+      timer: 1500
+    })
+
     this.router.navigateByUrl('/home');
   }
 
+  // Cambia estado del pedido
+  cambiarEstadoPedido(nuevoEstado) {
 
-  // Abre Modal
-  openModal(template: TemplateRef<any>) {
-    this.modalRef = this.modalService.show(template);
+    this.sirvePedido = new SectorPedidoModel();
+
+    this.sirvePedido.id_pedido = this.sector_pedido[0]['id_pedido'];
+    this.sirvePedido.id_empleado = this.sector_pedido[0]['idEmpleado'];
+    this.sirvePedido.id_menu = this.sector_pedido[0]['idMenu'];
+    this.sirvePedido.id_categoria = this.sector_pedido[0]['idCategoria'];
+    this.sirvePedido.id_seccion = this.sector_pedido[0]['idSeccion'];
+    this.sirvePedido.hora_inicio = new Date();
+    this.sirvePedido.tiempo_finalizacion = new Date();
+    this.sirvePedido.id_estado_pedido = nuevoEstado;
+
+    console.log(this.sirvePedido);
+
+    this.pedidosService.modificarPedido(this.sector_pedido[0]['idSectorPedido'], this.sirvePedido)
+      .subscribe(resp => {
+        console.log("Se modifico estado del pedido");
+      },
+        error => {
+          text: 'Error al modificar estado del pedido';
+        });
+
+    Swal.fire({
+      title: 'Se ha entregado el pedido!',
+      text: 'Muchas gracias',
+      icon: 'success',
+      showConfirmButton: false,
+      timer: 1500
+    })
+
+    this.router.navigateByUrl('/home');
   }
-
 
 }
