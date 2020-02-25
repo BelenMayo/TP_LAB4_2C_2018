@@ -1,5 +1,5 @@
 <nav class="navbar navbar-expand-lg navbar-light bg-light">
-  <a class="navbar-brand" routerLink='home'*ngIf="navbarService.cliente ||navbarService.socio || navbarService.mozo || navbarService.cocinero || navbarService.bartender">La Comanda</a>
+  <a class="navbar-brand" routerLink='home'*ngIf="navbarService.cliente ||navbarService.socio || navbarService.mozo || navbarService.cocinero || navbarService.bartender|| navbarService.cervecero">La Comanda</a>
   <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarTogglerDemo02"
     aria-controls="navbarTogglerDemo02" aria-expanded="false" aria-label="Toggle navigation">
     <span class="navbar-toggler-icon"></span>
@@ -19,10 +19,10 @@
       <li class="nav-item" *ngIf="navbarService.socio || navbarService.mozo">
         <a class="nav-link" routerLink="menu"> Menu </a>
       </li>
-      <li class="nav-item" *ngIf="navbarService.socio || navbarService.mozo || navbarService.cocinero">
+      <li class="nav-item" *ngIf="navbarService.socio || navbarService.mozo || navbarService.cocinero|| navbarService.bartender || navbarService.cervecero">
         <a class="nav-link" routerLink="pedido"> Comandas </a>
       </li>
-      <li class="nav-item" *ngIf="navbarService.socio || navbarService.mozo || navbarService.cocinero">
+      <li class="nav-item" *ngIf="navbarService.socio || navbarService.mozo">
         <a class="nav-link" routerLink="panel"> Barra </a>
       </li>
       <li class="nav-item" *ngIf="navbarService.socio || navbarService.cliente">
@@ -35,10 +35,11 @@
         <a class="nav-link" routerLink="mapa"> Nosotros </a>
       </li>
     </ul>
-    <a *ngIf="navbarService.socio || navbarService.cliente || navbarService.mozo || navbarService.cocinero || navbarService.bartender"
-      class="nav-link" routerLink="login" style="color:#E4330C"> {{navbarService.valorUsuario}}<strong>Logout <i
+    <a style="color: black; font-weight: bold; font-style: italic; margin-right: 25px;">{{navbarService.detalleTipoEmpleado}}</a>
+    <a *ngIf="navbarService.socio || navbarService.cliente || navbarService.mozo || navbarService.cocinero || navbarService.bartender || navbarService.cervecero"
+      class="nav-link" routerLink="login" style="color:#E4330C"><strong>Logout <i
           class="fas fa-sign-out-alt"></i></strong> </a>
-    <a *ngIf="!navbarService.socio && !navbarService.cliente && !navbarService.mozo && !navbarService.cocinero && !navbarService.bartender"
+    <a *ngIf="!navbarService.socio && !navbarService.cliente && !navbarService.mozo && !navbarService.cocinero && !navbarService.bartender && !navbarService.cervecero"
       class="nav-link" routerLink="login" style="color: #56baed"> <strong>Login <i
           class="fas fa-sign-in-alt"></i></strong> </a>
 

@@ -5,6 +5,7 @@ import { BsModalService, BsModalRef } from 'ngx-bootstrap/modal';
 import { PedidoModel } from '../../models/pedido.model';
 import { getLocaleDateFormat } from '@angular/common';
 import { Router } from '@angular/router'
+import { NavbarService } from 'src/app/services/navbar.service';
 
 
 @Component({
@@ -22,9 +23,9 @@ export class PedidosComponent implements OnInit {
   pedido: PedidoModel;
 
   constructor(public pedidosService: PedidosService, private httpClient: HttpClient, private modalService: BsModalService
-    , private router: Router) {
+    , private router: Router, public navbarService : NavbarService) {
     //this.traerPedidos();
-    this.traerPedidosDetalle();
+    this.traerPedidosDetallePorSector(navbarService.tipoEmpleado);
   }
 
   ngOnInit() {
@@ -43,8 +44,20 @@ export class PedidosComponent implements OnInit {
   }
 
   // Trae todos los pedidos
-  traerPedidosDetalle() {
-    this.pedidosService.traerPedidosDetalle()
+  // traerPedidosDetalle() {
+  //   this.pedidosService.traerPedidosDetalle()
+  //     .subscribe(resp => {
+  //       this.pedidos = resp;
+  //       console.log(this.pedidos);
+  //     },
+  //       error => {
+  //         text: 'Error al traer pedidos';
+  //       });
+  // }
+
+  // Trae todos los pedidos del tipo de empleado
+  traerPedidosDetallePorSector(tipoEmpleado) {
+    this.pedidosService.traerPedidosDetallePorSector(tipoEmpleado)
       .subscribe(resp => {
         this.pedidos = resp;
         console.log(this.pedidos);
@@ -53,6 +66,7 @@ export class PedidosComponent implements OnInit {
           text: 'Error al traer pedidos';
         });
   }
+
 
   // Elimina pedido
   eliminarPedido(id: number) {

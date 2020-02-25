@@ -27,8 +27,8 @@ export class PedidosService {
       );
   }
 
-  traerPedidosDetalle() {
-    return this.httpClient.get(API_REF + '/ComandaAPI/public/pedidos/listarPedidos/1/0')
+  traerPedidosDetallePorSector(tipoEmpleado: number) {
+    return this.httpClient.get(API_REF + `/ComandaAPI/public/pedidos/listarPedidos/1/0/${tipoEmpleado}`)
       .pipe(
         map(resp => {
           if (resp['data'].length > 0) {

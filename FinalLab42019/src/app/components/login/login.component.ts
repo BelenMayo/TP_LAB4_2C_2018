@@ -35,6 +35,9 @@ export class LoginComponent implements OnInit {
     this.navbarService.mozo = false
     this.navbarService.cocinero = false
     this.navbarService.bartender = false
+    this.navbarService.cervecero = false
+
+    this.navbarService.detalleTipoEmpleado = "";
   }
 
   ngOnInit() {
@@ -72,6 +75,7 @@ export class LoginComponent implements OnInit {
 
           this.navbarService.cliente = true;
           this.navbarService.valorUsuario = "Cliente";
+          this.navbarService.tipoEmpleado = 6;
           this.router.navigateByUrl('/home');
 
         } else {
@@ -104,24 +108,26 @@ export class LoginComponent implements OnInit {
     })
 
     this.navbarService.socio = true
+    this.navbarService.tipoEmpleado = 5;
+    this.navbarService.detalleTipoEmpleado = "Socio";
     this.router.navigateByUrl('/home');
   }
 
-  Cliente() {
-    this.usuario = "Cliente";
-    this.password = "123456";
+  // Cliente() {
+  //   this.usuario = "Cliente";
+  //   this.password = "123456";
 
-    Swal.fire({
-      title: 'Usuario logueado exitosamente!',
-      text: 'Bienvenido',
-      icon: 'success',
-      showConfirmButton: false,
-      timer: 1500
-    })
+  //   Swal.fire({
+  //     title: 'Usuario logueado exitosamente!',
+  //     text: 'Bienvenido',
+  //     icon: 'success',
+  //     showConfirmButton: false,
+  //     timer: 1500
+  //   })
 
-    this.navbarService.cliente = true
-    this.router.navigateByUrl('/home');
-  }
+  //   this.navbarService.cliente = true
+  //   this.router.navigateByUrl('/home');
+  // }
 
   Mozo() {
     this.usuario = "Mozo";
@@ -136,7 +142,9 @@ export class LoginComponent implements OnInit {
     })
 
     this.navbarService.mozo = true
-    this.router.navigateByUrl('/home');
+    this.navbarService.tipoEmpleado = 4;
+    this.navbarService.detalleTipoEmpleado = "Mozo";
+    this.router.navigateByUrl('/panel');
   }
 
   Cocinero() {
@@ -152,7 +160,9 @@ export class LoginComponent implements OnInit {
     })
 
     this.navbarService.cocinero = true
-    this.router.navigateByUrl('/home');
+    this.navbarService.tipoEmpleado = 3;
+    this.navbarService.detalleTipoEmpleado = "Cocinero";
+    this.router.navigateByUrl('/pedido');
   }
 
   Bartender() {
@@ -168,7 +178,27 @@ export class LoginComponent implements OnInit {
     })
 
     this.navbarService.bartender = true
-    this.router.navigateByUrl('/home');
+    this.navbarService.tipoEmpleado = 1;
+    this.navbarService.detalleTipoEmpleado = "Bartender";
+    this.router.navigateByUrl('/pedido');
+  }
+
+  Cervecero() {
+    this.usuario = "Cervecero";
+    this.password = "123456";
+
+    Swal.fire({
+      title: 'Usuario logueado exitosamente!',
+      text: 'Bienvenido',
+      icon: 'success',
+      showConfirmButton: false,
+      timer: 1500
+    })
+
+    this.navbarService.cervecero = true
+    this.navbarService.tipoEmpleado = 2;
+    this.navbarService.detalleTipoEmpleado = "Cervecero";
+    this.router.navigateByUrl('/pedido');
   }
 
 }

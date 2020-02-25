@@ -13,19 +13,6 @@ export class LoginService {
 
   constructor(private httpClient: HttpClient) { }
 
-  // traerUsuarios(id: number) {
-  //   return this.httpClient.get(API_REF + `/ComandaAPI/public/encuestas/traer/${id}`)
-  //     .pipe(
-  //       map(resp => {
-  //         if (resp['data'].length > 0) {
-  //           return resp['data'];
-  //         } else {
-  //           return false;
-  //         }
-  //       })
-  //     );
-  // }
-
   registro(usuario: LoginModel) {
     return this.httpClient.post(API_REF + '/ComandaAPI/public/login/registrar', usuario)
       .pipe(

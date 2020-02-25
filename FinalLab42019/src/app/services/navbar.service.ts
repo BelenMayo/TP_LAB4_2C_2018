@@ -10,8 +10,11 @@ export class NavbarService {
     mozo: boolean = false;
     cocinero: boolean = false;
     bartender: boolean = false;
+    cervecero: boolean = false;
 
-    valorUsuario: string = "";
+    valorUsuario: string = "5";
+    tipoEmpleado: number = 0;
+    detalleTipoEmpleado: string = "";
 
   constructor() { }
 }

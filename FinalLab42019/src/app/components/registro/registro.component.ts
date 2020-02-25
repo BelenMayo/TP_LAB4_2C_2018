@@ -56,7 +56,7 @@ export class RegistroComponent implements OnInit {
     })
 
     this.navbarService.cliente = true
-
+    this.navbarService.detalleTipoEmpleado = "Cliente"
     this.router.navigateByUrl('/home');
 
   }
