@@ -67,7 +67,7 @@ export class ClienteAltaComponent implements OnInit {
       timer: 1500
     })
 
-    this.router.navigateByUrl('/home');
+    this.router.navigateByUrl('/cliente/listadoCliente');
   }
 
   // Abre Modal

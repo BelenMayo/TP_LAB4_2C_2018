@@ -54,6 +54,8 @@ export class EmpleadoListadoComponent implements OnInit {
           text: 'Error al eliminar empleado';
         });
     this.modalRef.hide()
+
+    this.router.onSameUrlNavigation ='reload'
     this.router.navigateByUrl('/empleado/listadoEmpleado');
   }
 

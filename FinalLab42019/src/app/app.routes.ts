@@ -7,7 +7,6 @@ import { EMPLEADO_ROUTES } from './components/empleados/empleados.routes';
 import { EmpleadosComponent } from './components/empleados/empleados.component';
 import { MesasComponent } from './components/mesas/mesas.component';
 import { MenuComponent } from './components/menu/menu.component';
-import { PEDIDO_ROUTES } from './components/pedidos/pedidos.routes';
 import { PedidosComponent } from './components/pedidos/pedidos.component';
 import { EncuestasComponent } from './components/encuestas/encuestas.component';
 import { EstadisticasComponent } from './components/estadisticas/estadisticas.component';
@@ -24,7 +23,7 @@ const APP_ROUTES: Routes= [
     {path: 'empleado', component: EmpleadosComponent, children: EMPLEADO_ROUTES},
     {path: 'mesa', component: MesasComponent},
     {path: 'menu', component: MenuComponent},
-    {path: 'pedido', component: PedidosComponent, children: PEDIDO_ROUTES},
+    {path: 'pedido', component: PedidosComponent},
     {path: 'encuesta', component: EncuestasComponent},
     {path: 'estadistica', component: EstadisticasComponent},
     {path: 'grafico', component: GraficosComponent},

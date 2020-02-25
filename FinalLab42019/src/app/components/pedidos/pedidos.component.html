@@ -1,2 +1,54 @@
+<div class="table-responsive" id="tablaClientes" style="background-color:white">
+    <table class="table table-striped" id="mydatatable">
+        <thead>
+            <tr>
+                <th>Cliente</th>
+                <th>Mesa</th>
+                <th>Codigo Mesa</th>
+                <th>Codigo Pedido</th>
+                <th>Estado Pedido</th>
+                <th>Tiempo Espera</th>
+                <th>Importe</th>
+                <th style="text-align: center">Acciones</th>
+            </tr>
+        </thead>
+        <tr *ngFor="let item of pedidos | paginate: { itemsPerPage: 5, currentPage: pageActual }">
+            <td>{{item.nombreCliente}} {{item.apellidoCliente}}</td>
+            <td>{{item.id_mesa}}</td>
+            <td>{{item.codigo_mesa}}</td>
+            <td>{{item.codigo_pedido}}</td>
+            <td>{{item.detalleEstadoPedido}}</td>
+            <td>{{item.tiempo_espera}}</td>
+            <td>$ {{item.total}}</td>
+            <td><button type="button" class="btn btn-info" (click)="openModal(template)" style="margin: 10px">Modificar
+                    Estado <i class="fas fa-edit"></i></button>
 
-<router-outlet></router-outlet>
+                <ng-template #template>
+                    <div class="modal-header">
+                        <h4 class="modal-title pull-left">Cambiar estado del pedido</h4>
+                        <button type="button" class="close pull-right" aria-label="Close" (click)="modalRef.hide()">
+                            <span aria-hidden="true">&times;</span>
+                        </button>
+                    </div>
+                    <div class="modal-body">
+                        ¿A que estado desea cambiar el pedido: <strong>{{item.codigo_pedido}}</strong>?
+                        <div style="padding-bottom: 15px;"></div>
+                        <button type="button" class="btn btn-primary btn-block" data-dismiss="modal"
+                            (click)="cambiarEstadoPedido(item.id_pedido, item.id_cliente,item.id_mesa, item.codigo_mesa, item.foto_mesa, item.total, 2)">En
+                            preparacion</button>
+                        <button type="button" class="btn btn-success btn-block" data-dismiss="modal"
+                            (click)="cambiarEstadoPedido(item.id_pedido, item.id_cliente,item.id_mesa, item.codigo_mesa, item.foto_mesa, item.total, 3)">Listo
+                            para
+                            servir</button>
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-danger" data-dismiss="modal"
+                            (click)="modalRef.hide()">Cancelar</button>
+                    </div>
+                </ng-template>
+        </tr>
+    </table>
+    <pagination-controls (pageChange)="pageActual = $event" previousLabel="Anterior" nextLabel="Siguiente">
+    </pagination-controls>
+
+</div>

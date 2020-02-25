@@ -32,6 +32,7 @@ export class ClienteListadoComponent implements OnInit {
   }
 
   ngOnInit() {
+    this.traerClientes();
   }
 
   // Trae todos los clientes
@@ -58,7 +59,7 @@ export class ClienteListadoComponent implements OnInit {
         });
 
     this.modalRef.hide()
-    this.router.navigateByUrl('/home');   
+    this.router.navigateByUrl('/cliente/listadoCliente');
   }
 
   // Abre Modal

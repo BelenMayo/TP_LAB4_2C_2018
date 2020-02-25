@@ -77,12 +77,8 @@ export class EmpleadoModificarComponent implements OnInit {
       timer: 1500
     })
 
-    this.router.navigateByUrl('/home');
-  }
-
-  // Abre Modal
-  openModal(template: TemplateRef<any>) {
-    this.modalRef = this.modalService.show(template);
+    // this.router.onSameUrlNavigation ='reload'
+    this.router.navigateByUrl('/empleado/listadoEmpleado');
   }
 
 }

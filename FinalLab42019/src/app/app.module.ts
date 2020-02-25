@@ -4,6 +4,7 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 
 //Routes
 import { APP_ROUTING } from '../app/app.routes';
+// import { RouterModule, Routes } from '@angular/router';
 
 import {NgbModule} from '@ng-bootstrap/ng-bootstrap';
 
@@ -26,10 +27,6 @@ import { EmpleadoDetalleComponent } from './components/empleados/empleado-detall
 import { EmpleadoListadoComponent } from './components/empleados/empleado-listado.component';
 import { EmpleadoModificarComponent } from './components/empleados/empleado-modificar.component';
 import { ImagenesComponent } from './components/imagenes/imagenes.component';
-import { PedidoListadoComponent } from './components/pedidos/pedido-listado.component';
-import { PedidoDetalleComponent } from './components/pedidos/pedido-detalle.component';
-import { PedidoAltaComponent } from './components/pedidos/pedido-alta.component';
-import { PedidoModificarComponent } from './components/pedidos/pedido-modificar.component';
 
 //HTTP
 import { HttpClientModule }    from '@angular/common/http';
@@ -85,10 +82,7 @@ import { ConsultaComponent } from './components/consulta/consulta.component';
     EmpleadoListadoComponent,
     EmpleadoModificarComponent,
     ImagenesComponent,
-    PedidoListadoComponent,
-    PedidoDetalleComponent,
-    PedidoAltaComponent,
-    PedidoModificarComponent,
+    PedidosComponent,
     EncuestasComponent,
     EstadisticasComponent,
     PanelComponent,
@@ -115,8 +109,10 @@ import { ConsultaComponent } from './components/consulta/consulta.component';
       apiKey: 'AIzaSyCMZH8ZfJ8SBwnQ_SnfmtbI8hDlByezbts',
       libraries: ['places'] 
     }),
-    BotDetectCaptchaModule
+    BotDetectCaptchaModule,
+    // RouterModule.forRoot(APP_ROUTES)
   ],
+  // exports: [ RouterModule ],
   providers: [
     ClientesService,
     EmpleadosService,
