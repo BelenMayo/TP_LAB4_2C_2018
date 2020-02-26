@@ -1,6 +1,7 @@
 import { Component, OnInit, TemplateRef } from '@angular/core';
 import { FormControl, FormGroup, Validators, FormBuilder } from '@angular/forms';
 import { EmpleadoModel } from '../../models/empleado.model';
+import { ListadosService } from '../../services/listados.service';
 import { EmpleadosService } from '../../services/empleados.service';
 import { HttpClient } from '@angular/common/http';
 import { Router } from '@angular/router';
@@ -26,7 +27,7 @@ export class EmpleadoAltaComponent implements OnInit {
   modalRef: BsModalRef;
 
   constructor(private formBuilder: FormBuilder, public empleadosService: EmpleadosService, private httpClient: HttpClient
-    , private router: Router, private modalService: BsModalService) { }
+    , private router: Router, private modalService: BsModalService, public listadosService: ListadosService) { }
 
   ngOnInit() {
     this.formEmpleado = this.formBuilder.group({
@@ -67,7 +68,8 @@ export class EmpleadoAltaComponent implements OnInit {
       timer: 1500
     })
       
-    this.router.navigateByUrl('/home');
+    this.listadosService.refrescarEmpleados();
+    this.router.navigateByUrl('/empleado/listadoEmpleado');
   }
 
 // Abre Modal

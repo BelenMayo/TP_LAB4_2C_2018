@@ -13,8 +13,8 @@ export class ConsultaComponent implements OnInit {
   codigoPedido: string = "";
   estados: string[];
 
-  constructor(private router: Router, private formBuilder: FormBuilder, public sectorPedidoService: SectorPedidoService) { 
-    this.codigoPedido= "";
+  constructor(private router: Router, private formBuilder: FormBuilder, public sectorPedidoService: SectorPedidoService) {
+    this.codigoPedido = "";
   }
 
   ngOnInit() {

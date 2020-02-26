@@ -2,6 +2,7 @@ import { Component, OnInit, TemplateRef } from '@angular/core';
 import { FormControl, FormGroup, Validators, FormBuilder } from '@angular/forms';
 import { ClienteModel } from '../../models/cliente.model';
 import { ClientesService } from '../../services/clientes.service';
+import { ListadosService } from '../../services/listados.service';
 import { HttpClient } from '@angular/common/http';
 import { ActivatedRoute, Params } from '@angular/router';
 import { Router } from '@angular/router'
@@ -26,7 +27,8 @@ export class ClienteModificarComponent implements OnInit {
   modalRef: BsModalRef;
 
   constructor(private formBuilder: FormBuilder, public clientesService: ClientesService, private httpClient: HttpClient
-    , private rutaActiva: ActivatedRoute, private router: Router, private modalService: BsModalService) {
+    , private rutaActiva: ActivatedRoute, private router: Router, private modalService: BsModalService
+    , public listadosService: ListadosService) {
     this.rutaActiva.params.subscribe(params => {
       this.traerCliente(params.id);
     });
@@ -76,6 +78,7 @@ export class ClienteModificarComponent implements OnInit {
       timer: 1500
     })
 
+    this.listadosService.refrescarClientes();
     this.router.navigateByUrl('/cliente/listadoCliente');
   }
 

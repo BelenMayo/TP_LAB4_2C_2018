@@ -2,6 +2,8 @@ import { Component, OnInit, TemplateRef } from '@angular/core';
 import { FormControl, FormGroup, Validators, FormBuilder } from '@angular/forms';
 import { EmpleadoModel } from '../../models/empleado.model';
 import { EmpleadosService } from '../../services/empleados.service';
+import { ListadosService } from '../../services/listados.service';
+import { NavbarService } from '../../services/navbar.service';
 import { HttpClient } from '@angular/common/http';
 import { ActivatedRoute, Params } from '@angular/router';
 import { Router } from '@angular/router'
@@ -24,8 +26,11 @@ export class EmpleadoModificarComponent implements OnInit {
 
   modalRef: BsModalRef;
 
+  pagina: string;
+
   constructor(private formBuilder: FormBuilder, public empleadosService: EmpleadosService, private httpClient: HttpClient,
-    private rutaActiva: ActivatedRoute, private router: Router, private modalService: BsModalService) {
+    private rutaActiva: ActivatedRoute, private router: Router, private modalService: BsModalService, 
+    private navbarService: NavbarService, public listadosService: ListadosService) {
     this.rutaActiva.params.subscribe(params => {
       this.traerEmpleado(params.id);
     });
@@ -77,7 +82,9 @@ export class EmpleadoModificarComponent implements OnInit {
       timer: 1500
     })
 
-    // this.router.onSameUrlNavigation ='reload'
+    this.pagina= "empleados"; 
+
+    this.listadosService.refrescarEmpleados();
     this.router.navigateByUrl('/empleado/listadoEmpleado');
   }
 

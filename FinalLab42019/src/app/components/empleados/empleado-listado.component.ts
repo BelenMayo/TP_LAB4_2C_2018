@@ -1,5 +1,6 @@
 import { Component, OnInit, TemplateRef } from '@angular/core';
 import { EmpleadosService } from '../../services/empleados.service';
+import { ListadosService } from '../../services/listados.service';
 import { HttpClient } from '@angular/common/http';
 import { BsModalService, BsModalRef } from 'ngx-bootstrap/modal';
 import { ExcelService } from '../../services/excel.service';
@@ -25,14 +26,15 @@ export class EmpleadoListadoComponent implements OnInit {
   modalRef: BsModalRef;
 
   constructor(public empleadosService: EmpleadosService, private httpClient: HttpClient, private modalService: BsModalService
-    , private excelService: ExcelService, private router: Router) {
+    , private excelService: ExcelService, private router: Router, public listadosService: ListadosService) {
     this.traerEmpleados();
+    this.listadosService.refrescarEmpleados();
   }
 
   ngOnInit() {
   }
 
-  // Trae todos los clientes
+  // Trae todos los empleados
   traerEmpleados() {
     this.empleadosService.traerEmpleados()
       .subscribe(resp => {
@@ -55,7 +57,7 @@ export class EmpleadoListadoComponent implements OnInit {
         });
     this.modalRef.hide()
 
-    this.router.onSameUrlNavigation ='reload'
+    this.listadosService.refrescarEmpleados();
     this.router.navigateByUrl('/empleado/listadoEmpleado');
   }
 

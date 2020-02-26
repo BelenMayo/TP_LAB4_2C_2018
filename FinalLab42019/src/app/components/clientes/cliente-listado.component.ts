@@ -1,5 +1,6 @@
 import { Component, OnInit, TemplateRef } from '@angular/core';
 import { ClientesService } from '../../services/clientes.service';
+import { ListadosService } from '../../services/listados.service';
 import { HttpClient } from '@angular/common/http';
 import { BsModalService, BsModalRef } from 'ngx-bootstrap/modal';
 import { ExcelService } from '../../services/excel.service';
@@ -27,12 +28,13 @@ export class ClienteListadoComponent implements OnInit {
   modalRef: BsModalRef;
 
   constructor(public clientesService: ClientesService, private httpClient: HttpClient, private modalService: BsModalService
-    , private excelService: ExcelService, private router: Router) {
+    , private excelService: ExcelService, private router: Router, public listadosService: ListadosService) {
     this.traerClientes();
+    this.listadosService.refrescarClientes();
   }
 
   ngOnInit() {
-    this.traerClientes();
+    // this.traerClientes();
   }
 
   // Trae todos los clientes
@@ -52,14 +54,14 @@ export class ClienteListadoComponent implements OnInit {
     this.clientesService.eliminarCliente(id)
       .subscribe(resp => {
         console.log("Se elimino el cliente");
-        this.traerClientes();
       },
         error => {
           text: 'Error al eliminar cliente';
         });
 
     this.modalRef.hide()
-    this.router.navigateByUrl('/cliente/listadoCliente');
+    this.listadosService.refrescarClientes();
+    // this.router.navigateByUrl('/cliente/listadoCliente');
   }
 
   // Abre Modal

@@ -10,7 +10,7 @@
                 <th style="text-align: center">Acciones</th>
             </tr>
         </thead>
-        <tr *ngFor="let item of empleados | paginate: { itemsPerPage: 5, currentPage: pageActual }">
+        <tr *ngFor="let item of listadosService.empleados | paginate: { itemsPerPage: 5, currentPage: pageActual }">
             <td>{{item.apellido}}</td>
             <td>{{item.nombre}}</td>
             <td>{{item.telefono}}</td>

@@ -1,5 +1,6 @@
 import { Component, OnInit, TemplateRef } from '@angular/core';
 import { PedidosService } from '../../services/pedidos.service';
+import { ListadosService } from '../../services/listados.service';
 import { HttpClient } from '@angular/common/http';
 import { BsModalService, BsModalRef } from 'ngx-bootstrap/modal';
 import { PedidoModel } from '../../models/pedido.model';
@@ -28,24 +29,13 @@ export class PedidosComponent implements OnInit {
   sirvePedido: SectorPedidoModel;
 
   constructor(public pedidosService: PedidosService, private httpClient: HttpClient, private modalService: BsModalService
-    , private router: Router, public navbarService: NavbarService, public sectorPedidoService: SectorPedidoService) {
-    //this.traerPedidos();
+    , private router: Router, public navbarService: NavbarService, public sectorPedidoService: SectorPedidoService
+    , public listadosService: ListadosService) {
     this.traerPedidosDetallePorSector(navbarService.tipoEmpleado);
+    this.listadosService.refrescarPedidos();
   }
 
   ngOnInit() {
-  }
-
-  // Trae todos los pedidos
-  traerPedidos() {
-    this.pedidosService.traerPedidos()
-      .subscribe(resp => {
-        this.pedidos = resp;
-        console.log(this.pedidos);
-      },
-        error => {
-          text: 'Error al traer pedidos';
-        });
   }
 
   // Trae todos los pedidos del tipo de empleado
@@ -76,11 +66,11 @@ export class PedidosComponent implements OnInit {
 
     this.sirvePedido = new SectorPedidoModel();
 
-    this.sirvePedido.id_pedido = this.pedidos[0]['id_pedido'];
-    this.sirvePedido.id_empleado = this.pedidos[0]['idEmpleado'];
-    this.sirvePedido.id_menu = this.pedidos[0]['idMenu'];
-    this.sirvePedido.id_categoria = this.pedidos[0]['idCategoria'];
-    this.sirvePedido.id_seccion = this.pedidos[0]['idSeccion'];
+    this.sirvePedido.id_pedido = this.listadosService.pedidos[0]['id_pedido'];
+    this.sirvePedido.id_empleado = this.listadosService.pedidos[0]['idEmpleado'];
+    this.sirvePedido.id_menu = this.listadosService.pedidos[0]['idMenu'];
+    this.sirvePedido.id_categoria = this.listadosService.pedidos[0]['idCategoria'];
+    this.sirvePedido.id_seccion = this.listadosService.pedidos[0]['idSeccion'];
     this.sirvePedido.hora_inicio = new Date();
     this.sirvePedido.tiempo_finalizacion = new Date();
     this.sirvePedido.id_estado_pedido = nuevoEstado;

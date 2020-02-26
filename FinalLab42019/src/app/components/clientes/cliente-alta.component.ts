@@ -2,6 +2,7 @@ import { Component, OnInit, TemplateRef } from '@angular/core';
 import { FormControl, FormGroup, Validators, FormBuilder } from '@angular/forms';
 import { ClienteModel } from '../../models/cliente.model';
 import { ClientesService } from '../../services/clientes.service';
+import { ListadosService } from '../../services/listados.service';
 import { HttpClient } from '@angular/common/http';
 import { Router } from '@angular/router';
 import { BsModalService, BsModalRef } from 'ngx-bootstrap/modal';
@@ -25,7 +26,7 @@ export class ClienteAltaComponent implements OnInit {
   modalRef: BsModalRef;
 
   constructor(private formBuilder: FormBuilder, public clientesService: ClientesService, private httpClient: HttpClient
-    , private router: Router, private modalService: BsModalService) {
+    , private router: Router, private modalService: BsModalService, public listadosService: ListadosService) {
   }
 
   ngOnInit() {
@@ -67,6 +68,7 @@ export class ClienteAltaComponent implements OnInit {
       timer: 1500
     })
 
+    this.listadosService.refrescarClientes();
     this.router.navigateByUrl('/cliente/listadoCliente');
   }
 
