@@ -5,7 +5,7 @@ import { HttpClient } from '@angular/common/http';
 import { BsModalService, BsModalRef } from 'ngx-bootstrap/modal';
 import { ExcelService } from '../../services/excel.service';
 import { Router } from '@angular/router';
-
+import Swal from 'sweetalert2'
 
 import * as jsPDF from 'jspdf';
 import * as html2canvas from 'html2canvas';
@@ -55,9 +55,18 @@ export class EmpleadoListadoComponent implements OnInit {
         error => {
           text: 'Error al eliminar empleado';
         });
-    this.modalRef.hide()
 
+    this.modalRef.hide()
     this.listadosService.refrescarEmpleados();
+
+    Swal.fire({
+      title: 'Empleado eliminado exitosamente!',
+      text: 'Muchas gracias',
+      icon: 'success',
+      showConfirmButton: false,
+      timer: 1500
+    })
+
     this.router.navigateByUrl('/empleado/listadoEmpleado');
   }
 

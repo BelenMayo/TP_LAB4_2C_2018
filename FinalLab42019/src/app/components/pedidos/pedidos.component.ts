@@ -93,6 +93,6 @@ export class PedidosComponent implements OnInit {
       timer: 1500
     })
 
-    this.router.navigateByUrl('/home');
+    this.router.navigateByUrl('/pedido');
   }
 }

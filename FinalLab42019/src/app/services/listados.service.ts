@@ -13,14 +13,15 @@ export class ListadosService {
   empleados: string[];
   clientes: string[];
   pedidos: string[];
+  sector_pedido: string[];
 
   constructor(public empleadosService: EmpleadosService, public clientesService: ClientesService
-    , public pedidosService: PedidosService, public sectorPedidoService: SectorPedidoService, public navbarService: NavbarService) { 
+    , public pedidosService: PedidosService, public sectorPedidoService: SectorPedidoService, public navbarService: NavbarService) {
 
   }
 
-  refrescarEmpleados(){
-  // Trae todos los empleados
+  refrescarEmpleados() {
+    // Trae todos los empleados
     this.empleadosService.traerEmpleados()
       .subscribe(resp => {
         this.empleados = resp;
@@ -31,8 +32,8 @@ export class ListadosService {
         });
   }
 
-  refrescarClientes(){
-  // Trae todos los clientes
+  refrescarClientes() {
+    // Trae todos los clientes
     this.clientesService.traerClientes()
       .subscribe(resp => {
         this.clientes = resp;
@@ -43,7 +44,7 @@ export class ListadosService {
         });
   }
 
-  refrescarPedidos(){
+  refrescarPedidos() {
     // Trae todos los pedidos
     this.pedidosService.traerPedidosDetallePorSector(this.navbarService.tipoEmpleado)
       .subscribe(resp => {
@@ -55,16 +56,16 @@ export class ListadosService {
         });
   }
 
-    refrescarBarra(){
-      // Trae la barra
-        this.clientesService.traerClientes()
-          .subscribe(resp => {
-            this.clientes = resp;
-            console.log(this.clientes);
-          },
-            error => {
-              text: 'Error al traer clientes';
-            });
-      }
-  
+  refrescarBarra() {
+    // Trae la barra
+    this.sectorPedidoService.traerDetallePedidoTotal()
+      .subscribe(resp => {
+        this.sector_pedido = resp;
+        console.log(this.sector_pedido);
+      },
+        error => {
+          text: 'Error al traer barra';
+        });
+  }
+
 }

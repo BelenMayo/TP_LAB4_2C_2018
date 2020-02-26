@@ -1,5 +1,6 @@
 import { Component, OnInit, TemplateRef } from '@angular/core';
 import { SectorPedidoService } from '../../services/sector-pedido.service';
+import { ListadosService } from '../../services/listados.service';
 import { HttpClient } from '@angular/common/http';
 import { BsModalService, BsModalRef } from 'ngx-bootstrap/modal';
 import { Router } from '@angular/router'
@@ -24,8 +25,10 @@ export class PanelComponent implements OnInit {
   sirvePedido: SectorPedidoModel;
 
   constructor(public sectorPedidoService: SectorPedidoService, private httpClient: HttpClient
-    , private modalService: BsModalService, private router: Router, public pedidosService: PedidosService) {
+    , private modalService: BsModalService, private router: Router, public pedidosService: PedidosService
+    , public listadosService: ListadosService) {
     this.traerDetallePedidoTotal();
+    this.listadosService.refrescarBarra();
   }
 
   ngOnInit() {
@@ -96,7 +99,7 @@ export class PanelComponent implements OnInit {
       timer: 1500
     })
 
-    this.router.navigateByUrl('/home');
+    this.router.navigateByUrl('/panel');
   }
 
 }

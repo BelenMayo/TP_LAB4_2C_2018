@@ -43,6 +43,11 @@ export class MenuComponent implements OnInit {
   detallePedidoString: String[];
   valor: string;
 
+  mesaSeleccionada: string = "2";
+  mesaOpcionSeleccionada: string;
+  clienteSeleccionado: string = "Juan";
+  clienteOpcionSeleccionado: string;
+
   //formPedido: FormGroup;
 
   constructor(public menuService: MenuService, public mesasService: MesasService, public clientesService: ClientesService,
@@ -69,6 +74,14 @@ export class MenuComponent implements OnInit {
       //   tiempo_espera: ['', Validators.required],
       //   total: ['', Validators.required]
       // })
+  }
+
+  ver(){
+    this.mesaOpcionSeleccionada = this.mesaSeleccionada;
+    console.log(this.mesaOpcionSeleccionada);
+
+    this.clienteOpcionSeleccionado= this.clienteSeleccionado
+    console.log(this.clienteOpcionSeleccionado);
   }
 
   agregarDetalle(){

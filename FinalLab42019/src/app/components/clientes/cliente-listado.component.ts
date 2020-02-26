@@ -5,6 +5,7 @@ import { HttpClient } from '@angular/common/http';
 import { BsModalService, BsModalRef } from 'ngx-bootstrap/modal';
 import { ExcelService } from '../../services/excel.service';
 import { Router } from '@angular/router';
+import Swal from 'sweetalert2'
 
 // PDF
 import * as jsPDF from 'jspdf';
@@ -61,7 +62,16 @@ export class ClienteListadoComponent implements OnInit {
 
     this.modalRef.hide()
     this.listadosService.refrescarClientes();
-    // this.router.navigateByUrl('/cliente/listadoCliente');
+
+    Swal.fire({
+      title: 'Cliente eliminado exitosamente!',
+      text: 'Muchas gracias',
+      icon: 'success',
+      showConfirmButton: false,
+      timer: 1500
+    })
+
+    this.router.navigateByUrl('/cliente/listadoCliente');
   }
 
   // Abre Modal

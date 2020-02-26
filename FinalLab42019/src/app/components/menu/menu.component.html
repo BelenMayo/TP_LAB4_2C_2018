@@ -16,29 +16,27 @@
                     <button style="margin-left: 15px; margin-top: 10px;" id="button-basic" dropdownToggle type="button"
                         class="btn btn-primary dropdown-toggle" aria-controls="dropdown-basic"> Mesa <span
                             class="caret"></span></button>
-                    <ul id="mesa" name= "mesa" *dropdownMenu class="dropdown-menu" role="menu"
-                        aria-labelledby="button-basic">
+                    <ul id="mesa" name= "mesa" *dropdownMenu class="dropdown-menu" role="menu" aria-labelledby="button-basic">
                         <div *ngFor="let item of mesas">
-                            <li role="menuitem"><a class="dropdown-item" href="#">{{item.nro_mesa}}</a></li>
+                            <li role="menuitem"><a class="dropdown-item" [(ngModel)]="mesaSeleccionada" href="#">{{item.nro_mesa}}</a></li>
                         </div>
                     </ul>
                 </div>
-                <input type="text" class= "form-control" style="margin-top: 10px; margin-left: 106px; width: 250px;" disabled>
+                <input type="text" class= "form-control" [(ngModel)]="mesaSeleccionada" style="margin-top: 10px; margin-left: 106px; width: 250px;" disabled>
             </div><br />
             <div class="row">
                 <div class="btn-group" dropdown>
                     <button style="margin-left: 15px;" id="button-basic" dropdownToggle type="button"
                         class="btn btn-primary dropdown-toggle" aria-controls="dropdown-basic"> Comensal <span
                             class="caret"></span></button>
-                    <ul id="dropdown-basic" *dropdownMenu class="dropdown-menu" role="menu"
-                        aria-labelledby="button-basic">
+                    <ul id="dropdown-basic" *dropdownMenu class="dropdown-menu" role="menu" aria-labelledby="button-basic">
                         <div *ngFor="let item of clientes">
-                            <li role="menuitem"><a class="dropdown-item" href="#">{{item.nombre}} {{item.apellido}}</a>
+                            <li role="menuitem"><a class="dropdown-item" [(ngModel)]="clienteSeleccionado" href="#">{{item.nombre}} {{item.apellido}}</a>
                             </li>
                         </div>
                     </ul>
                 </div>
-                <input type="text" class= "form-control" style="margin-left: 75px; width: 250px;" disabled>
+                <input type="text" class= "form-control" [(ngModel)]="clienteSeleccionado" style="margin-left: 75px; width: 250px;" disabled>
             </div>
 
             <label style="font-size: 20px; margin-top: 25px; font-style: italic;text-decoration: underline;">Seleccione
