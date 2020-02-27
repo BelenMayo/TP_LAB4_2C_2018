@@ -27,7 +27,10 @@ export class MenuComponent implements OnInit {
   cervezas: string[];
   cocina: string[];
   candy: string[];
-  mesas: string[];  
+  mesas: string[];
+
+  formMenu: FormGroup;
+  isChecked: boolean;
 
   clientes: string[];
 
@@ -38,22 +41,23 @@ export class MenuComponent implements OnInit {
   pedido: PedidoModel;
   detallePedidoModel: DetallePedidoModel;
   panel: PanelModel;
-  
 
   detallePedidoString: String[];
   valor: string;
 
-  mesaSeleccionada: string = "2";
-  mesaOpcionSeleccionada: string;
-  clienteSeleccionado: string = "Juan";
-  clienteOpcionSeleccionado: string;
+  mesaSeleccionada: string = "";
+  clienteSeleccionado: string = "";
+  cantidadTrago: string = "";
+  cantidadCerveza: string = "";
+  cantidadPlato: string = "";
+  cantidadCandy: string = "";
 
   //formPedido: FormGroup;
 
   constructor(public menuService: MenuService, public mesasService: MesasService, public clientesService: ClientesService,
-               public detallePedidoService: DetallePedidoService, private httpClient: HttpClient, 
-               private modalService: BsModalService, private router: Router, private formBuilder: FormBuilder
-               , public PedidosService: PedidosService) { 
+    public detallePedidoService: DetallePedidoService, private httpClient: HttpClient,
+    private modalService: BsModalService, private router: Router, private formBuilder: FormBuilder
+    , public PedidosService: PedidosService) {
     this.traerTragos();
     this.traerCervezas();
     this.traerCocina();
@@ -64,29 +68,36 @@ export class MenuComponent implements OnInit {
   }
 
   ngOnInit() {
-      // this.formPedido = this.formBuilder.group({
-      //   id_cliente: ['', Validators.required],
-      //   id_mesa: ['', Validators.required],
-      //   codigo_mesa: ['', Validators.required],
-      //   codigo_pedido: ['', Validators.required],
-      //   id_estado_pedido: ['', Validators.required],
-      //   hora_pedido: ['', Validators.required,],
-      //   tiempo_espera: ['', Validators.required],
-      //   total: ['', Validators.required]
-      // })
+    this.formMenu = this.formBuilder.group({
+      mesa: ['', Validators.required],
+      cliente: ['', Validators.required],
+      cantidad: ['', Validators.required]
+    })
   }
 
-  ver(){
-    this.mesaOpcionSeleccionada = this.mesaSeleccionada;
-    console.log(this.mesaOpcionSeleccionada);
+  ver(menu) {
+    console.log("Mesa: " + this.mesaSeleccionada);
+    console.log("Cliente: " + this.clienteSeleccionado);
 
-    this.clienteOpcionSeleccionado= this.clienteSeleccionado
-    console.log(this.clienteOpcionSeleccionado);
+    console.log("Cantidad Trago: " + this.cantidadTrago + " - Menu: " + menu);
   }
 
-  agregarDetalle(){
+  guardarDetallePerdido(menu, categoria, seccion, precio) {
 
-    this.valor= "1"
+    this.detallePedidoModel = new DetallePedidoModel();
+
+    this.detallePedidoModel.id_menu= this.cantidadTrago;
+    this.detallePedidoModel.id_categoria= categoria;
+    this.detallePedidoModel.id_seccion= seccion;
+    this.detallePedidoModel.precio= precio;
+    this.detallePedidoModel.subtotal= precio;
+
+    this.modalRef.hide();
+  }
+
+  agregarDetalle() {
+
+    this.valor = "1"
     // this.detallePedidoString= new String()[];
 
     this.detallePedidoString.push(this.valor);
@@ -115,7 +126,7 @@ export class MenuComponent implements OnInit {
         });
 
     // this.modalRef.hide()
-    this.router.navigateByUrl('/menu'); 
+    this.router.navigateByUrl('/menu');
   }
 
   enviarComanda(modal) {
@@ -124,35 +135,35 @@ export class MenuComponent implements OnInit {
 
     this.pedido = new PedidoModel();
 
-    this.pedido.id_cliente='21';
-    this.pedido.id_mesa='2';
-    this.pedido.codigo_pedido= (Math.floor(Math.random() * 99999) + 10000).toString();
-    this.pedido.codigo_mesa= (Math.floor(Math.random() * 99999) + 10000).toString();
-    this.pedido.id_estado_pedido='1';
-    this.pedido.hora_pedido= new Date();
-    this.pedido.tiempo_espera= new Date();
-    this.pedido.total='450';
+    this.pedido.id_cliente = '21';
+    this.pedido.id_mesa = '2';
+    this.pedido.codigo_pedido = (Math.floor(Math.random() * 99999) + 10000).toString();
+    this.pedido.codigo_mesa = (Math.floor(Math.random() * 99999) + 10000).toString();
+    this.pedido.id_estado_pedido = '1';
+    this.pedido.hora_pedido = new Date();
+    this.pedido.tiempo_espera = new Date();
+    this.pedido.total = '450';
 
     this.detallePedidoModel = new DetallePedidoModel();
 
-    this.detallePedidoModel.id_pedido='9';
-    this.detallePedidoModel.id_menu='3';
-    this.detallePedidoModel.id_categoria='2';
-    this.detallePedidoModel.id_seccion='1';
-    this.detallePedidoModel.precio='290';
-    this.detallePedidoModel.cantidad='2';
-    this.detallePedidoModel.subtotal='580';
+    this.detallePedidoModel.id_pedido = '9';
+    this.detallePedidoModel.id_menu = '3';
+    this.detallePedidoModel.id_categoria = '2';
+    this.detallePedidoModel.id_seccion = '1';
+    this.detallePedidoModel.precio = '290';
+    this.detallePedidoModel.cantidad = '2';
+    this.detallePedidoModel.subtotal = '580';
 
     this.panel = new PanelModel();
 
-    this.panel.id_pedido='3';
-    this.panel.id_empleado='8';
-    this.panel.id_menu='4';
-    this.panel.id_categoria='1';
-    this.panel.id_seccion='3';
-    this.panel.hora_inicio= new Date();
-    this.panel.tiempo_finalizacion= new Date();
-    this.panel.id_estado_pedido='10';
+    this.panel.id_pedido = '3';
+    this.panel.id_empleado = '8';
+    this.panel.id_menu = '4';
+    this.panel.id_categoria = '1';
+    this.panel.id_seccion = '3';
+    this.panel.hora_inicio = new Date();
+    this.panel.tiempo_finalizacion = new Date();
+    this.panel.id_estado_pedido = '10';
 
     console.log(this.pedido);
 
@@ -173,7 +184,7 @@ export class MenuComponent implements OnInit {
   }
 
 
-  
+
   // Trae todos los tragos
   traerTragos() {
     this.menuService.traerMenuPorCategoria(1)
@@ -261,5 +272,5 @@ export class MenuComponent implements OnInit {
   openModal4(template4: TemplateRef<any>) {
     this.modalRef = this.modalService.show(template4);
   }
-  
+
 }

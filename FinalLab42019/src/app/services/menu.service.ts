@@ -3,6 +3,7 @@ import { HttpClient, HttpResponse } from '@angular/common/http';
 import { map } from 'rxjs/operators';
 import { API_REF } from 'src/globales/variables_globales';
 import { PedidoModel } from '../models/pedido.model';
+import { DetallePedidoModel } from '../models/detalle_pedido.model';
 
 
 @Injectable({
@@ -40,6 +41,19 @@ export class MenuService {
 
     eliminarDetallePedido(id: number) {
       return this.httpClient.delete(API_REF + `/ComandaAPI/public/detalle_pedidos/eliminar/${id}`)
+        .pipe(
+          map(resp => {
+            if (resp['data'].length > 0) {
+              return resp['data'];
+            } else {
+              return false;
+            }
+          })
+        );
+    }
+
+    guardarDetallePedido(detallePedido: DetallePedidoModel) {
+      return this.httpClient.post(API_REF + `/ComandaAPI/public/detalle_pedidos/registrar/`, detallePedido)
         .pipe(
           map(resp => {
             if (resp['data'].length > 0) {

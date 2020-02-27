@@ -1,262 +1,247 @@
 <div class="row">
     <div class="col-md-6 container container-menu">
-        <div class="container" style="background-color: #EDE8E8">
-            <div class="row">
-                <p style="font-weight: bold;font-size: 20px; margin-left: 15px; margin-top: 15px;text-align: center;">
-                    Realizar
-                    Comanda</p>
-            </div>
-            <hr />
-
-            <label style="font-size: 18px; margin-top: 5px; font-style: italic;text-decoration: underline;">Seleccione
-                Mesa y Comensal</label>
-
-            <div class="row">
-                <div class="btn-group" dropdown>
-                    <button style="margin-left: 15px; margin-top: 10px;" id="button-basic" dropdownToggle type="button"
-                        class="btn btn-primary dropdown-toggle" aria-controls="dropdown-basic"> Mesa <span
-                            class="caret"></span></button>
-                    <ul id="mesa" name= "mesa" *dropdownMenu class="dropdown-menu" role="menu" aria-labelledby="button-basic">
-                        <div *ngFor="let item of mesas">
-                            <li role="menuitem"><a class="dropdown-item" [(ngModel)]="mesaSeleccionada" href="#">{{item.nro_mesa}}</a></li>
-                        </div>
-                    </ul>
+        <form [formGroup]="formMenu" (ngSubmit)="guardarMenu()">
+            <div class="container" style="background-color: #EDE8E8">
+                <div class="row">
+                    <p
+                        style="font-weight: bold;font-size: 20px; margin-left: 15px; margin-top: 15px;text-align: center;">
+                        Realizar
+                        Comanda</p>
                 </div>
-                <input type="text" class= "form-control" [(ngModel)]="mesaSeleccionada" style="margin-top: 10px; margin-left: 106px; width: 250px;" disabled>
-            </div><br />
-            <div class="row">
-                <div class="btn-group" dropdown>
-                    <button style="margin-left: 15px;" id="button-basic" dropdownToggle type="button"
-                        class="btn btn-primary dropdown-toggle" aria-controls="dropdown-basic"> Comensal <span
-                            class="caret"></span></button>
-                    <ul id="dropdown-basic" *dropdownMenu class="dropdown-menu" role="menu" aria-labelledby="button-basic">
-                        <div *ngFor="let item of clientes">
-                            <li role="menuitem"><a class="dropdown-item" [(ngModel)]="clienteSeleccionado" href="#">{{item.nombre}} {{item.apellido}}</a>
-                            </li>
-                        </div>
-                    </ul>
+                <hr />
+
+                <label
+                    style="font-size: 18px; margin-top: 5px; font-style: italic;text-decoration: underline;">Seleccione
+                    Mesa y Comensal</label>
+                <br /><br />
+                <div class="row">
+                    <label style="margin-left: 10px;font-style: italic;">Mesa</label>
+                    <select class="form-control" formControlName="mesa" style="margin-left: 58px;width: 75px;"
+                        [(ngModel)]="mesaSeleccionada">
+                        <option *ngFor="let item of mesas" value="{{item.id_mesa}}">{{item.nro_mesa}}</option>
+                    </select>
+                </div><br />
+                <div class="row">
+                    <label style="margin-left: 10px;font-style: italic;">Comensal</label>
+                    <select class="form-control" formControlName="cliente" style="margin-left: 25px;width: 200px;"
+                        [(ngModel)]="clienteSeleccionado">
+                        <option value="{{item.id_cliente}}" *ngFor="let item of clientes">{{item.nombre}}
+                            {{item.apellido}}
+                        </option>
+                    </select>
                 </div>
-                <input type="text" class= "form-control" [(ngModel)]="clienteSeleccionado" style="margin-left: 75px; width: 250px;" disabled>
+
+                <label
+                    style="font-size: 20px; margin-top: 25px; font-style: italic;text-decoration: underline;">Seleccione
+                    items</label>
+                <br /><br />
+                <div class="row">
+                    <button type="button" class="btn btn-light" data-toggle="modal" data-target="#exampleModal"
+                        style="margin: 10px" (click)="openModal(template)">Vinos y Tragos</button>
+                    <ng-template #template>
+                        <div class="modal-header">
+                            <h4 class="modal-title pull-left">Vinos y Tragos</h4>
+                            <button type="button" class="close pull-right" aria-label="Close" (click)="modalRef.hide()">
+                                <span aria-hidden="true">&times;</span>
+                            </button>
+                        </div>
+                        <div class="modal-body">
+                            <strong><a style="font-size: 20px; color: white;">Vinos y Tragos</a></strong>
+                            <div class="table-responsive" id="tablaMenus" style="background-color:white">
+                                <table class="table table-striped" id="mydatatable">
+                                    <thead>
+                                        <tr>
+                                            <th>Detalle</th>
+                                            <th>Foto</th>
+                                            <th>Cantidad</th>
+                                        </tr>
+                                    </thead>
+                                    <tr
+                                        *ngFor="let item of tragos | paginate: { itemsPerPage: 3, currentPage: pageActual }">
+                                        <td>{{item.nombre}}</td>
+                                        <td><img class="img-responsive" src="assets/images/{{item.foto}}"></td>
+                                        <td>
+                                            <input style="width: 75px;" formControlName="cantidad"
+                                            [(ngModel)]="cantidadTrago" min="0" type="number" class="form-control"
+                                            (change)="ver(item.id_menu)">
+                                        </td>
+                                    </tr>
+                                </table>
+                                <pagination-controls (pageChange)="pageActual = $event" previousLabel="Anterior"
+                                    nextLabel="Siguiente"></pagination-controls>
+                            </div>
+                        </div>
+                        <div class="modal-footer">
+                            <button type="button" class="btn btn-success" (click)="modalRef.hide()">Agregar</button>
+                        </div>
+                    </ng-template>
+
+                    <button type="button" class="btn btn-light" data-toggle="modal" data-target="#exampleModal"
+                        style="margin: 10px; margin-left: 50px;" (click)="openModal2(template2)">Cervezas
+                        Artesanales</button>
+                    <ng-template #template2>
+                        <div class="modal-header">
+                            <h4 class="modal-title pull-left">Cervezas Artesanales</h4>
+                            <button type="button" class="close pull-right" aria-label="Close" (click)="modalRef.hide()">
+                                <span aria-hidden="true">&times;</span>
+                            </button>
+                        </div>
+                        <div class="modal-body">
+                            <strong><a style="font-size: 20px; color: white;">Vinos y Tragos</a></strong>
+                            <div class="table-responsive" id="tablaMenus" style="background-color:white">
+                                <table class="table table-striped" id="mydatatable">
+                                    <thead>
+                                        <tr>
+                                            <th>Detalle</th>
+                                            <th>Foto</th>
+                                            <th>Cantidad</th>
+                                        </tr>
+                                    </thead>
+                                    <tr
+                                        *ngFor="let item of cervezas | paginate: { itemsPerPage: 3, currentPage: pageActual }">
+                                        <td>{{item.nombre}}</td>
+                                        <td><img class="img-responsive" src="assets/images/{{item.foto}}"></td>
+                                        <td>
+                                            <input style="width: 75px;" formControlName="cantidad"
+                                            [(ngModel)]="cantidadCerveza" min="0" type="number" class="form-control"
+                                            (change)="ver(item.id_menu, item.id_categoria, item._id_seccion)">
+                                        </td>
+                                    </tr>
+                                </table>
+                                <pagination-controls (pageChange)="pageActual = $event" previousLabel="Anterior"
+                                    nextLabel="Siguiente"></pagination-controls>
+                            </div>
+                        </div>
+                        <div class="modal-footer">
+                            <button type="button" class="btn btn-success"
+                                (click)="guardarDetallePerdido()">Agregar</button>
+                        </div>
+                    </ng-template>
+                </div>
+                <div class="row">
+                    <button type="button" class="btn btn-light" data-toggle="modal" data-target="#exampleModal"
+                        style="margin: 10px" (click)="openModal3(template3)">Platos</button>
+                    <ng-template #template3>
+                        <div class="modal-header">
+                            <h4 class="modal-title pull-left">Platos</h4>
+                            <button type="button" class="close pull-right" aria-label="Close" (click)="modalRef.hide()">
+                                <span aria-hidden="true">&times;</span>
+                            </button>
+                        </div>
+                        <div class="modal-body">
+                            <strong><a style="font-size: 20px; color: white;">Platos</a></strong>
+                            <div class="table-responsive" id="tablaMenus" style="background-color:white">
+                                <table class="table table-striped" id="mydatatable">
+                                    <thead>
+                                        <tr>
+                                            <th>Detalle</th>
+                                            <th>Foto</th>
+                                            <th>Cantidad</th>
+                                        </tr>
+                                    </thead>
+                                    <tr
+                                        *ngFor="let item of cocina | paginate: { itemsPerPage: 3, currentPage: pageActual }">
+                                        <td>{{item.nombre}}</td>
+                                        <td><img class="img-responsive" src="assets/images/{{item.foto}}"></td>
+                                        <td>
+                                            <input style="width: 75px;" formControlName="cantidad"
+                                            [(ngModel)]="cantidadPlato" min="0" type="number" class="form-control"
+                                            (change)="ver(item.id_menu)">
+                                        </td>
+                                    </tr>
+                                </table>
+                                <pagination-controls (pageChange)="pageActual = $event" previousLabel="Anterior"
+                                    nextLabel="Siguiente"></pagination-controls>
+                            </div>
+                        </div>
+                        <div class="modal-footer">
+                            <button type="button" class="btn btn-success"
+                                (click)="modalRef.hide()">Agregar</button>
+                        </div>
+                    </ng-template>
+
+                    <button type="button" class="btn btn-light" data-toggle="modal" data-target="#exampleModal"
+                        style="margin: 10px; margin-left: 110px;" (click)="openModal4(template4)">Candy Bar</button>
+                    <ng-template #template4>
+                        <div class="modal-header">
+                            <h4 class="modal-title pull-left">Candy Bar</h4>
+                            <button type="button" class="close pull-right" aria-label="Close" (click)="modalRef.hide()">
+                                <span aria-hidden="true">&times;</span>
+                            </button>
+                        </div>
+                        <div class="modal-body">
+                            <strong><a style="font-size: 20px; color: white;">Candy</a></strong>
+                            <div class="table-responsive" id="tablaMenus" style="background-color:white">
+                                <table class="table table-striped" id="mydatatable">
+                                    <thead>
+                                        <tr>
+                                            <th>Detalle</th>
+                                            <th>Foto</th>
+                                            <th>Cantidad</th>
+                                        </tr>
+                                    </thead>
+                                    <tr
+                                        *ngFor="let item of candy | paginate: { itemsPerPage: 3, currentPage: pageActual }">
+                                        <td>{{item.nombre}}</td>
+                                        <td><img class="img-responsive" src="assets/images/{{item.foto}}"></td>
+                                        <td>
+                                            <input style="width: 75px;" formControlName="cantidad"
+                                            [(ngModel)]="cantidadCandy" min="0" type="number" class="form-control"
+                                            (change)="ver(item.id_menu)">
+                                        </td>
+                                    </tr>
+                                </table>
+                                <pagination-controls (pageChange)="pageActual = $event" previousLabel="Anterior"
+                                    nextLabel="Siguiente"></pagination-controls>
+                            </div>
+                        </div>
+                        <div class="modal-footer">
+                            <button type="button" class="btn btn-success"
+                                (click)="modalRef.hide()">Agregar</button>
+                        </div>
+                    </ng-template>
+                </div>
             </div>
-
-            <label style="font-size: 20px; margin-top: 25px; font-style: italic;text-decoration: underline;">Seleccione
-                items</label>
-
-            <div class="row">
-                <button type="button" class="btn btn-light" data-toggle="modal" data-target="#exampleModal"
-                    style="margin: 10px" (click)="openModal(template)">Vinos y Tragos</button>
-                <ng-template #template>
-                    <div class="modal-header">
-                        <h4 class="modal-title pull-left">Vinos y Tragos</h4>
-                        <button type="button" class="close pull-right" aria-label="Close" (click)="modalRef.hide()">
-                            <span aria-hidden="true">&times;</span>
-                        </button>
-                    </div>
-                    <div class="modal-body">
-                        <strong><a style="font-size: 20px; color: white;">Vinos y Tragos</a></strong>
-                        <div class="table-responsive" id="tablaMenus" style="background-color:white">
-                            <table class="table table-striped" id="mydatatable">
-                                <thead>
-                                    <tr>
-                                        <th>Seleccionar</th>
-                                        <th>Detalle</th>
-                                        <th>Foto</th>
-                                        <th>Cantidad</th>
-                                    </tr>
-                                </thead>
-                                <tr
-                                    *ngFor="let item of tragos | paginate: { itemsPerPage: 3, currentPage: pageActual }">
-                                    <td style="padding-left: 15px;"><input style="margin-left: 25px;max-width: 20px;"
-                                            type="checkbox" class="form-control" id="exampleCheck1"></td>
-                                    <td>{{item.nombre}}</td>
-                                    <td><img class="img-responsive" src="assets/images/{{item.foto}}"></td>
-                                    <td><input style="width: 75px;" class="form-control" type="number" min=0
-                                            id="cantidad">
-                                    </td>
-                                </tr>
-                            </table>
-                            <pagination-controls (pageChange)="pageActual = $event" previousLabel="Anterior"
-                                nextLabel="Siguiente"></pagination-controls>
-                        </div>
-                    </div>
-                    <div class="modal-footer">
-                        <button type="button" class="btn btn-success"
-                            (click)="eliminarCliente(item.id_cliente)">Agregar</button>
-                        <button type="button" class="btn btn-danger" data-dismiss="modal"
-                            (click)="modalRef.hide()">Cancelar</button>
-                    </div>
-                </ng-template>
-
-                <button type="button" class="btn btn-light" data-toggle="modal" data-target="#exampleModal"
-                    style="margin: 10px; margin-left: 50px;" (click)="openModal2(template2)">Cervezas Artesanales</button>
-                <ng-template #template2>
-                    <div class="modal-header">
-                        <h4 class="modal-title pull-left">Cervezas Artesanales</h4>
-                        <button type="button" class="close pull-right" aria-label="Close" (click)="modalRef.hide()">
-                            <span aria-hidden="true">&times;</span>
-                        </button>
-                    </div>
-                    <div class="modal-body">
-                        <strong><a style="font-size: 20px; color: white;">Cervezas Artesanales</a></strong>
-                        <div class="table-responsive" id="tablaMenus" style="background-color:white">
-                            <table class="table table-striped" id="mydatatable">
-                                <thead>
-                                    <tr>
-                                        <th>Seleccionar</th>
-                                        <th>Detalle</th>
-                                        <th>Foto</th>
-                                        <th>Cantidad</th>
-                                    </tr>
-                                </thead>
-                                <tr
-                                    *ngFor="let item of cervezas | paginate: { itemsPerPage: 3, currentPage: pageActual }">
-                                    <td style="padding-left: 15px;"><input style="margin-left: 25px;max-width: 20px;"
-                                            type="checkbox" class="form-control" id="exampleCheck1"></td>
-                                    <td>{{item.nombre}}</td>
-                                    <td><img class="img-responsive" src="assets/images/{{item.foto}}"></td>
-                                    <td><input style="width: 75px;" class="form-control" type="number" min=0
-                                            d="cantidad">
-                                    </td>
-                                </tr>
-                            </table>
-                            <pagination-controls (pageChange)="pageActual = $event" previousLabel="Anterior"
-                                nextLabel="Siguiente"></pagination-controls>
-                        </div>
-                    </div>
-                    <div class="modal-footer">
-                        <button type="button" class="btn btn-success"
-                            (click)="eliminarCliente(item.id_cliente)">Agregar</button>
-                        <button type="button" class="btn btn-danger" data-dismiss="modal"
-                            (click)="modalRef.hide()">Cancelar</button>
-                    </div>
-                </ng-template>
-            </div>
-            <div class="row">
-                <button type="button" class="btn btn-light" data-toggle="modal" data-target="#exampleModal"
-                    style="margin: 10px" (click)="openModal3(template3)">Platos</button>
-                <ng-template #template3>
-                    <div class="modal-header">
-                        <h4 class="modal-title pull-left">Platos</h4>
-                        <button type="button" class="close pull-right" aria-label="Close" (click)="modalRef.hide()">
-                            <span aria-hidden="true">&times;</span>
-                        </button>
-                    </div>
-                    <div class="modal-body">
-                        <strong><a style="font-size: 20px; color: white;">Platos</a></strong>
-                        <div class="table-responsive" id="tablaMenus" style="background-color:white">
-                            <table class="table table-striped" id="mydatatable">
-                                <thead>
-                                    <tr>
-                                        <th>Seleccionar</th>
-                                        <th>Detalle</th>
-                                        <th>Foto</th>
-                                        <th>Cantidad</th>
-                                    </tr>
-                                </thead>
-                                <tr
-                                    *ngFor="let item of cocina | paginate: { itemsPerPage: 3, currentPage: pageActual }">
-                                    <td style="padding-left: 15px;"><input style="margin-left: 25px;max-width: 20px;"
-                                            type="checkbox" class="form-control" id="exampleCheck1"></td>
-                                    <td>{{item.nombre}}</td>
-                                    <td><img class="img-responsive" src="assets/images/{{item.foto}}"></td>
-                                    <td><input style="width: 75px;" class="form-control" type="number" min=0
-                                            id="cantidad">
-                                    </td>
-                                </tr>
-                            </table>
-                            <pagination-controls (pageChange)="pageActual = $event" previousLabel="Anterior"
-                                nextLabel="Siguiente">
-                            </pagination-controls>
-                        </div>
-                    </div>
-                    <div class="modal-footer">
-                        <button type="button" class="btn btn-success"
-                            (click)="eliminarCliente(item.id_cliente)">Agregar</button>
-                        <button type="button" class="btn btn-danger" data-dismiss="modal"
-                            (click)="modalRef.hide()">Cancelar</button>
-                    </div>
-                </ng-template>
-
-                <button type="button" class="btn btn-light" data-toggle="modal" data-target="#exampleModal"
-                    style="margin: 10px; margin-left: 110px;" (click)="openModal4(template4)">Candy Bar</button>
-                <ng-template #template4>
-                    <div class="modal-header">
-                        <h4 class="modal-title pull-left">Candy Bar</h4>
-                        <button type="button" class="close pull-right" aria-label="Close" (click)="modalRef.hide()">
-                            <span aria-hidden="true">&times;</span>
-                        </button>
-                    </div>
-                    <div class="modal-body">
-                        <strong><a style="font-size: 20px; color: white;">Candy Bar</a></strong>
-                        <div class="table-responsive" id="tablaMenus" style="background-color:white">
-                            <table class="table table-striped" id="mydatatable">
-                                <thead>
-                                    <tr>
-                                        <th>Seleccionar</th>
-                                        <th>Detalle</th>
-                                        <th>Foto</th>
-                                        <th>Cantidad</th>
-                                    </tr>
-                                </thead>
-                                <tr *ngFor="let item of candy | paginate: { itemsPerPage: 3, currentPage: pageActual }">
-                                    <td style="padding-left: 15px;"><input style="margin-left: 25px;max-width: 20px;"
-                                            type="checkbox" class="form-control" id="exampleCheck1"></td>
-                                    <td>{{item.nombre}}</td>
-                                    <td><img class="img-responsive" src="assets/images/{{item.foto}}"></td>
-                                    <td><input style="width: 75px;" class="form-control" type="number" min=0
-                                            id="cantidad">
-                                    </td>
-                                </tr>
-                            </table>
-                            <pagination-controls (pageChange)="pageActual = $event" previousLabel="Anterior"
-                                nextLabel="Siguiente">
-                            </pagination-controls>
-                        </div>
-                    </div>
-                    <div class="modal-footer">
-                        <button type="button" class="btn btn-success"
-                            (click)="eliminarCliente(item.id_cliente)">Agregar</button>
-                        <button type="button" class="btn btn-danger" data-dismiss="modal"
-                            (click)="modalRef.hide()">Cancelar</button>
-                    </div>
-                </ng-template>
-            </div>
-        </div>
+        </form>
     </div>
 
-    <div class="col-md-6 container container-menu">
-        <div class="container" style="background-color: #EDE8E8">
-            <div class="row">
-                <p style="font-weight: bold;font-size: 20px; margin-left: 15px; margin-top: 15px;text-align: center;">
-                    Ver Comanda</p>
-                <div class="table-responsive" id="tablaClientes" style="background-color:white">
-                    <table class="table table-striped" id="mydatatable">
-                        <thead>
-                            <tr>
-                                <th>Item</th>
-                                <th>Precio</th>
-                                <th>Cantidad</th>
-                                <th>Acciones</th>
-                            </tr>
-                        </thead>
-                        <tr *ngFor="let item of detallePedido">
-                            <td>{{item.nombreMenu}}</td>
-                            <td>{{item.precio | currency:'ARS'}}</td>
-                            <td>{{item.cantidad}}</td>
-                            <td><button type="button" class="btn btn-danger"
-                                    (click)="eliminarDetallePedido(item.id_detalle_pedido)" style="margin: 10px">Quitar
-                                    <i class="fas fa-trash-alt"></i></button></td>
-                        </tr>
-                    </table>
 
-                    <label
-                        style="font-weight: bold; margin-left: 400px;font-size: 20px;">{{450 | currency:'ARS'}}</label><br /><br />
-                    <button type="button" (click)="agregarDetalle()"
-                        style="margin-left: 15px; margin-bottom: 15px;" class="btn btn-primary">Enviar Comanda <i
-                            class="fas fa-share"></i></button>
+    <div class="col-md-6 container container-menu">
+        <form [formGroup]="formComanda" (ngSubmit)="guardarComanda()">
+            <div class="container" style="background-color: #EDE8E8">
+                <div class="row">
+                    <p
+                        style="font-weight: bold;font-size: 20px; margin-left: 15px; margin-top: 15px;text-align: center;">
+                        Ver Comanda</p>
+                    <div class="table-responsive" id="tablaClientes" style="background-color:white">
+                        <table class="table table-striped" id="mydatatable">
+                            <thead>
+                                <tr>
+                                    <th>Item</th>
+                                    <th>Precio</th>
+                                    <th>Cantidad</th>
+                                    <th>Acciones</th>
+                                </tr>
+                            </thead>
+                            <tr *ngFor="let item of detallePedido">
+                                <td>{{item.nombreMenu}}</td>
+                                <td>{{item.precio | currency:'ARS'}}</td>
+                                <td>{{item.cantidad}}</td>
+                                <td><button type="button" class="btn btn-danger"
+                                        (click)="eliminarDetallePedido(item.id_detalle_pedido)"
+                                        style="margin: 10px">Quitar
+                                        <i class="fas fa-trash-alt"></i></button></td>
+                            </tr>
+                        </table>
+
+                        <label
+                            style="font-weight: bold; margin-left: 400px;font-size: 20px;">{{0 | currency:'ARS'}}</label><br /><br />
+                        <button type="button" (click)="agregarDetalle()" style="margin-left: 15px; margin-bottom: 15px;"
+                            class="btn btn-primary">Enviar Comanda <i class="fas fa-share"></i></button>
+                    </div>
                 </div>
             </div>
-        </div>
+        </form>
     </div>
 </div>
 

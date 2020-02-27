@@ -52,14 +52,8 @@ class SectorPedidosModel
                          ->offset($p)
                          ->fetchAll();
         
-        $total = $this->db->from($this->table)
-                          ->select('COUNT(*) Total')
-                          ->fetch()
-                          ->Total;
-        
         return [
-            'data'  => $data,
-            'total' => $total
+            'data'  => $data
         ];
     }
 
