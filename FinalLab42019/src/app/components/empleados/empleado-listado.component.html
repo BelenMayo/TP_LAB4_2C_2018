@@ -47,6 +47,6 @@
     <pagination-controls (pageChange)="pageActual = $event" previousLabel="Anterior" nextLabel="Siguiente">
     </pagination-controls>
     <button type="button" [routerLink]="['/empleado/altaEmpleado']" class="btn btn-primary" style="margin: 15px"> Nuevo Empleado <i class="fas fa-plus"></i></button>
-    <button type="button" class="btn btn-warning" (click)="generarPDF()" style="margin: 15px"> Descargar PDF <i class="fas fa-download"></i></button>
-    <button type="button" class="btn btn-success" (click)="exportAsXLSX()" style="margin: 15px"> Descargar Excel <i class="fas fa-download"></i></button>
+    <button type="button" class="btn btn-warning" (click)="generarPDF()" style="margin: 15px"> Descargar PDF <i class="fas fa-file-pdf"></i></button>
+    <button type="button" class="btn btn-success" (click)="exportAsXLSX()" style="margin: 15px"> Descargar Excel <i class="fas fa-file-excel"></i></button>
 </div>

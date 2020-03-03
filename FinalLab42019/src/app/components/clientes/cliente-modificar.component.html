@@ -20,15 +20,7 @@
                             required>
                     </div>
                 </div>
-                <div class="row clientes">
-                    <!-- Input Foto -->
-                    <div class="col-md-6" style="font-style: italic;"><strong><label>Foto</label></strong>
-                        <input style="font-style: italic;" type="text" id="foto" class="form-control"
-                            formControlName='foto'
-                            [ngClass]="{'is-invalid': formCliente.get('foto').value == '', 'is-valid': !(formCliente.get('foto').value == '')}"
-                            required>
-                    </div>
-                </div>
+                
                 <div class="row clientes">
                     <!-- Input Usuario -->
                     <div class="col-md-6" style="font-style: italic;"><strong><label>Usuario</label></strong>
@@ -45,6 +37,18 @@
                             required>
                     </div>
                 </div>
+
+                <div class="row clientes">
+                    <!-- Input Foto -->
+                    <div class="col-md-6" style="font-style: italic;"><strong><label>Foto</label></strong><br />
+                        <input formControlName='foto' style="font-style: italic;" type="File" id="fotoCliente"
+                            class="btn btn-secondary" placeholder="Subir.." required>
+                        <span style="color: red"
+                            *ngIf="formCliente.controls['foto'].touched && formCliente.controls['foto'].errors?.required">La
+                            foto es requerida</span>
+                    </div>
+                </div>
+
                 <div class="row clientes" style="margin-top: 20px;">
                     <!-- Guardar -->
                     <div class="col-sm-2">

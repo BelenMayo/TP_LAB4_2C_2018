@@ -25,6 +25,7 @@ export class ClienteAltaComponent implements OnInit {
 
   modalRef: BsModalRef;
 
+
   constructor(private formBuilder: FormBuilder, public clientesService: ClientesService, private httpClient: HttpClient
     , private router: Router, private modalService: BsModalService, public listadosService: ListadosService) {
   }
@@ -42,10 +43,6 @@ export class ClienteAltaComponent implements OnInit {
   // Guarda un cliente
   guardarCliente() {
     this.submitted = true;
-
-    // if (!this.formCliente.invalid) {
-    //   return;
-    // }
 
     this.cliente = new ClienteModel().guardarCliente(this.formCliente.controls);
 

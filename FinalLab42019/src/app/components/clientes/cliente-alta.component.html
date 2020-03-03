@@ -26,17 +26,6 @@
                     </div>
                 </div>
                 <div class="row clientes">
-                    <!-- Input Foto -->
-                    <div class="col-md-6">
-                        <span style="font-weight: bold;font-style: italic;">Foto</span><br />
-                        <input style="font-style: italic;" type="File" class="btn btn-secondary" placeholder="Subir.."
-                            required>
-                        <span style="color: red"
-                            *ngIf="formCliente.controls['foto'].touched && formCliente.controls['foto'].errors?.required">La
-                            foto es requerida</span>
-                    </div>
-                </div>
-                <div class="row clientes">
                     <!-- Input Usuario -->
                     <div class="col-md-6">
                         <span style="font-weight: bold;font-style: italic;">Usuario</span>
@@ -52,6 +41,20 @@
                             formControlName='password' placeholder="Contraseña.."
                             [ngClass]="{'is-invalid': formCliente.get('password').value == '', 'is-valid': !(formCliente.get('password').value == '')}"
                             required>
+                    </div>
+                </div>
+                <div class="row clientes">
+                    <!-- Input Foto -->
+                    <div class="col-md-6">
+                        <span style="font-weight: bold;font-style: italic;">Foto</span><br />
+                        <input formControlName='foto' name="foto" style="font-style: italic;" type="File"
+                            id="fotoCliente" class="btn btn-secondary" placeholder="Subir.." required>
+                        <!-- <span style="color: red"
+                            *ngIf="formCliente.controls['foto'].touched && formCliente.controls['foto'].errors?.required">La
+                            foto es requerida</span> -->
+                        <div class="col-md-6">
+                            <img class="img-responsive" style="max-width: 200px;" src="assets/images/lperez.jpg">
+                        </div>
                     </div>
                 </div><br />
                 <div class="row clientes">
