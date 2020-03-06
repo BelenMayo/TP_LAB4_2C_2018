@@ -75,6 +75,10 @@ export class MenuComponent implements OnInit {
     })
   }
 
+  cargarComanda(){
+    
+  }
+
   ver(menu) {
     console.log("Mesa: " + this.mesaSeleccionada);
     console.log("Cliente: " + this.clienteSeleccionado);
