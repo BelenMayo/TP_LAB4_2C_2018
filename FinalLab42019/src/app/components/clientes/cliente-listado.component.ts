@@ -51,8 +51,8 @@ export class ClienteListadoComponent implements OnInit {
   }
 
   // Elimina cliente
-  eliminarCliente(id: number) {
-    this.clientesService.eliminarCliente(id)
+  eliminarCliente(item: any) {
+    this.clientesService.eliminarCliente(item.id_cliente)
       .subscribe(resp => {
         console.log("Se elimino el cliente");
       },
@@ -60,9 +60,11 @@ export class ClienteListadoComponent implements OnInit {
           text: 'Error al eliminar cliente';
         });
 
-    this.modalRef.hide()
-    this.listadosService.refrescarClientes();
-
+    this.modalRef.hide();
+    console.log(this.listadosService.clientes);
+    var i = this.listadosService.clientes.indexOf( item );
+    this.listadosService.clientes.splice(i, 1);
+    
     Swal.fire({
       title: 'Cliente eliminado exitosamente!',
       text: 'Muchas gracias',

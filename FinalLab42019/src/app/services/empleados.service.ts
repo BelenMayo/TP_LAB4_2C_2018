@@ -66,7 +66,7 @@ export class EmpleadosService {
   }
 
   eliminarEmpleado(id: number) {
-    return this.httpClient.delete(`http://localhost/ComandaAPI/public/empleados/eliminar/${id}`)
+    return this.httpClient.delete(API_REF + `/ComandaAPI/public/empleados/eliminar/${id}`)
     .pipe(
       map(resp => {
         if (resp['data'].length > 0) {

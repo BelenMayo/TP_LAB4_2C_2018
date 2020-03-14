@@ -47,8 +47,8 @@ export class EmpleadoListadoComponent implements OnInit {
   }
 
   // Elimina empleado
-  eliminarEmpleado(id: number) {
-    this.empleadosService.eliminarEmpleado(id)
+  eliminarEmpleado(item: any) {
+    this.empleadosService.eliminarEmpleado(item.id_empleado)
       .subscribe(resp => {
         console.log("Se elimino el empleado");
       },
@@ -56,8 +56,10 @@ export class EmpleadoListadoComponent implements OnInit {
           text: 'Error al eliminar empleado';
         });
 
-    this.modalRef.hide()
-    this.listadosService.refrescarEmpleados();
+    this.modalRef.hide();
+    console.log(this.listadosService.empleados);
+    var i = this.listadosService.empleados.indexOf(item);
+    this.listadosService.empleados.splice(i, 1);
 
     Swal.fire({
       title: 'Empleado eliminado exitosamente!',

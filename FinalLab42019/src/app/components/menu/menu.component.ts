@@ -3,7 +3,6 @@ import { MenuService } from '../../services/menu.service';
 import { MesasService } from '../../services/mesas.service';
 import { FormControl, FormGroup, Validators, FormBuilder } from '@angular/forms';
 import { ClientesService } from '../../services/clientes.service';
-import { DetallePedidoService } from '../../services/detalle-pedido.service';
 import { PedidosService } from '../../services/pedidos.service';
 import { HttpClient } from '@angular/common/http';
 import { BsModalService, BsModalRef } from 'ngx-bootstrap/modal';
@@ -55,7 +54,7 @@ export class MenuComponent implements OnInit {
   //formPedido: FormGroup;
 
   constructor(public menuService: MenuService, public mesasService: MesasService, public clientesService: ClientesService,
-    public detallePedidoService: DetallePedidoService, private httpClient: HttpClient,
+              private httpClient: HttpClient,
     private modalService: BsModalService, private router: Router, private formBuilder: FormBuilder
     , public PedidosService: PedidosService) {
     this.traerTragos();
