@@ -76,6 +76,7 @@ export class PedidosComponent implements OnInit {
     this.sirvePedido.id_estado_pedido = nuevoEstado;
 
     console.log(this.sirvePedido);
+    
 
     this.pedidosService.modificarPedido(this.pedidos[0]['idSectorPedido'], this.sirvePedido)
       .subscribe(resp => {

@@ -51,6 +51,8 @@ export class MenuComponent implements OnInit {
   cantidadPlato: string = "";
   cantidadCandy: string = "";
 
+  elementosSeleccionados: DetallePedidoModel[];
+
   //formPedido: FormGroup;
 
   constructor(public menuService: MenuService, public mesasService: MesasService, public clientesService: ClientesService,
@@ -67,15 +69,22 @@ export class MenuComponent implements OnInit {
   }
 
   ngOnInit() {
-    this.formMenu = this.formBuilder.group({
-      mesa: ['', Validators.required],
-      cliente: ['', Validators.required],
-      cantidad: ['', Validators.required]
-    })
+    // this.formMenu = this.formBuilder.group({
+    //   mesa: ['', Validators.required],
+    //   cliente: ['', Validators.required],
+    //   cantidad: ['', Validators.required]
+    // })
   }
 
-  cargarComanda(){
-    
+  cargarDetalleComanda(item: any){
+
+    var i = this.elementosSeleccionados.indexOf( item );
+    this.elementosSeleccionados.splice(i, 1);
+
+    // console.log(i);
+    console.log(this.elementosSeleccionados);
+
+    this.modalRef.hide();
   }
 
   ver(menu) {
@@ -90,8 +99,6 @@ export class MenuComponent implements OnInit {
     this.detallePedidoModel = new DetallePedidoModel();
 
     this.detallePedidoModel.id_menu= this.cantidadTrago;
-    this.detallePedidoModel.id_categoria= categoria;
-    this.detallePedidoModel.id_seccion= seccion;
     this.detallePedidoModel.precio= precio;
     this.detallePedidoModel.subtotal= precio;
 
@@ -151,8 +158,6 @@ export class MenuComponent implements OnInit {
 
     this.detallePedidoModel.id_pedido = '9';
     this.detallePedidoModel.id_menu = '3';
-    this.detallePedidoModel.id_categoria = '2';
-    this.detallePedidoModel.id_seccion = '1';
     this.detallePedidoModel.precio = '290';
     this.detallePedidoModel.cantidad = '2';
     this.detallePedidoModel.subtotal = '580';

@@ -55,18 +55,13 @@
                                             <th></th>
                                             <th>Detalle</th>
                                             <th>Foto</th>
-                                            <!-- <th>Cantidad</th> -->
                                         </tr>
                                     </thead>
                                     <tr
                                         *ngFor="let item of tragos | paginate: { itemsPerPage: 3, currentPage: pageActual }">
-                                        <td><input type="checkbox" class="form-control" width="5px;"></td>
+                                        <td><input type="checkbox" class="form-control" width="5px;" id="checkTragos"></td>
                                         <td>{{item.nombre}}</td>
                                         <td><img class="img-responsive" src="assets/images/{{item.foto}}"></td>
-                                        <!-- <td>
-                                            <input style="width: 75px;" formControlName="item.cantidad" min="0"
-                                                type="number" class="form-control" (change)="ver(item.id_menu)">
-                                        </td> -->
                                     </tr>
                                 </table>
                                 <pagination-controls (pageChange)="pageActual = $event" previousLabel="Anterior"
@@ -74,7 +69,7 @@
                             </div>
                         </div>
                         <div class="modal-footer">
-                            <button type="button" class="btn btn-success" (click)="modalRef.hide()">Agregar</button>
+                            <button type="button" class="btn btn-success" (click)="cargarDetalleComanda(item)">Agregar</button>
                         </div>
                     </ng-template>
 
@@ -89,7 +84,7 @@
                             </button>
                         </div>
                         <div class="modal-body">
-                            <strong><a style="font-size: 20px; color: white;">Vinos y Tragos</a></strong>
+                            <strong><a style="font-size: 20px; color: white;">Cervezas</a></strong>
                             <div class="table-responsive" id="tablaMenus" style="background-color:white">
                                 <table class="table table-striped" id="mydatatable">
                                     <thead>
@@ -97,7 +92,6 @@
                                             <th></th>
                                             <th>Detalle</th>
                                             <th>Foto</th>
-                                            <!-- <th>Cantidad</th> -->
                                         </tr>
                                     </thead>
                                     <tr
@@ -105,11 +99,6 @@
                                         <td><input type="checkbox" class="form-control" width="5px;"></td>
                                         <td>{{item.nombre}}</td>
                                         <td><img class="img-responsive" src="assets/images/{{item.foto}}"></td>
-                                        <!-- <td>
-                                            <input style="width: 75px;" formControlName="cantidad"
-                                                [(ngModel)]="cantidadCerveza" min="0" type="number" class="form-control"
-                                                (change)="ver(item.id_menu, item.id_categoria, item._id_seccion)">
-                                        </td> -->
                                     </tr>
                                 </table>
                                 <pagination-controls (pageChange)="pageActual = $event" previousLabel="Anterior"
@@ -118,7 +107,7 @@
                         </div>
                         <div class="modal-footer">
                             <button type="button" class="btn btn-success"
-                                (click)="guardarDetallePerdido()">Agregar</button>
+                                (click)="cargarDetalleComanda()">Agregar</button>
                         </div>
                     </ng-template>
                 </div>
@@ -142,19 +131,13 @@
                                             <th></th>
                                             <th>Detalle</th>
                                             <th>Foto</th>
-                                            <!-- <th>Cantidad</th> -->
                                         </tr>
                                     </thead>
                                     <tr
                                         *ngFor="let item of cocina | paginate: { itemsPerPage: 3, currentPage: pageActual }">
-                                        <td>{{item.nombre}}</td>
                                         <td><input type="checkbox" class="form-control" width="5px;"></td>
+                                        <td>{{item.nombre}}</td>
                                         <td><img class="img-responsive" src="assets/images/{{item.foto}}"></td>
-                                        <!-- <td>
-                                            <input style="width: 75px;" formControlName="cantidad"
-                                                [(ngModel)]="cantidadPlato" min="0" type="number" class="form-control"
-                                                (change)="ver(item.id_menu)">
-                                        </td> -->
                                     </tr>
                                 </table>
                                 <pagination-controls (pageChange)="pageActual = $event" previousLabel="Anterior"
@@ -162,7 +145,7 @@
                             </div>
                         </div>
                         <div class="modal-footer">
-                            <button type="button" class="btn btn-success" (click)="modalRef.hide()">Agregar</button>
+                            <button type="button" class="btn btn-success" (click)="cargarDetalleComanda()">Agregar</button>
                         </div>
                     </ng-template>
 
@@ -185,7 +168,6 @@
                                             <th></th>
                                             <th>Detalle</th>
                                             <th>Foto</th>
-                                            <!-- <th>Cantidad</th> -->
                                         </tr>
                                     </thead>
                                     <tr
@@ -193,11 +175,6 @@
                                         <td><input type="checkbox" class="form-control" width="5px;"></td>
                                         <td>{{item.nombre}}</td>
                                         <td><img class="img-responsive" src="assets/images/{{item.foto}}"></td>
-                                        <!-- <td>
-                                            <input style="width: 75px;" formControlName="cantidad"
-                                                [(ngModel)]="cantidadCandy" min="0" type="number" class="form-control"
-                                                (change)="ver(item.id_menu)">
-                                        </td> -->
                                     </tr>
                                 </table>
                                 <pagination-controls (pageChange)="pageActual = $event" previousLabel="Anterior"
@@ -205,7 +182,7 @@
                             </div>
                         </div>
                         <div class="modal-footer">
-                            <button type="button" class="btn btn-success" (click)="modalRef.hide()">Agregar</button>
+                            <button type="button" class="btn btn-success" (click)="cargarDetalleComanda()">Agregar</button>
                         </div>
                     </ng-template>
                 </div>
@@ -231,8 +208,8 @@
                                     <th>Acciones</th>
                                 </tr>
                             </thead>
-                            <tr *ngFor="let item of detallePedido">
-                                <td>{{item.nombreMenu}}</td>
+                            <tr *ngFor="let item of elementosSeleccionados">
+                                <td>{{item.nombre}}</td>
                                 <td>{{item.precio | currency:'ARS'}}</td>
                                 <td>{{item.cantidad}}</td>
                                 <td><button type="button" class="btn btn-danger"

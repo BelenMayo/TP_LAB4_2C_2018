@@ -43,15 +43,13 @@ class PedidosModel
                          ->leftJoin("estado_pedidos on estado_pedidos.id_estado_pedido = pedidos.id_estado_pedido")
                          ->leftJoin("clientes on clientes.id_cliente = pedidos.id_cliente")
                          ->leftJoin("sector_pedidos on sector_pedidos.id_pedido = pedidos.id_pedido")
-                         ->leftJoin("empleados on empleados.id_empleado = sector_pedidos.id_empleado")
-                         ->leftJoin("tipo_empleados on tipo_empleados.id_tipo_empleado = empleados.id_tipo_empleado")
+                         ->leftJoin("tipo_empleados on tipo_empleados.id_tipo_empleado = sector_pedidos.id_tipo_empleado")
                          ->leftJoin("menus on menus.id_menu = sector_pedidos.id_menu")
                          ->select("pedidos.*, estado_pedidos.detalle as detalleEstadoPedido, clientes.nombre as nombreCliente, 
                                     clientes.apellido as apellidoCliente, menus.nombre as detalleMenu, sector_pedidos.id_estado_pedido as estadoPedido,
-                                    sector_pedidos.id_empleado as idEmpleado, sector_pedidos.id_menu as idMenu, 
-                                    sector_pedidos.id_categoria as idCategoria, sector_pedidos.id_seccion as idSeccion,
+                                    sector_pedidos.id_menu as idMenu, 
                                     sector_pedidos.id_estado_pedido as idEstadoPedido, sector_pedidos.id_sector_pedido as idSectorPedido") 
-                         ->where("(sector_pedidos.id_estado_pedido = 1 or sector_pedidos.id_estado_pedido = 2) and empleados.id_tipo_empleado = " . $tipoEmpleado)               
+                         ->where("(sector_pedidos.id_estado_pedido = 1 or sector_pedidos.id_estado_pedido = 2) and tipo_empleados.id_tipo_empleado = " . $tipoEmpleado)               
                          ->limit($l)
                          ->offset($p)
                          ->fetchAll();
@@ -69,13 +67,11 @@ class PedidosModel
                          ->leftJoin("estado_pedidos on estado_pedidos.id_estado_pedido = pedidos.id_estado_pedido")
                          ->leftJoin("clientes on clientes.id_cliente = pedidos.id_cliente")
                          ->leftJoin("sector_pedidos on sector_pedidos.id_pedido = pedidos.id_pedido")
-                         ->leftJoin("empleados on empleados.id_empleado = sector_pedidos.id_empleado")
-                         ->leftJoin("tipo_empleados on tipo_empleados.id_tipo_empleado = empleados.id_tipo_empleado")
+                         ->leftJoin("tipo_empleados on tipo_empleados.id_tipo_empleado = sector_pedidos.id_tipo_empleado")
                          ->leftJoin("menus on menus.id_menu = sector_pedidos.id_menu")
                          ->select("pedidos.*, estado_pedidos.detalle as detalleEstadoPedido, clientes.nombre as nombreCliente, 
                                     clientes.apellido as apellidoCliente, menus.nombre as detalleMenu, sector_pedidos.id_estado_pedido as estadoPedido,
-                                    sector_pedidos.id_empleado as idEmpleado, sector_pedidos.id_menu as idMenu, 
-                                    sector_pedidos.id_categoria as idCategoria, sector_pedidos.id_seccion as idSeccion,
+                                    sector_pedidos.id_tipo_empleado as idTipoEmpleado, sector_pedidos.id_menu as idMenu, 
                                     sector_pedidos.id_estado_pedido as idEstadoPedido, sector_pedidos.id_sector_pedido as idSectorPedido")      
                          ->where("sector_pedidos.id_estado_pedido = 3")
                          ->limit($l)
