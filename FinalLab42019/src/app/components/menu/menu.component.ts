@@ -10,7 +10,7 @@ import { Router } from '@angular/router';
 import { PedidoModel } from '../../models/pedido.model';
 import { DetallePedidoModel } from '../../models/detalle_pedido.model';
 import { PanelModel } from '../../models/panel.model';
-import { stringify } from 'querystring';
+import { SeleccionMenu } from 'src/app/models/seleccion_menu';
 
 
 @Component({
@@ -22,10 +22,7 @@ import { stringify } from 'querystring';
 export class MenuComponent implements OnInit {
 
   // Variables
-  tragos: string[];
-  cervezas: string[];
-  cocina: string[];
-  candy: string[];
+  menu: SeleccionMenu[];
   mesas: string[];
 
   formMenu: FormGroup;
@@ -46,42 +43,32 @@ export class MenuComponent implements OnInit {
 
   mesaSeleccionada: string = "";
   clienteSeleccionado: string = "";
-  cantidadTrago: string = "";
-  cantidadCerveza: string = "";
-  cantidadPlato: string = "";
-  cantidadCandy: string = "";
+  cantidadMenu: string = "";
 
-  elementosSeleccionados: DetallePedidoModel[];
-
-  //formPedido: FormGroup;
+  elementosSeleccionados: SeleccionMenu[] = [];
 
   constructor(public menuService: MenuService, public mesasService: MesasService, public clientesService: ClientesService,
               private httpClient: HttpClient,
     private modalService: BsModalService, private router: Router, private formBuilder: FormBuilder
     , public PedidosService: PedidosService) {
-    this.traerTragos();
-    this.traerCervezas();
-    this.traerCocina();
-    this.traerCandyBar();
+    this.traerMenu();
     this.traerMesas();
     this.traerClientes();
     this.traerDetallePedido();
   }
 
   ngOnInit() {
-    // this.formMenu = this.formBuilder.group({
-    //   mesa: ['', Validators.required],
-    //   cliente: ['', Validators.required],
-    //   cantidad: ['', Validators.required]
-    // })
   }
 
-  cargarDetalleComanda(item: any){
-
-    var i = this.elementosSeleccionados.indexOf( item );
-    this.elementosSeleccionados.splice(i, 1);
-
-    // console.log(i);
+  cargarDetalleComanda(){
+    //debugger;
+    console.log(this.menu);
+    this.menu.forEach(element => {
+      if(element.seleccionado) {
+        this.elementosSeleccionados.push(SeleccionMenu.guardarSeleccionMenu(element));
+      }
+    });
+   
     console.log(this.elementosSeleccionados);
 
     this.modalRef.hide();
@@ -89,16 +76,16 @@ export class MenuComponent implements OnInit {
 
   ver(menu) {
     console.log("Mesa: " + this.mesaSeleccionada);
-    console.log("Cliente: " + this.clienteSeleccionado);
+    console.log("Cliente: " + this.clienteSeleccionado);  
 
-    console.log("Cantidad Trago: " + this.cantidadTrago + " - Menu: " + menu);
+    console.log("Cantidad Trago: " + this.cantidadMenu + " - Menu: " + menu);
   }
 
   guardarDetallePerdido(menu, categoria, seccion, precio) {
 
     this.detallePedidoModel = new DetallePedidoModel();
 
-    this.detallePedidoModel.id_menu= this.cantidadTrago;
+    this.detallePedidoModel.id_menu= this.cantidadMenu;
     this.detallePedidoModel.precio= precio;
     this.detallePedidoModel.subtotal= precio;
 
@@ -191,56 +178,23 @@ export class MenuComponent implements OnInit {
     this.router.navigateByUrl('home');
   }
 
-
-
-  // Trae todos los tragos
-  traerTragos() {
-    this.menuService.traerMenuPorCategoria(1)
+  // Trae menu
+  traerMenu() {
+    this.menu = [];
+    this.menuService.traerMenuCompleto()
       .subscribe(resp => {
-        this.tragos = resp;
-        console.log(this.tragos);
+        for (let index = 0; index < resp.length; index++) {
+          this.menu.push(SeleccionMenu.guardarSeleccionMenu( resp[index]));
+          
+        }
+        console.log('Menu:' + this.menu);
       },
         error => {
-          text: 'Error al traer tragos';
+          text: 'Error al traer menu';
         });
   }
 
-  // Trae todas las cervezas
-  traerCervezas() {
-    this.menuService.traerMenuPorCategoria(2)
-      .subscribe(resp => {
-        this.cervezas = resp;
-        console.log(this.cervezas);
-      },
-        error => {
-          text: 'Error al traer cervezas';
-        });
-  }
-
-  // Trae toda la cocina
-  traerCocina() {
-    this.menuService.traerMenuPorCategoria(3)
-      .subscribe(resp => {
-        this.cocina = resp;
-        console.log(this.cocina);
-      },
-        error => {
-          text: 'Error al traer cocina';
-        });
-  }
-
-  // Trae todo el candy bar
-  traerCandyBar() {
-    this.menuService.traerMenuPorCategoria(4)
-      .subscribe(resp => {
-        this.candy = resp;
-        console.log(this.candy);
-      },
-        error => {
-          text: 'Error al traer candy';
-        });
-  }
-
+  // Trae mesas
   traerMesas() {
     this.mesasService.traerMesas()
       .subscribe(resp => {
@@ -252,6 +206,7 @@ export class MenuComponent implements OnInit {
         });
   }
 
+  //Trae clientes
   traerClientes() {
     this.clientesService.traerClientes()
       .subscribe(resp => {
@@ -267,18 +222,6 @@ export class MenuComponent implements OnInit {
   // Abre Modal
   openModal(template: TemplateRef<any>) {
     this.modalRef = this.modalService.show(template);
-  }
-
-  openModal2(template2: TemplateRef<any>) {
-    this.modalRef = this.modalService.show(template2);
-  }
-
-  openModal3(template3: TemplateRef<any>) {
-    this.modalRef = this.modalService.show(template3);
-  }
-
-  openModal4(template4: TemplateRef<any>) {
-    this.modalRef = this.modalService.show(template4);
   }
 
 }

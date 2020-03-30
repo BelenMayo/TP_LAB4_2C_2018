@@ -91,6 +91,19 @@ export class MenuService {
         );
     }
 
+    traerMenuCompleto() {
+      return this.httpClient.get(API_REF + `/ComandaAPI/public/menus/traerMenuCompleto/`)
+        .pipe(
+          map(resp => {
+            if (resp['data'].length > 0) {
+              return resp['data'];
+            } else {
+              return false;
+            }
+          })
+        );
+    }
+
     guardarComanda(pedido: PedidoModel) {
       return this.httpClient.post(API_REF + '/ComandaAPI/public/pedidos/registrar', pedido)
         .pipe(

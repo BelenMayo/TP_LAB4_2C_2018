@@ -17,7 +17,7 @@ export class DetallePedidoModel {
     }
 
     // Crea detalle-pedido
-    guardarDetallePedido(detallePedido: any): DetallePedidoModel {
+    static guardarDetallePedido(detallePedido: any): DetallePedidoModel {
         let nuevoDetallePedido = new DetallePedidoModel();
         nuevoDetallePedido.id_pedido = detallePedido['id_pedido'].value;
         nuevoDetallePedido.id_menu = detallePedido['id_menu'].value;
