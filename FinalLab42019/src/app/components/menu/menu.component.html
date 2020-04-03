@@ -53,14 +53,16 @@
                                         <tr>
                                             <th></th>
                                             <th>Detalle</th>
+                                            <th>Precio</th>
                                             <th>Foto</th>
                                         </tr>
                                     </thead>
                                     <tr
                                         *ngFor="let item of menu | paginate: { itemsPerPage: 4, currentPage: pageActual }">
-                                        <td><input type="checkbox" [(ngModel)]="item.seleccionado" [ngModelOptions]="{standalone: true}" class="form-control" width="5px;" id="checkMenu">
+                                        <td><input type="checkbox" [(ngModel)]="item.seleccionado" [ngModelOptions]="{standalone: true}" class="form-control" style="min-width: 15px;max-width: 15px;" id="checkMenu">
                                         </td>
                                         <td>{{item.nombre}}</td>
+                                        <td>{{item.precio | currency:'ARS'}}</td>
                                         <td><img class="img-responsive" src="assets/images/{{item.foto}}"></td>
                                     </tr>
                                 </table>
@@ -99,16 +101,16 @@
                             <tr *ngFor="let item of elementosSeleccionados">
                                 <td>{{item.nombre}}</td>
                                 <td>{{item.precio | currency:'ARS'}}</td>
-                                <td>{{item.cantidad}}</td>
+                                <td><input type="number" class="form-control" style="width:75px;" min="1" value="{{item.cantidad}}"></td>
                                 <td><button type="button" class="btn btn-danger"
-                                        (click)="eliminarDetallePedido(item.id_detalle_pedido)"
+                                        (click)="eliminarDetallePedido(item.id_menu)"
                                         style="margin: 10px">Quitar
                                         <i class="fas fa-trash-alt"></i></button></td>
                             </tr>
                         </table>
 
                         <label
-                            style="font-weight: bold; margin-left: 400px;font-size: 20px;">{{0 | currency:'ARS'}}</label><br /><br />
+                            style="font-weight: bold; margin-left: 400px;font-size: 20px;">{{total | currency:'ARS'}}</label><br /><br />
                         <button type="button" (click)="agregarDetalle()" style="margin-left: 15px; margin-bottom: 15px;"
                             class="btn btn-primary">Enviar Comanda <i class="fas fa-share"></i></button>
                     </div>

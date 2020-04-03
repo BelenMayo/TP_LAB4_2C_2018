@@ -2,38 +2,46 @@ import { getLocaleDateFormat } from '@angular/common';
 
 export class PanelModel {
     public id_pedido: string;
-    public id_empleado: string;
+    public id_tipo_empleado: string;
     public id_menu: string;
-    public id_categoria: string;
-    public id_seccion: string;
     public hora_inicio: Date;
     public tiempo_finalizacion: Date;
     public id_estado_pedido: string;
 
 
     constructor() {
-        this.id_pedido="";
-        this.id_empleado="";
-        this.id_menu="";
-        this.id_categoria="";
-        this.id_seccion="";
-        this.hora_inicio= new Date();
-        this.tiempo_finalizacion= new Date();
-        this.id_estado_pedido= "";
+        this.id_pedido = "";
+        this.id_tipo_empleado = "";
+        this.id_menu = "";
+        this.hora_inicio = new Date();
+        this.tiempo_finalizacion = new Date();
+        this.id_estado_pedido = "";
     }
 
     // Crea panel
-    guardarPanel(panel: any): PanelModel {
+    static guardarPanel(panel: any): PanelModel {
         let nuevoDetallePedido = new PanelModel();
-        nuevoDetallePedido.id_pedido = panel['id_pedido'].value;
-        nuevoDetallePedido.id_empleado = panel['id_empleado'].value;
-        nuevoDetallePedido.id_menu = panel['id_menu'].value;
-        nuevoDetallePedido.id_categoria = panel['id_categoria'].value;
-        nuevoDetallePedido.id_seccion = panel['id_seccion'].value;
-        nuevoDetallePedido.hora_inicio = panel['hora_inicio'].value;
-        nuevoDetallePedido.tiempo_finalizacion = panel['tiempo_finalizacion'].value;
-        nuevoDetallePedido.id_estado_pedido = panel['id_estado_pedido'].value;
+        //nuevoDetallePedido.id_pedido = panel['id_pedido'];
 
-        return nuevoDetallePedido
+        switch (panel.id_categoria) {
+            case "1":
+                nuevoDetallePedido.id_tipo_empleado = "1";
+                break;
+            case "2":
+                nuevoDetallePedido.id_tipo_empleado = "3";
+                break;
+            case "3":
+                nuevoDetallePedido.id_tipo_empleado = "3";
+                break;
+            case "4":
+                nuevoDetallePedido.id_tipo_empleado = "3";
+                break;
+        }
+                nuevoDetallePedido.id_menu = panel['id_menu'];
+                nuevoDetallePedido.hora_inicio = new Date();
+                nuevoDetallePedido.tiempo_finalizacion = new Date();
+                nuevoDetallePedido.id_estado_pedido = "1";
+
+                return nuevoDetallePedido
+        }
     }
-}
