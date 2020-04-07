@@ -2,7 +2,6 @@ import { Injectable } from '@angular/core';
 import { HttpClient, HttpResponse } from '@angular/common/http';
 import { map } from 'rxjs/operators';
 import { PedidoModel } from '../models/pedido.model';
-import { DetallePedidoModel } from '../models/detalle_pedido.model';
 import { API_REF } from 'src/globales/variables_globales';
 import { PanelModel } from '../models/panel.model';
 import { SectorPedidoModel } from '../models/sector_pedido.model';
@@ -67,21 +66,8 @@ export class PedidosService {
       );
   }
 
-  guardarDetallePedido(detallePedido: DetallePedidoModel) {
-    return this.httpClient.post(API_REF + '/ComandaAPI/public/detalle_pedidos/registrar', detallePedido)
-      .pipe(
-        map(resp => {
-          if (resp['data'].length > 0) {
-            return resp['data'];
-          } else {
-            return false;
-          }
-        })
-      );
-  }
-
-  guardarPanel(panel: PanelModel) {
-    return this.httpClient.post(API_REF + '/ComandaAPI/public/sector_pedidos/registrar', panel)
+  guardarPanel(paneles: PanelModel[]) {
+    return this.httpClient.post(API_REF + '/ComandaAPI/public/sector_pedidos/registrar', paneles)
       .pipe(
         map(resp => {
           if (resp['data'].length > 0) {

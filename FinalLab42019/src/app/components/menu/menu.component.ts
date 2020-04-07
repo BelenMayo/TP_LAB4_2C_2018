@@ -8,10 +8,9 @@ import { HttpClient } from '@angular/common/http';
 import { BsModalService, BsModalRef } from 'ngx-bootstrap/modal';
 import { Router } from '@angular/router';
 import { PedidoModel } from '../../models/pedido.model';
-import { DetallePedidoModel } from '../../models/detalle_pedido.model';
 import { PanelModel } from '../../models/panel.model';
 import { SeleccionMenu } from 'src/app/models/seleccion_menu';
-import { PanelComponent } from '../panel/panel.component';
+import Swal from 'sweetalert2'
 
 
 @Component({
@@ -30,13 +29,11 @@ export class MenuComponent implements OnInit {
   isChecked: boolean;
 
   clientes: string[];
-  detallePedidos: DetallePedidoModel[] = [];
   paneles: PanelModel[] = [];
   pedido: PedidoModel;
 
   pageActual: number = 1;
   modalRef: BsModalRef;
-  detallePedidoModel: DetallePedidoModel;
   panel: PanelModel;
 
   detallePedidoString: String[];
@@ -92,33 +89,42 @@ export class MenuComponent implements OnInit {
     this.router.navigateByUrl('/menu');
   }
 
-  enviarComanda(modal) {
+  enviarComanda() {
     this.pedido = new PedidoModel();
-    this.detallePedidoModel = new DetallePedidoModel();
     this.panel = new PanelModel();
 
-    PedidoModel.guardarPedido(this.menu, this.clientes, this.mesa);
+    this.pedido= PedidoModel.guardarPedido(this.cliente, this.mesa, this.total);
 
     this.elementosSeleccionados.forEach(element => {
-      this.detallePedidos.push(DetallePedidoModel.guardarDetallePedido(element));
       this.paneles.push(PanelModel.guardarPanel(element));
     });
 
-    console.log(this.pedido);
+    console.log(this.paneles);
 
     this.PedidosService.guardarPedido(this.pedido)
       .subscribe(resp => {
-        this.clientes = resp;
-        console.log(this.clientes);
-
-        this.PedidosService.guardarDetallePedido(this.detallePedidoModel);
-        this.PedidosService.guardarPanel(this.panel);
+        text: 'Pedido guardado';
       },
         error => {
           text: 'Error al guardar pedido';
         });
 
-    this.openModal(modal);
+    this.PedidosService.guardarPanel(this.paneles)
+      .subscribe(resp => {
+        console.log(this.clientes);
+      },
+        error => {
+          text: 'Panel guardado';
+        });
+
+        Swal.fire({
+          title: 'Comanda cargada exitosamente!',
+          text: 'Muchas gracias',
+          icon: 'success',
+          showConfirmButton: false,
+          timer: 1500
+        })
+
     this.router.navigateByUrl('home');
   }
 
@@ -161,7 +167,6 @@ export class MenuComponent implements OnInit {
           text: 'Error al traer clientes';
         });
   }
-
 
   // Abre Modal
   openModal(template: TemplateRef<any>) {

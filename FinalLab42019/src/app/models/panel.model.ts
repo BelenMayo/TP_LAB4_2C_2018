@@ -4,6 +4,7 @@ export class PanelModel {
     public id_pedido: string;
     public id_tipo_empleado: string;
     public id_menu: string;
+    public cantidad: number;
     public hora_inicio: Date;
     public tiempo_finalizacion: Date;
     public id_estado_pedido: string;
@@ -13,6 +14,7 @@ export class PanelModel {
         this.id_pedido = "";
         this.id_tipo_empleado = "";
         this.id_menu = "";
+        this.cantidad= 0;
         this.hora_inicio = new Date();
         this.tiempo_finalizacion = new Date();
         this.id_estado_pedido = "";
@@ -21,7 +23,7 @@ export class PanelModel {
     // Crea panel
     static guardarPanel(panel: any): PanelModel {
         let nuevoDetallePedido = new PanelModel();
-        //nuevoDetallePedido.id_pedido = panel['id_pedido'];
+        nuevoDetallePedido.id_pedido = panel['id_pedido'];
 
         switch (panel.id_categoria) {
             case "1":
@@ -38,6 +40,7 @@ export class PanelModel {
                 break;
         }
                 nuevoDetallePedido.id_menu = panel['id_menu'];
+                nuevoDetallePedido.cantidad = panel['cantidad'];
                 nuevoDetallePedido.hora_inicio = new Date();
                 nuevoDetallePedido.tiempo_finalizacion = new Date();
                 nuevoDetallePedido.id_estado_pedido = "1";
