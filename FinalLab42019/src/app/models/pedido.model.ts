@@ -8,6 +8,7 @@ export class PedidoModel {
     public hora_pedido: Date;
     public tiempo_espera: Date;
     public total: number;
+    public detallePedido: Array<any>;
 
 
     constructor() {
@@ -18,6 +19,7 @@ export class PedidoModel {
         this.hora_pedido = new Date();
         this.tiempo_espera = new Date();
         this.total = 0;
+        this.detallePedido = [];
     }
     
     // Crea pedido

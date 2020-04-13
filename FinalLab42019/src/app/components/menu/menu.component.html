@@ -16,15 +16,13 @@
                 <br /><br />
                 <div class="row">
                     <label style="margin-left: 10px;font-style: italic;">Mesa</label>
-                    <select class="form-control" formControlName="mesa" style="margin-left: 58px;width: 75px;"
-                        [(ngModel)]="mesaSeleccionada">
+                    <select (change)="asignaMesa()" class="form-control" formControlName="mesa" style="margin-left: 58px;width: 75px;">
                         <option *ngFor="let item of mesas" value="{{item.id_mesa}}">{{item.nro_mesa}}</option>
                     </select>
                 </div><br />
                 <div class="row">
                     <label style="margin-left: 10px;font-style: italic;">Comensal</label>
-                    <select class="form-control" formControlName="cliente" style="margin-left: 25px;width: 200px;"
-                        [(ngModel)]="clienteSeleccionado">
+                    <select (change)="asignaCliente()" class="form-control" formControlName="cliente" style="margin-left: 25px;width: 200px;">
                         <option value="{{item.id_cliente}}" *ngFor="let item of clientes">{{item.nombre}}
                             {{item.apellido}}
                         </option>

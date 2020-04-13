@@ -25,7 +25,6 @@ export class MenuComponent implements OnInit {
   menu: SeleccionMenu[];
   mesas: string[];
 
-  formMenu: FormGroup;
   isChecked: boolean;
 
   clientes: string[];
@@ -36,18 +35,16 @@ export class MenuComponent implements OnInit {
   modalRef: BsModalRef;
   panel: PanelModel;
 
-  detallePedidoString: String[];
-  valor: string;
-
   total: number = 0;
-  mesa: string;
-  cliente: string;
+
+  id_pedido: string = "";
 
   mesaSeleccionada: string = "";
   clienteSeleccionado: string = "";
-  cantidadMenu: string = "";
 
   elementosSeleccionados: SeleccionMenu[] = [];
+
+  formMenu: FormGroup;
 
   constructor(public menuService: MenuService, public mesasService: MesasService, public clientesService: ClientesService,
     private httpClient: HttpClient,
@@ -59,9 +56,25 @@ export class MenuComponent implements OnInit {
   }
 
   ngOnInit() {
+    this.formMenu = this.formBuilder.group({
+      mesa: ['', Validators.required],
+      cliente: ['', Validators.required]
+    })
   }
 
-  cargarDetalleComanda() {
+  asignaMesa() {
+    this.mesaSeleccionada = this.formMenu.controls.mesa.value;
+
+    console.log(this.mesaSeleccionada);
+  }
+
+  asignaCliente() {
+    this.clienteSeleccionado = this.formMenu.controls.cliente.value;
+
+    console.log(this.clienteSeleccionado);
+  }
+
+  cargarDetalleComanda(item) {
     //debugger;
     this.total = 0;
 
@@ -93,15 +106,13 @@ export class MenuComponent implements OnInit {
     this.pedido = new PedidoModel();
     this.panel = new PanelModel();
 
-    this.pedido= PedidoModel.guardarPedido(this.cliente, this.mesa, this.total);
+    this.pedido = PedidoModel.guardarPedido(this.clienteSeleccionado, this.mesaSeleccionada, this.total);
 
     this.elementosSeleccionados.forEach(element => {
       this.paneles.push(PanelModel.guardarPanel(element));
     });
 
-    console.log(this.paneles);
-
-    this.PedidosService.guardarPedido(this.pedido)
+    this.PedidosService.guardarPedido(this.pedido, this.paneles)
       .subscribe(resp => {
         text: 'Pedido guardado';
       },
@@ -109,21 +120,34 @@ export class MenuComponent implements OnInit {
           text: 'Error al guardar pedido';
         });
 
-    this.PedidosService.guardarPanel(this.paneles)
-      .subscribe(resp => {
-        console.log(this.clientes);
-      },
-        error => {
-          text: 'Panel guardado';
-        });
+    // this.PedidosService.traerUltimoPedido()
+    //   .subscribe(resp => {
+    //     this.id_pedido = resp;
+    //     console.log("Ultimo pedido: " + this.id_pedido);
+    //   },
+    //     error => {
+    //       text: 'Error al traer menu';
+    //     });
 
-        Swal.fire({
-          title: 'Comanda cargada exitosamente!',
-          text: 'Muchas gracias',
-          icon: 'success',
-          showConfirmButton: false,
-          timer: 1500
-        })
+    // this.paneles.forEach(element => {
+    //   element.id_pedido = this.id_pedido;
+    // });
+
+    // this.PedidosService.guardarPanel(this.paneles)
+    //   .subscribe(resp => {
+    //     console.log(this.paneles);
+    //   },
+    //     error => {
+    //       text: 'Panel guardado';
+    //     });
+
+    Swal.fire({
+      title: 'Comanda cargada exitosamente!',
+      text: 'Muchas gracias',
+      icon: 'success',
+      showConfirmButton: false,
+      timer: 1500
+    })
 
     this.router.navigateByUrl('home');
   }

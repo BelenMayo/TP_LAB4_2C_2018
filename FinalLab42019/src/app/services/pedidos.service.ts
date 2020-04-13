@@ -53,7 +53,9 @@ export class PedidosService {
       );
   }
 
-  guardarPedido(pedido: PedidoModel) {
+  guardarPedido(pedido: PedidoModel, paneles: PanelModel[]) {
+    pedido.detallePedido = paneles;
+    //debugger;
     return this.httpClient.post(API_REF + '/ComandaAPI/public/pedidos/registrar', pedido)
       .pipe(
         map(resp => {
@@ -66,8 +68,8 @@ export class PedidosService {
       );
   }
 
-  guardarPanel(paneles: PanelModel[]) {
-    return this.httpClient.post(API_REF + '/ComandaAPI/public/sector_pedidos/registrar', paneles)
+  traerUltimoPedido() {
+    return this.httpClient.get(API_REF + '/ComandaAPI/public/pedidos/traerUltimoPedido')
       .pipe(
         map(resp => {
           if (resp['data'].length > 0) {

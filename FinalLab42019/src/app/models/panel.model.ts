@@ -30,7 +30,7 @@ export class PanelModel {
                 nuevoDetallePedido.id_tipo_empleado = "1";
                 break;
             case "2":
-                nuevoDetallePedido.id_tipo_empleado = "3";
+                nuevoDetallePedido.id_tipo_empleado = "2";
                 break;
             case "3":
                 nuevoDetallePedido.id_tipo_empleado = "3";
