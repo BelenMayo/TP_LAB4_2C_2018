@@ -20,6 +20,11 @@ $app->group('/menus/', function () {
         return $res->withHeader('Content-type', 'application/json')
                    ->write(json_encode($this->model->menu->getPorCategoria($args['id'])));
     });
+
+    $this->get('traerMenuCompleto/', function ($req, $res, $args) {
+        return $res->withHeader('Content-type', 'application/json')
+                   ->write(json_encode($this->model->menu->getCompleto()));
+    });
     
     $this->post('registrar', function ($req, $res, $args) {
         return $res->withHeader('Content-type', 'application/json')

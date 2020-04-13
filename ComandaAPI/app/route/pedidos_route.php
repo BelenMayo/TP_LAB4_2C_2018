@@ -16,6 +16,11 @@ $app->group('/pedidos/', function () {
                    ->write(json_encode($this->model->pedido->getAllEmpleados($args['l'], $args['p'], $args['tipoEmpleado'])));
     });
 
+    $this->get('traerUltimoPedido', function ($req, $res, $args) {
+        return $res->withHeader('Content-type', 'application/json')
+                   ->write(json_encode($this->model->pedido->getUltimoPedido()));
+    });
+
     $this->get('listarSectorPedidos/{l}/{p}', function ($req, $res, $args) {
         return $res->withHeader('Content-type', 'application/json')
                    ->write(json_encode($this->model->pedido->getAllMozo($args['l'], $args['p'])));

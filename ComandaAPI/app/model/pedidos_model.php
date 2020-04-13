@@ -7,6 +7,7 @@ class PedidosModel
 {
     private $db;
     private $table = 'pedidos';
+    private $table2 = 'sector_pedidos';
     private $response;
     
     public function __CONSTRUCT($db)
@@ -89,6 +90,17 @@ class PedidosModel
         ];
     }
 
+    public function getUltimoPedido()
+    {
+        $data = $this->db->from($this->table)
+                         ->where("id_pedido = (select max(id_pedido) from pedidos)")
+                         ->fetch("id_pedido");
+        
+        return [
+            'data'  => $data
+        ];
+    }
+
     public function get($id)
     {
         $data = $this->db->from($this->table)
@@ -100,10 +112,42 @@ class PedidosModel
     
     public function insert($data)
     {   
-        $this->db->insertInto($this->table, $data)
-                 ->execute();
-        
-        return $this->response->SetResponse(true);
+        //$id_pedido= string;
+
+        //$id_pedido = 
+        // $this->db->insertInto($this->table, $pedido)
+        //          ->execute();
+
+        // for ($index=0; $index < $pedido['detallePedido'].length; $index++) {
+        //     $this->db->insertInto($this->table2, $pedido['detallePedido'][$index])
+        //     ->execute();     
+        // }
+
+
+        $comandaID = $this->db
+                ->insertInto($this->table, [
+                    'id_cliente'         => $data['id_cliente'],
+                    'id_mesa'            => $data['id_mesa'],
+                    'codigo_pedido'      => $data['codigo_pedido'],
+                    'id_estado_pedido'   => $data['id_estado_pedido'],
+                    'hora_pedido'        => $data['hora_pedido'],
+                    'tiempo_espera'      => $data['tiempo_espera'],
+                    'total'              => $data['total']
+                ])->execute();
+
+        foreach($data["detallePedido"] as $item){
+            $this->db->insertInto($this->table2, [
+                'id_pedido'             => $comandaID,
+                'id_tipo_empleado'      => $item['id_tipo_empleado'],
+                'id_menu'               => $item['id_menu'],
+                'cantidad'              => $item['cantidad'],
+                'hora_inicio'           => $item['hora_inicio'],
+                'tiempo_finalizacion'   => $item['tiempo_finalizacion'],
+                'id_estado_pedido'      => $item['id_estado_pedido']
+            ])->execute();
+      }
+
+      return $this->response->SetResponse(true);
     }
 
     public function update($data, $id)

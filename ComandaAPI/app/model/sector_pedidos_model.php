@@ -86,8 +86,11 @@ class SectorPedidosModel
     
     public function insert($data)
     {   
-        $this->db->insertInto($this->table, $data)
-                 ->execute();
+
+        foreach ($data as $key => $value) {    
+            $this->db->insertInto($this->table, $data)
+            ->execute();     
+        }
         
         return $this->response->SetResponse(true);
     }

@@ -52,6 +52,15 @@ class MenusModel
                
         return ['data'  => $data];
     }
+
+    public function getCompleto()
+    {
+        $data = $this->db->from($this->table)
+                     ->orderBy('id_categoria asc')
+                     ->fetchAll();
+               
+        return ['data'  => $data];
+    }
     
     public function insert($data)
     {   
