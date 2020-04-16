@@ -18,7 +18,7 @@
       <td>{{item.detalleMenu}}</td>
       <td>{{item.detalleEstadoPedido}}</td>
       <td>{{item.tiempo_espera}}</td>
-      <td><button type="button" class="btn btn-success" (click)="cambiarEstadoPedido(4)"
+      <td><button type="button" class="btn btn-success" (click)="cambiarEstadoPedido(item.idSectorPedido, 4)"
           style="margin: 10px">Servido <i class="fas fa-check"></i></button></td>
     </tr>
   </table>

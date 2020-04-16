@@ -120,27 +120,6 @@ export class MenuComponent implements OnInit {
           text: 'Error al guardar pedido';
         });
 
-    // this.PedidosService.traerUltimoPedido()
-    //   .subscribe(resp => {
-    //     this.id_pedido = resp;
-    //     console.log("Ultimo pedido: " + this.id_pedido);
-    //   },
-    //     error => {
-    //       text: 'Error al traer menu';
-    //     });
-
-    // this.paneles.forEach(element => {
-    //   element.id_pedido = this.id_pedido;
-    // });
-
-    // this.PedidosService.guardarPanel(this.paneles)
-    //   .subscribe(resp => {
-    //     console.log(this.paneles);
-    //   },
-    //     error => {
-    //       text: 'Panel guardado';
-    //     });
-
     Swal.fire({
       title: 'Comanda cargada exitosamente!',
       text: 'Muchas gracias',

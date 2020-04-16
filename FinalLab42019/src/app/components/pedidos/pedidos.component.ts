@@ -7,6 +7,7 @@ import { PedidoModel } from '../../models/pedido.model';
 import { Router } from '@angular/router'
 import { NavbarService } from 'src/app/services/navbar.service';
 import { SectorPedidoModel } from '../../models/sector_pedido.model';
+import { EstadoPedidoModel } from '../../models/pedido.model';
 import { SectorPedidoService } from 'src/app/services/sector-pedido.service';
 import Swal from 'sweetalert2'
 
@@ -27,6 +28,8 @@ export class PedidosComponent implements OnInit {
   barraPedido: PedidoModel;
 
   sirvePedido: SectorPedidoModel;
+
+  estadoPedido: EstadoPedidoModel;
 
   constructor(public pedidosService: PedidosService, private httpClient: HttpClient, private modalService: BsModalService
     , private router: Router, public navbarService: NavbarService, public sectorPedidoService: SectorPedidoService
@@ -50,37 +53,15 @@ export class PedidosComponent implements OnInit {
         });
   }
 
-  // Elimina pedido
-  eliminarPedido(id: number) {
-    this.pedidosService.eliminarPedido(id)
-      .subscribe(resp => {
-        console.log("Se elimino el pedido");
-      },
-        error => {
-          text: 'Error al eliminar pedido';
-        });
-  }
-
   // Cambia estado del pedido
-  cambiarEstadoPedido(nuevoEstado) {
+  cambiarEstadoPedido(IdSectorPedido, nuevoEstado) {
 
-    this.sirvePedido = new SectorPedidoModel();
+    this.estadoPedido = EstadoPedidoModel.guardarEstadoPedido(nuevoEstado);
 
-    this.sirvePedido.id_pedido = this.listadosService.pedidos[0]['id_pedido'];
-    this.sirvePedido.id_empleado = this.listadosService.pedidos[0]['idEmpleado'];
-    this.sirvePedido.id_menu = this.listadosService.pedidos[0]['idMenu'];
-    this.sirvePedido.id_categoria = this.listadosService.pedidos[0]['idCategoria'];
-    this.sirvePedido.id_seccion = this.listadosService.pedidos[0]['idSeccion'];
-    this.sirvePedido.hora_inicio = new Date();
-    this.sirvePedido.tiempo_finalizacion = new Date();
-    this.sirvePedido.id_estado_pedido = nuevoEstado;
-
-    console.log(this.sirvePedido);
-    
-
-    this.pedidosService.modificarPedido(this.pedidos[0]['idSectorPedido'], this.sirvePedido)
+    this.pedidosService.modificarPedido(IdSectorPedido, this.estadoPedido)
       .subscribe(resp => {
         console.log("Se modifico estado del pedido");
+        this.listadosService.refrescarPedidos();
       },
         error => {
           text: 'Error al modificar estado del pedido';
@@ -96,4 +77,5 @@ export class PedidosComponent implements OnInit {
 
     this.router.navigateByUrl('/pedido');
   }
+
 }

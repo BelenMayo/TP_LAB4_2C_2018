@@ -14,12 +14,12 @@
         <tr *ngFor="let item of listadosService.pedidos | paginate: { itemsPerPage: 5, currentPage: pageActual }">
             <td>{{item.nombreCliente}} {{item.apellidoCliente}}</td>
             <td>{{item.id_mesa}}</td>
-            <td>{{item.codigo_pedido}}</td>
+            <td>{{item.codigo_pedido}}</td> 
             <td>{{item.detalleMenu}}</td>
             <td>{{item.detalleEstadoPedido}}</td>
             <td>{{item.tiempo_espera}}</td>
-            <td><button *ngIf= "item.estadoPedido == 1" type="button" class="btn btn-primary" (click)="cambiarEstadoPedido(2)" style="margin: 10px">En preparacion <i class="fas fa-hand-paper"></i></button>
-                <button *ngIf= "item.estadoPedido == 2" type="button" class="btn btn-success" (click)="cambiarEstadoPedido(3)" style="margin: 10px">Listo para servir <i class="fas fa-check"></i></button></td>
+            <td><button *ngIf= "item.estadoPedido == 1" type="button" class="btn btn-primary" (click)="cambiarEstadoPedido(item.idSectorPedido, 2)" style="margin: 10px">En preparacion <i class="fas fa-hand-paper"></i></button>
+                <button *ngIf= "item.estadoPedido == 2" type="button" class="btn btn-success" (click)="cambiarEstadoPedido(item.idSectorPedido, 3)" style="margin: 10px">Listo para servir <i class="fas fa-check"></i></button></td>
         </tr>
     </table>
     <pagination-controls (pageChange)="pageActual = $event" previousLabel="Anterior" nextLabel="Siguiente">

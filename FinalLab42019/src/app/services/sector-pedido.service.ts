@@ -39,19 +39,6 @@ export class SectorPedidoService {
       );
   }
 
-  // entregarPedidoMozo(sectorPedido: PedidoModel) {
-  //   return this.httpClient.post(API_REF + '/ComandaAPI/public/sector_pedidos/listar/1/0', sectorPedido)
-  //     .pipe(
-  //       map(resp => {
-  //         if (resp['data'].length > 0) {
-  //           return resp['data'];
-  //         } else {
-  //           return false;
-  //         }
-  //       })
-  //     );
-  // }
-
   traerDetallePedidoTotal() {
     return this.httpClient.get(API_REF + `/ComandaAPI/public/pedidos/listarSectorPedidos/1/0`)
       .pipe(

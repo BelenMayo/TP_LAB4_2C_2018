@@ -37,3 +37,19 @@ export class PedidoModel {
     }
 
 }
+
+export class EstadoPedidoModel {
+    public id_estado_pedido: number;
+
+    constructor() {
+        this.id_estado_pedido = 0;
+    }
+    
+    // Guarda Estado Pedido
+    static guardarEstadoPedido(id_estado_pedido) :EstadoPedidoModel{
+        let nuevoEstadoPedido = new EstadoPedidoModel();
+        nuevoEstadoPedido.id_estado_pedido = id_estado_pedido;
+
+        return nuevoEstadoPedido;
+    }
+}
