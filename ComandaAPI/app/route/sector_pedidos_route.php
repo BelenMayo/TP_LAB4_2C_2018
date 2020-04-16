@@ -33,7 +33,7 @@ $app->group('/sector_pedidos/', function () {
 
     $this->put('modificar/{id}', function ($req, $res, $args) {
         return $res->withHeader('Content-type', 'application/json')
-                   ->write(json_encode($this->model->sector_pedido->update($req->getParsedBody(),$args['id'])));
+                   ->write(json_encode($this->model->sector_pedido->update($args['id'], $req->getParsedBody())));
     });
 
     $this->delete('eliminar/{id}', function ($req, $res, $args) {

@@ -95,10 +95,13 @@ class SectorPedidosModel
         return $this->response->SetResponse(true);
     }
 
-    public function update($data, $id)
+    public function update($id, $data)
     {
+        $estado = $data['id_estado_pedido'];
+            
         $this->db
-        ->update($this->table, $data)
+        ->update($this->table)
+        ->set('id_estado_pedido', $estado)
         ->where('id_sector_pedido = ' . $id)
         ->execute();
 
