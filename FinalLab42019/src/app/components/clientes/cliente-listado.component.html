@@ -13,7 +13,7 @@
             <td>{{item.apellido}}</td>
             <td>{{item.nombre}}</td>
             <td>{{item.usuario}}</td>
-            <td>{{item.foto}}</td>
+            <td><img class="img-responsive" style= "max-width: 100px;" src="assets/images/{{item.foto}}"></td>
             <td><button type="button" class="btn btn-info" [routerLink]="['/cliente/detalleCliente', item.id_cliente]"
                     style="margin: 10px">Ver <i class="fas fa-search-plus"></i></button>
                 <button type="button" class="btn btn-success"
