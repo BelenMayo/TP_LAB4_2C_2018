@@ -2,7 +2,7 @@
 
 LA COMANDA
 
-http://lacomandabm.rivmay.net/login
+http://lacomandabm.rivmay.net
 
 La comanda es una aplicacion que aplica la operatoria del Restaurante.
 
